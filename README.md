@@ -23,8 +23,8 @@ precision/recall table against real commits before it holds anything else.
 | `parse.py` — file → definitions, scope tree, raw imports | done |
 | `imports.py` — module table, import bindings, re-export chains | done |
 | `resolve.py` — scope-aware reference resolution | done |
+| `classes.py` — base graph, MRO, override detection | done |
 | `evaluation/schema.py` — the mined-case format | done |
-| `classes.py` — base graph, override detection | not started |
 | `impact.py` + `cli.py` | not started |
 | `evaluation/mine.py`, `evaluation/run.py` | not started |
 
@@ -44,16 +44,31 @@ the number that actually matters.
 | Resolved through an imported module | 7,610 | 9.4% |
 | Unresolved method calls | 46,116 | 57.1% |
 
-Of what is unresolved, 25.1% is `self.` or `cls.` — reachable once class
-hierarchies are modelled. The rest is attribute calls on local variables
+Of what is unresolved, 25.1% is `self.` or `cls.`. The class graph now resolves
+**88.9%** of those against the declaring class's MRO, so wiring it into the
+resolver is worth about 10,300 further references — 42.9% of call-shaped
+references becomes roughly 55.6%. The rest is attribute calls on local variables
 (`result.close()`, `logger.warning()`), which need type inference and are out of
-scope. So the ceiling for a resolver that never infers types is roughly 57% of
-call-shaped references, and this reaches 43% of the way there.
+scope.
 
 The same measurement on a small, mostly-functional codebase found *zero*
 `self.` calls among the unresolved, which is the more useful version of the
 finding: what class-hierarchy resolution is worth depends entirely on how
 object-oriented the target codebase is.
+
+## The class hierarchy
+
+Also measured over the standard library — 3,735 classes, graph built in 0.14s:
+
+| | Count |
+| --- | ---: |
+| Classes with at least one base resolved in-repo | 2,287 |
+| Classes with at least one base *outside* the repo | 775 |
+
+That second row is the honest caveat. A class deriving from `abc.ABC` or a C
+extension type has a real parent this tool cannot see, so every linearisation
+it computes is a projection of the true MRO onto indexed classes. Deepest chain
+found: 11.
 
 ## How it will be measured
 
