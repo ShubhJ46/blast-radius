@@ -36,7 +36,8 @@ ChangeKind = Literal[
     "added_required",  # new parameter with no default: every call site must change
     "removed",  # parameter gone: callers passing it must change
     "renamed",  # a name changed: keyword call sites must change
-    "reordered",  # same names, new order: positional call sites must change
+    "reordered",  # positional order changed: positional call sites must change
+    "made_required",  # a parameter lost its default: callers must now pass it
     "added_optional",  # new parameter with a default: callers need not change
     "other",  # mixed or unclassifiable; excluded from the primary metric
 ]
@@ -45,7 +46,7 @@ ChangeKind = Literal[
 # the corpus rather than discarded, so the decision stays visible and reversible
 # at reporting time instead of being hidden in whatever ran the miner.
 FORCING_CHANGES: frozenset[str] = frozenset(
-    {"added_required", "removed", "renamed", "reordered"}
+    {"added_required", "removed", "renamed", "reordered", "made_required"}
 )
 
 

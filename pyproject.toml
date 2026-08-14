@@ -32,7 +32,10 @@ testpaths = ["tests"]
 addopts = "-q"
 
 [tool.coverage.run]
-source = ["blastradius"]
+# `evaluation` is included deliberately. It is not shipped, but the reported
+# precision and recall are only as trustworthy as the code that decides which
+# commits become cases, so it is held to the same bar as the library.
+source = ["blastradius", "evaluation"]
 
 [tool.coverage.report]
 show_missing = true

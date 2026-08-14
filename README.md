@@ -27,7 +27,30 @@ precision/recall table against real commits before it holds anything else.
 | `index.py` — orchestration over a directory | done |
 | `impact.py` + `cli.py` — the query and the tool | done |
 | `evaluation/schema.py` — the mined-case format | done |
-| `evaluation/mine.py`, `evaluation/run.py` | not started |
+| `evaluation/mine.py` — git history → cases | done |
+| `evaluation/run.py` — scoring against the corpus | not started |
+
+## The corpus problem
+
+Mining works. The first corpus does not, and finding out why cost more than
+building the miner.
+
+Mining [click](https://github.com/pallets/click) — 2,137 commits — yields 44
+cases, of which 18 are forcing changes. **Only 3 of those 18 have a non-empty
+source-file ground truth.** Recall is undefined for the rest, so the corpus can
+measure precision and nothing else.
+
+Hand-auditing individual commits, rather than trusting the aggregate, found
+three miner bugs behind part of that: test functions were being mined as
+subjects (their caller is pytest), nested functions too (they cannot be
+imported), and the ground-truth filter searched diffs for `__init__` when a
+caller writes `Widget(...)`. Fixing those took usable cases from 1 to 6.
+
+What remains is not a bug. click is a small library: its functions are called by
+*users*, so a signature change touches its own tests and nothing else internal.
+A recall number needs corpora with deep internal call graphs — applications and
+large frameworks, not focused libraries — and that choice has to be settled
+before any headline figure means anything.
 
 Exercised against the Python 3.14 standard library — 1,123 modules, 26,025
 definitions, 11,648 import bindings, zero parse failures — because fixtures do
