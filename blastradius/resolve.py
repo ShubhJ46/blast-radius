@@ -31,6 +31,7 @@ import ast
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 
+from blastradius.classes import ClassGraph
 from blastradius.imports import ImportIndex, ModuleRef
 from blastradius.model import (
     ModuleParse,
@@ -44,6 +45,13 @@ from blastradius.parse import LOCALS_MARKER
 
 # Base expressions we could not name at all, e.g. `get_handler().run()`.
 OPAQUE_BASE = "<expr>"
+
+# Attribute bases treated as referring to the enclosing class. This is the
+# convention every Python tool relies on, not a language rule: a method could
+# name its first parameter anything. Being wrong here means resolving a call on
+# a staticmethod's oddly-named first argument, which is a defect in the source
+# either way.
+SELF_NAMES = frozenset({"self", "cls"})
 
 
 @dataclass(frozen=True)
@@ -150,11 +158,13 @@ class _ReferenceWalker(ast.NodeVisitor):
         self,
         parse: ModuleParse,
         index: ImportIndex,
+        graph: ClassGraph,
         imports_by_scope: Mapping[str, Mapping[str, object]],
         defines_by_scope: Mapping[str, Mapping[str, SymbolId]],
     ):
         self._parse = parse
         self._index = index
+        self._graph = graph
         self._imports = imports_by_scope
         self._defines = defines_by_scope
         self.references: list[Reference] = []
@@ -238,6 +248,12 @@ class _ReferenceWalker(ast.NodeVisitor):
             self.generic_visit(node)
             return
 
+        if isinstance(node.value, ast.Name) and node.value.id in SELF_NAMES:
+            method = self._method_on_enclosing_class(node.attr)
+            if method is not None:
+                self._record(method, node.lineno, via="self_attr")
+                return
+
         base_module = self._module_of(node.value)
         if base_module is not None:
             member = self._index.member(base_module, node.attr)
@@ -260,6 +276,22 @@ class _ReferenceWalker(ast.NodeVisitor):
             )
         )
         self.generic_visit(node)
+
+    def _method_on_enclosing_class(self, name: str) -> SymbolId | None:
+        """Resolve `self.name` against the class the current code sits inside.
+
+        The nearest enclosing class scope is the right one even from a function
+        nested inside a method, where `self` is a closure variable rather than a
+        parameter -- and also when a class is declared inside a method, where
+        `self` belongs to the inner class.
+        """
+        owner = next(
+            (frame.qualname for frame in reversed(self._scopes) if frame.kind == "class"),
+            None,
+        )
+        if owner is None:
+            return None
+        return self._graph.lookup_method(SymbolId(self._parse.path, owner), name)
 
     def _module_of(self, expression: ast.expr) -> ModuleRef | None:
         """The module an expression names, following dotted module paths.
@@ -362,7 +394,9 @@ def _annotation_expressions(node: ast.FunctionDef | ast.AsyncFunctionDef) -> lis
     return expressions
 
 
-def resolve_module(parse: ModuleParse, tree: ast.Module, index: ImportIndex) -> ModuleReferences:
+def resolve_module(
+    parse: ModuleParse, tree: ast.Module, index: ImportIndex, graph: ClassGraph
+) -> ModuleReferences:
     """Resolve every name used in one module against the whole repository."""
     imports_by_scope: dict[str, dict[str, object]] = {}
     for binding in index.bindings_for(parse.path).values():
@@ -373,6 +407,7 @@ def resolve_module(parse: ModuleParse, tree: ast.Module, index: ImportIndex) -> 
     walker = _ReferenceWalker(
         parse=parse,
         index=index,
+        graph=graph,
         imports_by_scope=imports_by_scope,
         defines_by_scope=_defines_by_scope(parse.scope),
     )

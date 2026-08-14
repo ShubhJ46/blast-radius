@@ -1,5 +1,6 @@
 import textwrap
 
+from blastradius.classes import ClassGraph
 from blastradius.imports import build_import_index
 from blastradius.parse import parse_module, parse_source
 from blastradius.resolve import ModuleReferences, resolve_module
@@ -30,7 +31,8 @@ def resolve(files: dict[str, str], path: str) -> ModuleReferences:
     trees = {p: parse_source(p, s) for p, s in sources.items()}
     parses = {p: parse_module(p, sources[p], tree=trees[p]) for p in sources}
     index, _ = build_import_index(parses)
-    return resolve_module(parses[path], trees[path], index)
+    graph = ClassGraph.build(parses, index)
+    return resolve_module(parses[path], trees[path], index, graph)
 
 
 def targets(files: dict[str, str], path: str = "m.py") -> list[str]:
@@ -39,6 +41,15 @@ def targets(files: dict[str, str], path: str = "m.py") -> list[str]:
 
 def vias(files: dict[str, str], path: str = "m.py") -> list[str]:
     return [reference.via for reference in resolve(files, path).references]
+
+
+def self_targets(files: dict[str, str], path: str = "m.py") -> list[str]:
+    """Only the `self.x` references, since a `class C(Base)` line also produces one."""
+    return [
+        str(reference.target)
+        for reference in resolve(files, path).references
+        if reference.via == "self_attr"
+    ]
 
 
 class TestSameFile:
@@ -473,6 +484,169 @@ class TestMoreSignaturePositions:
             """,
         }
         assert targets(files) == ["pkg/mod.py::Widget", "pkg/mod.py::Widget"]
+
+
+class TestSelfAttributes:
+    def test_method_on_the_same_class(self):
+        files = {
+            "m.py": """
+            class Holder:
+                def helper(self):
+                    pass
+
+                def call(self):
+                    return self.helper()
+            """
+        }
+        assert targets(files) == ["m.py::Holder.helper"]
+        assert vias(files) == ["self_attr"]
+
+    def test_method_inherited_from_a_base(self):
+        files = {
+            "m.py": """
+            class Base:
+                def helper(self):
+                    pass
+
+            class Child(Base):
+                def call(self):
+                    return self.helper()
+            """
+        }
+        assert self_targets(files) == ["m.py::Base.helper"]
+        # The base-class name on the `class Child(Base)` line is a reference too.
+        assert targets(files) == ["m.py::Base", "m.py::Base.helper"]
+
+    def test_base_in_another_file(self):
+        files = {
+            "pkg/__init__.py": "",
+            "pkg/mod.py": "class Widget:\n    def render(self):\n        pass\n",
+            "m.py": """
+            from pkg.mod import Widget
+
+            class Big(Widget):
+                def call(self):
+                    return self.render()
+            """,
+        }
+        assert self_targets(files) == ["pkg/mod.py::Widget.render"]
+
+    def test_cls_resolves_the_same_way(self):
+        files = {
+            "m.py": """
+            class Holder:
+                def helper(cls):
+                    pass
+
+                def build(cls):
+                    return cls.helper()
+            """
+        }
+        assert targets(files) == ["m.py::Holder.helper"]
+
+    def test_diamond_follows_the_mro(self):
+        files = {
+            "m.py": """
+            class A:
+                def run(self):
+                    pass
+
+            class B(A):
+                def run(self):
+                    pass
+
+            class C(A):
+                def run(self):
+                    pass
+
+            class D(B, C):
+                def call(self):
+                    return self.run()
+            """
+        }
+        assert self_targets(files) == ["m.py::B.run"]
+
+    def test_bound_method_passed_as_a_value(self):
+        files = {
+            "m.py": """
+            class Holder:
+                def helper(self):
+                    pass
+
+                def register(self):
+                    handler = self.helper
+                    return handler
+            """
+        }
+        assert targets(files) == ["m.py::Holder.helper"]
+
+    def test_closure_inside_a_method_still_sees_the_class(self):
+        files = {
+            "m.py": """
+            class Holder:
+                def helper(self):
+                    pass
+
+                def call(self):
+                    def inner():
+                        return self.helper()
+                    return inner
+            """
+        }
+        assert "m.py::Holder.helper" in targets(files)
+
+    def test_class_declared_inside_a_method_uses_its_own_self(self):
+        files = {
+            "m.py": """
+            class Outer:
+                def helper(self):
+                    pass
+
+                def make(self):
+                    class Inner:
+                        def helper(self):
+                            pass
+
+                        def call(self):
+                            return self.helper()
+                    return Inner
+            """
+        }
+        assert self_targets(files) == ["m.py::Outer.make.<locals>.Inner.helper"]
+
+    def test_self_outside_any_class_resolves_to_nothing(self):
+        files = {"m.py": "def free(self):\n    return self.helper()\n"}
+        result = resolve(files, "m.py")
+        assert result.references == ()
+        assert [u.base for u in result.unresolved_attributes] == ["self"]
+
+    def test_attribute_that_is_not_a_method_stays_unresolved(self):
+        files = {
+            "m.py": """
+            class Holder:
+                def call(self):
+                    return self.value
+            """
+        }
+        result = resolve(files, "m.py")
+        assert result.references == ()
+        assert [u.attribute for u in result.unresolved_attributes] == ["value"]
+
+    def test_unknown_base_class_leaves_its_methods_unreachable(self):
+        """The 11% this cannot recover: a base outside the repository."""
+        files = {
+            "m.py": """
+            import abc
+
+            class Big(abc.ABC):
+                def call(self):
+                    return self.render()
+            """
+        }
+        result = resolve(files, "m.py")
+        assert result.references == ()
+        # `abc.ABC` is itself an unresolvable attribute on an external module.
+        assert [u.attribute for u in result.unresolved_attributes] == ["ABC", "render"]
 
 
 class TestUnresolvedAttributes:

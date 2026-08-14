@@ -38,23 +38,28 @@ Measured over the standard library. This is reference coverage, not impact
 accuracy: the precision/recall table against real commits comes later and is
 the number that actually matters.
 
-| | Count | Share of call-shaped references |
+| Strategy | References | Share |
 | --- | ---: | ---: |
-| Resolved by scope chain and imports | 26,987 | 33.4% |
-| Resolved through an imported module | 7,610 | 9.4% |
-| Unresolved method calls | 46,116 | 57.1% |
+| `name` — scope chain and imports | 26,987 | 57.6% |
+| `self_attr` — the class hierarchy | 12,259 | 26.2% |
+| `module_attr` — an imported module | 7,610 | 16.2% |
+| **Total resolved** | **46,856** | |
 
-Of what is unresolved, 25.1% is `self.` or `cls.`. The class graph now resolves
-**88.9%** of those against the declaring class's MRO, so wiring it into the
-resolver is worth about 10,300 further references — 42.9% of call-shaped
-references becomes roughly 55.6%. The rest is attribute calls on local variables
-(`result.close()`, `logger.warning()`), which need type inference and are out of
-scope.
+Adding class-hierarchy resolution took unresolved `self.`/`cls.` calls from
+**11,589 down to 1,189** — an 89.7% reduction, against a predicted 88.9%. It
+beat the prediction because the forecast counted only *called* attributes, while
+the implementation also resolves a bound method passed as a value
+(`handler = self.helper`), which is a reference too.
+
+What remains unresolved is 35,716 method calls on values whose type is unknown
+(`result.close()`, `logger.warning()`). Recovering those needs type inference
+and is out of scope; the 1,189 remaining `self.` calls are ones whose class
+inherits from outside the repository.
 
 The same measurement on a small, mostly-functional codebase found *zero*
-`self.` calls among the unresolved, which is the more useful version of the
-finding: what class-hierarchy resolution is worth depends entirely on how
-object-oriented the target codebase is.
+`self.` calls to resolve, which is the more useful version of the finding: what
+class-hierarchy resolution is worth depends entirely on how object-oriented the
+target codebase is.
 
 ## The class hierarchy
 
