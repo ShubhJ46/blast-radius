@@ -207,14 +207,24 @@ class _Walker(ast.NodeVisitor):
         self._scopes.pop()
 
 
-def parse_module(repo_path: str, source: str) -> ModuleParse:
-    """Parse one module's source. `repo_path` is repo-relative with / separators."""
+def parse_source(repo_path: str, source: str) -> ast.Module:
+    """Produce the syntax tree, naming the file in any error.
+
+    Exposed separately so a caller that needs both definitions and references
+    can parse once and hand the same tree to both passes.
+    """
     try:
-        tree = ast.parse(source, filename=repo_path)
+        return ast.parse(source, filename=repo_path)
     except (SyntaxError, ValueError) as error:
         # ValueError covers source containing null bytes, which `ast` rejects
         # separately from a syntax error.
         raise ParseError(f"{repo_path}: {error}") from error
+
+
+def parse_module(repo_path: str, source: str, tree: ast.Module | None = None) -> ModuleParse:
+    """Parse one module's source. `repo_path` is repo-relative with / separators."""
+    if tree is None:
+        tree = parse_source(repo_path, source)
 
     walker = _Walker(repo_path, module_end_line=max(len(source.splitlines()), 1))
     walker.visit(tree)

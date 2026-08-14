@@ -217,6 +217,19 @@ class ImportIndex:
     def all_bindings(self) -> dict[str, dict[str, Binding]]:
         return {path: self.bindings_for(path) for path in self._parses}
 
+    def member(self, module: ModuleRef, name: str) -> ImportTarget | None:
+        """What `<module>.<name>` refers to.
+
+        Attribute access on an imported module asks exactly the question a
+        from-import asks, so it answers it the same way: a submodule wins over
+        an exported name, and re-export chains are followed.
+        """
+        submodule = f"{module.name}.{name}"
+        path = self._table.path_for_module(submodule)
+        if path:
+            return ModuleRef(submodule, path)
+        return self._exported(module.path, name, frozenset())
+
     def _expand(
         self, path: str, raw: RawImport, seen: frozenset[tuple[str, str]]
     ) -> list[tuple[str, ImportTarget]]:
