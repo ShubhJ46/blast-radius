@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blast-radius"
+version = "0.1.0"
+description = "Deterministic impact analysis for Python: what breaks if I change this symbol?"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+# No runtime dependencies on purpose. Parsing is stdlib `ast`, which is exact
+# for Python and cannot drift from the language the way a third-party grammar
+# can. Anything that needs a dependency belongs behind an optional extra.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.2",
+    "pytest-cov==7.0.0",
+    "ruff==0.12.10",
+]
+
+[project.scripts]
+blast = "blastradius.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["blastradius*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["blastradius"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -1,0 +1,200 @@
+"""The vocabulary the rest of the tool is written in.
+
+Two decisions here shape everything downstream.
+
+**Symbol identity is (file, qualname).** Not a dotted module path: two files can
+resolve to the same module name under different roots, and a repo-relative path
+is what git diffs, coverage tools, and error messages already speak. Everything
+that crosses a module boundary is keyed on this.
+
+**References record how they were resolved, not just that they were.** A call
+found by walking a scope chain is a fact; a call matched only because the
+attribute happened to share a name is a guess. Collapsing the two into one
+"reference" makes the tool's output untrustworthy in exactly the cases where an
+agent most needs to trust it, so the distinction is carried in the data rather
+than decided at the point of discovery.
+"""
+
+from dataclasses import dataclass
+from typing import Literal
+
+DefinitionKind = Literal["function", "method", "class"]
+
+ParameterKind = Literal[
+    "positional_only",
+    "positional_or_keyword",
+    "var_positional",
+    "keyword_only",
+    "var_keyword",
+]
+
+ScopeKind = Literal["module", "class", "function"]
+
+# How a reference was arrived at. Ordered loosely from most to least certain;
+# the evaluation harness reports recall broken down by this field, so that the
+# contribution of each resolution strategy is visible rather than assumed.
+ReferenceVia = Literal["name", "self_attr", "class_attr", "module_attr", "unresolved_attr"]
+
+# `resolved` means a scope chain, class MRO, or import binding proved the target.
+# `name_match` means only the name agreed. The CLI reports `resolved` alone by
+# default; `name_match` is opt-in, because a tool an agent cannot trust by
+# default is worse than one that admits it does not know.
+Confidence = Literal["resolved", "name_match"]
+
+
+@dataclass(frozen=True, order=True)
+class SymbolId:
+    """A definition's stable identity across the repository."""
+
+    path: str  # repo-relative, POSIX separators: "blastradius/parse.py"
+    qualname: str  # Python __qualname__ form: "Walker.visit_ClassDef"
+
+    def __str__(self) -> str:
+        return f"{self.path}::{self.qualname}"
+
+    @classmethod
+    def parse(cls, text: str) -> "SymbolId":
+        path, separator, qualname = text.partition("::")
+        if not separator or not path or not qualname:
+            raise ValueError(f"Not a symbol id: {text!r}. Expected 'path/to/file.py::qualname'.")
+        return cls(path=path, qualname=qualname)
+
+
+@dataclass(frozen=True)
+class Parameter:
+    """One entry in a signature, reduced to what can force a caller to change.
+
+    Annotations and default *values* are deliberately not recorded. Retyping a
+    parameter or changing its default alters behaviour but does not oblige any
+    call site to be edited, and including them would flood the evaluation set
+    with commits whose blast radius is genuinely empty.
+    """
+
+    name: str
+    kind: ParameterKind
+    has_default: bool
+
+
+@dataclass(frozen=True)
+class Signature:
+    parameters: tuple[Parameter, ...]
+
+    def positional_names(self) -> tuple[str, ...]:
+        return tuple(
+            parameter.name
+            for parameter in self.parameters
+            if parameter.kind in ("positional_only", "positional_or_keyword")
+        )
+
+    def required_names(self) -> frozenset[str]:
+        return frozenset(
+            parameter.name
+            for parameter in self.parameters
+            if not parameter.has_default
+            and parameter.kind not in ("var_positional", "var_keyword")
+        )
+
+
+@dataclass(frozen=True)
+class Definition:
+    """A function, method, or class, as found by the parser.
+
+    `bases` and `decorators` hold source-level dotted names, not resolved
+    symbols: resolution needs the whole index and happens later. Keeping the
+    raw text means a base this tool cannot resolve is still visible to a human
+    reading the output, instead of vanishing.
+    """
+
+    symbol: SymbolId
+    kind: DefinitionKind
+    start_line: int
+    end_line: int
+    signature: Signature | None = None  # None for classes
+    bases: tuple[str, ...] = ()
+    decorators: tuple[str, ...] = ()
+
+    @property
+    def name(self) -> str:
+        return self.symbol.qualname.rsplit(".", 1)[-1]
+
+    @property
+    def is_nested(self) -> bool:
+        """True for definitions inside a function body.
+
+        These cannot be imported, so they are unreachable from another file and
+        carry no cross-file blast radius.
+        """
+        return "<locals>" in self.symbol.qualname
+
+
+@dataclass(frozen=True)
+class Reference:
+    """A use of a definition, somewhere in the repository."""
+
+    target: SymbolId
+    path: str
+    line: int
+    confidence: Confidence
+    via: ReferenceVia
+
+
+ImportKind = Literal["import", "from"]
+
+
+@dataclass(frozen=True)
+class RawImport:
+    """One import statement, recorded verbatim before anything is resolved.
+
+    Resolution needs the whole repository -- whether `from pkg import thing`
+    names a submodule or a function depends on what else exists on disk -- so
+    the parser records what the statement said and `imports.py` decides later.
+    Re-parsing each file to answer that question would double indexing cost for
+    no benefit.
+
+    `scope_qualname` is "" for a module-level import. Function-local imports are
+    common enough (circular-import workarounds, optional dependencies) that
+    dropping them would lose real edges.
+    """
+
+    kind: ImportKind
+    module: str | None  # "a.b.c" for `import a.b.c`; None for `from . import x`
+    name: str | None  # imported attribute for a from-import; None for plain import
+    asname: str | None  # the alias, if one was given
+    level: int  # 0 absolute, 1 for `.`, 2 for `..`
+    line: int
+    scope_qualname: str
+
+    @property
+    def is_star(self) -> bool:
+        return self.name == "*"
+
+
+@dataclass
+class Scope:
+    """A lexical scope, and the definitions bound directly inside it.
+
+    Only `def` and `class` bindings are recorded at parse time. Assignments,
+    imports, parameters, and comprehension variables also bind names, but
+    resolving those needs the import table, so they are added by a later pass
+    rather than half-modelled here.
+    """
+
+    kind: ScopeKind
+    qualname: str  # "" for the module scope
+    start_line: int
+    end_line: int
+    defines: dict[str, SymbolId]
+    children: list["Scope"]
+
+
+@dataclass(frozen=True)
+class ModuleParse:
+    """Everything one file yields on a single pass."""
+
+    path: str
+    definitions: tuple[Definition, ...]
+    scope: Scope
+    imports: tuple[RawImport, ...] = ()
+
+    def by_qualname(self) -> dict[str, Definition]:
+        return {definition.symbol.qualname: definition for definition in self.definitions}

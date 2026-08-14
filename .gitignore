@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+build/
+dist/
+venv/
+.venv/
+
+# Corpora are cloned, pinned by revision, and never committed. The mined cases
+# under evaluation/cases/ are committed instead, so the evaluation reproduces
+# without re-walking anyone's history.
+.corpora/
