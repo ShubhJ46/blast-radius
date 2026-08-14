@@ -24,13 +24,45 @@ precision/recall table against real commits before it holds anything else.
 | `imports.py` — module table, import bindings, re-export chains | done |
 | `resolve.py` — scope-aware reference resolution | done |
 | `classes.py` — base graph, MRO, override detection | done |
+| `index.py` — orchestration over a directory | done |
+| `impact.py` + `cli.py` — the query and the tool | done |
 | `evaluation/schema.py` — the mined-case format | done |
-| `impact.py` + `cli.py` | not started |
 | `evaluation/mine.py`, `evaluation/run.py` | not started |
 
 Exercised against the Python 3.14 standard library — 1,123 modules, 26,025
 definitions, 11,648 import bindings, zero parse failures — because fixtures do
 not contain the code that breaks a parser.
+
+## Using it
+
+```
+blast impact hybrid_search --root path/to/repo
+blast refs  Widget.render  --root path/to/repo --json
+blast stats --root path/to/repo
+```
+
+```
+app/retrieval.py::hybrid_search  function  lines 159-171
+
+callers  7 references in 6 files
+  app/agent.py:81  (name)
+  app/api.py:106  (name)
+  ...
+
+overrides  0
+overridden  none
+
+blast radius  6 files
+  app/agent.py
+  app/api.py
+  ...
+```
+
+`--json` on every command, because a tool an agent has to parse out of prose is
+not a tool an agent can rely on. A bare name is resolved to an exact match
+first and a trailing segment second (`render` finds `Widget.render`); if it is
+still ambiguous, every candidate is listed and the command fails rather than
+guessing.
 
 ## What resolves today
 
@@ -91,6 +123,27 @@ caller to change are scored, commits touching many files are capped, and test
 files are reported in a separate column because stage 1 does not attempt
 coverage mapping.
 
+## Two gaps found by running it on real code
+
+Neither shows up in a test suite; both came from pointing the tool at a project
+and checking its answer against `grep` by hand.
+
+**String references are invisible.** In one repository, `hybrid_search` has 14
+things depending on it. Seven are code references and all seven are found. The
+other seven are `mock.patch("app.agent.hybrid_search")` — a real dependency
+expressed as a string. Renaming the function breaks all seven, and this tool
+would not warn you. The same blind spot covers Django-style `"app.Model"`
+settings, entry points, and dynamic imports.
+
+**A method called through a variable is not found.** `BM25Index.search` reports
+zero callers, but `retrieval.py` does call it — as `index.search(...)`, where
+`index` came back from a function. Knowing that requires type inference. This is
+the honest shape of the 43% of call-shaped references that stay unresolved.
+
+Both are exactly the categories the commit-mined evaluation is expected to
+surface as recall misses, which is the point of building that harness next
+rather than trusting the numbers above.
+
 ## Scope, stated up front
 
 - **Stage 1 answers one question**: direct callers and overrides. Not transitive
@@ -100,6 +153,10 @@ coverage mapping.
   default output.
 - **Python first.** C++ needs `compile_commands.json` and libclang; text-level
   parsing is not sufficient there, and demonstrating that gap is its own result.
+- **No caching yet.** The index is rebuilt per invocation: 0.1s on a 41-module
+  project, 7.3s on 719 modules. Fine for a person, too slow for an agent calling
+  it in a loop, and the fix is a content hash per file rather than anything
+  structural.
 
 ## Development
 
