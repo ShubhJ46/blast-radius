@@ -1,15 +1,11 @@
 import io
 import shutil
-import subprocess
-import textwrap
-from pathlib import Path
 
 import pytest
 
 from blastradius.model import Signature, SymbolId
 from blastradius.parse import parse_module
 from evaluation.mine import (
-    Git,
     GitError,
     classify,
     is_test_path,
@@ -103,44 +99,6 @@ class TestSignatureChanges:
 
     def test_a_revision_that_does_not_parse_yields_nothing(self):
         assert signature_changes("m.py", "def f(:\n", "def f(a, b):\n    pass\n") == []
-
-
-class _Repo:
-    def __init__(self, root: Path):
-        self.root = root
-        self.git = Git(root)
-
-    def run(self, *arguments: str) -> str:
-        completed = subprocess.run(
-            ["git", *arguments],
-            cwd=self.root,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-        )
-        assert completed.returncode == 0, completed.stderr
-        return completed.stdout
-
-    def commit(self, files: dict[str, str], message: str = "change") -> str:
-        for relative, source in files.items():
-            path = self.root / relative
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(textwrap.dedent(source).lstrip("\n"), encoding="utf-8")
-        self.run("add", "-A")
-        self.run("commit", "-m", message)
-        return self.run("rev-parse", "HEAD").strip()
-
-
-@pytest.fixture
-def repo(tmp_path) -> _Repo:
-    root = tmp_path / "corpus"
-    root.mkdir()
-    built = _Repo(root)
-    built.run("init", "-b", "main")
-    built.run("config", "user.email", "test@example.com")
-    built.run("config", "user.name", "Test")
-    built.run("config", "commit.gpgsign", "false")
-    return built
 
 
 @needs_git

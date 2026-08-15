@@ -1,9 +1,12 @@
 """Fixtures for tests that need a repository on disk rather than in memory."""
 
+import subprocess
 import textwrap
 from pathlib import Path
 
 import pytest
+
+from evaluation.mine import Git
 
 # A small repository exercising every edge stage 1 reports: a plain function
 # called from two files, a base class overridden in another, and a self-call
@@ -62,3 +65,48 @@ def make_repo(tmp_path):
 @pytest.fixture
 def sample_repo(make_repo) -> Path:
     return make_repo(SAMPLE_REPO)
+
+
+class GitRepo:
+    """A throwaway git repository, for the miner and the scorer alike.
+
+    Both need real history rather than a mocked one: the miner reads diffs, and
+    the scorer checks out a parent revision into a worktree. Faking git would
+    only test the fake.
+    """
+
+    def __init__(self, root: Path):
+        self.root = root
+        self.git = Git(root)
+
+    def run(self, *arguments: str) -> str:
+        completed = subprocess.run(
+            ["git", *arguments],
+            cwd=self.root,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+        assert completed.returncode == 0, completed.stderr
+        return completed.stdout
+
+    def commit(self, files: dict[str, str], message: str = "change") -> str:
+        for relative, source in files.items():
+            path = self.root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(textwrap.dedent(source).lstrip("\n"), encoding="utf-8")
+        self.run("add", "-A")
+        self.run("commit", "-m", message)
+        return self.run("rev-parse", "HEAD").strip()
+
+
+@pytest.fixture
+def repo(tmp_path) -> GitRepo:
+    root = tmp_path / "corpus"
+    root.mkdir()
+    built = GitRepo(root)
+    built.run("init", "-b", "main")
+    built.run("config", "user.email", "test@example.com")
+    built.run("config", "user.name", "Test")
+    built.run("config", "commit.gpgsign", "false")
+    return built
