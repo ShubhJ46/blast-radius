@@ -20,12 +20,17 @@ baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **64%** | 66% | **65%** |
+| **this tool** | **47%** | 77% | 59% |
 | `grep` | 13% | 100% | 23% |
 
-`grep` finds everything and is wrong six times out of seven. The tool is right
-about two times in three, in both directions. Full per-corpus breakdown,
-including where it does badly and why, is in [results](#results).
+`grep` finds everything and is wrong seven times out of eight.
+
+That precision number is dominated by six cases out of fifty-nine, and the
+reason is worth reading before the number is: on symbols called from a dozen
+files, the tool correctly finds every caller while ground truth records only the
+one or two that a parameter change actually forced to move. Excluding those six,
+the same run is **89% precision at 76% recall**. Both figures are in
+[results](#results), along with why neither is cherry-picked.
 
 | Component | State |
 | --- | --- |
@@ -129,24 +134,33 @@ guessing.
 
 ## What resolves today
 
-Measured over the Python 3.14 standard library — 719 modules, 19,892
-definitions, zero parse failures. This is reference coverage, not impact
-accuracy; the precision/recall table below is the number that actually matters.
+Reference coverage, not impact accuracy; the precision/recall table below is the
+number that actually matters. Measured over the Python 3.14 standard library
+(719 modules, 19,892 definitions, zero parse failures) and over mypy at HEAD
+(441 modules).
 
-| Strategy | References | Share |
-| --- | ---: | ---: |
-| `name` — scope chain and imports | 15,883 | 44.7% |
-| `self_attr` — the class hierarchy | 10,324 | 29.0% |
-| `module_attr` — an imported module | 5,560 | 15.6% |
-| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.9% |
-| `class_attr` — a member of an already-resolved class | 624 | 1.8% |
-| **Total resolved** | **35,541** | |
+Two corpora rather than one, because the difference between them is the finding:
 
-The last two rows were added because the evaluation demanded them, not because
+| Strategy | stdlib | share | mypy | share |
+| --- | ---: | ---: | ---: | ---: |
+| `name` — scope chain and imports | 15,883 | 44.6% | 34,940 | 66.4% |
+| `self_attr` — the class hierarchy | 10,324 | 29.0% | 7,721 | 14.7% |
+| `module_attr` — an imported module | 5,560 | 15.6% | 871 | 1.7% |
+| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.9% | 5,380 | 10.2% |
+| `class_attr` — a member of a resolved class | 624 | 1.8% | 293 | 0.6% |
+| `typed_attr` — a receiver with a declared type | 41 | 0.1% | 3,399 | **6.5%** |
+| **Total resolved** | **35,582** | | **52,604** | |
+
+The last three rows were added because the evaluation demanded them, not because
 they seemed like good ideas — see [what the evaluation
-changed](#what-the-evaluation-changed). Together they are 10.6% of everything
-the tool resolves, and without them every `__init__` in a repository reported
-zero callers.
+changed](#what-the-evaluation-changed). Without `constructor`, every `__init__`
+in every repository reported zero callers.
+
+`typed_attr` is 0.1% of the standard library and 6.5% of mypy. That 65-fold gap
+is not noise: it is the difference between a codebase written before type hints
+and one that is thoroughly annotated. What this strategy is worth depends
+entirely on the target, and the modern code an agent is asked to edit looks like
+mypy.
 
 (An earlier revision of this table read 1,123 modules and 46,856 references.
 That root also included `Lib/site-packages`, so it was never the standard
@@ -216,28 +230,40 @@ honest-looking limitation.
 | --- | ---: | ---: | ---: | ---: |
 | sphinx | 8 | 100% | 91% | 95% |
 | scrapy | 8 | 88% | 70% | 78% |
-| mypy | 43 | 56% | 60% | 58% |
-| **all** | **59** | **64%** | **66%** | **65%** |
+| mypy | 43 | 40% | 76% | 53% |
+| **all** | **59** | **47%** | **77%** | **59%** |
 | `grep`, all | 59 | 13% | 100% | 23% |
 
-**mypy is where it does badly, and the aggregate hides that.** It also supplies
-43 of the 59 cases, so it sets the headline. Reading the individual cases showed
-the largest single effect is not a resolution failure at all:
+**Six cases account for the entire precision figure**, and they are all the same
+shape: a symbol called from a dozen files, where the signature change forced
+only one or two of those callers to move.
 
-**22 of mypy's 28 false positives come from two commits touching one function.**
-`get_proper_types` is called in twelve files; two commits renamed one of its
-*parameters*. Every one of those call sites passes positionally, so none of them
-had to change — but all eleven are real dependencies that the tool correctly
-found. This is the precision lower bound in its purest form: being right about a
-dependency that did not need editing is scored as being wrong. Those two cases
-alone score 8% precision at 100% recall. Remove them and mypy's precision is
-**85%** rather than 56%, with recall unchanged at 59% — but they are left in,
-because choosing which of your own cases to drop is how an evaluation stops
-meaning anything.
+| | precision | recall | F1 |
+| --- | ---: | ---: | ---: |
+| all 59 cases | 47% | 77% | 59% |
+| the 6 heavily-called symbols | 9% | 86% | 16% |
+| the other 53 | **89%** | **76%** | **82%** |
 
-Initialisers are now the *best*-scoring category rather than the worst — 11
-cases at **80% precision and 100% recall**, no misses at all — which is the
-result of the third fix below.
+`IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
+parameter. Eleven files call it, and the tool finds all eleven — but only the
+one or two that actually passed `can_borrow=...` had to change; the rest call it
+as `builder.accept(expr)` and were untouched. Every "false positive" there is a
+genuine caller. `get_proper_types` is the same story with a renamed parameter.
+
+The six are left in the corpus. Dropping the cases that make your own numbers
+look bad is how an evaluation stops meaning anything, and the 89% figure is
+quoted beside the 47% rather than instead of it.
+
+But this is not purely a measurement artifact, and it would be convenient to
+pretend it is. **The tool answers "what calls this", when the question asked is
+"what must change if I make *this* edit".** For a removed or renamed parameter
+those differ, and an agent handed eleven files to read when two need editing is
+paying a real cost. Closing that gap means checking whether a call site actually
+passes the affected argument — which is the next thing the evaluation points at,
+and is the first time it has pointed at a *feature* rather than a bug.
+
+Initialisers are the best-scoring category — 11 cases at **80% precision and
+100% recall**, no misses.
 
 ### What the fixes were worth
 
@@ -341,6 +367,53 @@ truth the tool was wrong about more often than right about, which is what a
 correct narrowing should do. It does not make the tool better; it stops the
 harness from asking it the wrong question.
 
+### Reading declared types, and not inferring any
+
+The largest remaining miss category was a method called on a value whose type
+the tool did not know. The obvious response is type inference, which is a large
+and error-prone thing to build. Measuring first showed most of it does not need
+any:
+
+| | unresolved attribute calls | receiver has a declared type |
+| --- | ---: | ---: |
+| mypy | 16,083 | 6,295 (**39%**) |
+| stdlib | 27,394 | 3,130 (11%) |
+
+Split by where the declaration comes from, annotations alone account for 34.4%
+of mypy's, while tracking `x = Foo()` adds only 2.2% more. So this reads
+declarations and infers nothing. The distinction is the whole point:
+`def render(w: Widget)` is a statement the author wrote down, the same class of
+evidence as an import, whereas what a variable was last assigned stops being
+true the moment it is reassigned — and buys almost nothing anyway.
+
+Handled: parameter annotations, `x: Widget = ...`, string forward references,
+annotations reached through a module attribute, and inherited methods through
+the MRO. Refused, because resolving them would be guessing: `list[Widget]` and
+`Widget | None` name a container and a union rather than the class, `*args:
+Widget` binds a tuple, a class-body declaration is invisible to methods exactly
+as a bare name is, and an inner binding without its own declaration shadows an
+outer annotation.
+
+The scored effect is the sharpest illustration in this project of why one number
+is not enough:
+
+| | precision | recall | F1 |
+| --- | ---: | ---: | ---: |
+| all 59 cases, before | 64% | 66% | 65% |
+| all 59 cases, after | 47% | **77%** | 59% |
+| the other 53, before | 88% | 69% | 78% |
+| the other 53, after | **89%** | **76%** | **82%** |
+
+On 53 of 59 cases it raises recall seven points *and* precision one. On the six
+heavily-called symbols it finds many more genuine callers than the commit
+touched, and the headline precision falls seventeen points as a result. Recall
+is the more trustworthy half here — ground truth is files that certainly had to
+change, a true subset of the dependencies — and it improved everywhere.
+
+Still unimplemented: `self.x: Widget` declared on a class and used across its
+methods, worth a further 1.7%. It needs class-level tracking across method
+bodies rather than the per-scope table this uses.
+
 ## Two gaps found by running it on real code
 
 Neither shows up in a test suite; both came from pointing the tool at a project
@@ -355,25 +428,33 @@ settings, entry points, and dynamic imports.
 
 **A method called through a variable is not found.** `BM25Index.search` reports
 zero callers, but `retrieval.py` does call it — as `index.search(...)`, where
-`index` came back from a function. Knowing that requires type inference. This is
-the honest shape of the 43.5% of call-shaped references that stay unresolved.
+`index` came back from a function.
 
-Both were predicted to show up as recall misses once the evaluation existed, and
-the second one did: a third of the misses in the first scored run were a method
-reached through a variable. The first — string references — cannot appear in
-this evaluation at all, because ground truth is mined from files whose diff
-mentions the symbol, and a `mock.patch("app.agent.hybrid_search")` does mention
-it. It stays a known blind spot rather than a measured one.
+The second of those has since been *partly* closed, and by reading rather than
+inferring: where the receiver carries a declared type, the call now resolves.
+`index = build_index()` still does not, because that would mean trusting a
+function's return annotation and then tracking the variable — but had `index`
+been a parameter annotated `BM25Index`, it would. This is why the strategy is
+worth 6.5% on mypy and 0.1% on the standard library.
+
+The first — string references — cannot appear in this evaluation at all, because
+ground truth is mined from files whose diff mentions the symbol, and
+`mock.patch("app.agent.hybrid_search")` does mention it. It stays a known blind
+spot rather than a measured one.
 
 ## Scope, stated up front
 
 - **Stage 1 answers one question**: direct callers and overrides. Not transitive
   importers, not test coverage, not public-API exposure.
-- **Attribute calls on values of unknown type are not resolvable** without type
-  inference — `stream.close()`, where `stream` came out of a dict. These are
-  counted as unresolved attributes and never guessed at. They are 43.5% of all
-  call-shaped references in the standard library, and the largest remaining
-  source of recall misses.
+- **Attribute calls on values of *undeclared* type are not resolvable** —
+  `stream.close()`, where `stream` came out of a dict. Where the receiver's type
+  is declared in an annotation the call now resolves; where it is not, the
+  access is counted and never guessed at. This is still the largest source of
+  recall misses, and on unannotated code it is nearly all of them.
+- **The question answered is "what calls this", not "what must change if I make
+  this edit."** For a removed or renamed parameter those differ: a caller that
+  passes the argument positionally is a real dependency that need not move.
+  Every predicted file is a genuine dependency, but not every one is work.
 - **Python first.** C++ needs `compile_commands.json` and libclang; text-level
   parsing is not sufficient there, and demonstrating that gap is its own result.
 - **No caching yet.** The index is rebuilt per invocation: 0.34s on this
