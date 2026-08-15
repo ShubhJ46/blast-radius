@@ -6,6 +6,9 @@
     "parent": "6a4f99ab1cd7bcee17327d0748d29751fd3ae866",
     "symbol": "mypy/nodes.py::PlaceholderNode.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "line"
+    ],
     "source_files": [
       "mypy/newsemanal/semanal.py",
       "mypy/newsemanal/semanal_newtype.py"
@@ -20,6 +23,9 @@
     "parent": "d52169d1fd2241b89e001c2695da031dbd13e8ec",
     "symbol": "mypy/build.py::_load_ff_file",
     "change_kind": "other",
+    "changed_parameters": [
+      "log_error"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -31,6 +37,9 @@
     "parent": "2c6e43e1b5aa22ef5296ff72eb6f5deffa9b8b24",
     "symbol": "mypy/stubtest.py::_verify_static_class_methods",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "static_runtime"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -42,6 +51,9 @@
     "parent": "9a2838d8dc45e93b28387f5a437f38ec33c1f947",
     "symbol": "mypy/modulefinder.py::matches_exclude",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "exclude"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -53,6 +65,9 @@
     "parent": "b027308116d19dc79bf80334ff06aab7c0001e11",
     "symbol": "mypy/modulefinder.py::FindModuleCache.find_lib_path_dirs",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "dir_chain"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -64,6 +79,9 @@
     "parent": "cb2bfc3a7d250d6a61c9abed856f7955e09975c3",
     "symbol": "mypyc/codegen/emitclass.py::generate_methods_table",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "setup_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -75,6 +93,9 @@
     "parent": "ce2a2168ce0a8d6d2bec604dbcba595fdaf968e9",
     "symbol": "mypyc/ir/ops.py::LoadMem.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "base"
+    ],
     "source_files": [
       "mypyc/irbuild/ll_builder.py"
     ],
@@ -90,6 +111,9 @@
     "parent": "ed50208055e8c5f99caf7da0cea8c99fcfdc5670",
     "symbol": "mypy/dmypy_util.py::WriteToConn.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "isatty"
+    ],
     "source_files": [
       "mypy/dmypy_server.py"
     ],
@@ -103,6 +127,9 @@
     "parent": "68b3b27c2fc47cc01f16d98e7e7d944ad5c0c6be",
     "symbol": "mypy/fastparse.py::ASTConverter.fail",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -114,6 +141,9 @@
     "parent": "2d081169206ccfbea32033076671c97d6ae5dd6b",
     "symbol": "mypy/nativeparse.py::build_fstring_join",
     "change_kind": "removed",
+    "changed_parameters": [
+      "state"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -125,6 +155,9 @@
     "parent": "492739692206f05347c6706cb982115446ba552a",
     "symbol": "mypy/checker.py::TypeChecker.lookup",
     "change_kind": "removed",
+    "changed_parameters": [
+      "kind"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -136,6 +169,9 @@
     "parent": "6e48f7e18b39e5fdab594e111da133965081c728",
     "symbol": "mypyc/irbuild/function.py::gen_func_ir",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_singledispatch_main_func"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -147,6 +183,9 @@
     "parent": "16bd3112d070a80b749e2f0e419d6fe321443e65",
     "symbol": "mypy/semanal_shared.py::require_bool_literal_argument",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "default"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -158,6 +197,9 @@
     "parent": "f8bf7ab5778e5c68417c850aa7e4ca2e0b74f149",
     "symbol": "mypy/messages.py::MessageBuilder.note_defined_here",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -169,6 +211,9 @@
     "parent": "3808256154b23b0a07592cbeb20517f06758870b",
     "symbol": "mypyc/build.py::generate_c_extension_shim",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "libname"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -180,6 +225,9 @@
     "parent": "49ad7debc6ef86b0964ca12f1508a515851d8ed5",
     "symbol": "mypy/subtypes.py::restrict_subtype_away",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "ignore_promotions"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -193,6 +241,9 @@
     "parent": "1f8621c483baf4641c317ad755f814bcb9e41296",
     "symbol": "mypy/build.py::State.detect_possibly_undefined_vars",
     "change_kind": "removed",
+    "changed_parameters": [
+      "type_map"
+    ],
     "source_files": [
       "mypy/server/update.py"
     ],
@@ -206,6 +257,9 @@
     "parent": "15b8ca967cc6187effcab23e6613da2db4546584",
     "symbol": "mypy/stubtest.py::get_mypy_type_of_runtime_value",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "type_context"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -217,6 +271,9 @@
     "parent": "69a0560b471e8682cbed782997d140694c841cc2",
     "symbol": "mypy/checkmember.py::add_class_tvars",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "isuper"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -228,6 +285,9 @@
     "parent": "28423cd78062b81365ec9aaa591b4e823af1606d",
     "symbol": "mypy/subtypes.py::find_member",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_operator"
+    ],
     "source_files": [
       "mypy/checker.py",
       "mypy/constraints.py",
@@ -244,6 +304,9 @@
     "parent": "54608d83d22cf0241ead827046f595a984f3c100",
     "symbol": "mypyc/codegen/emitclass.py::generate_setup_for_class",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "coroutine_setup_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -255,6 +318,9 @@
     "parent": "4be41e460c4b87f46200c543ec9d61fc296c9ef7",
     "symbol": "mypy/ipc.py::IPCBase.read",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "size"
+    ],
     "source_files": [],
     "test_files": [
       "mypy/test/testipc.py"
@@ -268,6 +334,9 @@
     "parent": "96fac3a2e450296b1cf3943a9251fae54b6e89c4",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_class_typevar_declaration",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "has_type_var_tuple"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -279,6 +348,9 @@
     "parent": "4e2fca8ff8a384a3e7c29f3ca861c8ea34af4362",
     "symbol": "mypy/errors.py::Errors.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "many_errors_threshold"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -290,6 +362,9 @@
     "parent": "f8127c860dc4679cf56edac4fe8bcade9e05ac82",
     "symbol": "mypy/build.py::BuildManager.parse_all",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "post_parse"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -301,6 +376,7 @@
     "parent": "e6b91bdc5c253cefba940b0864a8257d833f0d8b",
     "symbol": "mypy/lookup.py::lookup_fully_qualified",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [
       "mypy/fixup.py"
     ],
@@ -314,6 +390,9 @@
     "parent": "312b62b797df985ac17f3658c1c4990b521b0a41",
     "symbol": "mypy/newsemanal/typeanal.py::TypeAnalyser.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "third_pass"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -325,6 +404,9 @@
     "parent": "010da0b2f48dc92be2f79495fd4551c92351868f",
     "symbol": "mypy/semanal_typeargs.py::TypeArgumentAnalyzer.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "named_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -336,6 +418,9 @@
     "parent": "9752e1968e9224d2ead4f0cdfd5ff3791ab21b35",
     "symbol": "mypy/build.py::write_cache",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "trans_dep_hash"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -347,6 +432,9 @@
     "parent": "162df3607cceeef6ed66b1c0cb6c264473790a37",
     "symbol": "mypy/types.py::get_proper_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "it"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -358,6 +446,9 @@
     "parent": "85c21599cae51318344c23eecdfec6c3a2a9557a",
     "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.analyze_namedtuple_classdef",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "is_func_scope"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -369,6 +460,9 @@
     "parent": "4e2c574a700734871611e5bf90bbaf469e0c6b9a",
     "symbol": "mypyc/genops_for.py::ForIterable.init",
     "change_kind": "removed",
+    "changed_parameters": [
+      "target_type"
+    ],
     "source_files": [
       "mypyc/genops.py"
     ],
@@ -382,6 +476,9 @@
     "parent": "f79e7afec2c863c34d7a9b41ebb732dc26128fff",
     "symbol": "mypyc/irbuild/classdef.py::generate_attr_defaults",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "skip"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -393,6 +490,9 @@
     "parent": "e1f6d6b4547f118787a68bf503f5c86a2801a2bf",
     "symbol": "mypy/build.py::State.parse_file",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "temporary"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -404,6 +504,9 @@
     "parent": "b02ddf1db45f6cd1b3a4cf0f40e768b36f5636a7",
     "symbol": "mypy/typeanal.py::TypeAnalyser.anal_type",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_ellipsis"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -415,6 +518,9 @@
     "parent": "58aef054dccb1b49acd1f6769ac2a18c2525dd63",
     "symbol": "mypy/modulefinder.py::ModuleNotFoundReason.error_message_templates",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "daemon"
+    ],
     "source_files": [
       "mypy/build.py"
     ],
@@ -428,6 +534,9 @@
     "parent": "1b4ef345603f224b942efd2dc9175913b35c5a74",
     "symbol": "mypyc/namegen.py::NameGenerator.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "separate"
+    ],
     "source_files": [
       "mypyc/codegen/emitmodule.py"
     ],
@@ -443,6 +552,9 @@
     "parent": "2f08e40fe999b41274a2427bbb5acc9b31f764d7",
     "symbol": "mypy/build.py::State._patch_indirect_dependencies",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "type_map"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -454,6 +566,9 @@
     "parent": "795dde3e7ef14ad6f475ba56d88b9139ab3165cc",
     "symbol": "mypy/typeanal.py::TypeAnalyser.pack_paramspec_args",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "empty_tuple_index"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -465,6 +580,9 @@
     "parent": "e6e6c0f9e6c51b6a1f02654cc81d00c6d5a0007c",
     "symbol": "mypy/errors.py::Errors.raise_error",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_stdout"
+    ],
     "source_files": [
       "mypy/build.py"
     ],
@@ -478,6 +596,9 @@
     "parent": "8aa385ede804df6f39701d8593a77bd7c242b087",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.init_final_static",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "type_override"
+    ],
     "source_files": [
       "mypyc/irbuild/classdef.py"
     ],
@@ -491,6 +612,9 @@
     "parent": "274a9e8d7dc6739cf9d64bd8b3186909072b7f3d",
     "symbol": "mypy/build.py::BuildManager.parse_file",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "options"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -502,6 +626,9 @@
     "parent": "d7bb8400e8fe48bb8a31bca6a38fef16420550bb",
     "symbol": "mypy/constraints.py::ConstraintBuilderVisitor.infer_constraints_from_protocol_members",
     "change_kind": "removed",
+    "changed_parameters": [
+      "res"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -513,6 +640,9 @@
     "parent": "32752ebc58011bc3067dba239e50c91bc6304bd4",
     "symbol": "mypy/indirection.py::TypeIndirectionVisitor._visit",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "typ_or_typs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -524,6 +654,9 @@
     "parent": "e1117c3fc49c0836bf098b5c5dd8027c62b3186c",
     "symbol": "mypyc/ir/class_ir.py::ClassIR.get_method_and_class",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "prefer_method"
+    ],
     "source_files": [
       "mypyc/irbuild/vtable.py"
     ],
@@ -537,6 +670,9 @@
     "parent": "ccfbfc1b2a238ae83267b625d12c49bc9e538794",
     "symbol": "mypy/stubgen.py::main",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "args"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -548,6 +684,9 @@
     "parent": "67eecf07fea3fa4bbaab9d46cd28372a8ded330b",
     "symbol": "mypyc/codegen/emitclass.py::generate_clear_for_class",
     "change_kind": "other",
+    "changed_parameters": [
+      "func_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -559,6 +698,9 @@
     "parent": "3acbf3fe78a61c19ff96754233ada453472004c4",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.check_tagged_short_int",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "negated"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 10
@@ -570,6 +712,10 @@
     "parent": "7f65cc7570eaa4206ae086680e1c1d0489897efa",
     "symbol": "mypy/typeanal.py::TypeAnalyser.tuple_type",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "line",
+      "column"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -581,6 +727,10 @@
     "parent": "8409b884e97de82bc1638dc91ca26b85d06f3de2",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.expr_to_analyzed_type",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_unbound_tvars",
+      "allow_param_spec_literals"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -592,6 +742,9 @@
     "parent": "01afc3b50282107ebfbb00daad1878adff2a2e85",
     "symbol": "mypy/checkexpr.py::ExpressionChecker.dangerous_comparison",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "original_container"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -603,6 +756,9 @@
     "parent": "27c4b462aa4cf269397253eca7a88e7fbbf4e43e",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -614,6 +770,9 @@
     "parent": "0ec789d5322b6bc388ca045544beb57759aee457",
     "symbol": "mypy/nodes.py::StrExpr.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "from_python_3"
+    ],
     "source_files": [
       "mypy/treetransform.py"
     ],
@@ -627,6 +786,9 @@
     "parent": "ef0b0dff8017ed69f31c6095a4897940aec3261a",
     "symbol": "mypy/fixup.py::NodeFixer.visit_symbol_table",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "table_fullname"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -638,6 +800,9 @@
     "parent": "7aed6962621a53e4c31301a5cb07a8aa3547da55",
     "symbol": "mypy/messages.py::format_type_inner",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_pretty_callable"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 14
@@ -649,6 +814,10 @@
     "parent": "8bd159b755529e067cf67e489b7f345a0b442468",
     "symbol": "misc/perf_compare.py::build_mypy",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "log_trace",
+      "opt_level"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -660,6 +829,10 @@
     "parent": "99838a9f940e16549cdfc16b7a6e5be086d7729a",
     "symbol": "mypy/newsemanal/semanal_typeargs.py::TypeArgumentAnalyzer.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "options",
+      "is_typeshed_file"
+    ],
     "source_files": [
       "mypy/newsemanal/semanal_main.py"
     ],
@@ -673,6 +846,9 @@
     "parent": "07edb847c380fa6cb2fa4041888c87a37e5d0d0d",
     "symbol": "mypy/modulefinder.py::FindModuleCache.find_module",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "fast_path"
+    ],
     "source_files": [
       "mypy/dmypy_server.py"
     ],
@@ -686,6 +862,9 @@
     "parent": "fabe37f31e5bd7396e6a1183e3ed56b6e767561b",
     "symbol": "misc/perf_compare.py::build_mypy",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "multi_file"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -697,6 +876,9 @@
     "parent": "656b09ab6708b103738d24202bd01bca3029f5fd",
     "symbol": "mypy/typeanal.py::validate_instance",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "empty_tuple_index"
+    ],
     "source_files": [
       "mypy/checkexpr.py",
       "mypy/semanal.py"
@@ -711,6 +893,9 @@
     "parent": "643a58b7ed27f285cfee2462c562e167fb5ab506",
     "symbol": "mypyc/emitclass.py::generate_vtables",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "vtable_setup_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -722,6 +907,9 @@
     "parent": "270a01d44cdf5f27b8e8328e94452b2a5332a5a2",
     "symbol": "mypy/meet.py::is_overlapping_types",
     "change_kind": "removed",
+    "changed_parameters": [
+      "prohibit_none_typevar_overlap"
+    ],
     "source_files": [
       "mypy/checker.py",
       "mypy/checkexpr.py"
@@ -736,6 +924,9 @@
     "parent": "348a9d4774b229b96c30a27ed2ca93992da5bd4f",
     "symbol": "mypy/main.py::fail",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "options"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -747,6 +938,9 @@
     "parent": "11c2c6d73a849c3852a48f00212cd0e6688a0d9c",
     "symbol": "mypy/plugins/attrs.py::Converter.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "ret_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -758,6 +952,10 @@
     "parent": "a2d715a4f79141db5c254a580cd5615fa57651d3",
     "symbol": "mypy/util.py::os_path_join",
     "change_kind": "other",
+    "changed_parameters": [
+      "a",
+      "p"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -769,6 +967,9 @@
     "parent": "5d535667e66360325414f566b12fe12fcaba0f69",
     "symbol": "mypy/ipc.py::IPCBase.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "timeout"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -780,6 +981,9 @@
     "parent": "baabf49b06c8b6e2c4e6d5fcd0e92cf325eef790",
     "symbol": "mypyc/irbuild/expression.py::try_optimize_int_floor_divide",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "builder"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -791,6 +995,9 @@
     "parent": "5750690e625606a8c6875cff07a0ed299703646c",
     "symbol": "mypyc/codegen/emitmodule.py::GroupGenerator.emit_module_def_slots",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "module_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -802,6 +1009,9 @@
     "parent": "82d94776153d1f09fdff193c58b379e6c03add54",
     "symbol": "mypyc/irbuild/function.py::load_type",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "unbounded_type"
+    ],
     "source_files": [
       "mypyc/irbuild/classdef.py"
     ],
@@ -815,6 +1025,9 @@
     "parent": "20e9733e32ddff6ecbaddb7be61ae36b6c4978d0",
     "symbol": "mypy/typeanal.py::TypeAnalyser.anal_array",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_param_spec_literals"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -826,6 +1039,9 @@
     "parent": "52888aec43ef8ba59645c7cd3ff5725ff9a861d7",
     "symbol": "misc/perf_compare.py::run_benchmark",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "incremental"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -837,6 +1053,9 @@
     "parent": "ffb3ce925e8bb3376e19f942c7d3a3806c9bba97",
     "symbol": "mypy/messages.py::format_string_list",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "s"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -848,6 +1067,9 @@
     "parent": "2b8691d8a485fbb91f28e6d570b147a629213118",
     "symbol": "mypy/dmypy.py::check_output",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "perf_stats_file"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -859,6 +1081,9 @@
     "parent": "1af7b2c42d1360e97ceb2b0db4255ac8a417110f",
     "symbol": "mypy/stubgen.py::ASTStubGenerator.process_typealias",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_explicit_type_alias"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -870,6 +1095,9 @@
     "parent": "8854373e547ead3d0d60ff03c97d13e35bde1acd",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.name_not_defined",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "namespace"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -881,6 +1109,9 @@
     "parent": "644496828841035d097d7afd80b96081e0ea5c7f",
     "symbol": "mypyc/irbuild/function.py::load_singledispatch_registry",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "fitem"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -892,6 +1123,9 @@
     "parent": "88e8f033ddfd38d74212897d7a127e9e8568b7c0",
     "symbol": "mypyc/ir_builder.py::LowLevelIRBuilder.gen_method_call",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "return_rtype"
+    ],
     "source_files": [
       "mypyc/genops.py"
     ],
@@ -905,6 +1139,9 @@
     "parent": "5ceaf3d7ec67a9bdee78d656e24dc9e25051759c",
     "symbol": "mypy/plugins/attrs.py::Converter.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -916,6 +1153,10 @@
     "parent": "a4c32d174c941832ae6d707e4e88bd1362f3e8df",
     "symbol": "mypy/messages.py::MessageBuilder.incompatible_conditional_function_def",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "old_type",
+      "new_type"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -929,6 +1170,9 @@
     "parent": "5b1a231425ac807b7118aac6a68b633949412a36",
     "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "msg"
+    ],
     "source_files": [
       "mypy/semanal.py"
     ],
@@ -942,6 +1186,9 @@
     "parent": "b8dd6f3556f361ae2cd312b9edcc604eb6b1f465",
     "symbol": "mypyc/ir/func_ir.py::FuncDecl.line",
     "change_kind": "removed",
+    "changed_parameters": [
+      "line"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -953,6 +1200,10 @@
     "parent": "60a7e0806df85071a7d3c7395a3834fe51aa35d8",
     "symbol": "mypy/dmypy_server.py::Server.fine_grained_increment",
     "change_kind": "removed",
+    "changed_parameters": [
+      "is_tty",
+      "terminal_width"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -964,6 +1215,9 @@
     "parent": "bfa3b88ea1c80a4f1f860fad4ab344d8fc28c868",
     "symbol": "mypyc/irbuild/classdef.py::find_attr_initializers",
     "change_kind": "removed",
+    "changed_parameters": [
+      "skip"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -975,6 +1229,9 @@
     "parent": "0b59a1018cafc78c35c06d7709a8db80b7692c2e",
     "symbol": "mypy/messages.py::format_type_bare",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "fullnames"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -986,6 +1243,10 @@
     "parent": "abe9f8045abd4863845cc0ee9fcde46c0ddeb99c",
     "symbol": "mypy/messages.py::format_type_distinctly",
     "change_kind": "other",
+    "changed_parameters": [
+      "type1",
+      "type2"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -997,6 +1258,9 @@
     "parent": "f316cc2d4b510b79aadb78e0c7fe2814183c93d1",
     "symbol": "mypy/modulefinder.py::FindModuleCache.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "stdlib_py_versions"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1008,6 +1272,9 @@
     "parent": "0f78f9c578bfbc6fbe4a20888353c20e9691178a",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1019,6 +1286,9 @@
     "parent": "47a435f38d96892b1f6a1fe543b0abe3ccca9c53",
     "symbol": "mypy/messages.py::get_missing_protocol_members",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "skip"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -1030,6 +1300,9 @@
     "parent": "43ea203e566901510dbdd59e8907fcddb2a8ee70",
     "symbol": "mypyc/ir/rtypes.py::RPrimitive.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "may_be_immortal"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1041,6 +1314,9 @@
     "parent": "5fdb16bb5328412e69cbff9f64b494ef5081a6b8",
     "symbol": "mypy/suggestions.py::SuggestionEngine.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "try_text"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1052,6 +1328,9 @@
     "parent": "1f4e10eb5aa5de5725d5fa44aa862b56ad45bd7a",
     "symbol": "mypy/suggestions.py::StrToText.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "builtin_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -1063,6 +1342,9 @@
     "parent": "0d17db051b23b3768d92f83f1a8dcb5626902722",
     "symbol": "mypyc/ops.py::ModuleIR.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "fullname"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -1074,6 +1356,9 @@
     "parent": "ddec163790d107f1fd9982f19cbfa0b6966c2eea",
     "symbol": "mypy/types.py::get_proper_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "it"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 20
@@ -1085,6 +1370,9 @@
     "parent": "3d248a3474c911117b29c5af40690edc119da0cd",
     "symbol": "mypy/util.py::write_junit_xml",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "name"
+    ],
     "source_files": [
       "mypy/dmypy.py",
       "mypy/main.py"
@@ -1099,6 +1387,9 @@
     "parent": "d180456b584b469983e3cc9dddd1e36b997a7427",
     "symbol": "mypyc/ir/func_ir.py::RuntimeArg.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "pos_only"
+    ],
     "source_files": [
       "mypyc/irbuild/mapper.py"
     ],
@@ -1112,6 +1403,9 @@
     "parent": "66c2ac516305f194a9bc37c1ebf7f22d62d6141c",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.new_tuple_with_length",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "val"
+    ],
     "source_files": [
       "mypyc/irbuild/specialize.py"
     ],
@@ -1125,6 +1419,9 @@
     "parent": "6d243321d632c47b9fef5f2ad6a972f9f4b94eff",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.visit_yield_expr",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "expr"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1136,6 +1433,9 @@
     "parent": "3fc382321e4531450e91c55fddb6d4ed54611d5e",
     "symbol": "mypy/typeops.py::class_callable",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "orig_self_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 11
@@ -1147,6 +1447,9 @@
     "parent": "e867132134c7b8046ebae2d6e1fa9fc184b9e9d7",
     "symbol": "mypy/semanal_typeddict.py::TypedDictAnalyzer.parse_typeddict_fields_with_types",
     "change_kind": "removed",
+    "changed_parameters": [
+      "context"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1158,6 +1461,9 @@
     "parent": "b406de741c0f4a67c4a37796c6a7d8a131584bf0",
     "symbol": "mypy/config_parser.py::parse_section",
     "change_kind": "removed",
+    "changed_parameters": [
+      "stdout"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -1169,6 +1475,9 @@
     "parent": "1bbcd536a59ce07fad78f6ec12b53e3859a03aaf",
     "symbol": "mypyc/ir/rtypes.py::RStruct.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "info"
+    ],
     "source_files": [],
     "test_files": [
       "mypyc/test/test_emitfunc.py",
@@ -1183,6 +1492,9 @@
     "parent": "34949c82274285b03423bde4def9beacd91c7d52",
     "symbol": "mypy/subtypes.py::restrict_subtype_away",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "consider_runtime_isinstance"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -1196,6 +1508,9 @@
     "parent": "72a6b1b2e78e7a083d59ba021b3f59312cda609f",
     "symbol": "mypy/checkexpr.py::ExpressionChecker.check_method_call_by_name",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "original_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1207,6 +1522,9 @@
     "parent": "2a1578a9220162b769648ce725c6b699c5b46986",
     "symbol": "mypy/stubgenc.py::generate_c_property_stub",
     "change_kind": "other",
+    "changed_parameters": [
+      "output"
+    ],
     "source_files": [],
     "test_files": [
       "mypy/test/teststubgen.py"
@@ -1220,6 +1538,10 @@
     "parent": "ab8e4bf1305416372ea70076193a766800f26410",
     "symbol": "mypy/build.py::BuildManager.parse_files_threaded_raw",
     "change_kind": "other",
+    "changed_parameters": [
+      "sequential_states",
+      "parallel_states"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -1231,6 +1553,9 @@
     "parent": "bc8565fee7e38bcb2cdd6a48ddc924ef09b87f54",
     "symbol": "mypy/config_parser.py::is_toml",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "filemame"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1242,6 +1567,9 @@
     "parent": "38cdacfd142291eae3f30c1a4a83f4042a159975",
     "symbol": "mypyc/ir/ops.py::LoadMem.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "borrow"
+    ],
     "source_files": [
       "mypyc/irbuild/for_helpers.py",
       "mypyc/irbuild/ll_builder.py",
@@ -1257,6 +1585,9 @@
     "parent": "5c3d306fddd900a2eb66437af05dd36851b221a4",
     "symbol": "mypy/partially_defined.py::PartiallyDefinedVariableVisitor.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "options"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1268,6 +1599,9 @@
     "parent": "0bbeab8b26825ee94b8fdeda16f2aa589be4282d",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1279,6 +1613,9 @@
     "parent": "4d6c41799d514c79490ec631628ec49808d7615a",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [
       "mypyc/irbuild/prebuildvisitor.py"
     ],
@@ -1292,6 +1629,9 @@
     "parent": "f79ae69be1b0c920eec6bf181e6f8c7689cbae20",
     "symbol": "mypy/typeanal.py::TypeAnalyser.find_type_var_likes",
     "change_kind": "removed",
+    "changed_parameters": [
+      "include_callables"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1303,6 +1643,9 @@
     "parent": "256cf68fb89099b35a3772d34a2652e6141e6558",
     "symbol": "mypyc/irbuild/prebuildvisitor.py::PreBuildVisitor.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "types"
+    ],
     "source_files": [
       "mypyc/irbuild/main.py"
     ],
@@ -1316,6 +1659,9 @@
     "parent": "2ebd51e881490f4d20635cde92ef9e3edbbad68c",
     "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.to_argument",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "of"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1327,6 +1673,9 @@
     "parent": "9db236818df2e6ef14ad95f1fcfb3d08684ef0af",
     "symbol": "misc/perf_compare.py::run_benchmark",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1338,6 +1687,10 @@
     "parent": "66cae4b99e585735e3767623991d5f64b8269377",
     "symbol": "mypyc/irbuild/prebuildvisitor.py::PreBuildVisitor.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "errors",
+      "current_file"
+    ],
     "source_files": [
       "mypyc/irbuild/main.py"
     ],
@@ -1351,6 +1704,9 @@
     "parent": "f6fb60ef69738cbfe2dfe56c747eca8f03735d8e",
     "symbol": "mypy/util.py::FancyFormatter.format_error",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "blockers"
+    ],
     "source_files": [
       "mypy/main.py"
     ],
@@ -1364,6 +1720,9 @@
     "parent": "02c97661281443483a73f6ca9247c7faf63213e6",
     "symbol": "mypyc/irbuild/statement.py::transform_try_finally_stmt",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "line"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1375,6 +1734,9 @@
     "parent": "d7f15bea30eaf3a86a63e308c4dde4a1c6d1c55b",
     "symbol": "mypyc/codegen/emitclass.py::generate_dealloc_for_class",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "has_tp_finalize"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1386,6 +1748,9 @@
     "parent": "7936e7e946cc8348163105d6acf3a05c7db8b46f",
     "symbol": "mypyc/codegen/emit.py::Emitter.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "filepath"
+    ],
     "source_files": [
       "mypyc/codegen/emitmodule.py"
     ],
@@ -1399,6 +1764,9 @@
     "parent": "9ee7b8ae51d8643e44fdc98ec36d9a73172ccee9",
     "symbol": "mypy/messages.py::MessageBuilder.unexpected_keyword_argument",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "arg_type"
+    ],
     "source_files": [
       "mypy/checkexpr.py"
     ],
@@ -1412,6 +1780,9 @@
     "parent": "52c0a63f4604a2bfa8c0edd6589ab25fab4bdaec",
     "symbol": "mypy/dmypy_server.py::find_all_sources_in_build",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "extra"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1423,6 +1794,9 @@
     "parent": "12837eaedcab5352dd2e3df925b21373597762e8",
     "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.fail",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1434,6 +1808,9 @@
     "parent": "0c2ec6a57e6f4b121590fdc3c3ede684a3cbc816",
     "symbol": "mypy/types.py::get_proper_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "it"
+    ],
     "source_files": [
       "mypy/typeops.py"
     ],
@@ -1447,6 +1824,9 @@
     "parent": "3b511bd1b8e6ea8de63d53ae99c41a71845d6983",
     "symbol": "mypy/dmypy_server.py::Server.cmd_status",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "fswatcher_dump_file"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -1458,6 +1838,10 @@
     "parent": "afdc92462839733c4c0102d65455a576bcea4e1e",
     "symbol": "mypyc/ops.py::FuncDecl.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_prop_setter",
+      "is_prop_getter"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1469,6 +1853,9 @@
     "parent": "eee3a2a9fdfa1cce7f031ef362570ab3ba5d9790",
     "symbol": "mypy/partially_defined.py::PossiblyUndefinedVariableVisitor.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "names"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1480,6 +1867,9 @@
     "parent": "a32d2f41304061639044eafc1a40d4fbb4ea49d4",
     "symbol": "mypyc/ir/rtypes.py::RPrimitive.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "size"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1491,6 +1881,9 @@
     "parent": "816ba3b33dd157def6b7d8c0b0fcca65ff2cbc05",
     "symbol": "mypy/typeanal.py::set_any_tvars",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "special_form"
+    ],
     "source_files": [
       "mypy/semanal_typeargs.py"
     ],
@@ -1504,6 +1897,9 @@
     "parent": "cd71671fc1301bf8558b3cc5536d7cfe7ff0a70e",
     "symbol": "mypyc/codegen/emitmodule.py::collect_source_dependencies",
     "change_kind": "removed",
+    "changed_parameters": [
+      "internal"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1515,6 +1911,10 @@
     "parent": "644a20cebc89fcc06dca41099e217d474f2e1aba",
     "symbol": "mypy/stubgen.py::ASTStubGenerator.get_str_type_of_node",
     "change_kind": "other",
+    "changed_parameters": [
+      "can_infer_optional",
+      "can_be_any"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1526,6 +1926,9 @@
     "parent": "578d38921cdf2296605fc14595559ddeea13103a",
     "symbol": "mypy/main.py::install_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "cache_dir"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1537,6 +1940,9 @@
     "parent": "43883fae240f617bc5fe665a41cf23ba6bb35693",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1548,6 +1954,9 @@
     "parent": "e9edcb957f341dcf7a14bb7b7acfd4186fb1248b",
     "symbol": "mypy/stubgen.py::StubGenerator.visit_func_def",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_overload"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1559,6 +1968,9 @@
     "parent": "fe6fe1d047a88f4dee097b3e421da39ed6787246",
     "symbol": "mypy/build.py::exist_added_packages",
     "change_kind": "removed",
+    "changed_parameters": [
+      "options"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1570,6 +1982,11 @@
     "parent": "285773626b26d451f68717e127a932144e9a6f04",
     "symbol": "mypyc/codegen/emit.py::Emitter.emit_undefined_attr_check",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "obj",
+      "attr",
+      "cl"
+    ],
     "source_files": [
       "mypyc/codegen/emitclass.py",
       "mypyc/codegen/emitfunc.py"
@@ -1584,6 +2001,10 @@
     "parent": "1de4871ab4890dc48653d73240eea9e48a5195e4",
     "symbol": "mypy/util.py::os_path_join",
     "change_kind": "other",
+    "changed_parameters": [
+      "a",
+      "p"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -1595,6 +2016,9 @@
     "parent": "5a786075d8c366ee753c62fa36857589023ed561",
     "symbol": "mypyc/irbuild/function.py::gen_func_item",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "make_ext_method"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1606,6 +2030,9 @@
     "parent": "fdba3cd495b657995a7283063afd1e86ff49165d",
     "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "info"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1617,6 +2044,9 @@
     "parent": "05d9fb15dcec8bde4e7184ca387e7d8acea68792",
     "symbol": "mypy/semanal_typeddict.py::TypedDictAnalyzer.fail",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1628,6 +2058,9 @@
     "parent": "454989f7c085d5a7f86ad7ed9da0f2614ca41d83",
     "symbol": "mypy/fastparse.py::ASTConverter.fail",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "blocker"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1639,6 +2072,9 @@
     "parent": "d21c5abcfba7cbae4398bdc075471e2ecc565e1d",
     "symbol": "mypy/semanal_classprop.py::add_type_promotion",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "builtin_names"
+    ],
     "source_files": [
       "mypy/semanal_main.py"
     ],
@@ -1652,6 +2088,9 @@
     "parent": "a2b0f18c5791d1110fbafd08a878d99e112d64d4",
     "symbol": "mypy/fastparse.py::ASTConverter.fail",
     "change_kind": "removed",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1663,6 +2102,9 @@
     "parent": "5ef090270579013c337a9bcc79e2c58417f09538",
     "symbol": "mypyc/codegen/literals.py::Literals._encode_collection_values",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "sort_items"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1674,6 +2116,9 @@
     "parent": "68661913c536a294582cee1f522d4623141e53f3",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.get_module_symbol",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "parts"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -1685,6 +2130,9 @@
     "parent": "60639c5c07230c498c71d8d22bf16a4ee769777f",
     "symbol": "mypy/build.py::State.mark_interface_stale",
     "change_kind": "removed",
+    "changed_parameters": [
+      "on_errors"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1696,6 +2144,9 @@
     "parent": "154422c3965fa4f9de8bda5a8d6f7a1e204dfa99",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.defer",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "debug_context"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1707,6 +2158,9 @@
     "parent": "e0090d0ab74b4933088e94abaad0b2409e9cd50a",
     "symbol": "mypy/build.py::write_cache_meta",
     "change_kind": "removed",
+    "changed_parameters": [
+      "data_json"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1718,6 +2172,9 @@
     "parent": "c4a6e40dd5821ae079395a9db751c59380d70239",
     "symbol": "mypy/messages.py::MessageBuilder.need_annotation_for_var",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "python_version"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -1731,6 +2188,9 @@
     "parent": "b7d74f3e202fa60ff0d8a2efc299913aad68e2ed",
     "symbol": "mypy/plugins/dataclasses.py::DataclassTransformer._propertize_callables",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "settable"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1742,6 +2202,9 @@
     "parent": "3460717a11576d84b5f83cd62282480416c240b2",
     "symbol": "mypy/messages.py::MessageBuilder.add_errors",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "messages"
+    ],
     "source_files": [
       "mypy/checkexpr.py"
     ],
@@ -1755,6 +2218,9 @@
     "parent": "f0a2c9f7f11da5c1d5fb1041e757591010e586be",
     "symbol": "mypy/typeops.py::make_simplified_union",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "contract_literals"
+    ],
     "source_files": [
       "mypy/join.py"
     ],
@@ -1768,6 +2234,9 @@
     "parent": "37fb21afe937be9da98446557244f3de5424ebf8",
     "symbol": "mypy/modulefinder.py::FindModuleCache.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "source_set"
+    ],
     "source_files": [
       "mypy/build.py"
     ],
@@ -1781,6 +2250,7 @@
     "parent": "c245e91e1ba4d23ff28e77d08f5e103c43733bf5",
     "symbol": "mypy/partially_defined.py::BranchStatement.__init__",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1792,6 +2262,9 @@
     "parent": "8d59d31903ffc4c2c80cf0a247db6c503954616e",
     "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "is_neither_frozen_nor_nonfrozen"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1803,6 +2276,9 @@
     "parent": "c68bd7ae2cffe8f0377ea9aab54b963b9fac3231",
     "symbol": "docs/source/html_builder.py::MypyHTMLBuilder.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "env"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1814,6 +2290,9 @@
     "parent": "fab534bcc74806d76dba66264490c0b3eddf39dc",
     "symbol": "mypy/plugins/dataclasses.py::_collect_field_args",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "ctx"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1825,6 +2304,9 @@
     "parent": "790ab35ca936d04c484d427704d5acb17904012b",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.gen_import_from",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "globals_dict"
+    ],
     "source_files": [
       "mypyc/irbuild/statement.py"
     ],
@@ -1838,6 +2320,9 @@
     "parent": "181cbe88f1396f2f52770f59b6bbb13c6521980a",
     "symbol": "mypy/messages.py::MessageBuilder.possible_missing_await",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "code"
+    ],
     "source_files": [
       "mypy/checker.py",
       "mypy/checkmember.py"
@@ -1852,6 +2337,9 @@
     "parent": "db8de922a335d01a9681eacb81860190b611b4d8",
     "symbol": "mypy/stubtest.py::is_dunder",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "exclude_init"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1863,6 +2351,9 @@
     "parent": "7d0a8e79dfa3219135baf4d227ab4975aef710b7",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 21
@@ -1874,6 +2365,9 @@
     "parent": "9ffb7ca9d2734144205d88df35983a7121bb1d47",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.enter",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "function"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1885,6 +2379,9 @@
     "parent": "8615d8269e2f14f76f257e9439fa596b83e3c9d1",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1896,6 +2393,9 @@
     "parent": "06e48a017efcb683b1deca3a40a9ccde78f5d4c4",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_class_decorator_common",
     "change_kind": "removed",
+    "changed_parameters": [
+      "info"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1907,6 +2407,9 @@
     "parent": "66fbf5b526ad8cfa127dd5cca68dcb2f770b1dd7",
     "symbol": "mypy/solve.py::is_trivial_bound",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_tuple"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 19
@@ -1918,6 +2421,9 @@
     "parent": "e2852039bafaf0d7463623dd5410c02797eae21b",
     "symbol": "mypy/stubtest.py::get_typeshed_stdlib_modules",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "version_info"
+    ],
     "source_files": [],
     "test_files": [
       "mypy/test/teststubtest.py"
@@ -1931,6 +2437,9 @@
     "parent": "e311f827947dddec9501d6e6ae39cfc686292349",
     "symbol": "mypy/stubinfo.py::is_legacy_bundled_package",
     "change_kind": "removed",
+    "changed_parameters": [
+      "py_version"
+    ],
     "source_files": [
       "mypy/build.py",
       "mypy/modulefinder.py"
@@ -1947,6 +2456,9 @@
     "parent": "8dd616b7d6eed0048ae97b91dd597b173086e995",
     "symbol": "mypy/binder.py::ConditionalTypeBinder.assign_type",
     "change_kind": "removed",
+    "changed_parameters": [
+      "restrict_any"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -1960,6 +2472,9 @@
     "parent": "9f69beaf258b330d7472a12da06ec3074f883c5e",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_member_lvalue",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "has_explicit_value"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1971,6 +2486,9 @@
     "parent": "955681927167474ad2c1c3b5442d810f290b6b8a",
     "symbol": "mypy/stubutil.py::report_missing",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "message"
+    ],
     "source_files": [
       "mypy/stubgen.py"
     ],
@@ -1984,6 +2502,9 @@
     "parent": "641919f9496c8c62b9f45e7ec8402162667b7a11",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.builtin_len",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_pyssize_t"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -1995,6 +2516,9 @@
     "parent": "0c85f1a793d18f31dc5844c4b6b2fa177a8ecee2",
     "symbol": "mypyc/genops_for.py::ForIterable.init",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "target_type"
+    ],
     "source_files": [
       "mypyc/genops.py"
     ],
@@ -2008,6 +2532,10 @@
     "parent": "f6e250dc5fb6186c5ec65c91f1b935d97d54b05e",
     "symbol": "mypy/checkmember.py::add_class_tvars",
     "change_kind": "removed",
+    "changed_parameters": [
+      "itype",
+      "builtin_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2019,6 +2547,9 @@
     "parent": "bd01d46ca6ac8e5ae0e80a1fec86b0e473f4981a",
     "symbol": "mypy/checkmember.py::type_object_type_from_function",
     "change_kind": "other",
+    "changed_parameters": [
+      "init_or_new"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2030,6 +2561,12 @@
     "parent": "185b2c955cedfb0200dc79a7f0ab74ba87631774",
     "symbol": "mypy/build.py::State.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "caller_state",
+      "ancestor_for",
+      "root_source",
+      "temporary"
+    ],
     "source_files": [],
     "test_files": [
       "mypy/test/testgraph.py"
@@ -2043,6 +2580,9 @@
     "parent": "edeb5bb9901907889af30d5d0800a761b0394829",
     "symbol": "mypyc/emitclass.py::generate_class_type_decl",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "c_emitter"
+    ],
     "source_files": [
       "mypyc/emitmodule.py"
     ],
@@ -2056,6 +2596,9 @@
     "parent": "94382117364d95cd302873e803b794db6a57bab9",
     "symbol": "mypy/checker.py::TypeChecker.set_inference_error_fallback_type",
     "change_kind": "removed",
+    "changed_parameters": [
+      "context"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -2067,6 +2610,9 @@
     "parent": "52a1c483f2c5ed0eb5ead408c021a440d7123d4d",
     "symbol": "mypy/fscache.py::FileSystemCache.exists",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "real_only"
+    ],
     "source_files": [
       "mypy/build.py"
     ],
@@ -2080,6 +2626,9 @@
     "parent": "a0c5dfc88fa8780db8a3cf7b76c32e4257f218e2",
     "symbol": "mypyc/ir/ops.py::Environment.add_temp",
     "change_kind": "removed",
+    "changed_parameters": [
+      "is_arg"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2091,6 +2640,9 @@
     "parent": "fa4f8645b8fee12594c655f715c7ff23564fc2b7",
     "symbol": "mypyc/ops.py::EmitterInterface.emit_lines",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "line"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -2102,6 +2654,9 @@
     "parent": "e8c7ee7797fcf21fad7dd0247e93f4e8f2552576",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.analyze_alias",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_placeholder"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -2113,6 +2668,9 @@
     "parent": "1d040591d4772b0ecd5ab8bb47c07e389041512c",
     "symbol": "mypy/checkmember.py::type_object_type",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "builtin_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2124,6 +2682,9 @@
     "parent": "d8652b4f641c7d9dd0b62b7b211b8c38b9c80495",
     "symbol": "mypy/util.py::is_typeshed_file",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "typeshed_dir"
+    ],
     "source_files": [
       "mypy/build.py",
       "mypy/checker.py",
@@ -2141,6 +2702,9 @@
     "parent": "93d1ce4133467a84b02ea06e5936cf6480afe08f",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2152,6 +2716,10 @@
     "parent": "f63fdb391ac9314dc093f3750c4747c4a63c41f2",
     "symbol": "mypy/util.py::os_path_join",
     "change_kind": "other",
+    "changed_parameters": [
+      "a",
+      "p"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2163,6 +2731,10 @@
     "parent": "1be3a8b40153d28414fee8049b435d69db90e325",
     "symbol": "mypy/util.py::os_path_join",
     "change_kind": "other",
+    "changed_parameters": [
+      "a",
+      "p"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2174,6 +2746,9 @@
     "parent": "b6e91d46b299bfd0af36b37586d3337a20e14b0e",
     "symbol": "mypy/plugins/default.py::int_neg_callback",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "multiplier"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2185,6 +2760,9 @@
     "parent": "ca97d9667da1cf0bf22886ecfc2280958b56ac68",
     "symbol": "mypy/fswatcher.py::FileSystemWatcher._update",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "st"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2196,6 +2774,9 @@
     "parent": "1d405278835e92e4fb0f2549217f860f9171067a",
     "symbol": "mypy/messages.py::MessageBuilder.argument_incompatible_with_supertype",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "type_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2207,6 +2788,7 @@
     "parent": "13e6617448ed5619c8b3512c5eed302f6d9f0f5b",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.int_op",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 11
@@ -2218,6 +2800,9 @@
     "parent": "c0af000d068b30362c4f4f72b8823e4f3f5b3e08",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -2229,6 +2814,9 @@
     "parent": "ed03aff13d423fd7da836b4a414ba6787166d993",
     "symbol": "mypy/typeops.py::supported_self_type",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_callable"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2240,6 +2828,10 @@
     "parent": "e0ad95296037446fccb398b8dadc54ae0751df46",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "current_module",
+      "mapper"
+    ],
     "source_files": [
       "mypyc/irbuild/builder.py"
     ],
@@ -2253,6 +2845,9 @@
     "parent": "bd2aafc13686711d0db11d30efbf1d4f68718136",
     "symbol": "mypyc/irbuild/mapper.py::Mapper.fdef_to_sig",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "strict_dunders_typing"
+    ],
     "source_files": [
       "mypyc/irbuild/function.py",
       "mypyc/irbuild/prepare.py"
@@ -2267,6 +2862,9 @@
     "parent": "ecddcea3d8d4870ffcec12932b01a90f88679b9d",
     "symbol": "mypyc/ops_int.py::int_binary_op",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "error_kind"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2278,6 +2876,9 @@
     "parent": "6c7e480de047a1f08d02b56cd47ca0d0ac6bf685",
     "symbol": "mypy/refinfo.py::type_fullname",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "node"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2289,6 +2890,9 @@
     "parent": "ad90d62594315f818c0db6ce5d6e877a88d91364",
     "symbol": "mypy/checker.py::TypeChecker.check_subtype",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "outer_context"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2300,6 +2904,9 @@
     "parent": "9e9de71cc7d896829f503f6a35171d906eeef5da",
     "symbol": "mypy/fastparse.py::ASTConverter._check_ifstmt_for_overloads",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "current_overload_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2311,6 +2918,9 @@
     "parent": "c07d7888e7b61983924632036a864c4d210848fe",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [
       "mypyc/irbuild/expression.py"
     ],
@@ -2324,6 +2934,9 @@
     "parent": "7d69ce2ccf6bf751d050c3b65354019878d90739",
     "symbol": "mypyc/analysis/dataflow.py::analyze_must_defined_regs",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "strict_errors"
+    ],
     "source_files": [
       "mypyc/transform/refcount.py"
     ],
@@ -2337,6 +2950,9 @@
     "parent": "ed09f8d831aba43af7b7078ceb1d0706e1c124f6",
     "symbol": "mypy/fastparse.py::ASTConverter.make_argument",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "pos_only"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -2348,6 +2964,9 @@
     "parent": "f7a53d8521dcc32d3ae0a92f57e9508bb0a59049",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.lookup_fully_qualified",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2359,6 +2978,9 @@
     "parent": "cd525d2905f5e9de92fa72d94bf096fa9bf333ab",
     "symbol": "mypy/applytype.py::apply_generic_arguments",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "msg"
+    ],
     "source_files": [
       "mypy/checkexpr.py",
       "mypy/subtypes.py"
@@ -2373,6 +2995,10 @@
     "parent": "9dc611f57639f899b5f71d286c3efe6a385dadf9",
     "symbol": "mypyc/irbuild/util.py::get_mypyc_attrs",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "path",
+      "errors"
+    ],
     "source_files": [
       "mypyc/irbuild/prepare.py"
     ],
@@ -2386,6 +3012,10 @@
     "parent": "c588852451ec63f9a26fefe5eb82976aa03d611c",
     "symbol": "mypy/subtypes.py::check_type_parameter",
     "change_kind": "other",
+    "changed_parameters": [
+      "lefta",
+      "righta"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2397,6 +3027,9 @@
     "parent": "f9fe33147a9137b2579b6695dbd81980b1cca7f5",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2408,6 +3041,9 @@
     "parent": "9f455bd9f8f32e166ba748055aafba5f30a21714",
     "symbol": "mypy/typeops.py::get_self_type",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "default_self"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2419,6 +3055,9 @@
     "parent": "8e57622c45b153c84f773bccae1db5f337f5a68c",
     "symbol": "mypyc/irbuild/for_helpers.py::get_expr_length",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "builder"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2430,6 +3069,9 @@
     "parent": "fa3566a87d3466e8465d5bafea5b0f0bde3b4eaf",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.record_imported_symbol",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "node"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2441,6 +3083,9 @@
     "parent": "3adb2e952cf9e16d4d493440a1c7be3de4d214ef",
     "symbol": "mypyc/ir/ops.py::LoadInt.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "rtype"
+    ],
     "source_files": [],
     "test_files": [
       "mypyc/test/test_emitfunc.py"
@@ -2454,6 +3099,9 @@
     "parent": "6a88c2135cf35875c4bcdc61c0bddd613d72281c",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.unary_op",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "expr_op"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2465,6 +3113,9 @@
     "parent": "7e152faa0d95fdc900975e92362ca2d96dabe058",
     "symbol": "mypyc/genops.py::IRBuilder.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "visitor"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 10
@@ -2476,6 +3127,9 @@
     "parent": "844960680c1d5e24d05f1fa9d1357c4383cba2fe",
     "symbol": "misc/sync-typeshed.py::update_typeshed",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "commit"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2487,6 +3141,9 @@
     "parent": "24b831ab43db3671d75dd2fba4868735cadc8b9a",
     "symbol": "misc/perf_compare.py::build_mypy",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "cflags"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2498,6 +3155,9 @@
     "parent": "d1dffe275b9ef0babb2df6ddf0a329b4304cb114",
     "symbol": "mypy/cache.py::read_literal",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "marker"
+    ],
     "source_files": [
       "mypy/types.py"
     ],
@@ -2511,6 +3171,10 @@
     "parent": "63f2fed5d0e10d4d875442e9bba2283c81dfdf4b",
     "symbol": "mypyc/primitives/int_ops.py::int_unary_op",
     "change_kind": "other",
+    "changed_parameters": [
+      "op",
+      "c_func_name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2522,6 +3186,9 @@
     "parent": "838a1d4be1f3cad230d028b0e9cb8e1fb7a4fa5b",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -2533,6 +3200,9 @@
     "parent": "b7670881c375cae5e5db8164dab1ba6633173745",
     "symbol": "mypyc/primitives/registry.py::name_emit",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "target_type"
+    ],
     "source_files": [
       "mypyc/primitives/misc_ops.py"
     ],
@@ -2546,6 +3216,9 @@
     "parent": "a8b723d57a72aa42039548e689605d0598d0a232",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2557,6 +3230,9 @@
     "parent": "0a6a48c4278f99417fe81f7d3f0194edeaec7e46",
     "symbol": "mypyc/irbuild/for_helpers.py::for_loop_helper_with_index",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "expr_reg"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2568,6 +3244,9 @@
     "parent": "14f60b500e824c607771636478dad3fae276a1bd",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.add_unknown_symbol",
     "change_kind": "removed",
+    "changed_parameters": [
+      "is_import"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2579,6 +3258,9 @@
     "parent": "3ef8040a4c9b9ad05368f593749125b4c7f8067d",
     "symbol": "mypy/stubgenc.py::infer_method_sig",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "self_var"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2590,6 +3272,9 @@
     "parent": "1200d1d956e589a0a33c86ef8a7cb3f5a9b64f1f",
     "symbol": "mypy/stubdoc.py::ArgSig.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "default_value"
+    ],
     "source_files": [
       "mypy/stubgen.py"
     ],
@@ -2603,6 +3288,9 @@
     "parent": "1711de86db110225508ebe3fae94ba02d07fa217",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [
       "mypyc/irbuild/format_str_tokenizer.py"
     ],
@@ -2616,6 +3304,9 @@
     "parent": "b17d8f51083cf63222703fc3eb4be3f0fc8419dd",
     "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.enter",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "function"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2627,6 +3318,9 @@
     "parent": "d044c2ed8e2a4fd678fe8714146e5d8e5b39239f",
     "symbol": "mypy/build.py::generate_deps_for_cache",
     "change_kind": "removed",
+    "changed_parameters": [
+      "proto_deps"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 10
@@ -2638,6 +3332,9 @@
     "parent": "b89e2fa5f0f37a42851ae8fb449bc4c67cb326bb",
     "symbol": "mypy/types.py::get_proper_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "it"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 11
@@ -2649,6 +3346,9 @@
     "parent": "6bbc8c5e4f48f8ec2988c7ce70ec41b61475b9da",
     "symbol": "mypy/stubtest.py::test_stubs",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_builtins_fixtures"
+    ],
     "source_files": [],
     "test_files": [
       "mypy/test/teststubtest.py"
@@ -2662,6 +3362,9 @@
     "parent": "c90026bd867635a4efe70cdacf0caaf00a986914",
     "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "kw_only"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2673,6 +3376,9 @@
     "parent": "5f480f37ff3704ed581db944bfdf99c655b3dabe",
     "symbol": "mypy/messages.py::best_matches",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "n"
+    ],
     "source_files": [
       "mypy/semanal.py"
     ],
@@ -2686,6 +3392,9 @@
     "parent": "eb5f4a4e0f69e07391f48094754d31b313f145f0",
     "symbol": "mypy/types.py::get_proper_types",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "it"
+    ],
     "source_files": [
       "mypy/checker.py"
     ],
@@ -2699,6 +3408,10 @@
     "parent": "a087a5894935cfdbc2eba27a6d04ebca38fd6659",
     "symbol": "mypy/tvar_scope.py::TypeVarLikeScope.bind_new",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "fail_func",
+      "context"
+    ],
     "source_files": [
       "mypy/semanal.py",
       "mypy/typeanal.py"
@@ -2713,6 +3426,7 @@
     "parent": "61b36646b8f58fb4eda5ff1edc6ff38a6d230b59",
     "symbol": "mypy/constraints.py::any_constraints",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2724,6 +3438,9 @@
     "parent": "4a9e6e60884c0bab89eb2ec6e947373c871f8aee",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.expr_to_unanalyzed_type",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_unpack"
+    ],
     "source_files": [
       "mypy/exprtotype.py"
     ],
@@ -2737,6 +3454,9 @@
     "parent": "090a414ba022f600bd65e7611fa3691903fd5a74",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2748,6 +3468,9 @@
     "parent": "6a97dc63b4291633ecda87c74f5e8d98d987b8b7",
     "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.unary_not",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "likely_bool"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -2759,6 +3482,9 @@
     "parent": "222ac7bc7d0a7837bcb2295e8c63a19c87d90bb0",
     "symbol": "mypy/suggestions.py::SuggestionEngine.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "try_text"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 10
@@ -2770,6 +3496,9 @@
     "parent": "e0c375a97105ecf43c9ff9b858e01cd6e938a077",
     "symbol": "mypy/build.py::options_snapshot",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "id"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2781,6 +3510,9 @@
     "parent": "8f281fbc3c863402ef9c15ba348040bfe622654e",
     "symbol": "mypy/semanal.py::SemanticAnalyzer.prepare_typing_namespace",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "aliases"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -2792,6 +3524,9 @@
     "parent": "feeb3f00a63d31cf5c7369885c4dd4a294133f59",
     "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
     "change_kind": "removed",
+    "changed_parameters": [
+      "can_borrow"
+    ],
     "source_files": [
       "mypyc/irbuild/expression.py",
       "mypyc/irbuild/specialize.py"
@@ -2806,6 +3541,9 @@
     "parent": "84a20bdbf993d6eb1bdfa9d4e5d26d7096a241db",
     "symbol": "mypy/nativeparse.py::State.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_stub"
+    ],
     "source_files": [
       "mypy/parse.py"
     ],
@@ -2819,6 +3557,9 @@
     "parent": "4037b6a082556dab352a182c7671939073f25b26",
     "symbol": "mypy/constraints.py::merge_with_any",
     "change_kind": "removed",
+    "changed_parameters": [
+      "any_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -2830,6 +3571,9 @@
     "parent": "310b914b6046830aafb0468f65464d75362991ab",
     "symbol": "mypy/errors.py::ErrorInfo.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "priority"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -2841,6 +3585,9 @@
     "parent": "7e66e51099e1c1c37673bed8154e2d3c74846067",
     "symbol": "mypy/build.py::log_configuration",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "sources"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -2852,6 +3599,9 @@
     "parent": "21d957afc6241c57eaa364c70920e3927ff94fdd",
     "symbol": "mypy/util.py::count_stats",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "errors"
+    ],
     "source_files": [
       "mypy/dmypy_server.py",
       "mypy/main.py"
@@ -2866,6 +3616,9 @@
     "parent": "fbf6fe4f4c0458e8b4a9b5c31d5db7b21e28b40b",
     "symbol": "mypy/config_parser.py::parse_section",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "config_types"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 19
@@ -2877,6 +3630,9 @@
     "parent": "ba2374fd891f43f4ef9f8649165385e4291c21ea",
     "symbol": "mypy/build.py::write_cache",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "suppressed_deps_opts"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -2888,6 +3644,9 @@
     "parent": "04366e731d0112f82a8c24a2ba44890fc0196296",
     "symbol": "mypy/types.py::flatten_nested_unions",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "handle_type_alias_type"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -2899,6 +3658,9 @@
     "parent": "d9dea5f3ad30bb449e4167b3e8476684ded0482e",
     "symbol": "mypy/messages.py::MessageBuilder.has_no_attr",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "module_symbol_table"
+    ],
     "source_files": [
       "mypy/checkmember.py"
     ],

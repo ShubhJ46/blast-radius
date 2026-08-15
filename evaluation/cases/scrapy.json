@@ -6,6 +6,9 @@
     "parent": "3a572e2f3b494327c918c2ac4a7150727c448f30",
     "symbol": "scrapy/selector/unified.py::Selector.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "_root"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -17,6 +20,9 @@
     "parent": "706eb8d4275be993867122e5e41c31321488309e",
     "symbol": "scrapy/http/request/json_request.py::JsonRequest.replace",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "cls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -28,6 +34,9 @@
     "parent": "a27d91f0a6eb9fd9f2c3ee1d65f131feaf901bd3",
     "symbol": "scrapy/utils/deprecate.py::warn_when_subclassed",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "mro_len"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -39,6 +48,9 @@
     "parent": "8f269558f164b0ad0e18545654ff4c2ff89d437b",
     "symbol": "scrapy/mail.py::MailSender.send",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "charset"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_mail.py"
@@ -52,6 +64,9 @@
     "parent": "5f42dbf9f670577e4e83125f8756da59f41858a9",
     "symbol": "scrapy/dupefilter.py::RFPDupeFilter.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "verbose_log"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -63,6 +78,11 @@
     "parent": "67a400092805ec0d643bd7de0481cc45d5ce8471",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "settings",
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -74,6 +94,7 @@
     "parent": "6969041c5f6891a0298d7e68ece762adee1bb222",
     "symbol": "scrapy/downloadermiddlewares/httpcompression.py::HttpCompressionMiddleware.__init__",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [
       "tests/test_downloadermiddleware_httpcompression.py"
@@ -87,6 +108,7 @@
     "parent": "0bf29a7b1b9b6a641c486780b7b0fa455577bf39",
     "symbol": "scrapy/utils/gz.py::gunzip",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [
       "scrapy/downloadermiddlewares/httpcompression.py"
     ],
@@ -100,6 +122,9 @@
     "parent": "c305c46254e773be374218c95862bb497383aa25",
     "symbol": "scrapy/http/response/text.py::TextResponse.xpath",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -111,6 +136,9 @@
     "parent": "d47f142d0ffff0e8f87eee67c4c0e7edbc71613e",
     "symbol": "scrapy/http/request/__init__.py::Request.replace",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "cls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -122,6 +150,9 @@
     "parent": "9411cf4e708ea60c7a6972a6804334f2a799e5c6",
     "symbol": "scrapy/commands/genspider.py::Command._genspider",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "domain"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -133,6 +164,9 @@
     "parent": "9fffcc1b8288eabfdb42f0f89ff7e95df85f65c6",
     "symbol": "scrapy/http/response/__init__.py::Response.replace",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "cls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -144,6 +178,10 @@
     "parent": "973c31f73595c73fac9b825ce7587d93d7055546",
     "symbol": "scrapy/contrib/feedexport.py::FeedExporter._get_exporter",
     "change_kind": "other",
+    "changed_parameters": [
+      "a",
+      "kw"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -155,6 +193,9 @@
     "parent": "5bac43676425d25169830d4410db60a98a11911f",
     "symbol": "scrapy/core/downloader/handlers/__init__.py::DownloadHandlers._load_handler",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "dhcls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -166,6 +207,9 @@
     "parent": "54e4228c3a22164b79db36a29a5e2d64391b592a",
     "symbol": "scrapy/core/http2/stream.py::Stream.close",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "error"
+    ],
     "source_files": [
       "scrapy/core/http2/protocol.py"
     ],
@@ -179,6 +223,9 @@
     "parent": "5daa14770b23da250ccfd4329899a1c3f669b1f3",
     "symbol": "scrapy/utils/misc.py::walk_modules",
     "change_kind": "removed",
+    "changed_parameters": [
+      "load"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -190,6 +237,9 @@
     "parent": "7b1d3c35ea3bfde2ac7fc69a2a26bbcb94aec1bf",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._settings_are_valid",
     "change_kind": "removed",
+    "changed_parameters": [
+      "uri"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -201,6 +251,9 @@
     "parent": "5a96a16914ad6e4e54a7bd313802891f82a8dc08",
     "symbol": "scrapy/http/request/form.py::_get_form",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "formid"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -212,6 +265,9 @@
     "parent": "70fa3ae9a52e0912ab207fa67e036726833a902a",
     "symbol": "scrapy/loader/__init__.py::ItemLoader.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "parent"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -223,6 +279,9 @@
     "parent": "a18621552f4e22a2ce8756a3c963fd5cb5a39e9b",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._start_new_batch",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "previous_batch_slot"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -234,6 +293,9 @@
     "parent": "c92e8ad0a5565a62bafb4f841726fe66dcccac5d",
     "symbol": "scrapy/http/request/form.py::FormRequest.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "formdata"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -245,6 +307,7 @@
     "parent": "534de7395da3a53b5a2c89960db9ec5d8fdab60c",
     "symbol": "scrapy/spiders/crawl.py::Rule.__init__",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [
       "tests/test_spider.py"
@@ -258,6 +321,9 @@
     "parent": "d346b8cb0f7e206f9a878cfadcd62ef981e85310",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.convert_image",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "response_body"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -269,6 +335,10 @@
     "parent": "a087d2593a36dcacfeb9353d9ca1e6737478ddd9",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -280,6 +350,9 @@
     "parent": "daec0457110e188a131271f9fce86ecb1dbd14c6",
     "symbol": "scrapy/spiders/__init__.py::Spider.update_settings",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "cls"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_spider.py"
@@ -293,6 +366,10 @@
     "parent": "a769a1ef784a4383bc2f740d3a74b1e6cc6aeff9",
     "symbol": "scrapy/utils/conf.py::build_component_list",
     "change_kind": "other",
+    "changed_parameters": [
+      "base",
+      "custom"
+    ],
     "source_files": [
       "scrapy/commands/check.py",
       "scrapy/core/downloader/middleware.py",
@@ -312,6 +389,9 @@
     "parent": "74158611c82025b8c03aa95f36ed88e9403890e4",
     "symbol": "scrapy/core/scheduler.py::Scheduler.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "pqclass"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -323,6 +403,7 @@
     "parent": "6039b66f42fe2c6e7708febb70939952cedaedd0",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.convert_image",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [
       "tests/test_pipeline_images.py"
@@ -336,6 +417,9 @@
     "parent": "4a53de165a53433a9a2a8cc4db34e5507c47fbd5",
     "symbol": "scrapy/extensions/feedexport.py::GCSFeedStorage.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "acl"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_feedexport.py"
@@ -349,6 +433,9 @@
     "parent": "e2e15d66510c3040234ef9222ff2a17961c50eff",
     "symbol": "scrapy/core/downloader/handlers/ftp.py::FTPDownloadHandler.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -360,6 +447,9 @@
     "parent": "4bdaa54af4470582845206a9fa21779f80a4b123",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._get_uri_params",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "uri_params"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -371,6 +461,11 @@
     "parent": "a940a80f5886c631425c4790ac92928926b1cc92",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "tls_verbose_logging",
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -382,6 +477,9 @@
     "parent": "9077d0f9b490114f117c668f115240c16afccedf",
     "symbol": "scrapy/spiders/crawl.py::CrawlSpider._callback",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "cb_kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -393,6 +491,9 @@
     "parent": "7ec01799d5d6a770266ec72b3a85a85de22d6437",
     "symbol": "scrapy/contrib/downloadermiddleware/defaultheaders.py::DefaultHeadersMiddleware.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -404,6 +505,9 @@
     "parent": "a95de71d8ef7de2d5bee6584f0ab26994b8b9d12",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "tls_ciphers"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -415,6 +519,9 @@
     "parent": "c04b9ba19de85154c7bfec536f584f31456e44b3",
     "symbol": "scrapy/utils/engine.py::format_engine_status",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "engine"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -426,6 +533,9 @@
     "parent": "434fd1154ad26e04ea2e438ab5d3b8dd70e73885",
     "symbol": "scrapy/downloadermiddlewares/robotstxt.py::RobotsTxtMiddleware._parse_robots",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "request"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -437,6 +547,9 @@
     "parent": "e285b1d6c2aaa1fdfe788f1894b0196bc64d1be1",
     "symbol": "scrapy/downloadermiddlewares/retry.py::RetryMiddleware.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -448,6 +561,9 @@
     "parent": "757f53a32461ef0c3d2fe4caf64197f67271b5f3",
     "symbol": "scrapy/pqueues.py::DownloaderAwarePriorityQueue.on_response_download",
     "change_kind": "removed",
+    "changed_parameters": [
+      "response"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -459,6 +575,9 @@
     "parent": "afac3fd2c28ac5b16e7e3c95fca5acd1334f8c58",
     "symbol": "scrapy/core/downloader/handlers/ftp.py::FTPDownloadHandler.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "setting"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloader_handlers.py"
@@ -472,6 +591,9 @@
     "parent": "42dc34f92412e5f8ecd1e56995f182532e76ef1e",
     "symbol": "scrapy/dupefilter.py::RFPDupeFilter.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "verbose_log"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -483,6 +605,9 @@
     "parent": "b67a81b81dd7c2a1b2017482551b3d818026f04f",
     "symbol": "scrapy/addons.py::AddonManager._add",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -494,6 +619,9 @@
     "parent": "8985a04bd1328cd6156a7c33a5db74ad8c81802f",
     "symbol": "scrapy/extensions/debug.py::StackTraceDump.__init__",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -505,6 +633,9 @@
     "parent": "e70975f0bb4e8378bf0e00ae7a7014247cd59441",
     "symbol": "scrapy/utils/reactor.py::install_reactor",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "event_loop_path"
+    ],
     "source_files": [
       "scrapy/crawler.py"
     ],
@@ -518,6 +649,11 @@
     "parent": "a96a07bc762287a1f2056d1e142aff9f33e206fe",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "tls_verbose_logging",
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -529,6 +665,9 @@
     "parent": "6483dfdbe17cd66c409435b95a05850a3c94b5ee",
     "symbol": "scrapy/crawler.py::CrawlerProcess.start",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "install_signal_handlers"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -540,6 +679,9 @@
     "parent": "5bcabfe9c93b649c35fc4b9d1b0441db146bd406",
     "symbol": "scrapy/utils/iterators.py::csviter",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "quotechar"
+    ],
     "source_files": [
       "scrapy/contrib/spiders/feed.py"
     ],
@@ -555,6 +697,7 @@
     "parent": "7a92dae4c8638e275a6e85d667b21e771ebb6e91",
     "symbol": "scrapy/log.py::msg",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -566,6 +709,10 @@
     "parent": "815d6160cfac5c0b764d01fc9d4ebc4ab7793aac",
     "symbol": "scrapy/extensions/feedexport.py::S3FeedStorage.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "access_key",
+      "secret_key"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_feedexport.py"
@@ -579,6 +726,9 @@
     "parent": "c062ed017a89e40c41140ff2782043776b26165b",
     "symbol": "scrapy/extensions/feedexport.py::_FeedSlot.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "filter"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -590,6 +740,9 @@
     "parent": "280eab241680c93a763a3ef3a9ccd0c257259ca0",
     "symbol": "scrapy/utils/console.py::start_python_console",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "noipython"
+    ],
     "source_files": [
       "scrapy/shell.py"
     ],
@@ -603,6 +756,9 @@
     "parent": "d513b5a542f5581a60a10200e07b58ec294caea5",
     "symbol": "scrapy/crawler.py::CrawlerProcess.start",
     "change_kind": "removed",
+    "changed_parameters": [
+      "start_reactor"
+    ],
     "source_files": [
       "scrapy/commands/shell.py"
     ],
@@ -616,6 +772,9 @@
     "parent": "36e4fc37857175acd8c2a54f5c45ede4ea2d51b9",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingTCP4ClientEndpoint.connect",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "openTunnel"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -627,6 +786,9 @@
     "parent": "7c797968a31ecacc24e17b81e57aad44de803389",
     "symbol": "scrapy/core/http2/agent.py::H2ConnectionPool.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [
       "scrapy/core/downloader/handlers/http2.py"
     ],
@@ -640,6 +802,9 @@
     "parent": "c49ae2115afd05afd7d0175f392e262e01b2779e",
     "symbol": "scrapy/core/downloader/__init__.py::Downloader._get_slot",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "spider"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloaderslotssettings.py"
@@ -653,6 +818,9 @@
     "parent": "97061193368560220b0c9502eb4ad1805c5a5de5",
     "symbol": "scrapy/http/request/form.py::FormRequest.from_response",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "formid"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -664,6 +832,9 @@
     "parent": "7e8453cf1ec992e5df5cebfeda08552c58e7c9bc",
     "symbol": "scrapy/pipelines/media.py::MediaPipeline.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -675,6 +846,9 @@
     "parent": "8e25f8c157e53c9f5df51e950fed18becfe7797d",
     "symbol": "scrapy/downloadermiddlewares/httpcompression.py::HttpCompressionMiddleware.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "stats"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -686,6 +860,9 @@
     "parent": "2086ff4065a43fa40d909f81e62623e265df5759",
     "symbol": "scrapy/utils/sitemap.py::sitemap_urls_from_robots",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "base_url"
+    ],
     "source_files": [
       "scrapy/spiders/sitemap.py"
     ],
@@ -701,6 +878,9 @@
     "parent": "46ef9cf771789f1db513bbf2f65243d3320ce695",
     "symbol": "scrapy/crawler.py::Crawler.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "init_reactor"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -712,6 +892,9 @@
     "parent": "6e49c379a8ecfe92c99a37b6bb6d7e440df56bd9",
     "symbol": "scrapy/utils/response.py::get_meta_refresh",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "ignore_tags"
+    ],
     "source_files": [
       "scrapy/downloadermiddlewares/redirect.py"
     ],
@@ -725,6 +908,9 @@
     "parent": "8252a6f8d8930ce23bdf8a6f51038b4ce49d1968",
     "symbol": "scrapy/core/http2/agent.py::H2ConnectionPool._remove_connection",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "reason"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -736,6 +922,9 @@
     "parent": "70f2010db17b3796c3edce9c6ca3e00c092d6064",
     "symbol": "scrapy/crawler.py::CrawlerProcess.start",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "start_reactor"
+    ],
     "source_files": [
       "scrapy/commands/shell.py"
     ],
@@ -749,6 +938,9 @@
     "parent": "645e8d16a4c966b50bd39667aaef28dc1eeb43b8",
     "symbol": "scrapy/http/request/__init__.py::Request.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [
       "tests/spiders.py"
@@ -762,6 +954,9 @@
     "parent": "065b3153fe2e146fb1455eaa06e4f4de42a6c521",
     "symbol": "scrapy/core/http2/stream.py::Stream.close",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "failure"
+    ],
     "source_files": [
       "scrapy/core/http2/protocol.py"
     ],
@@ -775,6 +970,9 @@
     "parent": "2dfc5d128bba42e2fe2bb24c0326fe47b0d3cd97",
     "symbol": "scrapy/spidermiddlewares/depth.py::DepthMiddleware.__init__",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "stats"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -786,6 +984,9 @@
     "parent": "543d02bc64a76d7e508b05bff31cb3a6515a2461",
     "symbol": "scrapy/selector/unified.py::SelectorList.extract_first",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "default"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -797,6 +998,9 @@
     "parent": "66cbceeb0a9104fc0fa238898e38d0d9ce9cbcf6",
     "symbol": "scrapy/utils/request.py::request_fingerprint",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "keep_fragments"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_utils_request.py"
@@ -810,6 +1014,9 @@
     "parent": "ab037ab7c99603325b3f40fe9d5da208ec018dae",
     "symbol": "scrapy/spidermiddlewares/urllength.py::UrlLengthMiddleware.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "stats"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_spidermiddleware_urllength.py"
@@ -823,6 +1030,10 @@
     "parent": "8a1c67fdaad763ffe74af07cd886956f40a3825f",
     "symbol": "scrapy/commands/check.py::Command.get_requests",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "conman",
+      "result"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -834,6 +1045,7 @@
     "parent": "31f35c9c002178de20a3e124be4aab98c0a0f892",
     "symbol": "scrapy/exporters.py::BaseItemExporter.__init__",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -845,6 +1057,7 @@
     "parent": "05c2587c6a32b84a94463f2b1187e49f94957aa2",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._get_uri_params",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -856,6 +1069,9 @@
     "parent": "0ef570f6f0a152d5dc525868b1eb6fef3084823d",
     "symbol": "scrapy/pipelines/media.py::MediaPipeline._key_for_pipe",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -867,6 +1083,9 @@
     "parent": "802ed30e8e838ab70f9b5f8a7f747d53775d358c",
     "symbol": "scrapy/exporters.py::XmlItemExporter._export_xml_field",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "depth"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -878,6 +1097,9 @@
     "parent": "8b8df31961edb1d4c06dfa15592e649120f561f9",
     "symbol": "scrapy/http/response/__init__.py::Response.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "ip_address"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -889,6 +1111,9 @@
     "parent": "c7fc17866feb6c858673eefc690f5b10048a8b9c",
     "symbol": "scrapy/pipelines/files.py::FilesPipeline.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -900,6 +1125,9 @@
     "parent": "c31fb8733599b3dea3f6a72265e49b39c3750ba1",
     "symbol": "scrapy/contrib_exp/iterators.py::xmliter_lxml",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "prefix"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -911,6 +1139,9 @@
     "parent": "f6205778f31dae3ac0f60528a7aa4ef3ef6a181a",
     "symbol": "scrapy/spidermiddlewares/referer.py::RefererMiddleware.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "policy_class"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -922,6 +1153,11 @@
     "parent": "33153855ea04d95545970970c3be08226b679f10",
     "symbol": "scrapy/extensions/logstats_extended.py::LogStatsExtended.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "extended",
+      "ext_include",
+      "ext_exclude"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -933,6 +1169,9 @@
     "parent": "ae4a8e39e10818e0c13b9e9c32173cee4a0fa00d",
     "symbol": "scrapy/core/downloader/tls.py::_ScrapyClientTLSOptions26._verifyCB",
     "change_kind": "removed",
+    "changed_parameters": [
+      "verbose_logging"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -944,6 +1183,9 @@
     "parent": "c594017e518af31edc24619bfc590907ba6280c7",
     "symbol": "scrapy/http/request/form.py::_get_inputs",
     "change_kind": "removed",
+    "changed_parameters": [
+      "response"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -955,6 +1197,9 @@
     "parent": "078622cfb0ee364acba5d91a20244f9c1ee87d30",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.thumb_path",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "item"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -966,6 +1211,11 @@
     "parent": "10d03ee4192c43a4c71bbf5a7585cbbe0978bb1b",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
     "change_kind": "other",
+    "changed_parameters": [
+      "scheme",
+      "host",
+      "port"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -977,6 +1227,9 @@
     "parent": "d40273561dad76a409f847b5f8ce1daafdb1dc7c",
     "symbol": "scrapy/utils/test.py::get_crawler",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "spidercls"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloader_handlers.py",
@@ -1004,6 +1257,7 @@
     "parent": "5c586d78f0e1c5b66358ed644bb6e528ad4b062b",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.thumb_path",
     "change_kind": "reordered",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1015,6 +1269,10 @@
     "parent": "d7da298e0637d105dcec379f6cbb3196e752ae72",
     "symbol": "scrapy/http/cookies.py::CookieJar.clear_session_cookies",
     "change_kind": "removed",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1026,6 +1284,9 @@
     "parent": "e5b23f4b00962df76d8302ebf869ef4a4319e142",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._get_uri_of_partial",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "slot"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1037,6 +1298,9 @@
     "parent": "55babf9acd6cd357f4211a86af01a1f2abe2f0cb",
     "symbol": "scrapy/resolver.py::CachingHostnameResolver.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "timeout"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1048,6 +1312,9 @@
     "parent": "38e5bfb61c3448c4d839b671e29b09b92e016477",
     "symbol": "scrapy/core/downloader/__init__.py::Slot.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1059,6 +1326,9 @@
     "parent": "a12e8251e065182ab09b9b5a65a86c44a606c4a9",
     "symbol": "scrapy/downloadermiddlewares/robotstxt.py::RobotsTxtMiddleware._parse_robots",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "spider"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -1070,6 +1340,9 @@
     "parent": "89df18bd2bc6fdc7f2084454a2c69f4db03008ad",
     "symbol": "scrapy/log.py::_adapt_eventdict",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1081,6 +1354,9 @@
     "parent": "c2a4046f14416bb880c8465f0fe21e9d2e549c5b",
     "symbol": "scrapy/contrib/spiders/sitemap.py::iterloc",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "alt"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1092,6 +1368,10 @@
     "parent": "031bfc9c3bed6c4dbfa4b7fcd48a8fc15f3582fb",
     "symbol": "scrapy/core/downloader/handlers/http2.py::ScrapyH2Agent.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "maxsize",
+      "warnsize"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1103,6 +1383,11 @@
     "parent": "e8635cd03cfb5aae26c7b324411f63afee45fd07",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
     "change_kind": "other",
+    "changed_parameters": [
+      "scheme",
+      "host",
+      "port"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1114,6 +1399,9 @@
     "parent": "384efce0a6a43cc5427cb8df4b9c0f6062b73106",
     "symbol": "scrapy/settings/__init__.py::Settings.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "priority"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1125,6 +1413,9 @@
     "parent": "b4380995da15c25df19cbfd96389ff468c09d8dc",
     "symbol": "scrapy/spiders/__init__.py::Spider.update_settings",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "self"
+    ],
     "source_files": [
       "scrapy/crawler.py"
     ],
@@ -1140,6 +1431,9 @@
     "parent": "c20b34269f488dae4de9433d9c7c783bc481bc6f",
     "symbol": "scrapy/http/response/__init__.py::Response.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "protocol"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1151,6 +1445,9 @@
     "parent": "87293965db68e0ef1fa186a5d729ea82482c2f27",
     "symbol": "scrapy/utils/log.py::configure_logging",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "install_root_handler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1162,6 +1459,10 @@
     "parent": "5105f55a980640aa749fdf788fb50f82f385de60",
     "symbol": "scrapy/core/downloader/handlers/__init__.py::DownloadHandlers._close",
     "change_kind": "removed",
+    "changed_parameters": [
+      "_a",
+      "_kw"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 10
@@ -1173,6 +1474,9 @@
     "parent": "7bdeabc0ed00cfaa27287a9ab84b42f893bf0881",
     "symbol": "scrapy/log.py::start_from_crawler",
     "change_kind": "removed",
+    "changed_parameters": [
+      "print_headers"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1184,6 +1488,9 @@
     "parent": "ca83a0b02880aad8c34f48ac81c7005880f5140e",
     "symbol": "scrapy/downloadermiddlewares/robotstxt.py::RobotsTxtMiddleware._parse_robots",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "netloc"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1195,6 +1502,9 @@
     "parent": "67ee0b097fe15aefa787bce64f6fa085d38e69d8",
     "symbol": "scrapy/http/response/__init__.py::Response.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "certificate"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1206,6 +1516,9 @@
     "parent": "f042ad0f39594d59a1a2032e6294ff1890638138",
     "symbol": "scrapy/downloadermiddlewares/httpproxy.py::HttpProxyMiddleware.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "auth_encoding"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloadermiddleware_httpproxy.py"
@@ -1219,6 +1532,10 @@
     "parent": "ba6dbad1e0e8e3392dcc5c8c412a33c44a5c95a5",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1230,6 +1547,9 @@
     "parent": "64e0ea4ee566bc956453b0b6bb9d3673d9c50ecf",
     "symbol": "scrapy/exporters.py::CsvItemExporter.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "errors"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1241,6 +1561,9 @@
     "parent": "180fc98cd86c080a846e19a9a069fc8bea911fa5",
     "symbol": "scrapy/mail.py::MailSender.send",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "mimetype"
+    ],
     "source_files": [],
     "test_files": [
       "scrapy/tests/test_mail.py"
@@ -1254,6 +1577,9 @@
     "parent": "8c5a3a5189022f2f6ed60f5cdd2f711dda7a7eb7",
     "symbol": "scrapy/core/spidermw.py::_isiterable",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "possible_iterator"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
@@ -1265,6 +1591,9 @@
     "parent": "7b1288ba54fc957598f8658154a154dc07b28f54",
     "symbol": "scrapy/utils/console.py::start_python_console",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "banner"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1276,6 +1605,9 @@
     "parent": "b8fabeed8652d22725959345700b9e7d00073de4",
     "symbol": "scrapy/crawler.py::CrawlerProcess.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "install_root_handler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1287,6 +1619,9 @@
     "parent": "fee55657094fa8ecf871258953d461e9b1fa0e26",
     "symbol": "scrapy/utils/spider.py::spidercls_for_request",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "spiderloader"
+    ],
     "source_files": [
       "scrapy/commands/fetch.py",
       "scrapy/commands/parse.py",
@@ -1302,6 +1637,9 @@
     "parent": "013568097db04396d780d1c91d37027115af7fe2",
     "symbol": "scrapy/extensions/feedexport.py::S3FeedStorage.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "acl"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_feedexport.py"
@@ -1315,6 +1653,9 @@
     "parent": "8c4e1db5fee3e360ebbe7a5c2ec2cfab75d3856f",
     "symbol": "scrapy/utils/deprecate.py::create_deprecated_class",
     "change_kind": "other",
+    "changed_parameters": [
+      "warn_message"
+    ],
     "source_files": [],
     "test_files": [
       "scrapy/tests/test_utils_deprecate.py"
@@ -1328,6 +1669,9 @@
     "parent": "e66f64989409ddf9117f854934d52b2772aace74",
     "symbol": "scrapy/utils/conf.py::build_component_list",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "custom"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_utils_conf.py"
@@ -1341,6 +1685,9 @@
     "parent": "2442536d0f5cdd16b836aafbe2da2c668c6dc96f",
     "symbol": "scrapy/core/spidermw.py::SpiderMiddlewareManager._process_spider_exception",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "_failure"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 8
@@ -1352,6 +1699,9 @@
     "parent": "f8ca5d1092b3739e519725ce086dfa64c1f9486c",
     "symbol": "scrapy/crawler.py::CrawlerRunner.crawl",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "spidercls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1363,6 +1713,7 @@
     "parent": "fa4d0cdfe5df7165c220e2c17c2de14262fc713e",
     "symbol": "scrapy/pipelines/media.py::MediaPipeline._key_for_pipe",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [
       "scrapy/pipelines/files.py",
       "scrapy/pipelines/images.py"
@@ -1377,6 +1728,9 @@
     "parent": "508bd7faec44975ac774aeff8bb5f4a3f57a0be5",
     "symbol": "scrapy/core/engine.py::ExecutionEngine.close_async",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "reason"
+    ],
     "source_files": [
       "scrapy/crawler.py"
     ],
@@ -1390,6 +1744,9 @@
     "parent": "766b2c84539d58ee871e1f301df1ad0ae0d44079",
     "symbol": "scrapy/exporters.py::XmlItemExporter._beautify_newline",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "new_item"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
@@ -1401,6 +1758,11 @@
     "parent": "af2963d0eb79b1241e04b9fc7972bc4a31adf67c",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
     "change_kind": "other",
+    "changed_parameters": [
+      "scheme",
+      "host",
+      "port"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1412,6 +1774,9 @@
     "parent": "9cbbfd8b04835c40568b687ef8b13d901db988cb",
     "symbol": "scrapy/shell.py::inspect_response",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "spider"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -1423,6 +1788,9 @@
     "parent": "f1ed5598f4d312337a9dd76e0c1a5856cabea8bc",
     "symbol": "scrapy/addons.py::AddonManager.__init__",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [
       "scrapy/crawler.py"
     ],
@@ -1438,6 +1806,11 @@
     "parent": "f67a808d9e53beb3ad6fed32575b1e554b969849",
     "symbol": "scrapy/selector/unified.py::Selector.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "namespaces",
+      "_root",
+      "_expr"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1449,6 +1822,10 @@
     "parent": "8fbebfa943c3352f5ba49f46531a6ccdd0b52b60",
     "symbol": "scrapy/extensions/feedexport.py::_FeedSlot.__init__",
     "change_kind": "other",
+    "changed_parameters": [
+      "file",
+      "exporter"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1460,6 +1837,9 @@
     "parent": "05ffca27812f5d644294e00794e531c05c0410df",
     "symbol": "scrapy/contrib/linkextractors/lxmlhtml.py::LxmlParserLinkExtractor._extract_links",
     "change_kind": "other",
+    "changed_parameters": [
+      "response_text"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1471,6 +1851,9 @@
     "parent": "980e30a18758f21f416036c2076bf98630c70193",
     "symbol": "scrapy/crawler.py::CrawlerProcess.start",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "stop_after_crawl"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1482,6 +1865,9 @@
     "parent": "d6bf1464b875d40be489568bede8e8319ff770c9",
     "symbol": "scrapy/http/request/__init__.py::Request.replace",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "cls"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 23
@@ -1493,6 +1879,9 @@
     "parent": "6e5ea7924c7e3f5dd958d13db73e04c6348c99ba",
     "symbol": "scrapy/spidermiddlewares/urllength.py::UrlLengthMiddleware.__init__",
     "change_kind": "removed",
+    "changed_parameters": [
+      "stats"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_spidermiddleware_urllength.py"
@@ -1506,6 +1895,10 @@
     "parent": "84853c4fa6eb30bdcba0f70b4426994d731509fe",
     "symbol": "scrapy/downloadermiddlewares/redirect.py::_build_redirect_request",
     "change_kind": "other",
+    "changed_parameters": [
+      "method",
+      "body"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1517,6 +1910,9 @@
     "parent": "617631f2646d349c4bdc288b3d7b41ad483f5ec6",
     "symbol": "scrapy/utils/test.py::get_s3_content_and_delete",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "with_key"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_pipeline_files.py"
@@ -1530,6 +1926,11 @@
     "parent": "7a745b105c628193018a1229afa7a90de2ec5051",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
     "change_kind": "other",
+    "changed_parameters": [
+      "scheme",
+      "host",
+      "port"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1541,6 +1942,9 @@
     "parent": "39c6a80f9db6ec04cac59f116ee9620c3d540be0",
     "symbol": "scrapy/spidermanager.py::SpiderManager.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "spider_modules"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_spidermanager/__init__.py"
@@ -1554,6 +1958,9 @@
     "parent": "d2bdbad8c8cc5e5b4b9d3a79c94e2411a44e94be",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.convert_image",
     "change_kind": "reordered",
+    "changed_parameters": [
+      "response_body"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_pipeline_images.py"
@@ -1567,6 +1974,9 @@
     "parent": "a2f238d927329ac308edcf09fde4e85dd9f61e44",
     "symbol": "scrapy/extensions/logstats_extended.py::LogStatsExtended.log",
     "change_kind": "removed",
+    "changed_parameters": [
+      "spider"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1578,6 +1988,10 @@
     "parent": "870803b7fb1ed56c296eb6b51d0212f0460dfdda",
     "symbol": "scrapy/linkextractors/lxmlhtml.py::LxmlLinkExtractor.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "deny_tags",
+      "deny_attrs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
@@ -1589,6 +2003,9 @@
     "parent": "050a62a9553554f2582e11015412c9a4555e77c3",
     "symbol": "scrapy/extensions/feedexport.py::FTPFeedStorage.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_active_mode"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1600,6 +2017,9 @@
     "parent": "3fda2fe103dafa8d4d48b21c63b2321ccec9c378",
     "symbol": "scrapy/downloadermiddlewares/httpcompression.py::HttpCompressionMiddleware._decode",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "max_size"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1611,6 +2031,11 @@
     "parent": "d92f1b18580940c27f303f1dfcf47bb66e508ce4",
     "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
     "change_kind": "other",
+    "changed_parameters": [
+      "scheme",
+      "host",
+      "port"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1622,6 +2047,9 @@
     "parent": "7d0b89042f7067f45c3acae03fd2df905b56df43",
     "symbol": "scrapy/downloadermiddlewares/retry.py::RetryMiddleware.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "settings"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
@@ -1633,6 +2061,10 @@
     "parent": "3d77f74e4089c1a9700fb9e2bc62fc196176250c",
     "symbol": "scrapy/core/downloader/handlers/s3.py::S3DownloadHandler.from_crawler",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloader_handlers.py"
@@ -1646,6 +2078,9 @@
     "parent": "d08f559600f0bb45b916be158a06e033753d45f5",
     "symbol": "scrapy/extensions/feedexport.py::FeedExporter._handle_store_success",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "f"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 21
@@ -1657,6 +2092,9 @@
     "parent": "d346b8cb0f7e206f9a878cfadcd62ef981e85310",
     "symbol": "scrapy/extensions/httpcache.py::DummyPolicy.is_cached_response_fresh",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "response"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1668,6 +2106,11 @@
     "parent": "da1256a9c8452703213c96ebc32fae1524034442",
     "symbol": "scrapy/http/cookies.py::CookieJar.clear",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "domain",
+      "path",
+      "name"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1679,6 +2122,11 @@
     "parent": "388c5c4b78509adaf801fb8f66d2d1fdbe1ce9d4",
     "symbol": "scrapy/addons/builtins.py::make_builtin_addon",
     "change_kind": "removed",
+    "changed_parameters": [
+      "comp_type",
+      "comp",
+      "order"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_addons/test_builtins.py"
@@ -1692,6 +2140,9 @@
     "parent": "72bcf8cb466fb5a55c903037644f45f0a69cdf50",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "verify_certificates"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
@@ -1703,6 +2154,9 @@
     "parent": "c4d2748ff572adad8150f1bc09b2d52e61d9dfc8",
     "symbol": "scrapy/core/downloader/handlers/s3.py::S3DownloadHandler.__init__",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1714,6 +2168,10 @@
     "parent": "2d91c7136d613cf84d9a2cb79e147b39ebcb3d8e",
     "symbol": "scrapy/utils/response.py::body_or_str",
     "change_kind": "other",
+    "changed_parameters": [
+      "obj",
+      "unicode"
+    ],
     "source_files": [
       "scrapy/utils/iterators.py"
     ],
@@ -1727,6 +2185,9 @@
     "parent": "8a1c99676e958b724cf3a35cc681ddee6941319d",
     "symbol": "scrapy/exporters.py::BaseItemExporter.__init__",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "dont_fail"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1738,6 +2199,9 @@
     "parent": "c079d5002bae90dbd85bee1f61fdc359b9f39d29",
     "symbol": "scrapy/utils/defer.py::deferred_from_coro",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "asyncio_enabled"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 11
@@ -1749,6 +2213,9 @@
     "parent": "0f155b059a43b2cc48149a26c6584910038a23f1",
     "symbol": "scrapy/resolver.py::CachingHostnameResolver.__init__",
     "change_kind": "renamed",
+    "changed_parameters": [
+      "resolver"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
@@ -1760,6 +2227,9 @@
     "parent": "6f3e3411b10a448414554ac5ace882ca8e9de379",
     "symbol": "scrapy/downloadermiddlewares/cookies.py::CookiesMiddleware._format_cookie",
     "change_kind": "added_required",
+    "changed_parameters": [
+      "request"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
@@ -1771,6 +2241,9 @@
     "parent": "a8a8f20d9c49ae7f611cbdc90676b64f6349dba2",
     "symbol": "scrapy/core/downloader/handlers/_httpx.py::HttpxDownloadHandler._log_tls_info",
     "change_kind": "other",
+    "changed_parameters": [
+      "network_stream"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 13
@@ -1782,6 +2255,10 @@
     "parent": "24a45cc6e6d15eab7aafebd4cde5364201d2b133",
     "symbol": "scrapy/commands/startproject.py::Command._copytree",
     "change_kind": "removed",
+    "changed_parameters": [
+      "symlinks",
+      "ignore"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1793,6 +2270,9 @@
     "parent": "1a545157c66a3daf69da1a1510aa1d41942f242b",
     "symbol": "scrapy/contrib/spidermiddleware/offsite.py::OffsiteMiddleware.__init__",
     "change_kind": "made_required",
+    "changed_parameters": [
+      "stats"
+    ],
     "source_files": [],
     "test_files": [
       "scrapy/tests/test_spidermiddleware_offsite.py"
@@ -1806,6 +2286,7 @@
     "parent": "6050604f626a5ee38239ef1eff44d0c867469a3b",
     "symbol": "scrapy/downloadermiddlewares/httpcompression.py::HttpCompressionMiddleware.__init__",
     "change_kind": "other",
+    "changed_parameters": [],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1817,6 +2298,9 @@
     "parent": "bd2fe996aabe5467a89d9eff6831e6b0bf731be4",
     "symbol": "scrapy/utils/conf.py::build_component_list",
     "change_kind": "added_optional",
+    "changed_parameters": [
+      "convert"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_utils_conf.py"

@@ -426,24 +426,26 @@ class TestAffectedFiles:
         def __init__(self):
             self.calls = []
 
-        def files_affected_by(self, parameter, *, supplied=True):
-            self.calls.append((parameter, supplied))
+        def files_affected_by(self, parameter, *, supplied=True, by_keyword=False):
+            self.calls.append((parameter, supplied, by_keyword))
             return {f"{parameter}-{'supplied' if supplied else 'omitted'}.py"}
 
     def test_a_removal_narrows_to_the_callers_passing_it(self):
         impact = self._Impact()
         assert affected_files(impact, "removed", ("can_borrow",)) == {"can_borrow-supplied.py"}
-        assert impact.calls == [("can_borrow", True)]
+        assert impact.calls == [("can_borrow", True, False)]
 
-    def test_a_rename_narrows_the_same_way(self):
+    def test_a_rename_narrows_like_a_removal(self):
+        """A pure rename would only break keyword callers, but `classify` cannot
+        identify pure renames -- see the note in `affected_files`."""
         impact = self._Impact()
         affected_files(impact, "renamed", ("old",))
-        assert impact.calls == [("old", True)]
+        assert impact.calls == [("old", True, False)]
 
     def test_making_a_parameter_required_narrows_to_the_callers_omitting_it(self):
         impact = self._Impact()
         assert affected_files(impact, "made_required", ("flag",)) == {"flag-omitted.py"}
-        assert impact.calls == [("flag", False)]
+        assert impact.calls == [("flag", False, False)]
 
     def test_a_new_required_parameter_affects_every_caller(self):
         """There is no call site that already passes it, so none can be spared."""

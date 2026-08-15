@@ -20,17 +20,16 @@ baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **47%** | 77% | 59% |
+| **this tool** | **61%** | 75% | **67%** |
 | `grep` | 13% | 100% | 23% |
 
 `grep` finds everything and is wrong seven times out of eight.
 
-That precision number is dominated by six cases out of fifty-nine, and the
-reason is worth reading before the number is: on symbols called from a dozen
-files, the tool correctly finds every caller while ground truth records only the
-one or two that a parameter change actually forced to move. Excluding those six,
-the same run is **89% precision at 76% recall**. Both figures are in
-[results](#results), along with why neither is cherry-picked.
+That precision number is still dominated by six cases out of fifty-nine, where
+a symbol called from a dozen files had a parameter change that forced only one
+or two of those callers to move. Excluding those six, the same run is **95%
+precision at 75% recall**. Both figures are in [results](#results), along with
+why neither is cherry-picked.
 
 | Component | State |
 | --- | --- |
@@ -105,6 +104,7 @@ fixtures do not contain the code that breaks a parser.
 
 ```
 blast impact hybrid_search --root path/to/repo
+blast impact Config.read   --root path/to/repo --argument confdir
 blast refs  Widget.render  --root path/to/repo --json
 blast stats --root path/to/repo
 ```
@@ -229,9 +229,9 @@ honest-looking limitation.
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
 | sphinx | 8 | 100% | 91% | 95% |
-| scrapy | 8 | 88% | 70% | 78% |
-| mypy | 43 | 40% | 76% | 53% |
-| **all** | **59** | **47%** | **77%** | **59%** |
+| scrapy | 8 | 86% | 60% | 71% |
+| mypy | 43 | 54% | 74% | 62% |
+| **all** | **59** | **61%** | **75%** | **67%** |
 | `grep`, all | 59 | 13% | 100% | 23% |
 
 **Six cases account for the entire precision figure**, and they are all the same
@@ -240,27 +240,29 @@ only one or two of those callers to move.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 59 cases | 47% | 77% | 59% |
-| the 6 heavily-called symbols | 9% | 86% | 16% |
-| the other 53 | **89%** | **76%** | **82%** |
+| all 59 cases | 61% | 75% | 67% |
+| the 6 heavily-called symbols | 12% | 71% | 21% |
+| the other 53 | **95%** | **75%** | **84%** |
 
 `IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
-parameter. Eleven files call it, and the tool finds all eleven — but only the
-one or two that actually passed `can_borrow=...` had to change; the rest call it
-as `builder.accept(expr)` and were untouched. Every "false positive" there is a
-genuine caller. `get_proper_types` is the same story with a renamed parameter.
+parameter. Eleven files call it, and only the one or two that actually passed
+`can_borrow=...` had to change; the rest call it as `builder.accept(expr)` and
+were untouched. `--argument` cuts most of that — those six cases went from 61
+false positives to 35 — but the rest are callers that pass the parameter and
+still were not edited, because the commit only converted some of them.
+`get_proper_types` is the same story with a renamed parameter.
 
 The six are left in the corpus. Dropping the cases that make your own numbers
-look bad is how an evaluation stops meaning anything, and the 89% figure is
-quoted beside the 47% rather than instead of it.
+look bad is how an evaluation stops meaning anything, so the 95% figure is
+quoted beside the 61% rather than instead of it.
 
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
 "what must change if I make *this* edit".** For a removed or renamed parameter
 those differ, and an agent handed eleven files to read when two need editing is
-paying a real cost. Closing that gap means checking whether a call site actually
-passes the affected argument — which is the next thing the evaluation points at,
-and is the first time it has pointed at a *feature* rather than a bug.
+paying a real cost. That gap is what `--argument` closes — see
+[below](#which-callers-a-change-actually-breaks) — and it is the first thing the
+evaluation pointed at that was a *feature* rather than a bug.
 
 Initialisers are the best-scoring category — 11 cases at **80% precision and
 100% recall**, no misses.
@@ -414,6 +416,74 @@ Still unimplemented: `self.x: Widget` declared on a class and used across its
 methods, worth a further 1.7%. It needs class-level tracking across method
 bodies rather than the per-scope table this uses.
 
+### Which callers a change actually breaks
+
+Every caller is a real dependency. Not every one is *work*. Removing
+`can_borrow` breaks `f(x, can_borrow=True)` and leaves `f(x)` alone, and until
+now the tool reported both.
+
+```
+blast impact Builder.accept --root .
+  blast radius  2 files
+    keyword.py
+    plain.py
+
+blast impact Builder.accept --root . --argument can_borrow
+  blast radius of changing 'can_borrow'  1 file
+    keyword.py
+```
+
+References now carry the shape of the call that produced them — how many
+positional arguments, which keywords — which answers "was this parameter
+supplied?" without storing the arguments. Two details decide whether it is
+right rather than merely plausible:
+
+**The receiver is folded into the positional count**, so it lines up with the
+parameter list as written: `b.accept(1, True)` fills `accept(self, expr,
+can_borrow)` three deep. An off-by-one here reports the *wrong* callers, which
+is worse than reporting too many.
+
+**Anything that cannot be lined up counts as affected** — `f(*args)`, and
+members reached through their class, where a `classmethod` binds `cls` and a
+plain method does not. Over-reporting a small category beats guessing at it.
+
+Precision rose from 47% to 61% and F1 from 59% to 67%, the best so far, at a
+cost of two points of recall. Both files behind that cost were read
+individually, and neither was over-narrowing: `format_str_tokenizer.py` calls
+`builder.accept(x)` and was edited in that commit by an unrelated `call_c` →
+`primitive_op` refactor, and `scrapy/shell.py` grew a `shells=` argument because
+the commit added bpython support. Both changed for reasons other than the
+signature edit.
+
+#### A rule that sounded right and was not
+
+A *pure* rename only breaks the call sites that name the parameter: `f(x, 1)`
+does not mention `flag`, so renaming it cannot affect that call. Implementing
+that reasoning cost **23 points of recall** — across sixteen renamed cases it
+produced one hit and twenty-two misses.
+
+The reason is that `classify` labels any one-out-one-in swap at the same arity a
+rename, and in real commits that is usually a parameter being *replaced*:
+`Spider.update_settings` "renamed" `self`, and `H2ConnectionPool.__init__`
+"renamed" `crawler` to `settings` in a commit titled "Use settings instead of
+crawler". Positional callers must change for those. The classifier cannot tell a
+pure rename from a replacement, so the broader rule is the correct one, and the
+failed attempt is written into `affected_files` so it does not get "fixed" back.
+
+Scored by change kind, which shows where the narrowing does and does not apply:
+
+| kind | cases | precision | recall | |
+| --- | ---: | ---: | ---: | --- |
+| `added_required` | 24 | 100% | 73% | every caller, no narrowing possible |
+| `reordered` | 4 | 71% | 100% | no one parameter to blame |
+| `renamed` | 16 | 45% | 83% | narrowed |
+| `removed` | 15 | 46% | 61% | narrowed |
+
+The narrowed kinds score worse than the un-narrowed ones, which looks damning
+until you notice all six outlier cases are `removed` or `renamed`. That is the
+same concentration as everywhere else in this evaluation: a handful of
+heavily-called symbols, not a property of the rule.
+
 ## Two gaps found by running it on real code
 
 Neither shows up in a test suite; both came from pointing the tool at a project
@@ -451,10 +521,9 @@ spot rather than a measured one.
   is declared in an annotation the call now resolves; where it is not, the
   access is counted and never guessed at. This is still the largest source of
   recall misses, and on unannotated code it is nearly all of them.
-- **The question answered is "what calls this", not "what must change if I make
-  this edit."** For a removed or renamed parameter those differ: a caller that
-  passes the argument positionally is a real dependency that need not move.
-  Every predicted file is a genuine dependency, but not every one is work.
+- **"What calls this" and "what must change if I make this edit" are different
+  questions**, and `--argument NAME` is needed to ask the second. Without it
+  every caller is reported, which is correct but not always useful.
 - **Python first.** C++ needs `compile_commands.json` and libclang; text-level
   parsing is not sufficient there, and demonstrating that gap is its own result.
 - **No caching yet.** The index is rebuilt per invocation: 0.34s on this

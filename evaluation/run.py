@@ -227,21 +227,31 @@ def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set
     Every caller is a real dependency, but only some are work, and which ones
     depends on the edit:
 
-    - `removed` and `renamed` break the call sites that pass the parameter.
-      `f(x)` survives the removal of `can_borrow`; `f(x, can_borrow=True)` does
-      not.
-    - `made_required` is the mirror image: a parameter that lost its default
-      breaks the callers *omitting* it.
+    - `removed` and `renamed` break the call sites that pass the parameter at
+      all. `f(x)` survives the removal of `can_borrow`; `f(x, can_borrow=True)`
+      does not.
+    - `made_required` is the mirror image of a removal: a parameter that lost
+      its default breaks the callers *omitting* it.
     - `added_required` obliges every caller to pass something new, and
       `reordered` has no one parameter to blame, so both fall back to the whole
       set rather than inventing a narrower answer.
+
+    `renamed` deliberately does *not* use `by_keyword`, though a pure rename
+    only breaks the call sites naming the parameter. Trying it cost 23 points
+    of recall: across sixteen renamed cases it produced one hit and twenty-two
+    misses, because `classify` calls any one-out-one-in swap at the same arity
+    a rename. In practice that is usually a parameter *replaced* by a different
+    one -- `crawler` becoming `settings` -- and positional callers must change
+    for those. The classifier cannot tell the two apart, so the broader rule is
+    the correct one here.
     """
     if change_kind in ("added_required", "reordered") or not parameters:
         return None
-    supplied = change_kind != "made_required"
     files: set[str] = set()
     for parameter in parameters:
-        files.update(impact.files_affected_by(parameter, supplied=supplied))
+        files.update(
+            impact.files_affected_by(parameter, supplied=change_kind != "made_required")
+        )
     return files
 
 

@@ -220,3 +220,15 @@ class TestAffectedBy:
         impact = impact_of(build_index(make_repo(files)), SymbolId("lib.py", "Builder.accept"))
         assert "valued.py" in impact.files
         assert "valued.py" not in impact.files_affected_by("can_borrow")
+
+    def test_a_rename_spares_positional_callers(self, make_repo):
+        """A positional argument never names the parameter, so a rename cannot break it."""
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.files_affected_by("can_borrow", by_keyword=True) == (
+            "keyword.py",
+            "starred.py",
+        )
+
+    def test_a_removal_still_catches_positional_callers(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert "positional.py" in impact.files_affected_by("can_borrow")
