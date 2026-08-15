@@ -401,3 +401,46 @@ class TestMine:
         repo.commit({"lib.py": "def one(a, b):\n    pass\n"})
         repo.commit({"lib.py": "def one(a, b, c):\n    pass\n"})
         assert len(mine(repo.git, "corpus", max_commits=1)) == 1
+
+
+@needs_git
+class TestGroundTruthIsWhatWasThereToFind:
+    """A caller the commit itself introduced was never in the tree the tool sees."""
+
+    def test_a_caller_added_by_the_same_commit_is_not_ground_truth(self, repo):
+        repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        sha = repo.commit(
+            {
+                "lib.py": "def helper(a, b):\n    pass\n",
+                "newcaller.py": "from lib import helper\n\nhelper(1, 2)\n",
+            }
+        )
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.source_files == ()
+
+    def test_a_caller_that_already_existed_is_kept(self, repo):
+        repo.commit(
+            {
+                "lib.py": "def helper(a):\n    pass\n",
+                "caller.py": "from lib import helper\n\nhelper(1)\n",
+            }
+        )
+        sha = repo.commit(
+            {
+                "lib.py": "def helper(a, b):\n    pass\n",
+                "caller.py": "from lib import helper\n\nhelper(1, 2)\n",
+            }
+        )
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.source_files == ("caller.py",)
+
+    def test_a_test_added_by_the_same_commit_is_not_ground_truth_either(self, repo):
+        repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        sha = repo.commit(
+            {
+                "lib.py": "def helper(a, b):\n    pass\n",
+                "tests/test_new.py": "from lib import helper\n\nhelper(1, 2)\n",
+            }
+        )
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.test_files == ()

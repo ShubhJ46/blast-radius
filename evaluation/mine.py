@@ -26,12 +26,14 @@ of two branches. A test function's caller is the test runner and a nested
 function cannot be imported, so neither has a cross-file blast radius to
 predict.
 
-**Ground truth is Python files whose diff mentions the symbol.** The tool
-predicts `.py` paths, so counting a touched changelog against it would measure
-documentation habits. More importantly, the commit's full file list is not
-usable on its own -- see `Git.paths_mentioning` for the real case that forced
-this narrowing. The unfiltered file count is recorded separately so the size cap
-can be re-tuned without re-mining.
+**Ground truth is Python files that mentioned the symbol both before and after.**
+The tool predicts `.py` paths, so counting a touched changelog against it would
+measure documentation habits. More importantly, the commit's full file list is
+not usable on its own -- see `Git.paths_mentioning` for the real case that
+forced this narrowing -- and neither is the after-state alone, since a caller
+introduced by the same commit never existed in the tree the tool is given. See
+`Git.paths_mentioning_at`. The unfiltered file count is recorded separately so
+the size cap can be re-tuned without re-mining.
 """
 
 import argparse
@@ -150,6 +152,28 @@ class Git:
             elif current and line[:1] in "+-" and not line.startswith(("+++", "---")):
                 if pattern.search(line[1:]):
                     found.add(current)
+        return found
+
+    def paths_mentioning_at(self, sha: str, name: str, paths: list[str]) -> set[str]:
+        """Of `paths`, those that already name `name` at revision `sha`.
+
+        A file that gains its first reference to the symbol in the very commit
+        being mined was not part of the blast radius -- it is a *new* dependent,
+        and no tool analysing the parent tree could have predicted it. Four of
+        the twelve recall misses in the first scored evaluation were this: a
+        caller added in the same commit, or in one case a file that did not
+        exist at the parent at all, counted against the tool as something it
+        failed to find.
+
+        Restricting ground truth to files that already mentioned the symbol
+        keeps it to what was genuinely there to be found, and stays mechanical.
+        """
+        pattern = re.compile(rf"\b{re.escape(name)}\b")
+        found: set[str] = set()
+        for path in paths:
+            content = self.file_at(sha, path)
+            if content is not None and pattern.search(content):
+                found.add(path)
         return found
 
     def paths_touching_definitions(self, sha: str) -> set[str]:
@@ -332,6 +356,11 @@ def mine_commit(
         for _status, path in changed
         if path.endswith(".py") and path != definer and path in mentioning
     ]
+    # ...and of those, only the ones that already depended on the symbol before
+    # the commit. A caller introduced by the same commit is a new dependent, not
+    # a blast-radius casualty.
+    existing = git.paths_mentioning_at(parent, name, touched)
+    touched = [path for path in touched if path in existing]
     return Case(
         id=f"{repo}@{sha[:10]}::{change.qualname}",
         repo=repo,
