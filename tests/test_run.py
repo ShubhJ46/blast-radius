@@ -11,6 +11,7 @@ from evaluation.run import (
     aggregate,
     corpus_health,
     grep_baseline,
+    is_private,
     main,
     predict,
     report,
@@ -91,6 +92,21 @@ class TestAggregate:
         assert aggregate([]) == Totals()
 
 
+class TestIsPrivate:
+    @pytest.mark.parametrize(
+        ("qualname", "expected"),
+        [
+            ("_load_handler", True),
+            ("DownloadHandlers._load_handler", True),
+            ("Response.replace", False),
+            ("_Private.public", False),
+        ],
+    )
+    def test_looks_at_the_final_segment_only(self, qualname, expected):
+        """A public method on a private class is still reachable by importers."""
+        assert is_private(make_case(symbol=SymbolId("m.py", qualname))) is expected
+
+
 class TestCorpusHealth:
     def test_counts_what_each_corpus_can_actually_support(self):
         cases = [
@@ -103,6 +119,13 @@ class TestCorpusHealth:
         assert (health["one"].cases, health["one"].forcing, health["one"].usable) == (3, 2, 1)
         assert health["one"].usable_share == 0.5
         assert health["two"].usable == 1
+
+    def test_counts_private_symbols_because_they_explain_the_gap(self):
+        cases = [
+            make_case(case_id="a", symbol=SymbolId("m.py", "_helper"), source_files=()),
+            make_case(case_id="b", symbol=SymbolId("m.py", "helper")),
+        ]
+        assert corpus_health(cases)[0].private == 1
 
     def test_a_corpus_with_no_forcing_cases_reports_zero_not_an_error(self):
         cases = [make_case(change_kind="added_optional")]
@@ -195,6 +218,12 @@ class TestPredict:
         with pytest.raises(KeyError):
             predict(sample_repo, SymbolId("pkg/base.py", "nonexistent"))
 
+    def test_old_revisions_do_not_flood_the_progress_output(self, make_repo, recwarn):
+        """One SyntaxWarning per file per case buries the run; the miner hit this too."""
+        root = make_repo({"lib.py": 'def helper():\n    return "\\d"\n'})
+        predict(root, SymbolId("lib.py", "helper"))
+        assert [w for w in recwarn if issubclass(w.category, SyntaxWarning)] == []
+
 
 @needs_git
 class TestScoreCase:
@@ -282,6 +311,26 @@ class TestReport:
         out = io.StringIO()
         report(run([make_case(repo="absent")], tmp_path), out)
         assert "n/a" in out.getvalue()
+
+    @needs_git
+    def test_empty_ground_truth_is_over_prediction_not_bad_precision(self, repo):
+        """Scoring "nothing was edited" as precision makes every hit a miss."""
+        repo.commit(
+            {
+                "lib.py": "def helper(a):\n    pass\n",
+                "app.py": "from lib import helper\n\nhelper(1)\n",
+            }
+        )
+        parent = repo.run("rev-parse", "HEAD").strip()
+        sha = repo.commit({"lib.py": "def helper(a, b):\n    pass\n"})
+
+        result = score_case(repo.git, make_case(commit=sha, parent=parent, source_files=()))
+        out = io.StringIO()
+        report([result], out)
+        text = out.getvalue()
+        assert "Over-prediction, over the 1 cases" in text
+        assert "tool          1 files across 1 of them" in text
+        assert "Primary metric, over the 0 cases" in text
 
 
 class TestToJson:

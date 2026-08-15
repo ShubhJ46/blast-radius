@@ -39,6 +39,7 @@ import re
 import shutil
 import sys
 import tempfile
+import warnings
 from collections.abc import Iterable, Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -132,6 +133,20 @@ def aggregate(scores: Iterable[Score]) -> Totals:
     return Totals(hits=hits, spurious=spurious, missed=missed)
 
 
+def is_private(case: Case) -> bool:
+    """Whether the symbol is a module-private helper by convention.
+
+    Not enforced by Python, so this is a hint rather than a fact -- some of
+    these do have importers in other files. It is reported because it explains
+    most of the gap between `forcing` and `usable`: in scrapy, 45 of the 65
+    forcing cases with empty ground truth are private, against 2 of the 9 with
+    ground truth. A private helper's callers live in its own file, and the
+    definer's file is excluded from ground truth by construction, so its blast
+    radius is invisible to a file-level evaluation no matter how good the tool.
+    """
+    return case.symbol.qualname.rsplit(".", 1)[-1].startswith("_")
+
+
 @dataclass(frozen=True)
 class CorpusHealth:
     """Whether a corpus can support a recall number at all.
@@ -147,6 +162,7 @@ class CorpusHealth:
     cases: int
     forcing: int
     usable: int  # forcing cases with at least one source file in ground truth
+    private: int  # forcing cases on a `_name`, which a file-level metric cannot see
 
     @property
     def usable_share(self) -> float:
@@ -163,6 +179,7 @@ def corpus_health(cases: Iterable[Case]) -> list[CorpusHealth]:
             cases=len(group),
             forcing=sum(1 for case in group if case.is_forcing),
             usable=sum(1 for case in group if case.is_forcing and case.source_files),
+            private=sum(1 for case in group if case.is_forcing and is_private(case)),
         )
         for repo, group in sorted(by_repo.items())
     ]
@@ -210,7 +227,14 @@ def predict(root: Path, symbol: SymbolId) -> tuple[frozenset[str], frozenset[str
     Raises KeyError if the symbol is not in the index, which the caller records
     as an error rather than an empty prediction.
     """
-    index = build_index(root)
+    # Historical revisions are full of invalid string escapes. Left alone they
+    # emit a SyntaxWarning per file per case and bury the progress output, which
+    # is the same thing that made the miner unusable interactively. Suppressed
+    # here in the harness rather than in the library: a warning about code the
+    # user is actually working on is worth seeing.
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", SyntaxWarning)
+        index = build_index(root)
     impact = impact_of(index, symbol)
     files = {
         reference.path
@@ -286,32 +310,58 @@ def _percent(value: float | None) -> str:
 
 
 def report(results: list[CaseResult], out) -> None:
-    """Print corpus health first, then the metrics it licenses."""
+    """Print corpus health first, then the metrics it licenses.
+
+    The primary table covers only cases with non-empty ground truth. Pooling the
+    empty ones into it would compute precision against "nothing was edited",
+    where every correct answer is a false positive -- so those are reported
+    below as an over-prediction figure, which is what they actually measure.
+    """
     scored = [result for result in results if result.scored]
     errors = [result for result in results if not result.scored]
 
     print("Corpus health", file=out)
-    print(f"  {'repo':<12} {'cases':>6} {'forcing':>8} {'usable':>7} {'share':>7}", file=out)
+    header = f"  {'repo':<12} {'cases':>6} {'forcing':>8} {'usable':>7} {'share':>7} {'private':>8}"
+    print(header, file=out)
     for health in corpus_health(result.case for result in results):
         print(
             f"  {health.repo:<12} {health.cases:>6} {health.forcing:>8} "
-            f"{health.usable:>7} {health.usable_share:>7.0%}",
+            f"{health.usable:>7} {health.usable_share:>7.0%} {health.private:>8}",
             file=out,
         )
 
     with_truth = [result for result in scored if result.case.source_files]
+    without_truth = [result for result in scored if not result.case.source_files]
     print(f"\nScored {len(scored)} cases, {len(with_truth)} with source ground truth", file=out)
     if errors:
         print(f"  {len(errors)} excluded as errors", file=out)
 
-    print(f"\n  {'':<10} {'precision':>10} {'recall':>8} {'f1':>7}", file=out)
+    print(f"\nPrimary metric, over the {len(with_truth)} cases with ground truth", file=out)
+    print(f"  {'':<10} {'precision':>10} {'recall':>8} {'f1':>7}", file=out)
     for label, pick in (("tool", lambda r: r.tool), ("grep", lambda r: r.baseline)):
-        totals = aggregate(pick(result) for result in scored)
+        totals = aggregate(pick(result) for result in with_truth)
         print(
             f"  {label:<10} {_percent(totals.precision):>10} "
             f"{_percent(totals.recall):>8} {_percent(totals.f1):>7}",
             file=out,
         )
+    print(
+        "  Precision is a lower bound: a real dependency that did not have to be\n"
+        "  edited -- a caller passing a reordered argument positionally -- counts\n"
+        "  against it here, and is not a defect.",
+        file=out,
+    )
+
+    if without_truth:
+        print(
+            f"\nOver-prediction, over the {len(without_truth)} cases where nothing "
+            "outside the definer was edited",
+            file=out,
+        )
+        for label, pick in (("tool", lambda r: r.tool), ("grep", lambda r: r.baseline)):
+            files = sum(len(pick(result).predicted) for result in without_truth)
+            loud = sum(1 for result in without_truth if pick(result).predicted)
+            print(f"  {label:<10} {files:>4} files across {loud} of them", file=out)
 
     tests = sum(len(result.tests_found) for result in scored)
     print(
