@@ -1,0 +1,2923 @@
+[
+  {
+    "id": "mypy@00b3a0aa06::PlaceholderNode.__init__",
+    "repo": "mypy",
+    "commit": "00b3a0aa06a254e11c655a71286a434ecbbe91c9",
+    "parent": "6a4f99ab1cd7bcee17327d0748d29751fd3ae866",
+    "symbol": "mypy/nodes.py::PlaceholderNode.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/newsemanal/semanal.py",
+      "mypy/newsemanal/semanal_newtype.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@00b5064fdb::_load_ff_file",
+    "repo": "mypy",
+    "commit": "00b5064fdba21b5855f2bfdac2aadf2d20fcb83d",
+    "parent": "d52169d1fd2241b89e001c2695da031dbd13e8ec",
+    "symbol": "mypy/build.py::_load_ff_file",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@01a088b954::_verify_static_class_methods",
+    "repo": "mypy",
+    "commit": "01a088b954ec9a0f351f4e9e9749896df8193830",
+    "parent": "2c6e43e1b5aa22ef5296ff72eb6f5deffa9b8b24",
+    "symbol": "mypy/stubtest.py::_verify_static_class_methods",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@01d6eb82e1::matches_exclude",
+    "repo": "mypy",
+    "commit": "01d6eb82e146a37f2a9d873bdc6f1918e95e5308",
+    "parent": "9a2838d8dc45e93b28387f5a437f38ec33c1f947",
+    "symbol": "mypy/modulefinder.py::matches_exclude",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@03a1746f58::FindModuleCache.find_lib_path_dirs",
+    "repo": "mypy",
+    "commit": "03a1746f5849882fd107f10aa012bd95fac1c84e",
+    "parent": "b027308116d19dc79bf80334ff06aab7c0001e11",
+    "symbol": "mypy/modulefinder.py::FindModuleCache.find_lib_path_dirs",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@03b12a1309::generate_methods_table",
+    "repo": "mypy",
+    "commit": "03b12a1309b22f2aa5aa4c4fe1089b796b48adca",
+    "parent": "cb2bfc3a7d250d6a61c9abed856f7955e09975c3",
+    "symbol": "mypyc/codegen/emitclass.py::generate_methods_table",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@049a879504::LoadMem.__init__",
+    "repo": "mypy",
+    "commit": "049a879504273e1f37d530af0abebca4174045fa",
+    "parent": "ce2a2168ce0a8d6d2bec604dbcba595fdaf968e9",
+    "symbol": "mypyc/ir/ops.py::LoadMem.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/ll_builder.py"
+    ],
+    "test_files": [
+      "mypyc/test/test_emitfunc.py"
+    ],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@06b01c80a1::WriteToConn.__init__",
+    "repo": "mypy",
+    "commit": "06b01c80a1a365cb8af80b9eecfbe4b14f04fc3e",
+    "parent": "ed50208055e8c5f99caf7da0cea8c99fcfdc5670",
+    "symbol": "mypy/dmypy_util.py::WriteToConn.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/dmypy_server.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@0777c1006c::ASTConverter.fail",
+    "repo": "mypy",
+    "commit": "0777c1006c2307f4a3d1cc87462b13cbd2a85435",
+    "parent": "68b3b27c2fc47cc01f16d98e7e7d944ad5c0c6be",
+    "symbol": "mypy/fastparse.py::ASTConverter.fail",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@07b644339d::build_fstring_join",
+    "repo": "mypy",
+    "commit": "07b644339d3d3067f6f0a0ffa6cc92a56c3bbf29",
+    "parent": "2d081169206ccfbea32033076671c97d6ae5dd6b",
+    "symbol": "mypy/nativeparse.py::build_fstring_join",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@0a83048198::TypeChecker.lookup",
+    "repo": "mypy",
+    "commit": "0a830481980bfc554ded61a3eaaaecde384a21e4",
+    "parent": "492739692206f05347c6706cb982115446ba552a",
+    "symbol": "mypy/checker.py::TypeChecker.lookup",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@0bde4b9e82::gen_func_ir",
+    "repo": "mypy",
+    "commit": "0bde4b9e82e337f1b63d1e7dcc6922ed648e86f7",
+    "parent": "6e48f7e18b39e5fdab594e111da133965081c728",
+    "symbol": "mypyc/irbuild/function.py::gen_func_ir",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@0f09be472c::require_bool_literal_argument",
+    "repo": "mypy",
+    "commit": "0f09be472cad7aa06ca4af9dd73aca6b87450d84",
+    "parent": "16bd3112d070a80b749e2f0e419d6fe321443e65",
+    "symbol": "mypy/semanal_shared.py::require_bool_literal_argument",
+    "change_kind": "made_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@0f9676e399::MessageBuilder.note_defined_here",
+    "repo": "mypy",
+    "commit": "0f9676e3999afdf17ccdb67f2a8c26062fb44407",
+    "parent": "f8bf7ab5778e5c68417c850aa7e4ca2e0b74f149",
+    "symbol": "mypy/messages.py::MessageBuilder.note_defined_here",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@0fe76cee22::generate_c_extension_shim",
+    "repo": "mypy",
+    "commit": "0fe76cee22fbf751e2d580674df0f0f0c11408a7",
+    "parent": "3808256154b23b0a07592cbeb20517f06758870b",
+    "symbol": "mypyc/build.py::generate_c_extension_shim",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@103f5f3ec3::restrict_subtype_away",
+    "repo": "mypy",
+    "commit": "103f5f3ec3fcc8fba429edcc4ee61c1370153ff9",
+    "parent": "49ad7debc6ef86b0964ca12f1508a515851d8ed5",
+    "symbol": "mypy/subtypes.py::restrict_subtype_away",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@109c8ce846::State.detect_possibly_undefined_vars",
+    "repo": "mypy",
+    "commit": "109c8ce84685136d1cd89c86d4b3458272a6144f",
+    "parent": "1f8621c483baf4641c317ad755f814bcb9e41296",
+    "symbol": "mypy/build.py::State.detect_possibly_undefined_vars",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/server/update.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@116b92bae7::get_mypy_type_of_runtime_value",
+    "repo": "mypy",
+    "commit": "116b92bae7b5dbf5e6bd36fd9b0c6804973e5554",
+    "parent": "15b8ca967cc6187effcab23e6613da2db4546584",
+    "symbol": "mypy/stubtest.py::get_mypy_type_of_runtime_value",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@11f6e546e1::add_class_tvars",
+    "repo": "mypy",
+    "commit": "11f6e546e14500238bd8a29fb76732e197af6fb1",
+    "parent": "69a0560b471e8682cbed782997d140694c841cc2",
+    "symbol": "mypy/checkmember.py::add_class_tvars",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@125ef0ddaa::find_member",
+    "repo": "mypy",
+    "commit": "125ef0ddaa92d46fe386ebc3f9bccfabcc385a01",
+    "parent": "28423cd78062b81365ec9aaa591b4e823af1606d",
+    "symbol": "mypy/subtypes.py::find_member",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/checker.py",
+      "mypy/constraints.py",
+      "mypy/join.py",
+      "mypy/messages.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@131f9d92da::generate_setup_for_class",
+    "repo": "mypy",
+    "commit": "131f9d92da58294bb2f273425e8778bd7d5b861f",
+    "parent": "54608d83d22cf0241ead827046f595a984f3c100",
+    "symbol": "mypyc/codegen/emitclass.py::generate_setup_for_class",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@1457c5d468::IPCBase.read",
+    "repo": "mypy",
+    "commit": "1457c5d4681974b19b80ffd691c1adf12b762ab5",
+    "parent": "4be41e460c4b87f46200c543ec9d61fc296c9ef7",
+    "symbol": "mypy/ipc.py::IPCBase.read",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [
+      "mypy/test/testipc.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@149f753ce3::SemanticAnalyzer.analyze_class_typevar_declaration",
+    "repo": "mypy",
+    "commit": "149f753ce39364a404f39c73bb7da1627c1e0d0e",
+    "parent": "96fac3a2e450296b1cf3943a9251fae54b6e89c4",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_class_typevar_declaration",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@159f382fe3::Errors.__init__",
+    "repo": "mypy",
+    "commit": "159f382fe39f96098f92b12ef6241a44c45f3804",
+    "parent": "4e2fca8ff8a384a3e7c29f3ca861c8ea34af4362",
+    "symbol": "mypy/errors.py::Errors.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@15f1287521::BuildManager.parse_all",
+    "repo": "mypy",
+    "commit": "15f1287521f7e82a5f02405c441ae5b3fddb9d94",
+    "parent": "f8127c860dc4679cf56edac4fe8bcade9e05ac82",
+    "symbol": "mypy/build.py::BuildManager.parse_all",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@15f23850f3::lookup_fully_qualified",
+    "repo": "mypy",
+    "commit": "15f23850f3104e92054f5d697535bacb7eefc980",
+    "parent": "e6b91bdc5c253cefba940b0864a8257d833f0d8b",
+    "symbol": "mypy/lookup.py::lookup_fully_qualified",
+    "change_kind": "reordered",
+    "source_files": [
+      "mypy/fixup.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@16cd09ac7d::TypeAnalyser.__init__",
+    "repo": "mypy",
+    "commit": "16cd09ac7de72d7e494b27de0eb0e1a361d3f623",
+    "parent": "312b62b797df985ac17f3658c1c4990b521b0a41",
+    "symbol": "mypy/newsemanal/typeanal.py::TypeAnalyser.__init__",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/newsemanal/semanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@171402834f::TypeArgumentAnalyzer.__init__",
+    "repo": "mypy",
+    "commit": "171402834faece2e20760f0d02e96aa3714324c2",
+    "parent": "010da0b2f48dc92be2f79495fd4551c92351868f",
+    "symbol": "mypy/semanal_typeargs.py::TypeArgumentAnalyzer.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@17da595f31::write_cache",
+    "repo": "mypy",
+    "commit": "17da595f31c1e1c16a8019986a75c51ea710b40e",
+    "parent": "9752e1968e9224d2ead4f0cdfd5ff3791ab21b35",
+    "symbol": "mypy/build.py::write_cache",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@17fbde108c::get_proper_types",
+    "repo": "mypy",
+    "commit": "17fbde108cc1627c423c6beca7e4de073f5f583c",
+    "parent": "162df3607cceeef6ed66b1c0cb6c264473790a37",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@18a510768b::NamedTupleAnalyzer.analyze_namedtuple_classdef",
+    "repo": "mypy",
+    "commit": "18a510768bdf552248447d35d15f8e48b1aef53d",
+    "parent": "85c21599cae51318344c23eecdfec6c3a2a9557a",
+    "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.analyze_namedtuple_classdef",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@1a23a2939f::ForIterable.init",
+    "repo": "mypy",
+    "commit": "1a23a2939fbd524b1969038732d1dfe952d50225",
+    "parent": "4e2c574a700734871611e5bf90bbaf469e0c6b9a",
+    "symbol": "mypyc/genops_for.py::ForIterable.init",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/genops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@1bcfc041bb::generate_attr_defaults",
+    "repo": "mypy",
+    "commit": "1bcfc041bb767ee93e90676b0a61f3e40267e858",
+    "parent": "f79e7afec2c863c34d7a9b41ebb732dc26128fff",
+    "symbol": "mypyc/irbuild/classdef.py::generate_attr_defaults",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@1c218ea2c6::State.parse_file",
+    "repo": "mypy",
+    "commit": "1c218ea2c674d7a06c8ed4c2f95855f1d3fd26da",
+    "parent": "e1f6d6b4547f118787a68bf503f5c86a2801a2bf",
+    "symbol": "mypy/build.py::State.parse_file",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@1db3eb3c99::TypeAnalyser.anal_type",
+    "repo": "mypy",
+    "commit": "1db3eb3c991b82c2b0f9b7bd0a2547e140dd402a",
+    "parent": "b02ddf1db45f6cd1b3a4cf0f40e768b36f5636a7",
+    "symbol": "mypy/typeanal.py::TypeAnalyser.anal_type",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@1e220b107d::ModuleNotFoundReason.error_message_templates",
+    "repo": "mypy",
+    "commit": "1e220b107db1868b3b039cf9299bfceba8046741",
+    "parent": "58aef054dccb1b49acd1f6769ac2a18c2525dd63",
+    "symbol": "mypy/modulefinder.py::ModuleNotFoundReason.error_message_templates",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/build.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@1e372f4027::NameGenerator.__init__",
+    "repo": "mypy",
+    "commit": "1e372f402782a3030321b4b4359ed8b0a10992af",
+    "parent": "1b4ef345603f224b942efd2dc9175913b35c5a74",
+    "symbol": "mypyc/namegen.py::NameGenerator.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/codegen/emitmodule.py"
+    ],
+    "test_files": [
+      "mypyc/test/test_namegen.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@1eaf4c70c0::State._patch_indirect_dependencies",
+    "repo": "mypy",
+    "commit": "1eaf4c70c0b83c3f0f639e3c53daaf3872bea5b0",
+    "parent": "2f08e40fe999b41274a2427bbb5acc9b31f764d7",
+    "symbol": "mypy/build.py::State._patch_indirect_dependencies",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@1f0ab28a0a::TypeAnalyser.pack_paramspec_args",
+    "repo": "mypy",
+    "commit": "1f0ab28a0a204341ed093459947f3aa92f182bff",
+    "parent": "795dde3e7ef14ad6f475ba56d88b9139ab3165cc",
+    "symbol": "mypy/typeanal.py::TypeAnalyser.pack_paramspec_args",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@2094639344::Errors.raise_error",
+    "repo": "mypy",
+    "commit": "209463934440a726b71b9f61ef69fe34d43b518e",
+    "parent": "e6e6c0f9e6c51b6a1f02654cc81d00c6d5a0007c",
+    "symbol": "mypy/errors.py::Errors.raise_error",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/build.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@20e8e6896f::IRBuilder.init_final_static",
+    "repo": "mypy",
+    "commit": "20e8e6896f21d85675c6a3ebafde1742d895535c",
+    "parent": "8aa385ede804df6f39701d8593a77bd7c242b087",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.init_final_static",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/irbuild/classdef.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@21e160e531::BuildManager.parse_file",
+    "repo": "mypy",
+    "commit": "21e160e5310a4c1fc8375558cba4ffdc399dd96c",
+    "parent": "274a9e8d7dc6739cf9d64bd8b3186909072b7f3d",
+    "symbol": "mypy/build.py::BuildManager.parse_file",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@23e02e20f5::ConstraintBuilderVisitor.infer_constraints_from_protocol_members",
+    "repo": "mypy",
+    "commit": "23e02e20f50255bd5b3217d224d1f9c77d85f6ce",
+    "parent": "d7bb8400e8fe48bb8a31bca6a38fef16420550bb",
+    "symbol": "mypy/constraints.py::ConstraintBuilderVisitor.infer_constraints_from_protocol_members",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@23e6072cb9::TypeIndirectionVisitor._visit",
+    "repo": "mypy",
+    "commit": "23e6072cb969aab81b6b07b096f7e6d07d522a46",
+    "parent": "32752ebc58011bc3067dba239e50c91bc6304bd4",
+    "symbol": "mypy/indirection.py::TypeIndirectionVisitor._visit",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@2475643f7e::ClassIR.get_method_and_class",
+    "repo": "mypy",
+    "commit": "2475643f7e6708ec7da45a753003c13a2baaddce",
+    "parent": "e1117c3fc49c0836bf098b5c5dd8027c62b3186c",
+    "symbol": "mypyc/ir/class_ir.py::ClassIR.get_method_and_class",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/irbuild/vtable.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@256f1f33f6::main",
+    "repo": "mypy",
+    "commit": "256f1f33f6be15a461e8aabe9aef705ac77f7e6a",
+    "parent": "ccfbfc1b2a238ae83267b625d12c49bc9e538794",
+    "symbol": "mypy/stubgen.py::main",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@2601fb7916::generate_clear_for_class",
+    "repo": "mypy",
+    "commit": "2601fb7916742dc8a020bb4a010bad45f1fd6f4f",
+    "parent": "67eecf07fea3fa4bbaab9d46cd28372a8ded330b",
+    "symbol": "mypyc/codegen/emitclass.py::generate_clear_for_class",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@27a9830752::LowLevelIRBuilder.check_tagged_short_int",
+    "repo": "mypy",
+    "commit": "27a98307528a4c3c43dab1cac47f089ac5a9d55b",
+    "parent": "3acbf3fe78a61c19ff96754233ada453472004c4",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.check_tagged_short_int",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@29abf398d6::TypeAnalyser.tuple_type",
+    "repo": "mypy",
+    "commit": "29abf398d6a9e88e899df8a1941019105821f9f0",
+    "parent": "7f65cc7570eaa4206ae086680e1c1d0489897efa",
+    "symbol": "mypy/typeanal.py::TypeAnalyser.tuple_type",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@2ab8849f64::SemanticAnalyzer.expr_to_analyzed_type",
+    "repo": "mypy",
+    "commit": "2ab8849f6460fe586a1a1add3a006ce4edd3fb75",
+    "parent": "8409b884e97de82bc1638dc91ca26b85d06f3de2",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.expr_to_analyzed_type",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@2baebda573::ExpressionChecker.dangerous_comparison",
+    "repo": "mypy",
+    "commit": "2baebda57364ef000c46854569238789d71fd459",
+    "parent": "01afc3b50282107ebfbb00daad1878adff2a2e85",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.dangerous_comparison",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@2d54024cb4::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "2d54024cb44556302b40fed6e0bd40fd9ef56563",
+    "parent": "27c4b462aa4cf269397253eca7a88e7fbbf4e43e",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@2e08ce69d5::StrExpr.__init__",
+    "repo": "mypy",
+    "commit": "2e08ce69d5d99127c7e9e9dc198140c48776a2a9",
+    "parent": "0ec789d5322b6bc388ca045544beb57759aee457",
+    "symbol": "mypy/nodes.py::StrExpr.__init__",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/treetransform.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@30c46ab48f::NodeFixer.visit_symbol_table",
+    "repo": "mypy",
+    "commit": "30c46ab48fa224fa0b19f9a28b08ef5b12ba3a70",
+    "parent": "ef0b0dff8017ed69f31c6095a4897940aec3261a",
+    "symbol": "mypy/fixup.py::NodeFixer.visit_symbol_table",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@3174d3f1d4::format_type_inner",
+    "repo": "mypy",
+    "commit": "3174d3f1d4e04d101384f1632e65ecc7911f20a0",
+    "parent": "7aed6962621a53e4c31301a5cb07a8aa3547da55",
+    "symbol": "mypy/messages.py::format_type_inner",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 14
+  },
+  {
+    "id": "mypy@32752ebc58::build_mypy",
+    "repo": "mypy",
+    "commit": "32752ebc58011bc3067dba239e50c91bc6304bd4",
+    "parent": "8bd159b755529e067cf67e489b7f345a0b442468",
+    "symbol": "misc/perf_compare.py::build_mypy",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@33d94d791e::TypeArgumentAnalyzer.__init__",
+    "repo": "mypy",
+    "commit": "33d94d791ef2cd85a7f876b03d75c6fc3c98a803",
+    "parent": "99838a9f940e16549cdfc16b7a6e5be086d7729a",
+    "symbol": "mypy/newsemanal/semanal_typeargs.py::TypeArgumentAnalyzer.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/newsemanal/semanal_main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@3412fab840::FindModuleCache.find_module",
+    "repo": "mypy",
+    "commit": "3412fab840125d27f582e4692bc473a2abab806d",
+    "parent": "07edb847c380fa6cb2fa4041888c87a37e5d0d0d",
+    "symbol": "mypy/modulefinder.py::FindModuleCache.find_module",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/dmypy_server.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@34949c8227::build_mypy",
+    "repo": "mypy",
+    "commit": "34949c82274285b03423bde4def9beacd91c7d52",
+    "parent": "fabe37f31e5bd7396e6a1183e3ed56b6e767561b",
+    "symbol": "misc/perf_compare.py::build_mypy",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@359ad931fe::validate_instance",
+    "repo": "mypy",
+    "commit": "359ad931fecdd1acd56c22e89cd1304d3d0d9eb7",
+    "parent": "656b09ab6708b103738d24202bd01bca3029f5fd",
+    "symbol": "mypy/typeanal.py::validate_instance",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/checkexpr.py",
+      "mypy/semanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@38f199d25d::generate_vtables",
+    "repo": "mypy",
+    "commit": "38f199d25db96bf9e4424a62410e06736115073a",
+    "parent": "643a58b7ed27f285cfee2462c562e167fb5ab506",
+    "symbol": "mypyc/emitclass.py::generate_vtables",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@39156e0054::is_overlapping_types",
+    "repo": "mypy",
+    "commit": "39156e00540876ee322a129d4eceb06f4fc3582a",
+    "parent": "270a01d44cdf5f27b8e8328e94452b2a5332a5a2",
+    "symbol": "mypy/meet.py::is_overlapping_types",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/checker.py",
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@3adb2e952c::fail",
+    "repo": "mypy",
+    "commit": "3adb2e952cf9e16d4d493440a1c7be3de4d214ef",
+    "parent": "348a9d4774b229b96c30a27ed2ca93992da5bd4f",
+    "symbol": "mypy/main.py::fail",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@3f35ebbb53::Converter.__init__",
+    "repo": "mypy",
+    "commit": "3f35ebbb531ee04aa4b130c6574433b0943400e3",
+    "parent": "11c2c6d73a849c3852a48f00212cd0e6688a0d9c",
+    "symbol": "mypy/plugins/attrs.py::Converter.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@41045dca88::os_path_join",
+    "repo": "mypy",
+    "commit": "41045dca8821e112e70108ae6b6d9751cad6c2e7",
+    "parent": "a2d715a4f79141db5c254a580cd5615fa57651d3",
+    "symbol": "mypy/util.py::os_path_join",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@41562a0398::IPCBase.__init__",
+    "repo": "mypy",
+    "commit": "41562a0398ef9542f67707afdb29137bb13c67e8",
+    "parent": "5d535667e66360325414f566b12fe12fcaba0f69",
+    "symbol": "mypy/ipc.py::IPCBase.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@41efd21f14::try_optimize_int_floor_divide",
+    "repo": "mypy",
+    "commit": "41efd21f143fdb250bd52d85f700b2d807aa26fd",
+    "parent": "baabf49b06c8b6e2c4e6d5fcd0e92cf325eef790",
+    "symbol": "mypyc/irbuild/expression.py::try_optimize_int_floor_divide",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@43364c1be9::GroupGenerator.emit_module_def_slots",
+    "repo": "mypy",
+    "commit": "43364c1be9d0e53d4e715ad02b7b71628d40db79",
+    "parent": "5750690e625606a8c6875cff07a0ed299703646c",
+    "symbol": "mypyc/codegen/emitmodule.py::GroupGenerator.emit_module_def_slots",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@454989f7c0::load_type",
+    "repo": "mypy",
+    "commit": "454989f7c085d5a7f86ad7ed9da0f2614ca41d83",
+    "parent": "82d94776153d1f09fdff193c58b379e6c03add54",
+    "symbol": "mypyc/irbuild/function.py::load_type",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/classdef.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@45bed9c994::TypeAnalyser.anal_array",
+    "repo": "mypy",
+    "commit": "45bed9c994b1082a050e26958c1847b53ad82357",
+    "parent": "20e9733e32ddff6ecbaddb7be61ae36b6c4978d0",
+    "symbol": "mypy/typeanal.py::TypeAnalyser.anal_array",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@46c7ec7ed2::run_benchmark",
+    "repo": "mypy",
+    "commit": "46c7ec7ed25de55452783ee7d45718c01018c764",
+    "parent": "52888aec43ef8ba59645c7cd3ff5725ff9a861d7",
+    "symbol": "misc/perf_compare.py::run_benchmark",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@46e1d357d1::format_string_list",
+    "repo": "mypy",
+    "commit": "46e1d357d14085a8c974fde770c5da9c41ed643b",
+    "parent": "ffb3ce925e8bb3376e19f942c7d3a3806c9bba97",
+    "symbol": "mypy/messages.py::format_string_list",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@49ad7debc6::check_output",
+    "repo": "mypy",
+    "commit": "49ad7debc6ef86b0964ca12f1508a515851d8ed5",
+    "parent": "2b8691d8a485fbb91f28e6d570b147a629213118",
+    "symbol": "mypy/dmypy.py::check_output",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@4b46d09f4e::ASTStubGenerator.process_typealias",
+    "repo": "mypy",
+    "commit": "4b46d09f4e74df0feea38e879e25ac4d100ecde2",
+    "parent": "1af7b2c42d1360e97ceb2b0db4255ac8a417110f",
+    "symbol": "mypy/stubgen.py::ASTStubGenerator.process_typealias",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@4bec92c754::NewSemanticAnalyzer.name_not_defined",
+    "repo": "mypy",
+    "commit": "4bec92c754ab72c91772f924da35e422056eff5f",
+    "parent": "8854373e547ead3d0d60ff03c97d13e35bde1acd",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.name_not_defined",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@4c90aa42e6::load_singledispatch_registry",
+    "repo": "mypy",
+    "commit": "4c90aa42e6a74f127956124aec94f55dbc46a281",
+    "parent": "644496828841035d097d7afd80b96081e0ea5c7f",
+    "symbol": "mypyc/irbuild/function.py::load_singledispatch_registry",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@4f06ac9962::LowLevelIRBuilder.gen_method_call",
+    "repo": "mypy",
+    "commit": "4f06ac9962d70b02c21c8692a5d3bf80ae1e1ab7",
+    "parent": "88e8f033ddfd38d74212897d7a127e9e8568b7c0",
+    "symbol": "mypyc/ir_builder.py::LowLevelIRBuilder.gen_method_call",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypyc/genops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@50a653e071::Converter.__init__",
+    "repo": "mypy",
+    "commit": "50a653e0714e303178c890854b9074fc030907f0",
+    "parent": "5ceaf3d7ec67a9bdee78d656e24dc9e25051759c",
+    "symbol": "mypy/plugins/attrs.py::Converter.__init__",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@50ac875cbf::MessageBuilder.incompatible_conditional_function_def",
+    "repo": "mypy",
+    "commit": "50ac875cbf26705cddabaacf144065b733fc7ccf",
+    "parent": "a4c32d174c941832ae6d707e4e88bd1362f3e8df",
+    "symbol": "mypy/messages.py::MessageBuilder.incompatible_conditional_function_def",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@50d6d0b145::NamedTupleAnalyzer.__init__",
+    "repo": "mypy",
+    "commit": "50d6d0b145f3c4be2d7633d61c37244280217d76",
+    "parent": "5b1a231425ac807b7118aac6a68b633949412a36",
+    "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/semanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@526fec3f8a::FuncDecl.line",
+    "repo": "mypy",
+    "commit": "526fec3f8a4b2b575a7beb8b9d4a87720f57686e",
+    "parent": "b8dd6f3556f361ae2cd312b9edcc604eb6b1f465",
+    "symbol": "mypyc/ir/func_ir.py::FuncDecl.line",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@52c0a63f46::Server.fine_grained_increment",
+    "repo": "mypy",
+    "commit": "52c0a63f4604a2bfa8c0edd6589ab25fab4bdaec",
+    "parent": "60a7e0806df85071a7d3c7395a3834fe51aa35d8",
+    "symbol": "mypy/dmypy_server.py::Server.fine_grained_increment",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@52de0c739d::find_attr_initializers",
+    "repo": "mypy",
+    "commit": "52de0c739d2f066ea06fa9a886bc8fcc9fa079c6",
+    "parent": "bfa3b88ea1c80a4f1f860fad4ab344d8fc28c868",
+    "symbol": "mypyc/irbuild/classdef.py::find_attr_initializers",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@55375f6e26::format_type_bare",
+    "repo": "mypy",
+    "commit": "55375f6e26f09496f20280aceccf5b9ad61f28fd",
+    "parent": "0b59a1018cafc78c35c06d7709a8db80b7692c2e",
+    "symbol": "mypy/messages.py::format_type_bare",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@55fcb524ad::format_type_distinctly",
+    "repo": "mypy",
+    "commit": "55fcb524ad9a1fccdc70941274fbeb9b4d379b5a",
+    "parent": "abe9f8045abd4863845cc0ee9fcde46c0ddeb99c",
+    "symbol": "mypy/messages.py::format_type_distinctly",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@56a6bf7267::FindModuleCache.__init__",
+    "repo": "mypy",
+    "commit": "56a6bf7267d4d7ad97d29eda1c3d2803ff34740b",
+    "parent": "f316cc2d4b510b79aadb78e0c7fe2814183c93d1",
+    "symbol": "mypy/modulefinder.py::FindModuleCache.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@5750690e62::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "5750690e625606a8c6875cff07a0ed299703646c",
+    "parent": "0f78f9c578bfbc6fbe4a20888353c20e9691178a",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@57ce73d4a3::get_missing_protocol_members",
+    "repo": "mypy",
+    "commit": "57ce73d4a39d3293eaac43c7a950e2c1ac30e2c9",
+    "parent": "47a435f38d96892b1f6a1fe543b0abe3ccca9c53",
+    "symbol": "mypy/messages.py::get_missing_protocol_members",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@58de753b6b::RPrimitive.__init__",
+    "repo": "mypy",
+    "commit": "58de753b6b76227ff726e9ce1888cfc24c7ba44b",
+    "parent": "43ea203e566901510dbdd59e8907fcddb2a8ee70",
+    "symbol": "mypyc/ir/rtypes.py::RPrimitive.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@5a95f9637a::SuggestionEngine.__init__",
+    "repo": "mypy",
+    "commit": "5a95f9637ae091b59edcf6c9efdd75175d170ba4",
+    "parent": "5fdb16bb5328412e69cbff9f64b494ef5081a6b8",
+    "symbol": "mypy/suggestions.py::SuggestionEngine.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@5bd2641ab5::StrToText.__init__",
+    "repo": "mypy",
+    "commit": "5bd2641ab53d4261b78a5f8f09c8d1e71ed3f14a",
+    "parent": "1f4e10eb5aa5de5725d5fa44aa862b56ad45bd7a",
+    "symbol": "mypy/suggestions.py::StrToText.__init__",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@5c641282ce::ModuleIR.__init__",
+    "repo": "mypy",
+    "commit": "5c641282ce3c7e024fe4d32a3b60a91a144620a6",
+    "parent": "0d17db051b23b3768d92f83f1a8dcb5626902722",
+    "symbol": "mypyc/ops.py::ModuleIR.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/emitmodule.py",
+      "mypyc/genops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@5cd1dabf0c::get_proper_types",
+    "repo": "mypy",
+    "commit": "5cd1dabf0c0eef3acee31acbb57b51fa3d7b6b9d",
+    "parent": "ddec163790d107f1fd9982f19cbfa0b6966c2eea",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 20
+  },
+  {
+    "id": "mypy@5d535667e6::write_junit_xml",
+    "repo": "mypy",
+    "commit": "5d535667e66360325414f566b12fe12fcaba0f69",
+    "parent": "3d248a3474c911117b29c5af40690edc119da0cd",
+    "symbol": "mypy/util.py::write_junit_xml",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/dmypy.py",
+      "mypy/main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@5e83bd646c::RuntimeArg.__init__",
+    "repo": "mypy",
+    "commit": "5e83bd646c1956adade5fa7b13f9e81b56a88802",
+    "parent": "d180456b584b469983e3cc9dddd1e36b997a7427",
+    "symbol": "mypyc/ir/func_ir.py::RuntimeArg.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/irbuild/mapper.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@5f05bf56bb::LowLevelIRBuilder.new_tuple_with_length",
+    "repo": "mypy",
+    "commit": "5f05bf56bbedac3299fb70242f20a13e334fd85e",
+    "parent": "66c2ac516305f194a9bc37c1ebf7f22d62d6141c",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.new_tuple_with_length",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypyc/irbuild/specialize.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@619d9bdf7a::SemanticAnalyzer.visit_yield_expr",
+    "repo": "mypy",
+    "commit": "619d9bdf7ae70ce953f1a10aebccfdc3526b7200",
+    "parent": "6d243321d632c47b9fef5f2ad6a972f9f4b94eff",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.visit_yield_expr",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@673468cfc3::class_callable",
+    "repo": "mypy",
+    "commit": "673468cfc3d9f85f026983b264ee5e71d8dae47e",
+    "parent": "3fc382321e4531450e91c55fddb6d4ed54611d5e",
+    "symbol": "mypy/typeops.py::class_callable",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@67b70ce00e::TypedDictAnalyzer.parse_typeddict_fields_with_types",
+    "repo": "mypy",
+    "commit": "67b70ce00ee9f2da1c49e75a044aad7ab7c137ff",
+    "parent": "e867132134c7b8046ebae2d6e1fa9fc184b9e9d7",
+    "symbol": "mypy/semanal_typeddict.py::TypedDictAnalyzer.parse_typeddict_fields_with_types",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@67d0902ef1::parse_section",
+    "repo": "mypy",
+    "commit": "67d0902ef17d82a01bf119ef7b4ce6cc367e593a",
+    "parent": "b406de741c0f4a67c4a37796c6a7d8a131584bf0",
+    "symbol": "mypy/config_parser.py::parse_section",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@68763aecdd::RStruct.__init__",
+    "repo": "mypy",
+    "commit": "68763aecddbb4edad90e7ed896db08ef9acbdfd5",
+    "parent": "1bbcd536a59ce07fad78f6ec12b53e3859a03aaf",
+    "symbol": "mypyc/ir/rtypes.py::RStruct.__init__",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [
+      "mypyc/test/test_emitfunc.py",
+      "mypyc/test/test_struct.py"
+    ],
+    "commit_file_count": 15
+  },
+  {
+    "id": "mypy@6886b7a17f::restrict_subtype_away",
+    "repo": "mypy",
+    "commit": "6886b7a17f586e3da881be1b23c41e48916c57e4",
+    "parent": "34949c82274285b03423bde4def9beacd91c7d52",
+    "symbol": "mypy/subtypes.py::restrict_subtype_away",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@69eaf88a0b::ExpressionChecker.check_method_call_by_name",
+    "repo": "mypy",
+    "commit": "69eaf88a0b03e9f491cc22534c2d30f1d21832b2",
+    "parent": "72a6b1b2e78e7a083d59ba021b3f59312cda609f",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_method_call_by_name",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@6d7beb4176::generate_c_property_stub",
+    "repo": "mypy",
+    "commit": "6d7beb41768506eeb263c9c14574c93010cd2674",
+    "parent": "2a1578a9220162b769648ce725c6b699c5b46986",
+    "symbol": "mypy/stubgenc.py::generate_c_property_stub",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [
+      "mypy/test/teststubgen.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@6f0e77b859::BuildManager.parse_files_threaded_raw",
+    "repo": "mypy",
+    "commit": "6f0e77b85910f0c64b6a1d5f080c944243cf8947",
+    "parent": "ab8e4bf1305416372ea70076193a766800f26410",
+    "symbol": "mypy/build.py::BuildManager.parse_files_threaded_raw",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@6fac70122c::is_toml",
+    "repo": "mypy",
+    "commit": "6fac70122c177340d1a1a49747ba244d13a29efd",
+    "parent": "bc8565fee7e38bcb2cdd6a48ddc924ef09b87f54",
+    "symbol": "mypy/config_parser.py::is_toml",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@70d78812b7::LoadMem.__init__",
+    "repo": "mypy",
+    "commit": "70d78812b7190ccc6b272d745cc442412ba0bbb3",
+    "parent": "38cdacfd142291eae3f30c1a4a83f4042a159975",
+    "symbol": "mypyc/ir/ops.py::LoadMem.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/irbuild/for_helpers.py",
+      "mypyc/irbuild/ll_builder.py",
+      "mypyc/lower/list_ops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 12
+  },
+  {
+    "id": "mypy@71288c749f::PartiallyDefinedVariableVisitor.__init__",
+    "repo": "mypy",
+    "commit": "71288c749f1507feab0b2ffcc312f1fb7c33cc46",
+    "parent": "5c3d306fddd900a2eb66437af05dd36851b221a4",
+    "symbol": "mypy/partially_defined.py::PartiallyDefinedVariableVisitor.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@7237831d64::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "7237831d64c051b2d6e4d99970f9b6ccf7a7bfce",
+    "parent": "0bbeab8b26825ee94b8fdeda16f2aa589be4282d",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@72a24313a0::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "72a24313a069397ffc24f3a87e99f9a96e3c81eb",
+    "parent": "4d6c41799d514c79490ec631628ec49808d7615a",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/irbuild/prebuildvisitor.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@761965d260::TypeAnalyser.find_type_var_likes",
+    "repo": "mypy",
+    "commit": "761965d260e54f8e150d8bd7ac3ab3efd6503b93",
+    "parent": "f79ae69be1b0c920eec6bf181e6f8c7689cbae20",
+    "symbol": "mypy/typeanal.py::TypeAnalyser.find_type_var_likes",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@7914b2dc7b::PreBuildVisitor.__init__",
+    "repo": "mypy",
+    "commit": "7914b2dc7b5c65d64a750ee4bd964b339025a571",
+    "parent": "256cf68fb89099b35a3772d34a2652e6141e6558",
+    "symbol": "mypyc/irbuild/prebuildvisitor.py::PreBuildVisitor.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@7a94183560::DataclassAttribute.to_argument",
+    "repo": "mypy",
+    "commit": "7a9418356082092d2cb1585acb816b2074cff43e",
+    "parent": "2ebd51e881490f4d20635cde92ef9e3edbbad68c",
+    "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.to_argument",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@7abcffef3f::run_benchmark",
+    "repo": "mypy",
+    "commit": "7abcffef3f4a291a90cc54950b9a0559242ce73b",
+    "parent": "9db236818df2e6ef14ad95f1fcfb3d08684ef0af",
+    "symbol": "misc/perf_compare.py::run_benchmark",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@7d69ce2ccf::PreBuildVisitor.__init__",
+    "repo": "mypy",
+    "commit": "7d69ce2ccf6bf751d050c3b65354019878d90739",
+    "parent": "66cae4b99e585735e3767623991d5f64b8269377",
+    "symbol": "mypyc/irbuild/prebuildvisitor.py::PreBuildVisitor.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@7e66e51099::FancyFormatter.format_error",
+    "repo": "mypy",
+    "commit": "7e66e51099e1c1c37673bed8154e2d3c74846067",
+    "parent": "f6fb60ef69738cbfe2dfe56c747eca8f03735d8e",
+    "symbol": "mypy/util.py::FancyFormatter.format_error",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@7ea925d386::transform_try_finally_stmt",
+    "repo": "mypy",
+    "commit": "7ea925d38657f8c2a81975f8cfc71eb8455ade61",
+    "parent": "02c97661281443483a73f6ca9247c7faf63213e6",
+    "symbol": "mypyc/irbuild/statement.py::transform_try_finally_stmt",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@8104d01988::generate_dealloc_for_class",
+    "repo": "mypy",
+    "commit": "8104d0198813a59dd26c8e9f50779533c60292b4",
+    "parent": "d7f15bea30eaf3a86a63e308c4dde4a1c6d1c55b",
+    "symbol": "mypyc/codegen/emitclass.py::generate_dealloc_for_class",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@81eaa5d1fb::Emitter.__init__",
+    "repo": "mypy",
+    "commit": "81eaa5d1fb139d62418e16ee69d45b9c89ce46cb",
+    "parent": "7936e7e946cc8348163105d6acf3a05c7db8b46f",
+    "symbol": "mypyc/codegen/emit.py::Emitter.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/codegen/emitclass.py",
+      "mypyc/codegen/emitmodule.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 16
+  },
+  {
+    "id": "mypy@8252a0ba16::MessageBuilder.unexpected_keyword_argument",
+    "repo": "mypy",
+    "commit": "8252a0ba165741d85a78721e4061d14ee26ac13f",
+    "parent": "9ee7b8ae51d8643e44fdc98ec36d9a73172ccee9",
+    "symbol": "mypy/messages.py::MessageBuilder.unexpected_keyword_argument",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@828a9eb584::find_all_sources_in_build",
+    "repo": "mypy",
+    "commit": "828a9eb58428f074ec814dc85a0ede1a2feae754",
+    "parent": "52c0a63f4604a2bfa8c0edd6589ab25fab4bdaec",
+    "symbol": "mypy/dmypy_server.py::find_all_sources_in_build",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@828c0befb4::NamedTupleAnalyzer.fail",
+    "repo": "mypy",
+    "commit": "828c0befb4b416bc668b994e719581f55d3d2275",
+    "parent": "12837eaedcab5352dd2e3df925b21373597762e8",
+    "symbol": "mypy/semanal_namedtuple.py::NamedTupleAnalyzer.fail",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@855076b6a6::get_proper_types",
+    "repo": "mypy",
+    "commit": "855076b6a672017f7dbafe3080cf9daa31f5f1f3",
+    "parent": "0c2ec6a57e6f4b121590fdc3c3ede684a3cbc816",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/typeops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@86515b5e12::Server.cmd_status",
+    "repo": "mypy",
+    "commit": "86515b5e129aad55d990c08cfb7d8aeb8f847811",
+    "parent": "3b511bd1b8e6ea8de63d53ae99c41a71845d6983",
+    "symbol": "mypy/dmypy_server.py::Server.cmd_status",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@8990ebdb88::FuncDecl.__init__",
+    "repo": "mypy",
+    "commit": "8990ebdb884ed2d5b5dcb1dac5d8a8407358ef21",
+    "parent": "afdc92462839733c4c0102d65455a576bcea4e1e",
+    "symbol": "mypyc/ops.py::FuncDecl.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@8b30913218::PossiblyUndefinedVariableVisitor.__init__",
+    "repo": "mypy",
+    "commit": "8b309132188ebbcb889300f9f2fc9bc47df3a3bd",
+    "parent": "eee3a2a9fdfa1cce7f031ef362570ab3ba5d9790",
+    "symbol": "mypy/partially_defined.py::PossiblyUndefinedVariableVisitor.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@8b43fb28da::RPrimitive.__init__",
+    "repo": "mypy",
+    "commit": "8b43fb28da5189eb24d7d97dc5f8779137da3e99",
+    "parent": "a32d2f41304061639044eafc1a40d4fbb4ea49d4",
+    "symbol": "mypyc/ir/rtypes.py::RPrimitive.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/rt_subtype.py",
+      "mypyc/sametype.py",
+      "mypyc/subtype.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@8b73cc22c6::set_any_tvars",
+    "repo": "mypy",
+    "commit": "8b73cc22c6a251682f777b104677fa0e1ed5fd67",
+    "parent": "816ba3b33dd157def6b7d8c0b0fcca65ff2cbc05",
+    "symbol": "mypy/typeanal.py::set_any_tvars",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/semanal_typeargs.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@8d58fce81c::collect_source_dependencies",
+    "repo": "mypy",
+    "commit": "8d58fce81caac0dc2b62c098bdd84bec919f9344",
+    "parent": "cd71671fc1301bf8558b3cc5536d7cfe7ff0a70e",
+    "symbol": "mypyc/codegen/emitmodule.py::collect_source_dependencies",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@8ed16d1fb2::ASTStubGenerator.get_str_type_of_node",
+    "repo": "mypy",
+    "commit": "8ed16d1fb233b7484dea1da9c396574e16ba8138",
+    "parent": "644a20cebc89fcc06dca41099e217d474f2e1aba",
+    "symbol": "mypy/stubgen.py::ASTStubGenerator.get_str_type_of_node",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@902df03fa1::install_types",
+    "repo": "mypy",
+    "commit": "902df03fa12ca9b39ad3ee11235c6558792782f4",
+    "parent": "578d38921cdf2296605fc14595559ddeea13103a",
+    "symbol": "mypy/main.py::install_types",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@90b9a1ad04::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "90b9a1ad0437cff1e8ad8055a769b4e00f322089",
+    "parent": "43883fae240f617bc5fe665a41cf23ba6bb35693",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@92923b2ed8::StubGenerator.visit_func_def",
+    "repo": "mypy",
+    "commit": "92923b2ed8085a38c353382f805c9e2e8716e717",
+    "parent": "e9edcb957f341dcf7a14bb7b7acfd4186fb1248b",
+    "symbol": "mypy/stubgen.py::StubGenerator.visit_func_def",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@92a78583b1::exist_added_packages",
+    "repo": "mypy",
+    "commit": "92a78583b1cd0c9d0cc3966dfc534020128888ca",
+    "parent": "fe6fe1d047a88f4dee097b3e421da39ed6787246",
+    "symbol": "mypy/build.py::exist_added_packages",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@9393fa1e40::Emitter.emit_undefined_attr_check",
+    "repo": "mypy",
+    "commit": "9393fa1e40bca3647e12b10bd9a81410fa92c610",
+    "parent": "285773626b26d451f68717e127a932144e9a6f04",
+    "symbol": "mypyc/codegen/emit.py::Emitter.emit_undefined_attr_check",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/codegen/emitclass.py",
+      "mypyc/codegen/emitfunc.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@976d1056a4::os_path_join",
+    "repo": "mypy",
+    "commit": "976d1056a4abd2e3d145f2476e1d74cd6962cac1",
+    "parent": "1de4871ab4890dc48653d73240eea9e48a5195e4",
+    "symbol": "mypy/util.py::os_path_join",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@982853dc31::gen_func_item",
+    "repo": "mypy",
+    "commit": "982853dc318c9aaf84001a98f7bd0aa4fc9cdbe1",
+    "parent": "5a786075d8c366ee753c62fa36857589023ed561",
+    "symbol": "mypyc/irbuild/function.py::gen_func_item",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@98beb8e8fe::DataclassAttribute.__init__",
+    "repo": "mypy",
+    "commit": "98beb8e8febfd39992b0ba69ba15c0b2362b847d",
+    "parent": "fdba3cd495b657995a7283063afd1e86ff49165d",
+    "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@990b6a6f03::TypedDictAnalyzer.fail",
+    "repo": "mypy",
+    "commit": "990b6a6f03ad82c10cb8edbe70508b943336f7f3",
+    "parent": "05d9fb15dcec8bde4e7184ca387e7d8acea68792",
+    "symbol": "mypy/semanal_typeddict.py::TypedDictAnalyzer.fail",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@99e2688337::ASTConverter.fail",
+    "repo": "mypy",
+    "commit": "99e26883370f843c539077624fe8981d64d8d92f",
+    "parent": "454989f7c085d5a7f86ad7ed9da0f2614ca41d83",
+    "symbol": "mypy/fastparse.py::ASTConverter.fail",
+    "change_kind": "made_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@9a35fdc94c::add_type_promotion",
+    "repo": "mypy",
+    "commit": "9a35fdc94c71f6c427624b9b4d51f7495cbb97f9",
+    "parent": "d21c5abcfba7cbae4398bdc075471e2ecc565e1d",
+    "symbol": "mypy/semanal_classprop.py::add_type_promotion",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/semanal_main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 15
+  },
+  {
+    "id": "mypy@9ce347083e::ASTConverter.fail",
+    "repo": "mypy",
+    "commit": "9ce347083ec5810ad23f8727a111619bcb7029a5",
+    "parent": "a2b0f18c5791d1110fbafd08a878d99e112d64d4",
+    "symbol": "mypy/fastparse.py::ASTConverter.fail",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@9d5e32c76e::Literals._encode_collection_values",
+    "repo": "mypy",
+    "commit": "9d5e32c76ef28862cb373ee1a33db9268406b83f",
+    "parent": "5ef090270579013c337a9bcc79e2c58417f09538",
+    "symbol": "mypyc/codegen/literals.py::Literals._encode_collection_values",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@9eb24688c2::NewSemanticAnalyzer.get_module_symbol",
+    "repo": "mypy",
+    "commit": "9eb24688c2cfe132b54577eabc09a771a5c8ac0b",
+    "parent": "68661913c536a294582cee1f522d4623141e53f3",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.get_module_symbol",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@9edd29ae2b::State.mark_interface_stale",
+    "repo": "mypy",
+    "commit": "9edd29ae2b8fe8411964a0dd91ac2d067f17c006",
+    "parent": "60639c5c07230c498c71d8d22bf16a4ee769777f",
+    "symbol": "mypy/build.py::State.mark_interface_stale",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@9f89b50596::NewSemanticAnalyzer.defer",
+    "repo": "mypy",
+    "commit": "9f89b505961c16fc660c68238624e3a6cd05a24f",
+    "parent": "154422c3965fa4f9de8bda5a8d6f7a1e204dfa99",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.defer",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@a12565c825::write_cache_meta",
+    "repo": "mypy",
+    "commit": "a12565c8253f6b0996a9b11162776c9083aaceb8",
+    "parent": "e0090d0ab74b4933088e94abaad0b2409e9cd50a",
+    "symbol": "mypy/build.py::write_cache_meta",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@a202b421bb::MessageBuilder.need_annotation_for_var",
+    "repo": "mypy",
+    "commit": "a202b421bb85f55219f0beaa7d969978b1d3dcc4",
+    "parent": "c4a6e40dd5821ae079395a9db751c59380d70239",
+    "symbol": "mypy/messages.py::MessageBuilder.need_annotation_for_var",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 14
+  },
+  {
+    "id": "mypy@a33d2353a8::DataclassTransformer._propertize_callables",
+    "repo": "mypy",
+    "commit": "a33d2353a81d075850a487f3913720037f2473aa",
+    "parent": "b7d74f3e202fa60ff0d8a2efc299913aad68e2ed",
+    "symbol": "mypy/plugins/dataclasses.py::DataclassTransformer._propertize_callables",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@a3abd3644c::MessageBuilder.add_errors",
+    "repo": "mypy",
+    "commit": "a3abd3644c5f2c84d2fa65fb621327a6c6a0e695",
+    "parent": "3460717a11576d84b5f83cd62282480416c240b2",
+    "symbol": "mypy/messages.py::MessageBuilder.add_errors",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@a503132749::make_simplified_union",
+    "repo": "mypy",
+    "commit": "a503132749eb179eec8d1e97f6b8e372daab6ce7",
+    "parent": "f0a2c9f7f11da5c1d5fb1041e757591010e586be",
+    "symbol": "mypy/typeops.py::make_simplified_union",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/join.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@a6166b2f7e::FindModuleCache.__init__",
+    "repo": "mypy",
+    "commit": "a6166b2f7e8e4cf9d176107277da223e45c3a6a1",
+    "parent": "37fb21afe937be9da98446557244f3de5424ebf8",
+    "symbol": "mypy/modulefinder.py::FindModuleCache.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/build.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@a618110789::BranchStatement.__init__",
+    "repo": "mypy",
+    "commit": "a6181107898c7eaccd396664e23adc84ab8e3efd",
+    "parent": "c245e91e1ba4d23ff28e77d08f5e103c43733bf5",
+    "symbol": "mypy/partially_defined.py::BranchStatement.__init__",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@a6b5b1e54a::DataclassAttribute.__init__",
+    "repo": "mypy",
+    "commit": "a6b5b1e54a557503e15d6449b417a05d72d55158",
+    "parent": "8d59d31903ffc4c2c80cf0a247db6c503954616e",
+    "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@a7c53d33be::MypyHTMLBuilder.__init__",
+    "repo": "mypy",
+    "commit": "a7c53d33be8e7620d14ecfba496aa912e95bf4fa",
+    "parent": "c68bd7ae2cffe8f0377ea9aab54b963b9fac3231",
+    "symbol": "docs/source/html_builder.py::MypyHTMLBuilder.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@a7d6e68541::_collect_field_args",
+    "repo": "mypy",
+    "commit": "a7d6e68541e1c6b52338dbe2e3f4a7055a033483",
+    "parent": "fab534bcc74806d76dba66264490c0b3eddf39dc",
+    "symbol": "mypy/plugins/dataclasses.py::_collect_field_args",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@a9fda34dc6::IRBuilder.gen_import_from",
+    "repo": "mypy",
+    "commit": "a9fda34dc68896df0405d8d9d8084148b7917bf5",
+    "parent": "790ab35ca936d04c484d427704d5acb17904012b",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.gen_import_from",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/statement.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@acccdd8a25::MessageBuilder.possible_missing_await",
+    "repo": "mypy",
+    "commit": "acccdd8a25b019e6b08180e2f95417a29651435e",
+    "parent": "181cbe88f1396f2f52770f59b6bbb13c6521980a",
+    "symbol": "mypy/messages.py::MessageBuilder.possible_missing_await",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/checker.py",
+      "mypy/checkmember.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@af3c8be98f::is_dunder",
+    "repo": "mypy",
+    "commit": "af3c8be98f9a3fad3fd9c7a9839278c8c1d74455",
+    "parent": "db8de922a335d01a9681eacb81860190b611b4d8",
+    "symbol": "mypy/stubtest.py::is_dunder",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@afdd9d5b2b::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "afdd9d5b2bb8a9ed9819571b266903396f47c5d9",
+    "parent": "7d0a8e79dfa3219135baf4d227ab4975aef710b7",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 21
+  },
+  {
+    "id": "mypy@b027308116::NewSemanticAnalyzer.enter",
+    "repo": "mypy",
+    "commit": "b027308116d19dc79bf80334ff06aab7c0001e11",
+    "parent": "9ffb7ca9d2734144205d88df35983a7121bb1d47",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.enter",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@b11d314777::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "b11d314777b83a5506bbaeae970657460eaf9b50",
+    "parent": "8615d8269e2f14f76f257e9439fa596b83e3c9d1",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@b199f90057::SemanticAnalyzer.analyze_class_decorator_common",
+    "repo": "mypy",
+    "commit": "b199f90057ed371b5aaea21d2158aa62272a2f6d",
+    "parent": "06e48a017efcb683b1deca3a40a9ccde78f5d4c4",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_class_decorator_common",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@b3275572ec::is_trivial_bound",
+    "repo": "mypy",
+    "commit": "b3275572ec9b65d0a1b5157c5f73ad4004a356b4",
+    "parent": "66fbf5b526ad8cfa127dd5cca68dcb2f770b1dd7",
+    "symbol": "mypy/solve.py::is_trivial_bound",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 19
+  },
+  {
+    "id": "mypy@b36d8cf5d4::get_typeshed_stdlib_modules",
+    "repo": "mypy",
+    "commit": "b36d8cf5d4d0bb77c5a8cf783ba4def16cd9846a",
+    "parent": "e2852039bafaf0d7463623dd5410c02797eae21b",
+    "symbol": "mypy/stubtest.py::get_typeshed_stdlib_modules",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [
+      "mypy/test/teststubtest.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@b50a4ef46c::is_legacy_bundled_package",
+    "repo": "mypy",
+    "commit": "b50a4ef46ca20dd3c6dfd53ca0837fa3c7287957",
+    "parent": "e311f827947dddec9501d6e6ae39cfc686292349",
+    "symbol": "mypy/stubinfo.py::is_legacy_bundled_package",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/build.py",
+      "mypy/modulefinder.py"
+    ],
+    "test_files": [
+      "mypy/test/teststubinfo.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@b50f3a1a44::ConditionalTypeBinder.assign_type",
+    "repo": "mypy",
+    "commit": "b50f3a1a44038b5f6304f77263f6e08c157f9aa8",
+    "parent": "8dd616b7d6eed0048ae97b91dd597b173086e995",
+    "symbol": "mypy/binder.py::ConditionalTypeBinder.assign_type",
+    "change_kind": "removed",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 17
+  },
+  {
+    "id": "mypy@b5107a98aa::SemanticAnalyzer.analyze_member_lvalue",
+    "repo": "mypy",
+    "commit": "b5107a98aa70e2cb33c79fb678f4205aa4539505",
+    "parent": "9f69beaf258b330d7472a12da06ec3074f883c5e",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.analyze_member_lvalue",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@b53dae73ee::report_missing",
+    "repo": "mypy",
+    "commit": "b53dae73eebf72e3fe1f868dfa9ad008204c5701",
+    "parent": "955681927167474ad2c1c3b5442d810f290b6b8a",
+    "symbol": "mypy/stubutil.py::report_missing",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/stubgen.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@b594e6ba4d::LowLevelIRBuilder.builtin_len",
+    "repo": "mypy",
+    "commit": "b594e6ba4d518adc163e70c5ccaf92ce936869a7",
+    "parent": "641919f9496c8c62b9f45e7ec8402162667b7a11",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.builtin_len",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@b5b7f36fed::ForIterable.init",
+    "repo": "mypy",
+    "commit": "b5b7f36fed4fb4b21d9384b4f594ad3d7ca5351d",
+    "parent": "0c85f1a793d18f31dc5844c4b6b2fa177a8ecee2",
+    "symbol": "mypyc/genops_for.py::ForIterable.init",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/genops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@b5f4df9862::add_class_tvars",
+    "repo": "mypy",
+    "commit": "b5f4df9862f43d71029ccc6307d679953ccdfca8",
+    "parent": "f6e250dc5fb6186c5ec65c91f1b935d97d54b05e",
+    "symbol": "mypy/checkmember.py::add_class_tvars",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@b778c875cc::type_object_type_from_function",
+    "repo": "mypy",
+    "commit": "b778c875cc6e92ad82666531740dab28274cf3e4",
+    "parent": "bd01d46ca6ac8e5ae0e80a1fec86b0e473f4981a",
+    "symbol": "mypy/checkmember.py::type_object_type_from_function",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@ba3e0649f1::State.__init__",
+    "repo": "mypy",
+    "commit": "ba3e0649f1c20ef3d4f68000b68196a5ddb0f6d2",
+    "parent": "185b2c955cedfb0200dc79a7f0ab74ba87631774",
+    "symbol": "mypy/build.py::State.__init__",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [
+      "mypy/test/testgraph.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@bab275ff0c::generate_class_type_decl",
+    "repo": "mypy",
+    "commit": "bab275ff0cf07bf30954b3969dcd440e82f144e0",
+    "parent": "edeb5bb9901907889af30d5d0800a761b0394829",
+    "symbol": "mypyc/emitclass.py::generate_class_type_decl",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/emitmodule.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@bbd732f724::TypeChecker.set_inference_error_fallback_type",
+    "repo": "mypy",
+    "commit": "bbd732f724eb3ef52f4e5e279ac644034839f79e",
+    "parent": "94382117364d95cd302873e803b794db6a57bab9",
+    "symbol": "mypy/checker.py::TypeChecker.set_inference_error_fallback_type",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@bbe68d3197::FileSystemCache.exists",
+    "repo": "mypy",
+    "commit": "bbe68d319733ba0ed68a149517b9949ea31a0aea",
+    "parent": "52a1c483f2c5ed0eb5ead408c021a440d7123d4d",
+    "symbol": "mypy/fscache.py::FileSystemCache.exists",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/build.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@bc590e4efa::Environment.add_temp",
+    "repo": "mypy",
+    "commit": "bc590e4efa9d1973938c7480039215c5ff84a20b",
+    "parent": "a0c5dfc88fa8780db8a3cf7b76c32e4257f218e2",
+    "symbol": "mypyc/ir/ops.py::Environment.add_temp",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@bef9b67e62::EmitterInterface.emit_lines",
+    "repo": "mypy",
+    "commit": "bef9b67e6258264427f0fc7c2283f2e0f41244ac",
+    "parent": "fa4f8645b8fee12594c655f715c7ff23564fc2b7",
+    "symbol": "mypyc/ops.py::EmitterInterface.emit_lines",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@bfabdb3317::NewSemanticAnalyzer.analyze_alias",
+    "repo": "mypy",
+    "commit": "bfabdb33176abe07817180e95f6f78f508423b25",
+    "parent": "e8c7ee7797fcf21fad7dd0247e93f4e8f2552576",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.analyze_alias",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@bffeb2e676::type_object_type",
+    "repo": "mypy",
+    "commit": "bffeb2e6766fd559d0888886c2d2374f42fa42b5",
+    "parent": "1d040591d4772b0ecd5ab8bb47c07e389041512c",
+    "symbol": "mypy/checkmember.py::type_object_type",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@c0372cc318::is_typeshed_file",
+    "repo": "mypy",
+    "commit": "c0372cc318dc35b25d4fe524b59f20b1244382a3",
+    "parent": "d8652b4f641c7d9dd0b62b7b211b8c38b9c80495",
+    "symbol": "mypy/util.py::is_typeshed_file",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/build.py",
+      "mypy/checker.py",
+      "mypy/errors.py",
+      "mypy/semanal.py",
+      "mypy/semanal_main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@c08719d8d9::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "c08719d8d93f48fd9428f36bc690910930fdd65b",
+    "parent": "93d1ce4133467a84b02ea06e5936cf6480afe08f",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@c1f2db34fb::os_path_join",
+    "repo": "mypy",
+    "commit": "c1f2db34fbec3b8347f9037703a804a4cd427c33",
+    "parent": "f63fdb391ac9314dc093f3750c4747c4a63c41f2",
+    "symbol": "mypy/util.py::os_path_join",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@c201a187be::os_path_join",
+    "repo": "mypy",
+    "commit": "c201a187be998ec9e9c179004e0cd28dc2c86137",
+    "parent": "1be3a8b40153d28414fee8049b435d69db90e325",
+    "symbol": "mypy/util.py::os_path_join",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@c26f1297d4::int_neg_callback",
+    "repo": "mypy",
+    "commit": "c26f1297d4f19d2d1124a30efc97caebb8c28616",
+    "parent": "b6e91d46b299bfd0af36b37586d3337a20e14b0e",
+    "symbol": "mypy/plugins/default.py::int_neg_callback",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@c32d11e60f::FileSystemWatcher._update",
+    "repo": "mypy",
+    "commit": "c32d11e60f04a0798292c438186199ccdec0db61",
+    "parent": "ca97d9667da1cf0bf22886ecfc2280958b56ac68",
+    "symbol": "mypy/fswatcher.py::FileSystemWatcher._update",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@c33da7438f::MessageBuilder.argument_incompatible_with_supertype",
+    "repo": "mypy",
+    "commit": "c33da7438f7c971f7becd9f01db5334fcbec9d53",
+    "parent": "1d405278835e92e4fb0f2549217f860f9171067a",
+    "symbol": "mypy/messages.py::MessageBuilder.argument_incompatible_with_supertype",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@c4a5f56207::LowLevelIRBuilder.int_op",
+    "repo": "mypy",
+    "commit": "c4a5f5620763dcfe2b95847806a889d560e2aa51",
+    "parent": "13e6617448ed5619c8b3512c5eed302f6d9f0f5b",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.int_op",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@c4f55aefb1::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "c4f55aefb17d3c12f036f2cc99ac7cc89f252915",
+    "parent": "c0af000d068b30362c4f4f72b8823e4f3f5b3e08",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@c68bd7ae2c::supported_self_type",
+    "repo": "mypy",
+    "commit": "c68bd7ae2cffe8f0377ea9aab54b963b9fac3231",
+    "parent": "ed03aff13d423fd7da836b4a414ba6787166d993",
+    "symbol": "mypy/typeops.py::supported_self_type",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@c94d8e3cd0::LowLevelIRBuilder.__init__",
+    "repo": "mypy",
+    "commit": "c94d8e3cd02e8be5e4594d84ec77c84b3faf7948",
+    "parent": "e0ad95296037446fccb398b8dadc54ae0751df46",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.__init__",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/irbuild/builder.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@c9d4c61d9c::Mapper.fdef_to_sig",
+    "repo": "mypy",
+    "commit": "c9d4c61d9c80b02279d1fcc9ca8a1974717b5e1c",
+    "parent": "bd2aafc13686711d0db11d30efbf1d4f68718136",
+    "symbol": "mypyc/irbuild/mapper.py::Mapper.fdef_to_sig",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/function.py",
+      "mypyc/irbuild/prepare.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@ca2e529eea::int_binary_op",
+    "repo": "mypy",
+    "commit": "ca2e529eeaec01c3f35a2aa91f0c41ecb04bb3cd",
+    "parent": "ecddcea3d8d4870ffcec12932b01a90f88679b9d",
+    "symbol": "mypyc/ops_int.py::int_binary_op",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@caf4787d10::type_fullname",
+    "repo": "mypy",
+    "commit": "caf4787d10dffc68fdf82556aebb00bced7a599e",
+    "parent": "6c7e480de047a1f08d02b56cd47ca0d0ac6bf685",
+    "symbol": "mypy/refinfo.py::type_fullname",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@cef7a63880::TypeChecker.check_subtype",
+    "repo": "mypy",
+    "commit": "cef7a638802f3b61b5969c75dee43f7908fc6bbc",
+    "parent": "ad90d62594315f818c0db6ce5d6e877a88d91364",
+    "symbol": "mypy/checker.py::TypeChecker.check_subtype",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@cf6a48c865::ASTConverter._check_ifstmt_for_overloads",
+    "repo": "mypy",
+    "commit": "cf6a48c865cc5aff23b08e651f41e1bf7b397f98",
+    "parent": "9e9de71cc7d896829f503f6a35171d906eeef5da",
+    "symbol": "mypy/fastparse.py::ASTConverter._check_ifstmt_for_overloads",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@cfc0734640::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "cfc07346408d92ac91c18e3698c74b9c0d3a4a65",
+    "parent": "c07d7888e7b61983924632036a864c4d210848fe",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/irbuild/expression.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 14
+  },
+  {
+    "id": "mypy@d0bd1c8ab2::analyze_must_defined_regs",
+    "repo": "mypy",
+    "commit": "d0bd1c8ab2585fd1194f753c1a4b5d2a1392e015",
+    "parent": "7d69ce2ccf6bf751d050c3b65354019878d90739",
+    "symbol": "mypyc/analysis/dataflow.py::analyze_must_defined_regs",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/transform/refcount.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@d180456b58::ASTConverter.make_argument",
+    "repo": "mypy",
+    "commit": "d180456b584b469983e3cc9dddd1e36b997a7427",
+    "parent": "ed09f8d831aba43af7b7078ceb1d0706e1c124f6",
+    "symbol": "mypy/fastparse.py::ASTConverter.make_argument",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@d1d431630d::SemanticAnalyzer.lookup_fully_qualified",
+    "repo": "mypy",
+    "commit": "d1d431630d967923a9562b4dff436a509c2acb8b",
+    "parent": "f7a53d8521dcc32d3ae0a92f57e9508bb0a59049",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.lookup_fully_qualified",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@d2a7f05d27::apply_generic_arguments",
+    "repo": "mypy",
+    "commit": "d2a7f05d27d9ac5c096c61ecf0455edda91f5d5a",
+    "parent": "cd525d2905f5e9de92fa72d94bf096fa9bf333ab",
+    "symbol": "mypy/applytype.py::apply_generic_arguments",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/checkexpr.py",
+      "mypy/subtypes.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@d2a8800e31::get_mypyc_attrs",
+    "repo": "mypy",
+    "commit": "d2a8800e314fb3aa8c88a5fe9d6000d839ca6254",
+    "parent": "9dc611f57639f899b5f71d286c3efe6a385dadf9",
+    "symbol": "mypyc/irbuild/util.py::get_mypyc_attrs",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/irbuild/prepare.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@d35e571ef3::check_type_parameter",
+    "repo": "mypy",
+    "commit": "d35e571ef303ec63f4c8c3437669c858d85329eb",
+    "parent": "c588852451ec63f9a26fefe5eb82976aa03d611c",
+    "symbol": "mypy/subtypes.py::check_type_parameter",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@d503edfb90::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "d503edfb906814a815bf048437280ad74cd46c92",
+    "parent": "f9fe33147a9137b2579b6695dbd81980b1cca7f5",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@d52ce3b370::get_self_type",
+    "repo": "mypy",
+    "commit": "d52ce3b3702bc7c194d6c14bca7affad2596e84b",
+    "parent": "9f455bd9f8f32e166ba748055aafba5f30a21714",
+    "symbol": "mypy/typeops.py::get_self_type",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@d69419cc45::get_expr_length",
+    "repo": "mypy",
+    "commit": "d69419cc452fa9a628e8ab0f6d5d7abd2b5aa015",
+    "parent": "8e57622c45b153c84f773bccae1db5f337f5a68c",
+    "symbol": "mypyc/irbuild/for_helpers.py::get_expr_length",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@d96b9dcb1d::SemanticAnalyzer.record_imported_symbol",
+    "repo": "mypy",
+    "commit": "d96b9dcb1dcd0c642e920e46e9f077ca9c7e88c2",
+    "parent": "fa3566a87d3466e8465d5bafea5b0f0bde3b4eaf",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.record_imported_symbol",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@d98ba8e3e5::LoadInt.__init__",
+    "repo": "mypy",
+    "commit": "d98ba8e3e58cec46de23b40475a1e7874d52b9a5",
+    "parent": "3adb2e952cf9e16d4d493440a1c7be3de4d214ef",
+    "symbol": "mypyc/ir/ops.py::LoadInt.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [
+      "mypyc/test/test_emitfunc.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@d9c77cbe82::LowLevelIRBuilder.unary_op",
+    "repo": "mypy",
+    "commit": "d9c77cbe827123be16dd4487bf7cd8248c643100",
+    "parent": "6a88c2135cf35875c4bcdc61c0bddd613d72281c",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.unary_op",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@d9e209f625::IRBuilder.__init__",
+    "repo": "mypy",
+    "commit": "d9e209f625f4359deafddead70009433f5dbbc80",
+    "parent": "7e152faa0d95fdc900975e92362ca2d96dabe058",
+    "symbol": "mypyc/genops.py::IRBuilder.__init__",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypyc/genclass.py",
+      "mypyc/genexpr.py",
+      "mypyc/genfunc.py",
+      "mypyc/genstatement.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@dad898605d::update_typeshed",
+    "repo": "mypy",
+    "commit": "dad898605d6d195e8cbf3f7e66bd61aeda208533",
+    "parent": "844960680c1d5e24d05f1fa9d1357c4383cba2fe",
+    "symbol": "misc/sync-typeshed.py::update_typeshed",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@dc031c9634::build_mypy",
+    "repo": "mypy",
+    "commit": "dc031c9634e0fabaa1f7ff0a1c682b2e8ca1f863",
+    "parent": "24b831ab43db3671d75dd2fba4868735cadc8b9a",
+    "symbol": "misc/perf_compare.py::build_mypy",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@dcb4d695e0::read_literal",
+    "repo": "mypy",
+    "commit": "dcb4d695e0b3ea6fedd90572bc249ec07731b3bc",
+    "parent": "d1dffe275b9ef0babb2df6ddf0a329b4304cb114",
+    "symbol": "mypy/cache.py::read_literal",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/types.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@dfcff6851c::int_unary_op",
+    "repo": "mypy",
+    "commit": "dfcff6851c46f04c0b0ace903f614e23c656cb55",
+    "parent": "63f2fed5d0e10d4d875442e9bba2283c81dfdf4b",
+    "symbol": "mypyc/primitives/int_ops.py::int_unary_op",
+    "change_kind": "other",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@e1f6d6b454::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "e1f6d6b4547f118787a68bf503f5c86a2801a2bf",
+    "parent": "838a1d4be1f3cad230d028b0e9cb8e1fb7a4fa5b",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@e22afc7578::name_emit",
+    "repo": "mypy",
+    "commit": "e22afc75783469b97877742ab339bbd7e20262a1",
+    "parent": "b7670881c375cae5e5db8164dab1ba6633173745",
+    "symbol": "mypyc/primitives/registry.py::name_emit",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypyc/primitives/misc_ops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@e37d92d6c2::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "e37d92d6c2d1de92e74c365ee1240c67c94c24b3",
+    "parent": "a8b723d57a72aa42039548e689605d0598d0a232",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@e37dfb126e::for_loop_helper_with_index",
+    "repo": "mypy",
+    "commit": "e37dfb126ee03fff92c66d5fc55d82befb750163",
+    "parent": "0a6a48c4278f99417fe81f7d3f0194edeaec7e46",
+    "symbol": "mypyc/irbuild/for_helpers.py::for_loop_helper_with_index",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@e42e45dc7e::NewSemanticAnalyzer.add_unknown_symbol",
+    "repo": "mypy",
+    "commit": "e42e45dc7ee1984d613e3a89b4d607e500c8f44e",
+    "parent": "14f60b500e824c607771636478dad3fae276a1bd",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.add_unknown_symbol",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@e654572fa9::infer_method_sig",
+    "repo": "mypy",
+    "commit": "e654572fa9627f455825817699a57ee4c5dcbf0c",
+    "parent": "3ef8040a4c9b9ad05368f593749125b4c7f8067d",
+    "symbol": "mypy/stubgenc.py::infer_method_sig",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@e69c5cde86::ArgSig.__init__",
+    "repo": "mypy",
+    "commit": "e69c5cde8643e04a54a644cc27814ab98181541d",
+    "parent": "1200d1d956e589a0a33c86ef8a7cb3f5a9b64f1f",
+    "symbol": "mypy/stubdoc.py::ArgSig.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/stubgen.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@e7c095af6f::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "e7c095af6f0b4695bd8009b642eb3364969a9e59",
+    "parent": "1711de86db110225508ebe3fae94ba02d07fa217",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/irbuild/format_str_tokenizer.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@e8c7ee7797::NewSemanticAnalyzer.enter",
+    "repo": "mypy",
+    "commit": "e8c7ee7797fcf21fad7dd0247e93f4e8f2552576",
+    "parent": "b17d8f51083cf63222703fc3eb4be3f0fc8419dd",
+    "symbol": "mypy/newsemanal/semanal.py::NewSemanticAnalyzer.enter",
+    "change_kind": "made_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@eb34a7bdcc::generate_deps_for_cache",
+    "repo": "mypy",
+    "commit": "eb34a7bdcceb4507459c0ef5472117f65bd0855d",
+    "parent": "d044c2ed8e2a4fd678fe8714146e5d8e5b39239f",
+    "symbol": "mypy/build.py::generate_deps_for_cache",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@eb5f4a4e0f::get_proper_types",
+    "repo": "mypy",
+    "commit": "eb5f4a4e0f69e07391f48094754d31b313f145f0",
+    "parent": "b89e2fa5f0f37a42851ae8fb449bc4c67cb326bb",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "mypy@ecec8bbf98::test_stubs",
+    "repo": "mypy",
+    "commit": "ecec8bbf98ea1f78e61133312bee20e88de021fe",
+    "parent": "6bbc8c5e4f48f8ec2988c7ce70ec41b61475b9da",
+    "symbol": "mypy/stubtest.py::test_stubs",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [
+      "mypy/test/teststubtest.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@ed2b4c76cb::DataclassAttribute.__init__",
+    "repo": "mypy",
+    "commit": "ed2b4c76cb8662942096de1cfbf08aa422a3b6f2",
+    "parent": "c90026bd867635a4efe70cdacf0caaf00a986914",
+    "symbol": "mypy/plugins/dataclasses.py::DataclassAttribute.__init__",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@f104914b9d::best_matches",
+    "repo": "mypy",
+    "commit": "f104914b9d4f58796042667a8b3d06b5868bee34",
+    "parent": "5f480f37ff3704ed581db944bfdf99c655b3dabe",
+    "symbol": "mypy/messages.py::best_matches",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/semanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@f15d67757c::get_proper_types",
+    "repo": "mypy",
+    "commit": "f15d67757c2e746d600a641d88f628aefa977ddd",
+    "parent": "eb5f4a4e0f69e07391f48094754d31b313f145f0",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@f24678faac::TypeVarLikeScope.bind_new",
+    "repo": "mypy",
+    "commit": "f24678faacf26966daef558f9c94f552b9f809bf",
+    "parent": "a087a5894935cfdbc2eba27a6d04ebca38fd6659",
+    "symbol": "mypy/tvar_scope.py::TypeVarLikeScope.bind_new",
+    "change_kind": "added_required",
+    "source_files": [
+      "mypy/semanal.py",
+      "mypy/typeanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@f3367260ea::any_constraints",
+    "repo": "mypy",
+    "commit": "f3367260eaeee9cb67ca2bd4ca3929e9c0d7a9af",
+    "parent": "61b36646b8f58fb4eda5ff1edc6ff38a6d230b59",
+    "symbol": "mypy/constraints.py::any_constraints",
+    "change_kind": "reordered",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@f3bdf5caaf::SemanticAnalyzer.expr_to_unanalyzed_type",
+    "repo": "mypy",
+    "commit": "f3bdf5caaf6ccbba6c5df21b483fb9b716f13851",
+    "parent": "4a9e6e60884c0bab89eb2ec6e947373c871f8aee",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.expr_to_unanalyzed_type",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/exprtotype.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "mypy@f7d047cd6d::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "f7d047cd6dc008ab767510211d5c466d1c5e9215",
+    "parent": "090a414ba022f600bd65e7611fa3691903fd5a74",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@f83ec9fffa::LowLevelIRBuilder.unary_not",
+    "repo": "mypy",
+    "commit": "f83ec9fffa838978a6ee6411a515a313979c61fa",
+    "parent": "6a97dc63b4291633ecda87c74f5e8d98d987b8b7",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.unary_not",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "mypy@f84e2cf1b0::SuggestionEngine.__init__",
+    "repo": "mypy",
+    "commit": "f84e2cf1b0cbd1b7e7752cf204eacb68b3e04968",
+    "parent": "222ac7bc7d0a7837bcb2295e8c63a19c87d90bb0",
+    "symbol": "mypy/suggestions.py::SuggestionEngine.__init__",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "mypy@f8bf7ab577::options_snapshot",
+    "repo": "mypy",
+    "commit": "f8bf7ab5778e5c68417c850aa7e4ca2e0b74f149",
+    "parent": "e0c375a97105ecf43c9ff9b858e01cd6e938a077",
+    "symbol": "mypy/build.py::options_snapshot",
+    "change_kind": "renamed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@f9bf6491c4::SemanticAnalyzer.prepare_typing_namespace",
+    "repo": "mypy",
+    "commit": "f9bf6491c477a99e420a36520ed8faf82235ea3b",
+    "parent": "8f281fbc3c863402ef9c15ba348040bfe622654e",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.prepare_typing_namespace",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@fa3566a87d::IRBuilder.accept",
+    "repo": "mypy",
+    "commit": "fa3566a87d3466e8465d5bafea5b0f0bde3b4eaf",
+    "parent": "feeb3f00a63d31cf5c7369885c4dd4a294133f59",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
+    "change_kind": "removed",
+    "source_files": [
+      "mypyc/irbuild/expression.py",
+      "mypyc/irbuild/specialize.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "mypy@fad733ff78::State.__init__",
+    "repo": "mypy",
+    "commit": "fad733ff78852f1aa435485fead63ca7506849f8",
+    "parent": "84a20bdbf993d6eb1bdfa9d4e5d26d7096a241db",
+    "symbol": "mypy/nativeparse.py::State.__init__",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/parse.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "mypy@fc609cdfca::merge_with_any",
+    "repo": "mypy",
+    "commit": "fc609cdfca698b3e1eaeeb50a74acf296d3a25c4",
+    "parent": "4037b6a082556dab352a182c7671939073f25b26",
+    "symbol": "mypy/constraints.py::merge_with_any",
+    "change_kind": "removed",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "mypy@fca4cae253::ErrorInfo.__init__",
+    "repo": "mypy",
+    "commit": "fca4cae2537e2aabba2bc5393ef81f2d80cdb5ae",
+    "parent": "310b914b6046830aafb0468f65464d75362991ab",
+    "symbol": "mypy/errors.py::ErrorInfo.__init__",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@fd16f84a2d::log_configuration",
+    "repo": "mypy",
+    "commit": "fd16f84a2d692ce3712d3da3251561d6af03261b",
+    "parent": "7e66e51099e1c1c37673bed8154e2d3c74846067",
+    "symbol": "mypy/build.py::log_configuration",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "mypy@fd905502e8::count_stats",
+    "repo": "mypy",
+    "commit": "fd905502e8d94ae6a97e5120aeb687b4a59516eb",
+    "parent": "21d957afc6241c57eaa364c70920e3927ff94fdd",
+    "symbol": "mypy/util.py::count_stats",
+    "change_kind": "renamed",
+    "source_files": [
+      "mypy/dmypy_server.py",
+      "mypy/main.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "mypy@fdeedd6f56::parse_section",
+    "repo": "mypy",
+    "commit": "fdeedd6f561880bde312fef81b86d44a8cca0628",
+    "parent": "fbf6fe4f4c0458e8b4a9b5c31d5db7b21e28b40b",
+    "symbol": "mypy/config_parser.py::parse_section",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 19
+  },
+  {
+    "id": "mypy@fe6fe1d047::write_cache",
+    "repo": "mypy",
+    "commit": "fe6fe1d047a88f4dee097b3e421da39ed6787246",
+    "parent": "ba2374fd891f43f4ef9f8649165385e4291c21ea",
+    "symbol": "mypy/build.py::write_cache",
+    "change_kind": "added_required",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "mypy@fe8309aaed::flatten_nested_unions",
+    "repo": "mypy",
+    "commit": "fe8309aaed79a714c3e5267c25ad7812f909259e",
+    "parent": "04366e731d0112f82a8c24a2ba44890fc0196296",
+    "symbol": "mypy/types.py::flatten_nested_unions",
+    "change_kind": "added_optional",
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "mypy@fffb4b40b7::MessageBuilder.has_no_attr",
+    "repo": "mypy",
+    "commit": "fffb4b40b744ccf90663d633db9576a1a93d067a",
+    "parent": "d9dea5f3ad30bb449e4167b3e8476684ded0482e",
+    "symbol": "mypy/messages.py::MessageBuilder.has_no_attr",
+    "change_kind": "added_optional",
+    "source_files": [
+      "mypy/checkmember.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  }
+]

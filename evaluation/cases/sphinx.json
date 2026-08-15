@@ -7,10 +7,7 @@
     "symbol": "sphinx/deprecation.py::deprecated_alias",
     "change_kind": "added_optional",
     "source_files": [
-      "sphinx/ext/apidoc.py",
-      "sphinx/ext/imgmath.py",
-      "sphinx/util/pycompat.py",
-      "sphinx/util/texescape.py"
+      "sphinx/util/pycompat.py"
     ],
     "test_files": [],
     "commit_file_count": 17
@@ -195,7 +192,6 @@
     "source_files": [
       "sphinx/builders/gettext.py",
       "sphinx/domains/index.py",
-      "sphinx/search/__init__.py",
       "sphinx/transforms/i18n.py"
     ],
     "test_files": [],
@@ -343,7 +339,6 @@
     "symbol": "sphinx/ext/autosummary/__init__.py::_get_documenter",
     "change_kind": "removed",
     "source_files": [
-      "sphinx/ext/autodoc/_documenters.py",
       "sphinx/ext/autosummary/generate.py"
     ],
     "test_files": [],
@@ -1121,10 +1116,7 @@
     "parent": "7801bd77b8ebf0bddfedc00f0d61cea56f3f4e2f",
     "symbol": "sphinx/environment/__init__.py::BuildEnvironment.note_dependency",
     "change_kind": "added_optional",
-    "source_files": [
-      "sphinx/environment/collectors/asset.py",
-      "sphinx/environment/collectors/dependencies.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 3
   },
@@ -1399,9 +1391,7 @@
     "symbol": "sphinx/config.py::is_serializable",
     "change_kind": "added_optional",
     "source_files": [],
-    "test_files": [
-      "tests/test_config/test_config.py"
-    ],
+    "test_files": [],
     "commit_file_count": 2
   },
   {
@@ -1459,9 +1449,7 @@
     "parent": "796a5722e080b7e546e910a46e94f2ff986a4c6e",
     "symbol": "sphinx/ext/autodoc/importer.py::_import_object",
     "change_kind": "added_required",
-    "source_files": [
-      "sphinx/ext/autodoc/_loader.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 7
   },
@@ -1517,9 +1505,7 @@
     "symbol": "sphinx/ext/autodoc/importer.py::import_module",
     "change_kind": "added_optional",
     "source_files": [],
-    "test_files": [
-      "tests/test_extensions/test_ext_autodoc_importer.py"
-    ],
+    "test_files": [],
     "commit_file_count": 5
   },
   {

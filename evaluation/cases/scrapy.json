@@ -29,9 +29,7 @@
     "symbol": "scrapy/utils/deprecate.py::warn_when_subclassed",
     "change_kind": "renamed",
     "source_files": [],
-    "test_files": [
-      "scrapy/tests/test_utils_deprecate.py"
-    ],
+    "test_files": [],
     "commit_file_count": 4
   },
   {
@@ -273,9 +271,7 @@
     "parent": "a087d2593a36dcacfeb9353d9ca1e6737478ddd9",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
-    "source_files": [
-      "scrapy/core/downloader/tls.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 2
   },
@@ -457,9 +453,7 @@
     "symbol": "scrapy/pqueues.py::DownloaderAwarePriorityQueue.on_response_download",
     "change_kind": "removed",
     "source_files": [],
-    "test_files": [
-      "tests/test_request_left.py"
-    ],
+    "test_files": [],
     "commit_file_count": 6
   },
   {
@@ -991,8 +985,6 @@
     "change_kind": "added_optional",
     "source_files": [],
     "test_files": [
-      "tests/test_closespider.py",
-      "tests/test_crawl.py",
       "tests/test_downloader_handlers.py",
       "tests/test_downloadermiddleware.py",
       "tests/test_downloadermiddleware_ajaxcrawlable.py",
@@ -1004,10 +996,8 @@
       "tests/test_downloadermiddleware_stats.py",
       "tests/test_downloadermiddleware_useragent.py",
       "tests/test_engine.py",
-      "tests/test_proxy_connect.py",
       "tests/test_spider.py",
       "tests/test_spidermiddleware_depth.py",
-      "tests/test_spidermiddleware_httperror.py",
       "tests/test_spidermiddleware_offsite.py",
       "tests/test_stats.py"
     ],
@@ -1020,9 +1010,7 @@
     "parent": "5c586d78f0e1c5b66358ed644bb6e528ad4b062b",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.thumb_path",
     "change_kind": "reordered",
-    "source_files": [
-      "scrapy/pipelines/media.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 2
   },
@@ -1478,9 +1466,7 @@
     "parent": "05ffca27812f5d644294e00794e531c05c0410df",
     "symbol": "scrapy/contrib/linkextractors/lxmlhtml.py::LxmlParserLinkExtractor._extract_links",
     "change_kind": "other",
-    "source_files": [
-      "scrapy/linkextractor.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 4
   },
@@ -1798,9 +1784,7 @@
     "parent": "a8a8f20d9c49ae7f611cbdc90676b64f6349dba2",
     "symbol": "scrapy/core/downloader/handlers/_httpx.py::HttpxDownloadHandler._log_tls_info",
     "change_kind": "other",
-    "source_files": [
-      "scrapy/core/downloader/handlers/_base_streaming.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 13
   },
