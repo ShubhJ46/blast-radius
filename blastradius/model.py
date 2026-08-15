@@ -39,6 +39,7 @@ ReferenceVia = Literal[
     "class_attr",
     "module_attr",
     "constructor",  # `C(...)`, which runs `C.__init__` without ever naming it
+    "typed_attr",  # `w.render()` where `w` was *declared* to be a `Widget`
     "unresolved_attr",
 ]
 
