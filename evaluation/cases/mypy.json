@@ -314,9 +314,7 @@
     "parent": "312b62b797df985ac17f3658c1c4990b521b0a41",
     "symbol": "mypy/newsemanal/typeanal.py::TypeAnalyser.__init__",
     "change_kind": "removed",
-    "source_files": [
-      "mypy/newsemanal/semanal.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 3
   },
@@ -1065,10 +1063,7 @@
     "parent": "0d17db051b23b3768d92f83f1a8dcb5626902722",
     "symbol": "mypyc/ops.py::ModuleIR.__init__",
     "change_kind": "added_required",
-    "source_files": [
-      "mypyc/emitmodule.py",
-      "mypyc/genops.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 6
   },
@@ -1392,7 +1387,6 @@
     "symbol": "mypyc/codegen/emit.py::Emitter.__init__",
     "change_kind": "added_optional",
     "source_files": [
-      "mypyc/codegen/emitclass.py",
       "mypyc/codegen/emitmodule.py"
     ],
     "test_files": [],
@@ -1486,11 +1480,7 @@
     "parent": "a32d2f41304061639044eafc1a40d4fbb4ea49d4",
     "symbol": "mypyc/ir/rtypes.py::RPrimitive.__init__",
     "change_kind": "added_optional",
-    "source_files": [
-      "mypyc/rt_subtype.py",
-      "mypyc/sametype.py",
-      "mypyc/subtype.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 7
   },
@@ -2475,12 +2465,7 @@
     "parent": "7e152faa0d95fdc900975e92362ca2d96dabe058",
     "symbol": "mypyc/genops.py::IRBuilder.__init__",
     "change_kind": "added_required",
-    "source_files": [
-      "mypyc/genclass.py",
-      "mypyc/genexpr.py",
-      "mypyc/genfunc.py",
-      "mypyc/genstatement.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 10
   },

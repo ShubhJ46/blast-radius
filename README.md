@@ -14,14 +14,14 @@ mechanically.
 
 ## Status
 
-Stage 1 is complete and measured. Scored against **62 signature-changing commits
+Stage 1 is complete and measured. Scored against **59 signature-changing commits
 mined from three real repositories**, with `grep` for the symbol name as the
 baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **65%** | 63% | **64%** |
-| `grep` | 14% | 100% | 24% |
+| **this tool** | **64%** | 66% | **65%** |
+| `grep` | 13% | 100% | 23% |
 
 `grep` finds everything and is wrong six times out of seven. The tool is right
 about two times in three, in both directions. Full per-corpus breakdown,
@@ -65,14 +65,14 @@ large frameworks, not focused libraries.
 
 | Corpus | Cases | Forcing | Usable for recall | On a private `_name` |
 | --- | ---: | ---: | ---: | ---: |
-| [mypy](https://github.com/python/mypy) | 248 | 148 | **46 (31%)** | 27 |
+| [mypy](https://github.com/python/mypy) | 248 | 148 | **43 (29%)** | 27 |
 | [scrapy](https://github.com/scrapy/scrapy) | 155 | 74 | 8 (11%) | 47 |
-| [sphinx](https://github.com/sphinx-doc/sphinx) | 131 | 83 | 8 (10%) | 37 |
+| [sphinx](https://github.com/sphinx-doc/sphinx) | 129 | 81 | 8 (10%) | 35 |
 
 mypy is a type checker — an application whose modules call each other
-constantly — and it yields three times the usable rate of the two libraries.
-That is the corpus shape a recall number needs, and it supplies 46 of the 62
-scored cases on its own.
+constantly — and it yields nearly three times the usable rate of the two
+libraries. That is the corpus shape a recall number needs, and it supplies 43 of
+the 59 scored cases on its own.
 
 The last column explains most of the gap, and it is a property of file-level
 evaluation rather than of either tool. A private helper's callers live in its
@@ -83,12 +83,12 @@ cross-file blast radius, and cannot be scored at all:
 | | private forcing cases | of those, empty ground truth |
 | --- | ---: | ---: |
 | scrapy | 47 of 74 (64%) | 45 (96%) |
-| sphinx | 37 of 83 (45%) | 34 (92%) |
-| mypy | 27 of 148 (18%) | 15 (56%) |
+| sphinx | 35 of 81 (43%) | 32 (91%) |
+| mypy | 27 of 148 (18%) | 18 (67%) |
 
 That is the mechanism behind the usable-case share, not a separate fact about
 it: scrapy spends 64% of its forcing cases on private helpers and almost none of
-those can be measured, while mypy spends 18% and keeps nearly half of even those.
+those can be measured, while mypy spends 18% and keeps a third of even those.
 No amount of resolution accuracy moves this, which is worth knowing before
 reading a low usable share as a verdict on the tool.
 
@@ -210,39 +210,40 @@ honest-looking limitation.
 
 ## Results
 
-62 cases, all with non-empty cross-file ground truth:
+59 cases, all with non-empty cross-file ground truth:
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
 | sphinx | 8 | 100% | 91% | 95% |
 | scrapy | 8 | 88% | 70% | 78% |
-| mypy | 46 | 57% | 57% | 57% |
-| **all** | **62** | **65%** | **63%** | **64%** |
-| `grep`, all | 62 | 14% | 100% | 24% |
+| mypy | 43 | 56% | 60% | 58% |
+| **all** | **59** | **64%** | **66%** | **65%** |
+| `grep`, all | 59 | 13% | 100% | 23% |
 
 **mypy is where it does badly, and the aggregate hides that.** It also supplies
-46 of the 62 cases, so it sets the headline. Two effects account for most of the
-gap, and reading the individual cases showed neither is a resolution failure:
+43 of the 59 cases, so it sets the headline. Reading the individual cases showed
+the largest single effect is not a resolution failure at all:
 
 **22 of mypy's 28 false positives come from two commits touching one function.**
 `get_proper_types` is called in twelve files; two commits renamed one of its
 *parameters*. Every one of those call sites passes positionally, so none of them
 had to change — but all eleven are real dependencies that the tool correctly
 found. This is the precision lower bound in its purest form: being right about a
-dependency that did not need editing is scored as being wrong.
+dependency that did not need editing is scored as being wrong. Those two cases
+alone score 8% precision at 100% recall. Remove them and mypy's precision is
+**85%** rather than 56%, with recall unchanged at 59% — but they are left in,
+because choosing which of your own cases to drop is how an evaluation stops
+meaning anything.
 
-**Ground truth for `__init__` is too broad.** Since a caller writes `Widget(...)`
-and never `__init__`, the miner matches the *class* name in diffs. That also
-matches every import and every type annotation of the class. For
-`IRBuilder.__init__`, all four "misses" are files that merely annotate a
-parameter as `builder: 'IRBuilder'` — which a change to the initialiser's
-signature does not oblige to change at all. Narrowing that filter to call-shaped
-mentions is the next fix, and it will raise recall without touching the tool.
+Initialisers are now the *best*-scoring category rather than the worst — 11
+cases at **80% precision and 100% recall**, no misses at all — which is the
+result of the third fix below.
 
 ### What the fixes were worth
 
-Both fixes in [what the evaluation changed](#what-the-evaluation-changed) were
-made *because* of the first scored run. On sphinx and scrapy:
+Every fix in [what the evaluation changed](#what-the-evaluation-changed) was
+made *because* of a scored run rather than from reading the code. The first two,
+measured on sphinx and scrapy:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
@@ -296,6 +297,49 @@ does call `gunzip`, and the reordering simply did not affect its one-argument
 call. That is exactly why precision here is reported as a lower bound: a real
 dependency that did not *have* to be edited counts against the tool, and is not
 a defect.
+
+### An initialiser's blast radius is where it is constructed
+
+Scoring the second time round, with mypy added, put `IRBuilder.__init__` at the
+top of the miss list: four missed files, no hits. All four turned out to use the
+class only as an annotation —
+
+```python
+def __init__(self, builder: 'IRBuilder') -> None:
+```
+
+— which a change to the initialiser's signature does not oblige to change. The
+cause was the *first* miner fix overshooting: because a caller writes
+`Widget(...)` and never `__init__`, ground truth searches diffs for the class
+name, and that also matches every import and every annotation of the class.
+
+Ground truth for `__init__` now requires the call shape `Class(`. A subclass
+declaration deliberately does not match, since `class Child(Base):` writes
+`Base)` — the declaration itself need not change when the base initialiser does,
+only the code that constructs it.
+
+Operator dunders are dropped as subjects entirely, alongside test and nested
+functions: a caller of `__getitem__` writes `obj[key]` and of `__eq__` writes
+`a == b`, neither of which names anything a diff search can find, so any ground
+truth mined for them would be assembled from unrelated mentions of the class.
+`__init__` is the one dunder kept, because construction does write the name.
+
+Initialisers went from the worst-scoring category to the best: **11 cases, 80%
+precision, 100% recall, zero misses.**
+
+The overall effect is smaller than that suggests, and worth stating exactly.
+Removing annotation matches took 5 files out of the missed column and 2 out of
+the hit column, leaving false positives untouched at 29:
+
+| | hits | false positives | misses | precision | recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| before | 54 | 29 | 32 | 65% | 63% |
+| after | 52 | 29 | 27 | 64% | 66% |
+
+So recall rose three points and precision fell one — the fix removed ground
+truth the tool was wrong about more often than right about, which is what a
+correct narrowing should do. It does not make the tool better; it stops the
+harness from asking it the wrong question.
 
 ## Two gaps found by running it on real code
 

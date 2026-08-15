@@ -428,17 +428,6 @@
     "commit_file_count": 1
   },
   {
-    "id": "sphinx@4808041cc9::DummyOptionSpec.__getitem__",
-    "repo": "sphinx",
-    "commit": "4808041cc91c0f56a20b625ac77fe9521d4174ba",
-    "parent": "4009fe0c8cce5b37900bd7c32629c358acf380ce",
-    "symbol": "sphinx/ext/autodoc/directive.py::DummyOptionSpec.__getitem__",
-    "change_kind": "renamed",
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 2
-  },
-  {
     "id": "sphinx@48cbb43e28::progress_message.__init__",
     "repo": "sphinx",
     "commit": "48cbb43e28efe82b198137042811e0ade3599ae7",
@@ -1452,17 +1441,6 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
-  },
-  {
-    "id": "sphinx@f8e9669f8b::_DomainsType.__getitem__",
-    "repo": "sphinx",
-    "commit": "f8e9669f8bd1d3a659eb03b8ef9bb9a6d2844e85",
-    "parent": "c8c7fee4e5acf9b43bb928a3d98fcc9049da7ef1",
-    "symbol": "sphinx/environment/__init__.py::_DomainsType.__getitem__",
-    "change_kind": "renamed",
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 5
   },
   {
     "id": "sphinx@f9d36008e1::DefinitionParser._parse_expression",

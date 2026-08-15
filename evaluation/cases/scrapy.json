@@ -213,9 +213,7 @@
     "symbol": "scrapy/loader/__init__.py::ItemLoader.__init__",
     "change_kind": "added_optional",
     "source_files": [],
-    "test_files": [
-      "tests/test_loader.py"
-    ],
+    "test_files": [],
     "commit_file_count": 2
   },
   {
@@ -373,9 +371,7 @@
     "parent": "a940a80f5886c631425c4790ac92928926b1cc92",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
-    "source_files": [
-      "scrapy/core/downloader/tls.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 2
   },
@@ -894,9 +890,7 @@
     "symbol": "scrapy/pipelines/files.py::FilesPipeline.__init__",
     "change_kind": "added_optional",
     "source_files": [],
-    "test_files": [
-      "tests/test_pipeline_files.py"
-    ],
+    "test_files": [],
     "commit_file_count": 2
   },
   {
@@ -1596,9 +1590,7 @@
     "symbol": "scrapy/extensions/feedexport.py::FTPFeedStorage.__init__",
     "change_kind": "added_optional",
     "source_files": [],
-    "test_files": [
-      "tests/test_feedexport.py"
-    ],
+    "test_files": [],
     "commit_file_count": 4
   },
   {
@@ -1631,9 +1623,7 @@
     "symbol": "scrapy/downloadermiddlewares/retry.py::RetryMiddleware.__init__",
     "change_kind": "renamed",
     "source_files": [],
-    "test_files": [
-      "tests/test_downloadermiddleware_retry.py"
-    ],
+    "test_files": [],
     "commit_file_count": 7
   },
   {
@@ -1702,10 +1692,7 @@
     "parent": "72bcf8cb466fb5a55c903037644f45f0a69cdf50",
     "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
     "change_kind": "added_optional",
-    "source_files": [
-      "scrapy/core/downloader/handlers/http10.py",
-      "scrapy/settings/default_settings.py"
-    ],
+    "source_files": [],
     "test_files": [],
     "commit_file_count": 9
   },
