@@ -221,7 +221,36 @@ def source_only(paths: Iterable[str]) -> frozenset[str]:
     return frozenset(path for path in paths if not is_test_path(path))
 
 
-def predict(root: Path, symbol: SymbolId) -> tuple[frozenset[str], frozenset[str]]:
+def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set[str] | None:
+    """Files a *specific* signature edit forces to change, or None if all of them.
+
+    Every caller is a real dependency, but only some are work, and which ones
+    depends on the edit:
+
+    - `removed` and `renamed` break the call sites that pass the parameter.
+      `f(x)` survives the removal of `can_borrow`; `f(x, can_borrow=True)` does
+      not.
+    - `made_required` is the mirror image: a parameter that lost its default
+      breaks the callers *omitting* it.
+    - `added_required` obliges every caller to pass something new, and
+      `reordered` has no one parameter to blame, so both fall back to the whole
+      set rather than inventing a narrower answer.
+    """
+    if change_kind in ("added_required", "reordered") or not parameters:
+        return None
+    supplied = change_kind != "made_required"
+    files: set[str] = set()
+    for parameter in parameters:
+        files.update(impact.files_affected_by(parameter, supplied=supplied))
+    return files
+
+
+def predict(
+    root: Path,
+    symbol: SymbolId,
+    change_kind: str | None = None,
+    parameters: tuple[str, ...] = (),
+) -> tuple[frozenset[str], frozenset[str]]:
     """The tool's answer for one symbol: (source files, test files).
 
     Raises KeyError if the symbol is not in the index, which the caller records
@@ -242,6 +271,12 @@ def predict(root: Path, symbol: SymbolId) -> tuple[frozenset[str], frozenset[str
         if reference.confidence == SCORED_CONFIDENCE
     }
     files |= {override.path for override in impact.overrides}
+
+    if change_kind is not None:
+        narrowed = affected_files(impact, change_kind, parameters)
+        if narrowed is not None:
+            files &= narrowed | {override.path for override in impact.overrides}
+
     files.discard(symbol.path)
     return source_only(files), frozenset(path for path in files if is_test_path(path))
 
@@ -274,7 +309,9 @@ def score_case(git: Git, case: Case) -> CaseResult:
     try:
         with checkout(git, case.parent) as tree:
             try:
-                predicted, tests_found = predict(tree, case.symbol)
+                predicted, tests_found = predict(
+                    tree, case.symbol, case.change_kind, case.changed_parameters
+                )
             except KeyError as error:
                 return CaseResult(case=case, error=f"symbol not indexed: {error}")
             baseline = grep_baseline(tree, name, case.symbol.path)

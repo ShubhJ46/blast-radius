@@ -129,3 +129,94 @@ class TestFindSymbols:
         built = build_index(root)
         assert find_symbols(built, "search") == [sym("m.py", "search")]
         assert find_symbols(built, "Index.search") == [sym("m.py", "Index.search")]
+
+
+ACCEPT = {
+    "lib.py": (
+        "class Builder:\n"
+        "    def accept(self, expr, can_borrow=False):\n"
+        "        pass\n"
+        "\n"
+        "\n"
+        "def helper(a, b=1, c=2):\n"
+        "    pass\n"
+    ),
+    "plain.py": "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1)\n",
+    "keyword.py": (
+        "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1, can_borrow=True)\n"
+    ),
+    "positional.py": "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1, True)\n",
+    "starred.py": "from lib import Builder\n\n\ndef go(b: Builder, a):\n    b.accept(*a)\n",
+}
+
+
+class TestAffectedBy:
+    """Every caller is a dependency; only some are work.
+
+    Four commits removing `IRBuilder.accept`'s `can_borrow` parameter were the
+    largest single source of false positives in the scored evaluation: eleven
+    files call it, and only the ones passing `can_borrow=` had to change.
+    """
+
+    def test_every_caller_is_still_reported_without_a_parameter(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.files == ("keyword.py", "plain.py", "positional.py", "starred.py")
+
+    def test_removing_a_parameter_spares_the_callers_that_omit_it(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.files_affected_by("can_borrow") == (
+            "keyword.py",
+            "positional.py",
+            "starred.py",
+        )
+
+    def test_a_parameter_everyone_passes_affects_everyone(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.files_affected_by("expr") == impact.files
+
+    def test_making_a_parameter_required_breaks_the_callers_omitting_it(self, make_repo):
+        """The mirror image: `f(x)` breaks when `can_borrow` loses its default."""
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.files_affected_by("can_borrow", supplied=False) == (
+            "plain.py",
+            "starred.py",
+        )
+
+    def test_a_receiver_shifts_the_positional_index(self, make_repo):
+        """`b.accept(1, True)` fills `accept(self, expr, can_borrow)` three deep."""
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.parameter_index("can_borrow") == 2
+        assert "positional.py" in impact.files_affected_by("can_borrow")
+
+    def test_a_plain_function_has_no_receiver_to_shift(self, make_repo):
+        files = {
+            **ACCEPT,
+            "calls.py": "from lib import helper\n\nhelper(1)\n",
+            "passes_c.py": "from lib import helper\n\nhelper(1, 2, 3)\n",
+        }
+        impact = impact_of(build_index(make_repo(files)), SymbolId("lib.py", "helper"))
+        assert impact.parameter_index("c") == 2
+        assert impact.files_affected_by("c") == ("passes_c.py",)
+
+    def test_a_keyword_only_parameter_has_no_index(self, make_repo):
+        files = {"lib.py": "def helper(a, *, flag=False):\n    pass\n"}
+        impact = impact_of(build_index(make_repo(files)), SymbolId("lib.py", "helper"))
+        assert impact.parameter_index("flag") is None
+
+    def test_an_unknown_parameter_has_no_index(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert impact.parameter_index("nonexistent") is None
+
+    def test_a_class_has_no_signature_to_index(self, make_repo):
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder"))
+        assert impact.parameter_index("anything") is None
+
+    def test_a_reference_that_is_not_a_call_is_not_affected(self, make_repo):
+        """`handler = obj.accept` has no arguments to inspect."""
+        files = {
+            **ACCEPT,
+            "valued.py": "from lib import Builder\n\n\ndef go(b: Builder):\n    return b.accept\n",
+        }
+        impact = impact_of(build_index(make_repo(files)), SymbolId("lib.py", "Builder.accept"))
+        assert "valued.py" in impact.files
+        assert "valued.py" not in impact.files_affected_by("can_borrow")

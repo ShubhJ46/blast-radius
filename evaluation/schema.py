@@ -66,6 +66,11 @@ class Case:
     parent: str  # the tree the tool is run against
     symbol: SymbolId  # the definition whose signature changed
     change_kind: ChangeKind
+    # The parameters that moved. Which callers a change forces to edit depends
+    # on these and not only on the kind: removing `can_borrow` breaks the call
+    # sites that pass it and leaves the rest alone, and without the name there
+    # is no way to tell those apart.
+    changed_parameters: tuple[str, ...]
     source_files: tuple[str, ...]  # non-test files the commit touched, minus the definer
     test_files: tuple[str, ...]  # test files the commit touched
     commit_file_count: int  # total files in the commit, before any exclusion
@@ -82,6 +87,7 @@ class Case:
             "parent": self.parent,
             "symbol": str(self.symbol),
             "change_kind": self.change_kind,
+            "changed_parameters": list(self.changed_parameters),
             "source_files": list(self.source_files),
             "test_files": list(self.test_files),
             "commit_file_count": self.commit_file_count,
@@ -96,6 +102,7 @@ class Case:
             parent=raw["parent"],
             symbol=SymbolId.parse(raw["symbol"]),
             change_kind=raw["change_kind"],
+            changed_parameters=tuple(raw.get("changed_parameters", ())),
             source_files=tuple(raw["source_files"]),
             test_files=tuple(raw["test_files"]),
             commit_file_count=raw["commit_file_count"],

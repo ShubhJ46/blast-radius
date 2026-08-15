@@ -38,6 +38,51 @@ class Impact:
         paths.discard(self.symbol.path)
         return tuple(sorted(paths))
 
+    def parameter_index(self, name: str) -> int | None:
+        """Where `name` sits in the parameter list, counting `self`."""
+        if self.definition.signature is None:
+            return None
+        for position, parameter in enumerate(self.definition.signature.parameters):
+            if parameter.name == name:
+                # Only a parameter that can be passed positionally has a
+                # meaningful index; a keyword-only one is never reached by
+                # counting arguments.
+                if parameter.kind in ("positional_only", "positional_or_keyword"):
+                    return position
+                return None
+        return None
+
+    def affected_by(self, parameter: str, *, supplied: bool = True) -> tuple[Reference, ...]:
+        """Callers a change to `parameter` actually forces to move.
+
+        Every caller is a real dependency; not every one is work. Removing or
+        renaming a parameter only breaks the call sites that pass it, and
+        `f(x)` is untouched while `f(x, can_borrow=True)` is not. On the mined
+        evaluation this is the difference between eleven files and two.
+
+        `supplied=False` asks the opposite question, for a parameter that has
+        just *lost* its default: there it is the callers omitting it that break.
+
+        A caller whose arguments could not be lined up with the signature --
+        `f(*args)`, or a member reached through its class -- counts as affected
+        either way, because the alternative is dropping a dependency on a guess.
+        """
+        index = self.parameter_index(parameter)
+        chosen = []
+        for reference in self.callers:
+            if reference.call is None:
+                continue  # a bound method passed as a value, not called here
+            passes = reference.call.supplies(parameter, index)
+            if passes == supplied or reference.call.opaque:
+                chosen.append(reference)
+        return tuple(chosen)
+
+    def files_affected_by(self, parameter: str, *, supplied: bool = True) -> tuple[str, ...]:
+        paths = {reference.path for reference in self.affected_by(parameter, supplied=supplied)}
+        paths |= {override.path for override in self.overrides}
+        paths.discard(self.symbol.path)
+        return tuple(sorted(paths))
+
     @property
     def caller_files(self) -> tuple[str, ...]:
         return tuple(sorted({reference.path for reference in self.callers}))

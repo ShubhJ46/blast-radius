@@ -34,6 +34,7 @@ from dataclasses import dataclass, field
 from blastradius.classes import ClassGraph
 from blastradius.imports import ImportIndex, ModuleRef
 from blastradius.model import (
+    CallShape,
     ModuleParse,
     Reference,
     ReferenceVia,
@@ -179,6 +180,7 @@ class _ReferenceWalker(ast.NodeVisitor):
         self.unresolved: list[UnresolvedAttribute] = []
         self._scopes: list[_ScopeFrame] = []
         self._prefix: list[str] = []
+        self._calls: list[CallShape] = []
 
     # -- scope handling ---------------------------------------------------
 
@@ -243,11 +245,20 @@ class _ReferenceWalker(ast.NodeVisitor):
     def visit_Call(self, node: ast.Call) -> None:
         # Handled here rather than in visit_Attribute so that an attribute can
         # be told apart from a method call, which needs the parent node.
+        #
+        # The call's shape is pushed while the callee is resolved, so the
+        # reference recorded for it carries the arguments it was given. The
+        # stack is popped before the arguments themselves are walked, so a name
+        # used *as* an argument is not tagged with the enclosing call.
+        shape = _call_shape(node)
+        self._calls.append(shape)
         if isinstance(node.func, ast.Attribute):
             self._attribute(node.func, in_call=True)
         else:
             self.visit(node.func)
-        self._constructor(node.func)
+        self._calls.pop()
+
+        self._constructor(node.func, shape)
         for argument in node.args:
             self.visit(argument)
         for keyword in node.keywords:
@@ -307,7 +318,7 @@ class _ReferenceWalker(ast.NodeVisitor):
         )
         self.generic_visit(node)
 
-    def _constructor(self, func: ast.expr) -> None:
+    def _constructor(self, func: ast.expr, shape: "CallShape | None" = None) -> None:
         """Record `C(...)` as a use of `C.__init__`.
 
         Calling a class runs its initialiser, but the call site names the class
@@ -325,7 +336,7 @@ class _ReferenceWalker(ast.NodeVisitor):
             return
         initialiser = self._graph.lookup_method(target, "__init__")
         if initialiser is not None:
-            self._record(initialiser, func.lineno, via="constructor")
+            self._record(initialiser, func.lineno, via="constructor", call=shape)
 
     def _class_of(self, expression: ast.expr) -> SymbolId | None:
         """The class an expression names, if it names one at all.
@@ -425,7 +436,10 @@ class _ReferenceWalker(ast.NodeVisitor):
             return member if isinstance(member, ModuleRef) else None
         return None
 
-    def _record(self, target: SymbolId, line: int, *, via: ReferenceVia) -> None:
+    def _record(
+        self, target: SymbolId, line: int, *, via: ReferenceVia, call: CallShape | None = None
+    ) -> None:
+        shape = call if call is not None else (self._calls[-1] if self._calls else None)
         self.references.append(
             Reference(
                 target=target,
@@ -433,6 +447,7 @@ class _ReferenceWalker(ast.NodeVisitor):
                 line=line,
                 confidence="resolved",
                 via=via,
+                call=None if shape is None else _bind_receiver(shape, via),
             )
         )
 
@@ -487,6 +502,46 @@ def _parameter_names(args: ast.arguments) -> tuple[str, ...]:
     if args.kwarg:
         names.append(args.kwarg.arg)
     return tuple(names)
+
+
+# Strategies where the receiver is bound by the call itself, so the first
+# declared parameter -- `self`, or `cls` on a constructor -- is already filled.
+_BOUND_VIA = frozenset({"self_attr", "typed_attr", "constructor"})
+
+
+def _call_shape(node: ast.Call) -> CallShape:
+    """The arguments a call site passes, before any receiver adjustment.
+
+    `*args` and `**kwargs` make the call opaque: what they expand to is a
+    runtime value, so no claim can be made about which parameters are supplied.
+    """
+    opaque = any(isinstance(argument, ast.Starred) for argument in node.args) or any(
+        keyword.arg is None for keyword in node.keywords
+    )
+    return CallShape(
+        positional=sum(1 for a in node.args if not isinstance(a, ast.Starred)),
+        keywords=frozenset(k.arg for k in node.keywords if k.arg is not None),
+        opaque=opaque,
+    )
+
+
+def _bind_receiver(shape: CallShape, via: ReferenceVia) -> CallShape:
+    """Line a call's arguments up with the parameter list as written.
+
+    `w.render(x)` fills `render(self, x)` two slots deep, because the receiver
+    took the first. Getting this wrong is an off-by-one that silently reports
+    the wrong callers, which is worse than reporting too many.
+
+    A member reached through the class (`Config.read(...)`) is left opaque: a
+    `classmethod` binds `cls` there and a plain method does not, and telling
+    them apart needs decorator resolution. Over-reporting that small category
+    beats guessing at it.
+    """
+    if via in _BOUND_VIA:
+        return CallShape(shape.positional + 1, shape.keywords, shape.opaque)
+    if via == "class_attr":
+        return CallShape(shape.positional, shape.keywords, opaque=True)
+    return shape
 
 
 def _annotated_parameters(args: ast.arguments) -> dict[str, ast.expr]:

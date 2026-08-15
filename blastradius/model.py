@@ -136,6 +136,38 @@ class Definition:
 
 
 @dataclass(frozen=True)
+class CallShape:
+    """How a call site passed its arguments.
+
+    Enough to answer "does this call supply parameter `p`?" without recording
+    the arguments themselves. That question is what separates a dependency from
+    a dependency that has to *change*: when `can_borrow` is removed from a
+    method, `f(x, can_borrow=True)` breaks and `f(x)` does not, and both are
+    equally real callers.
+
+    `positional` counts an implicit receiver, so it lines up with the parameter
+    list as written: `w.render(x)` reports 2, because `render(self, x)` has `x`
+    at index 1.
+
+    `opaque` marks a call whose arguments cannot be lined up with the signature
+    at all -- `f(*args)`, or an access through a class where a `classmethod`
+    binds `cls` and a plain method does not, which cannot be told apart without
+    resolving decorators. An opaque call answers "yes" to every question, so an
+    unanalysable caller is over-reported rather than quietly dropped.
+    """
+
+    positional: int
+    keywords: frozenset[str]
+    opaque: bool = False
+
+    def supplies(self, name: str, index: int | None) -> bool:
+        """Whether this call passes `name`, given its index in the signature."""
+        if self.opaque or name in self.keywords:
+            return True
+        return index is not None and self.positional > index
+
+
+@dataclass(frozen=True)
 class Reference:
     """A use of a definition, somewhere in the repository."""
 
@@ -144,6 +176,9 @@ class Reference:
     line: int
     confidence: Confidence
     via: ReferenceVia
+    # Present only when the reference *is* a call. A bound method passed as a
+    # value (`handler = self.helper`) has no arguments to describe.
+    call: CallShape | None = None
 
 
 ImportKind = Literal["import", "from"]

@@ -8,6 +8,7 @@ from blastradius.model import SymbolId
 from evaluation.run import (
     Score,
     Totals,
+    affected_files,
     aggregate,
     corpus_health,
     grep_baseline,
@@ -35,6 +36,7 @@ def make_case(
     parent: str = "def0000000",
     symbol: SymbolId = HELPER,
     change_kind: str = "added_required",
+    changed_parameters: tuple[str, ...] = ("b",),
     source_files: tuple[str, ...] = ("app.py",),
     test_files: tuple[str, ...] = (),
     commit_file_count: int = 2,
@@ -46,6 +48,7 @@ def make_case(
         parent=parent,
         symbol=symbol,
         change_kind=change_kind,
+        changed_parameters=changed_parameters,
         source_files=source_files,
         test_files=test_files,
         commit_file_count=commit_file_count,
@@ -412,3 +415,68 @@ class TestMain:
         err = io.StringIO()
         code = main([str(path), "--corpora", str(tmp_path), "--max-files", "5"], err=err)
         assert code == 2
+
+
+class TestAffectedFiles:
+    """Which callers a *specific* signature edit forces to move."""
+
+    class _Impact:
+        """Stands in for a real Impact: the per-kind rule is what is under test."""
+
+        def __init__(self):
+            self.calls = []
+
+        def files_affected_by(self, parameter, *, supplied=True):
+            self.calls.append((parameter, supplied))
+            return {f"{parameter}-{'supplied' if supplied else 'omitted'}.py"}
+
+    def test_a_removal_narrows_to_the_callers_passing_it(self):
+        impact = self._Impact()
+        assert affected_files(impact, "removed", ("can_borrow",)) == {"can_borrow-supplied.py"}
+        assert impact.calls == [("can_borrow", True)]
+
+    def test_a_rename_narrows_the_same_way(self):
+        impact = self._Impact()
+        affected_files(impact, "renamed", ("old",))
+        assert impact.calls == [("old", True)]
+
+    def test_making_a_parameter_required_narrows_to_the_callers_omitting_it(self):
+        impact = self._Impact()
+        assert affected_files(impact, "made_required", ("flag",)) == {"flag-omitted.py"}
+        assert impact.calls == [("flag", False)]
+
+    def test_a_new_required_parameter_affects_every_caller(self):
+        """There is no call site that already passes it, so none can be spared."""
+        assert affected_files(self._Impact(), "added_required", ("fresh",)) is None
+
+    def test_a_reorder_affects_every_caller(self):
+        assert affected_files(self._Impact(), "reordered", ()) is None
+
+    def test_no_named_parameter_falls_back_to_every_caller(self):
+        assert affected_files(self._Impact(), "removed", ()) is None
+
+    def test_several_parameters_union_their_callers(self):
+        impact = self._Impact()
+        result = affected_files(impact, "removed", ("a", "b"))
+        assert result == {"a-supplied.py", "b-supplied.py"}
+
+    def test_a_specific_edit_narrows_the_prediction(self, make_repo):
+        """The IRBuilder.accept shape: four callers, one forced to change."""
+        root = make_repo(
+            {
+                "lib.py": (
+                    "class Builder:\n"
+                    "    def accept(self, expr, can_borrow=False):\n"
+                    "        pass\n"
+                ),
+                "plain.py": "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1)\n",
+                "kw.py": (
+                    "from lib import Builder\n\n\ndef go(b: Builder):\n"
+                    "    b.accept(1, can_borrow=True)\n"
+                ),
+            }
+        )
+        symbol = SymbolId("lib.py", "Builder.accept")
+        assert predict(root, symbol)[0] == frozenset({"kw.py", "plain.py"})
+        narrowed, _ = predict(root, symbol, "removed", ("can_borrow",))
+        assert narrowed == frozenset({"kw.py"})

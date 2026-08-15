@@ -141,3 +141,49 @@ class TestSkippedFileWarning:
         _, _, err = run(["stats", "--root", str(root)])
         assert "8 files could not be parsed" in err
         assert "and 3 more" in err
+
+
+class TestImpactArgument:
+    """`--argument` asks what a *specific* edit forces, not what calls the symbol."""
+
+    FILES = {
+        "lib.py": "class Builder:\n    def accept(self, expr, can_borrow=False):\n        pass\n",
+        "plain.py": "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1)\n",
+        "kw.py": (
+            "from lib import Builder\n\n\ndef go(b: Builder):\n    b.accept(1, can_borrow=True)\n"
+        ),
+    }
+
+    def test_without_the_flag_every_caller_is_reported(self, make_repo):
+        root = make_repo(self.FILES)
+        code, out, _ = run(["impact", "Builder.accept", "--root", str(root)])
+        assert code == EXIT_OK
+        assert "plain.py" in out and "kw.py" in out
+
+    def test_the_flag_drops_callers_the_change_would_not_break(self, make_repo):
+        root = make_repo(self.FILES)
+        code, out, _ = run(
+            ["impact", "Builder.accept", "--root", str(root), "--argument", "can_borrow"]
+        )
+        assert code == EXIT_OK
+        radius = out.split("blast radius")[-1]
+        assert "kw.py" in radius
+        assert "plain.py" not in radius
+
+    def test_an_unknown_parameter_says_so_rather_than_reporting_nothing(self, make_repo):
+        """An empty radius and a typo must not look the same to an agent."""
+        root = make_repo(self.FILES)
+        _, out, _ = run(
+            ["impact", "Builder.accept", "--root", str(root), "--argument", "no_such"]
+        )
+        assert "is not a parameter of this symbol" in out
+
+    def test_json_reports_both_the_narrowed_and_the_full_set(self, make_repo):
+        root = make_repo(self.FILES)
+        _, out, _ = run(
+            ["impact", "Builder.accept", "--root", str(root), "--argument", "can_borrow", "--json"]
+        )
+        payload = json.loads(out)
+        assert payload["argument"] == "can_borrow"
+        assert payload["files"] == ["kw.py"]
+        assert sorted(payload["all_caller_files"]) == ["kw.py", "plain.py"]

@@ -12,6 +12,7 @@ def make_case(**overrides) -> Case:
         parent="9f8e7d6",
         symbol=SymbolId("src/flask/app.py", "Flask.add_url_rule"),
         change_kind="added_required",
+        changed_parameters=("provide_automatic_options",),
         source_files=("src/flask/blueprints.py",),
         test_files=("tests/test_basic.py",),
         commit_file_count=4,

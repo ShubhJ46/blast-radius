@@ -7,6 +7,7 @@ from blastradius.model import Signature, SymbolId
 from blastradius.parse import parse_module
 from evaluation.mine import (
     GitError,
+    changed_parameters,
     classify,
     is_test_path,
     main,
@@ -536,3 +537,26 @@ class TestInitialiserGroundTruth:
             }
         )
         assert mine_commit(repo.git, "corpus", sha, max_files=25) is None
+
+
+class TestChangedParameters:
+    """Which parameter moved, named as a caller would have written it."""
+
+    @pytest.mark.parametrize(
+        ("before", "after", "expected"),
+        [
+            ("def f(a, b): pass", "def f(a): pass", ("b",)),
+            ("def f(a, b): pass", "def f(a, c): pass", ("b",)),  # rename: the old name
+            ("def f(a): pass", "def f(a, b): pass", ("b",)),
+            ("def f(a, b=1): pass", "def f(a, b): pass", ("b",)),  # lost its default
+            ("def f(a, b): pass", "def f(b, a): pass", ()),  # reorder blames nobody
+        ],
+    )
+    def test_names_the_parameter_at_risk(self, before, after, expected):
+        assert changed_parameters(signature(before), signature(after)) == expected
+
+    def test_a_case_records_them(self, repo):
+        repo.commit({"lib.py": "def helper(a, b=1):\n    pass\n"})
+        sha = repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.changed_parameters == ("b",)

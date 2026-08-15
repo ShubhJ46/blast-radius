@@ -292,6 +292,27 @@ def classify(before: Signature, after: Signature) -> ChangeKind:
     return "other"
 
 
+def changed_parameters(before: Signature, after: Signature) -> tuple[str, ...]:
+    """The parameters that moved, named as a *caller* would have to write them.
+
+    For a removal or a rename that is the old name, since the call sites at risk
+    are the ones still passing it. For an addition it is the new name. A
+    reordering has no single parameter to blame, so it reports none and the
+    runner falls back to treating every caller as affected.
+    """
+    before_names = [parameter.name for parameter in before.parameters]
+    after_names = [parameter.name for parameter in after.parameters]
+    removed = tuple(name for name in before_names if name not in after_names)
+    added = tuple(name for name in after_names if name not in before_names)
+
+    if removed:
+        return removed  # covers both `removed` and the old half of a rename
+    if added:
+        return added
+    # Same names on both sides: only a default can have moved.
+    return tuple(sorted(after.required_names() - before.required_names()))
+
+
 @dataclass(frozen=True)
 class SignatureChange:
     qualname: str
@@ -301,6 +322,10 @@ class SignatureChange:
     @property
     def kind(self) -> ChangeKind:
         return classify(self.before, self.after)
+
+    @property
+    def parameters(self) -> tuple[str, ...]:
+        return changed_parameters(self.before, self.after)
 
 
 def signature_changes(path: str, before: str, after: str) -> list[SignatureChange]:
@@ -410,6 +435,7 @@ def mine_commit(
         parent=parent,
         symbol=SymbolId(definer, change.qualname),
         change_kind=change.kind,
+        changed_parameters=change.parameters,
         source_files=tuple(sorted(p for p in touched if not is_test_path(p))),
         test_files=tuple(sorted(p for p in touched if is_test_path(p))),
         commit_file_count=len(changed),

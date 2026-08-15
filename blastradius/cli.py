@@ -64,7 +64,7 @@ def _reference_rows(references: tuple[Reference, ...]) -> list[dict]:
     ]
 
 
-def _print_impact(impact: Impact, stream) -> None:
+def _print_impact(impact: Impact, stream, argument: str | None = None) -> None:
     definition = impact.definition
     print(
         f"{impact.symbol}  {definition.kind}  "
@@ -90,11 +90,21 @@ def _print_impact(impact: Impact, stream) -> None:
 
     print(f"\noverridden  {impact.overridden or 'none'}", file=stream)
 
-    print(f"\nblast radius  {_plural(len(impact.files), 'file')}", file=stream)
-    for path in impact.files:
+    files = impact.files if argument is None else impact.files_affected_by(argument)
+    heading = "blast radius" if argument is None else f"blast radius of changing {argument!r}"
+    print(f"\n{heading}  {_plural(len(files), 'file')}", file=stream)
+    for path in files:
         print(f"  {path}", file=stream)
-    if not impact.files:
+    if not files:
         print("  none", file=stream)
+
+    signature = impact.definition.signature
+    known = signature is not None and any(p.name == argument for p in signature.parameters)
+    if argument is not None and not known:
+        # Better to say so than to report an empty radius that looks like an
+        # answer: a typo in the parameter name would otherwise read as
+        # "nothing depends on this".
+        print(f"  note: {argument!r} is not a parameter of this symbol", file=stream)
 
 
 def _impact_payload(impact: Impact) -> dict:
@@ -110,16 +120,31 @@ def _impact_payload(impact: Impact) -> dict:
     }
 
 
-def _command_impact(index: RepoIndex, query: str, as_json: bool, out, err) -> int:
+def _impact_payload_for(impact: Impact, argument: str) -> dict:
+    payload = _impact_payload(impact)
+    payload["argument"] = argument
+    payload["files"] = list(impact.files_affected_by(argument))
+    payload["all_caller_files"] = list(impact.files)
+    return payload
+
+
+def _command_impact(
+    index: RepoIndex, query: str, as_json: bool, out, err, argument: str | None = None
+) -> int:
     symbol = _resolve_one(index, query, err)
     if symbol is None:
         return EXIT_NOT_FOUND
 
     impact = impact_of(index, symbol)
     if as_json:
-        print(json.dumps(_impact_payload(impact), indent=2), file=out)
+        payload = (
+            _impact_payload(impact)
+            if argument is None
+            else _impact_payload_for(impact, argument)
+        )
+        print(json.dumps(payload, indent=2), file=out)
     else:
-        _print_impact(impact, out)
+        _print_impact(impact, out, argument)
     return EXIT_OK
 
 
@@ -193,6 +218,14 @@ def _build_parser() -> argparse.ArgumentParser:
         "impact", parents=[shared], help="callers and overrides of a symbol"
     )
     impact.add_argument("symbol", help="'name', 'Class.method', or 'path.py::qualname'")
+    impact.add_argument(
+        "--argument",
+        metavar="NAME",
+        help=(
+            "narrow to callers a change to this parameter would force to edit, "
+            "rather than every caller"
+        ),
+    )
 
     refs = subcommands.add_parser(
         "refs", parents=[shared], help="every reference to a symbol"
@@ -219,7 +252,9 @@ def main(argv: list[str] | None = None, out=None, err=None) -> int:
         _warn_about_skipped(index, err)
 
     if arguments.command == "impact":
-        return _command_impact(index, arguments.symbol, arguments.json, out, err)
+        return _command_impact(
+            index, arguments.symbol, arguments.json, out, err, arguments.argument
+        )
     if arguments.command == "refs":
         return _command_refs(index, arguments.symbol, arguments.json, out, err)
     return _command_stats(index, arguments.json, out, err)
