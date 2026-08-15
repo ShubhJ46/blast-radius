@@ -503,15 +503,25 @@ win here however clever the cache is. The saving exists only where the trees
 stay in memory, so the reuse lives in `build_index(root, previous=index)` rather
 than on disk.
 
-| | modules | cold | warm | |
+| | modules | cold | after an edit | nothing changed |
 | --- | ---: | ---: | ---: | ---: |
-| this repository | 26 | 0.37s | 0.30s | 1.2x |
-| mypy | 441 | 20.8s | 11.6s | 1.8x |
-| standard library | 719 | 28.5s | 15.9s | 1.8x |
+| this repository | 26 | 0.37s | 0.30s | **0.18s** |
+| mypy | 441 | 20.8s | 11.6s | **0.33s** |
+| standard library | 719 | 28.5s | 15.9s | **0.49s** |
 
-44% of the work disappears, not the 66% that parsing occupies on a cold run —
-with the file cache warm, reading and parsing get cheaper relative to
-resolution.
+Two different wins, and the second is much larger than the first.
+
+**After an edit**, reusing the parse of every untouched file removes 44% of the
+work — not the 66% parsing occupies on a cold run, because with the file cache
+warm, reading and parsing get cheaper relative to resolution.
+
+**When nothing changed at all**, the previous index is not merely reusable, it
+*is* the answer, and the whole rebuild collapses to one pass of hashing: 19s to
+0.33s on mypy, **58x**. That case is worth optimising because it is the common
+one — an agent asks several questions between edits, not one question per edit.
+It is also the only part of this that is correct by construction rather than by
+argument: if every file is byte-identical and none were added or removed, there
+is nothing an index could compute differently.
 
 **Only parsing is reused. Everything downstream is recomputed**, and that is a
 deliberate choice rather than an unfinished one. Whether a module's references
@@ -568,11 +578,12 @@ spot rather than a measured one.
   every caller is reported, which is correct but not always useful.
 - **Python first.** C++ needs `compile_commands.json` and libclang; text-level
   parsing is not sufficient there, and demonstrating that gap is its own result.
-- **Still too slow for a tight agent loop on a large repository.** A warm
-  rebuild is 1.8x faster (see [reuse](#what-a-cache-can-and-cannot-buy)), which
-  takes the standard library from 29s to 16s — better, not solved. The
-  remaining cost is resolution, and skipping that safely needs import-graph
-  dependency tracking.
+- **The first index of a large repository is still slow**, and so is the
+  rebuild after an edit: 29s cold and 16s after a change on the standard
+  library. Repeat queries between edits are 0.5s
+  ([why](#what-a-cache-can-and-cannot-buy)). Cutting the after-an-edit case needs
+  import-graph dependency tracking, so that only modules that could have
+  changed are re-resolved.
 
 ## Development
 

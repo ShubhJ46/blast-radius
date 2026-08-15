@@ -237,3 +237,48 @@ class TestReusingAPreviousIndex:
         cold = build_index(first)
         with pytest.raises(ValueError, match="different root"):
             build_index(second, previous=cold)
+
+    def test_an_unchanged_tree_is_not_rebuilt_at_all(self, make_repo):
+        """Several questions between edits is the common agent pattern, and the
+        answer is already correct: 19s becomes 0.3s on a 441-module repository."""
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        warm = build_index(root, previous=cold)
+        assert warm.references is cold.references
+        assert warm.definitions is cold.definitions
+        assert warm.classes is cold.classes
+
+    def test_a_single_edit_still_forces_the_rebuild(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").write_text("from pkg.base import helper\n", encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        assert warm.references is not cold.references
+        assert warm.references_to(SymbolId("pkg/base.py", "helper")) == ()
+
+    def test_an_added_file_forces_the_rebuild(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "extra.py").write_text(
+            "from pkg.base import helper\n\nhelper()\n", encoding="utf-8"
+        )
+        warm = build_index(root, previous=cold)
+        assert warm.references is not cold.references
+        assert len(warm.references_to(SymbolId("pkg/base.py", "helper"))) == 2
+
+    def test_a_removed_file_forces_the_rebuild(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").unlink()
+        warm = build_index(root, previous=cold)
+        assert warm.references is not cold.references
+        assert warm.module_count == 2
+
+    def test_a_file_that_stays_unparseable_still_short_circuits(self, make_repo):
+        """Its digest is recorded before the parse is attempted, so a broken file
+        that nobody touched does not force a rebuild every time."""
+        root = make_repo({**self.FILES, "broken.py": "def f(:\n"})
+        cold = build_index(root)
+        warm = build_index(root, previous=cold)
+        assert warm.references is cold.references
+        assert [path for path, _ in warm.skipped] == ["broken.py"]
