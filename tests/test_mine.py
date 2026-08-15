@@ -11,6 +11,7 @@ from evaluation.mine import (
     is_test_path,
     main,
     mention_name,
+    mention_pattern,
     mine,
     mine_commit,
     signature_changes,
@@ -279,6 +280,13 @@ class TestSubjectsThatCannotHaveCallers:
         sha = repo.commit({"lib.py": "def __getattr__(name, default):\n    pass\n"})
         assert mine_commit(repo.git, "corpus", sha, max_files=25) is None
 
+    def test_a_module_level_init_has_no_class_to_construct(self, repo):
+        """`__init__` survives the operator-dunder rule, but at module scope there
+        is no owning class whose name a caller would write."""
+        repo.commit({"lib.py": "def __init__(a):\n    pass\n"})
+        sha = repo.commit({"lib.py": "def __init__(a, b):\n    pass\n"})
+        assert mine_commit(repo.git, "corpus", sha, max_files=25) is None
+
     def test_a_constructor_is_matched_by_its_class_name(self, repo):
         """Callers write `Widget(...)`, never `__init__`."""
         repo.commit(
@@ -444,3 +452,87 @@ class TestGroundTruthIsWhatWasThereToFind:
         )
         case = mine_commit(repo.git, "corpus", sha, max_files=25)
         assert case.test_files == ()
+
+
+class TestMentionPattern:
+    """What counts as a diff line depending on the symbol."""
+
+    def test_an_ordinary_name_matches_a_bare_mention(self):
+        assert mention_pattern("helper").search("from lib import helper")
+
+    def test_a_substring_is_not_a_mention(self):
+        assert not mention_pattern("helper").search("my_helper = 1")
+
+    def test_an_initialiser_requires_the_call_shape(self):
+        """`Widget` in an import or annotation is not a use of `Widget.__init__`."""
+        pattern = mention_pattern("Widget.__init__")
+        assert pattern.search("w = Widget(1, 2)")
+        assert pattern.search("w = Widget (1, 2)")
+        assert not pattern.search("from lib import Widget")
+        assert not pattern.search("def __init__(self, w: 'Widget') -> None:")
+
+    def test_an_initialiser_matches_a_multiline_construction(self):
+        assert mention_pattern("Widget.__init__").search("    w = Widget(")
+
+    def test_a_subclass_declaration_is_not_a_construction(self):
+        """`class Big(Widget):` writes `Widget)`, and the declaration itself need
+        not change when the base initialiser does -- only what constructs it."""
+        assert not mention_pattern("Widget.__init__").search("class Big(Widget):")
+
+    def test_a_module_level_dunder_has_no_class_to_name(self):
+        assert mention_pattern("__init__") is None
+
+
+@needs_git
+class TestInitialiserGroundTruth:
+    def test_an_annotation_of_the_class_is_not_a_blast_radius(self, repo):
+        """The IRBuilder case: four misses were all `builder: 'IRBuilder'`."""
+        # The annotation line changes, so the file is touched *and* its diff
+        # names Widget -- which is exactly what used to make it ground truth.
+        # Annotations are not part of a signature, so this is still one change.
+        repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __init__(self, a):\n        pass\n",
+                "user.py": "from lib import Widget\n\n\ndef go(w: Widget) -> None:\n    pass\n",
+            }
+        )
+        sha = repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __init__(self, a, b):\n        pass\n",
+                "user.py": "from lib import Widget\n\n\ndef go(w: 'Widget') -> None:\n    pass\n",
+            }
+        )
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.symbol == SymbolId("lib.py", "Widget.__init__")
+        assert case.source_files == ()
+
+    def test_a_real_construction_is_still_ground_truth(self, repo):
+        repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __init__(self, a):\n        pass\n",
+                "user.py": "from lib import Widget\n\nw = Widget(1)\n",
+            }
+        )
+        sha = repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __init__(self, a, b):\n        pass\n",
+                "user.py": "from lib import Widget\n\nw = Widget(1, 2)\n",
+            }
+        )
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.source_files == ("user.py",)
+
+    def test_an_operator_dunder_is_not_mined_at_all(self, repo):
+        repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __getitem__(self, key):\n        pass\n",
+                "user.py": "from lib import Widget\n\nw = Widget()\nw[1]\n",
+            }
+        )
+        sha = repo.commit(
+            {
+                "lib.py": "class Widget:\n    def __getitem__(self, key, default):\n        pass\n",
+                "user.py": "from lib import Widget\n\nw = Widget()\nw[1, 2]\n",
+            }
+        )
+        assert mine_commit(repo.git, "corpus", sha, max_files=25) is None

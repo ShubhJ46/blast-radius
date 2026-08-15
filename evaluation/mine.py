@@ -20,11 +20,13 @@ to change, so a tool that correctly predicts an empty blast radius would be
 marked wrong. The classification is recorded per case and the filter applied at
 reporting time, so the decision stays visible.
 
-**No renames, no merges, no test or nested subjects.** Tracking a symbol across
-a file rename is a rabbit hole, and a merge commit's "touched files" are a union
-of two branches. A test function's caller is the test runner and a nested
-function cannot be imported, so neither has a cross-file blast radius to
-predict.
+**No renames, no merges, no test, nested, or operator-dunder subjects.**
+Tracking a symbol across a file rename is a rabbit hole, and a merge commit's
+"touched files" are a union of two branches. A test function's caller is the
+test runner and a nested function cannot be imported, so neither has a
+cross-file blast radius to predict. A caller of `__getitem__` writes
+`obj[key]`, which names nothing findable in a diff; `__init__` is kept because
+construction writes the class name.
 
 **Ground truth is Python files that mentioned the symbol both before and after.**
 The tool predicts `.py` paths, so counting a touched changelog against it would
@@ -123,8 +125,8 @@ class Git:
                 rows.append((parts[0], parts[-1]))
         return rows
 
-    def paths_mentioning(self, sha: str, name: str) -> set[str]:
-        """Files whose diff adds or removes a line naming `name`.
+    def paths_mentioning(self, sha: str, pattern: re.Pattern[str]) -> set[str]:
+        """Files whose diff adds or removes a line matching `pattern`.
 
         The commit's full file list is not usable as ground truth on its own.
         A real example from a mined corpus: a commit titled "hybrid retrieval
@@ -141,7 +143,6 @@ class Git:
         patch = self.run(
             "diff-tree", "--no-commit-id", "-r", "-M", "-p", sha, "--", "*.py"
         )
-        pattern = re.compile(rf"\b{re.escape(name)}\b")
         found: set[str] = set()
         current: str | None = None
         for line in patch.splitlines():
@@ -154,8 +155,10 @@ class Git:
                     found.add(current)
         return found
 
-    def paths_mentioning_at(self, sha: str, name: str, paths: list[str]) -> set[str]:
-        """Of `paths`, those that already name `name` at revision `sha`.
+    def paths_mentioning_at(
+        self, sha: str, pattern: re.Pattern[str], paths: list[str]
+    ) -> set[str]:
+        """Of `paths`, those already matching `pattern` at revision `sha`.
 
         A file that gains its first reference to the symbol in the very commit
         being mined was not part of the blast radius -- it is a *new* dependent,
@@ -168,7 +171,6 @@ class Git:
         Restricting ground truth to files that already mentioned the symbol
         keeps it to what was genuinely there to be found, and stays mechanical.
         """
-        pattern = re.compile(rf"\b{re.escape(name)}\b")
         found: set[str] = set()
         for path in paths:
             content = self.file_at(sha, path)
@@ -221,6 +223,38 @@ def mention_name(qualname: str) -> str | None:
     if final.startswith("__") and final.endswith("__"):
         return parts[-2] if len(parts) >= 2 else None
     return final
+
+
+def is_dunder(qualname: str) -> bool:
+    final = qualname.rsplit(".", 1)[-1]
+    return final.startswith("__") and final.endswith("__")
+
+
+def mention_pattern(qualname: str) -> re.Pattern[str] | None:
+    """What a line must contain to count as depending on `qualname`.
+
+    For an ordinary function the name itself is enough. For `__init__` it is
+    not. The caller writes the *class* name, and that also appears in every
+    import and every type annotation of the class -- neither of which a change
+    to an initialiser's signature obliges to change. Requiring the call shape
+    `Class(` keeps ground truth to actual construction sites.
+
+    Found by scoring rather than by reading the code: all four "misses" for
+    `IRBuilder.__init__` were files whose only use of the class was
+    `def __init__(self, builder: 'IRBuilder') -> None:`. Counting those as a
+    blast radius punished the tool for correctly ignoring an annotation.
+
+    A subclass declaration does not match, since `class Child(Base):` writes
+    `Base)` rather than `Base(`. That is the conservative side to be on: the
+    subclass *declaration* need not change when the base initialiser does, only
+    the places that construct it.
+    """
+    name = mention_name(qualname)
+    if name is None:
+        return None
+    if is_dunder(qualname):
+        return re.compile(rf"\b{re.escape(name)}\s*\(")
+    return re.compile(rf"\b{re.escape(name)}\b")
 
 
 def _is_optional(parameter) -> bool:
@@ -347,10 +381,18 @@ def mine_commit(
     if is_test_path(definer) or "<locals>" in change.qualname:
         return None
 
-    name = mention_name(change.qualname)
-    if name is None:
+    # An operator dunder has no mechanical call-site form: a caller of
+    # `__getitem__` writes `obj[key]` and of `__eq__` writes `a == b`, neither
+    # of which names anything findable in a diff. `__init__` is the exception,
+    # since construction writes the class name. Mining the rest would produce
+    # ground truth built from unrelated mentions of the class.
+    if is_dunder(change.qualname) and change.qualname.rsplit(".", 1)[-1] != "__init__":
         return None
-    mentioning = git.paths_mentioning(sha, name)
+
+    pattern = mention_pattern(change.qualname)
+    if pattern is None:
+        return None
+    mentioning = git.paths_mentioning(sha, pattern)
     touched = [
         path
         for _status, path in changed
@@ -359,7 +401,7 @@ def mine_commit(
     # ...and of those, only the ones that already depended on the symbol before
     # the commit. A caller introduced by the same commit is a new dependent, not
     # a blast-radius casualty.
-    existing = git.paths_mentioning_at(parent, name, touched)
+    existing = git.paths_mentioning_at(parent, pattern, touched)
     touched = [path for path in touched if path in existing]
     return Case(
         id=f"{repo}@{sha[:10]}::{change.qualname}",
