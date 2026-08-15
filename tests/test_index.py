@@ -84,14 +84,14 @@ class TestUnparseableFiles:
     def test_an_unreadable_file_is_skipped_rather_than_fatal(self, make_repo, monkeypatch):
         """A broken symlink or a permissions problem must not lose the whole index."""
         root = make_repo({"a.py": "def f():\n    pass\n", "b.py": ""})
-        original = Path.read_text
+        original = Path.read_bytes
 
         def refuse(self, *args, **kwargs):
             if self.name == "b.py":
                 raise OSError("permission denied")
             return original(self, *args, **kwargs)
 
-        monkeypatch.setattr(Path, "read_text", refuse)
+        monkeypatch.setattr(Path, "read_bytes", refuse)
 
         index = build_index(root)
         assert index.module_count == 1
@@ -124,3 +124,116 @@ class TestBadRoot:
         index = build_index(tmp_path)
         assert index.module_count == 0
         assert index.definitions == {}
+
+
+class TestReusingAPreviousIndex:
+    """Parsing is most of the cost, and a file whose bytes are unchanged cannot
+    parse differently. The reuse is in memory: see `build_index` for why a cache
+    on disk would be slower than parsing again."""
+
+    FILES = {
+        "pkg/__init__.py": "",
+        "pkg/base.py": "def helper():\n    pass\n",
+        "app.py": "from pkg.base import helper\n\nhelper()\n",
+    }
+
+    def test_an_unchanged_tree_reuses_every_parse(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        warm = build_index(root, previous=cold)
+        assert cold.reused == 0
+        assert warm.reused == warm.module_count == 3
+
+    def test_a_changed_file_is_the_only_one_reparsed(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").write_text("from pkg.base import helper\n", encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        assert warm.reused == 2
+
+    def test_the_result_is_identical_to_a_cold_build(self, make_repo):
+        """The whole point: faster must not mean different."""
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").write_text(
+            "from pkg.base import helper\n\nhelper()\nhelper()\n", encoding="utf-8"
+        )
+        warm = build_index(root, previous=cold)
+        fresh = build_index(root)
+        assert warm.references == fresh.references
+        assert warm.definitions == fresh.definitions
+        assert warm.module_count == fresh.module_count
+
+    def test_an_edit_that_changes_a_caller_is_seen(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        assert len(cold.references_to(SymbolId("pkg/base.py", "helper"))) == 1
+        (root / "app.py").write_text("from pkg.base import helper\n", encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        assert warm.references_to(SymbolId("pkg/base.py", "helper")) == ()
+
+    def test_an_edit_two_modules_away_is_seen(self, make_repo):
+        """A re-export means an edit can change what a name binds to elsewhere,
+        which is why everything downstream of parsing is recomputed."""
+        root = make_repo(
+            {
+                "pkg/__init__.py": "from pkg.base import helper\n",
+                "pkg/base.py": "def helper():\n    pass\n",
+                "app.py": "import pkg\n\npkg.helper()\n",
+            }
+        )
+        cold = build_index(root)
+        # `pkg.helper()` in app.py resolves only because __init__ re-exports it.
+        assert [use.path for use in cold.references_to(SymbolId("pkg/base.py", "helper"))] == [
+            "app.py"
+        ]
+        (root / "pkg" / "__init__.py").write_text("", encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        # app.py is byte-identical and its parse was reused, yet the reference
+        # is correctly gone: the re-export it depended on no longer exists.
+        assert warm.reused == 2
+        assert warm.references_to(SymbolId("pkg/base.py", "helper")) == ()
+
+    def test_a_new_file_is_picked_up(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "extra.py").write_text(
+            "from pkg.base import helper\n\nhelper()\n", encoding="utf-8"
+        )
+        warm = build_index(root, previous=cold)
+        assert warm.module_count == 4
+        assert warm.reused == 3
+        assert len(warm.references_to(SymbolId("pkg/base.py", "helper"))) == 2
+
+    def test_a_deleted_file_is_dropped(self, make_repo):
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").unlink()
+        warm = build_index(root, previous=cold)
+        assert warm.module_count == 2
+        assert warm.references_to(SymbolId("pkg/base.py", "helper")) == ()
+
+    def test_identical_content_rewritten_is_still_reused(self, make_repo):
+        """Hashing the bytes, not the mtime: a checkout rewrites both."""
+        root = make_repo(self.FILES)
+        cold = build_index(root)
+        (root / "app.py").write_text(self.FILES["app.py"], encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        assert warm.reused == 3
+
+    def test_a_previously_unparseable_file_is_reparsed_when_fixed(self, make_repo):
+        root = make_repo({"broken.py": "def f(:\n"})
+        cold = build_index(root)
+        assert [path for path, _ in cold.skipped] == ["broken.py"]
+        (root / "broken.py").write_text("def f():\n    pass\n", encoding="utf-8")
+        warm = build_index(root, previous=cold)
+        assert warm.skipped == ()
+        assert warm.module_count == 1
+
+    def test_an_index_from_another_root_is_refused(self, make_repo, tmp_path):
+        """Reusing parses across trees would report one repo's callers for another."""
+        first = make_repo(self.FILES, root=tmp_path / "one")
+        second = make_repo(self.FILES, root=tmp_path / "two")
+        cold = build_index(first)
+        with pytest.raises(ValueError, match="different root"):
+            build_index(second, previous=cold)

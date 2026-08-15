@@ -12,6 +12,7 @@ included it, and understating a blast radius is the failure mode this tool
 exists to prevent.
 """
 
+import hashlib
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -54,6 +55,12 @@ class RepoIndex:
     skipped: tuple[tuple[str, str], ...] = ()
     unresolved_attribute_count: int = 0
     build_seconds: float = 0.0
+    # Carried so a later build over the same tree can skip the parsing, which
+    # is two thirds of the cost. Held in memory rather than written to disk on
+    # purpose: see `build_index`.
+    digests: dict[str, str] = field(default_factory=dict)
+    trees: dict[str, object] = field(default_factory=dict)
+    reused: int = 0  # modules whose parse came from a previous index
 
     @property
     def module_count(self) -> int:
@@ -68,6 +75,8 @@ class _Collected:
     parses: dict[str, ModuleParse] = field(default_factory=dict)
     trees: dict[str, object] = field(default_factory=dict)
     skipped: list[tuple[str, str]] = field(default_factory=list)
+    digests: dict[str, str] = field(default_factory=dict)
+    reused: int = 0
 
 
 def discover(root: Path) -> list[Path]:
@@ -90,32 +99,70 @@ def discover(root: Path) -> list[Path]:
     return found
 
 
-def _collect(root: Path, paths: list[Path]) -> _Collected:
+def _collect(root: Path, paths: list[Path], previous: "RepoIndex | None" = None) -> _Collected:
     collected = _Collected()
     for path in paths:
         repo_path = path.relative_to(root).as_posix()
         try:
-            source = path.read_text(encoding="utf-8", errors="replace")
+            raw = path.read_bytes()
+        except OSError as error:
+            collected.skipped.append((repo_path, f"could not read: {error}"))
+            continue
+
+        # Hashing the bytes rather than comparing mtimes: a checkout, a branch
+        # switch, or a tool that rewrites a file identically all move the mtime
+        # without changing what the parser would produce.
+        digest = hashlib.blake2b(raw, digest_size=16).hexdigest()
+        collected.digests[repo_path] = digest
+
+        if (
+            previous is not None
+            and previous.digests.get(repo_path) == digest
+            and repo_path in previous.parses
+        ):
+            collected.parses[repo_path] = previous.parses[repo_path]
+            collected.trees[repo_path] = previous.trees[repo_path]
+            collected.reused += 1
+            continue
+
+        source = raw.decode("utf-8", errors="replace")
+        try:
             tree = parse_source(repo_path, source)
         except ParseError as error:
             collected.skipped.append((repo_path, str(error)))
-            continue
-        except OSError as error:
-            collected.skipped.append((repo_path, f"could not read: {error}"))
             continue
         collected.trees[repo_path] = tree
         collected.parses[repo_path] = parse_module(repo_path, source, tree=tree)
     return collected
 
 
-def build_index(root: Path) -> RepoIndex:
-    """Index a repository. `root` must be a directory."""
+def build_index(root: Path, previous: RepoIndex | None = None) -> RepoIndex:
+    """Index a repository. `root` must be a directory.
+
+    Passing the previous index over the same tree reuses the parse of every
+    file whose bytes are unchanged, which is roughly two thirds of the work.
+
+    This is deliberately an *in-memory* reuse rather than a cache on disk.
+    Resolution walks the AST, so a disk cache would have to store and reload
+    the trees -- and unpickling them measures 1.65x the cost of simply parsing
+    the source again, for about 30MB of cache on the standard library. A
+    process that exits therefore cannot win here however clever the cache is;
+    only a process that stays alive can, which is what this signature is for.
+
+    Everything downstream of parsing is recomputed. Whether a module's
+    references can change is a question about the whole import graph -- a
+    re-export chain means an edit two modules away can alter what a name binds
+    to -- and getting that wrong would silently report stale callers, which is
+    the one failure this tool cannot afford.
+    """
     root = root.expanduser().resolve()
     if not root.is_dir():
         raise ValueError(f"Not a directory: {root}")
+    if previous is not None and previous.root != root:
+        raise ValueError(f"Previous index is for a different root: {previous.root}")
 
     started = time.perf_counter()
-    collected = _collect(root, discover(root))
+    collected = _collect(root, discover(root), previous)
 
     imports, modules = build_import_index(collected.parses)
     classes = ClassGraph.build(collected.parses, imports)
@@ -149,4 +196,7 @@ def build_index(root: Path) -> RepoIndex:
         skipped=tuple(collected.skipped),
         unresolved_attribute_count=unresolved,
         build_seconds=time.perf_counter() - started,
+        digests=collected.digests,
+        trees=collected.trees,
+        reused=collected.reused,
     )

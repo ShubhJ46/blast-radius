@@ -484,6 +484,48 @@ until you notice all six outlier cases are `removed` or `renamed`. That is the
 same concentration as everywhere else in this evaluation: a handful of
 heavily-called symbols, not a property of the rule.
 
+## What a cache can and cannot buy
+
+The plan recorded here for a while was "a content hash per file". Measuring it
+first showed that plan was wrong.
+
+Resolution walks the AST, so a cache that survives the process has to store and
+reload the trees. Over 300 standard-library files:
+
+| | time |
+| --- | ---: |
+| `ast.parse` from source | 2.09s |
+| `pickle.loads` of the same trees | **3.46s** |
+
+**Reloading a cached tree costs 1.65x what parsing the source again costs**, for
+about 30MB of cache on the whole standard library. A process that exits cannot
+win here however clever the cache is. The saving exists only where the trees
+stay in memory, so the reuse lives in `build_index(root, previous=index)` rather
+than on disk.
+
+| | modules | cold | warm | |
+| --- | ---: | ---: | ---: | ---: |
+| this repository | 26 | 0.37s | 0.30s | 1.2x |
+| mypy | 441 | 20.8s | 11.6s | 1.8x |
+| standard library | 719 | 28.5s | 15.9s | 1.8x |
+
+44% of the work disappears, not the 66% that parsing occupies on a cold run —
+with the file cache warm, reading and parsing get cheaper relative to
+resolution.
+
+**Only parsing is reused. Everything downstream is recomputed**, and that is a
+deliberate choice rather than an unfinished one. Whether a module's references
+can change is a question about the whole import graph: a re-export means an
+edit two modules away alters what a name binds to. There is a test for exactly
+that — `pkg/__init__.py` stops re-exporting `helper`, `app.py` is byte-identical
+and its parse *is* reused, and the reference correctly disappears anyway.
+Reporting stale callers is the one failure this tool cannot afford, so the next
+2x has to wait for real dependency tracking.
+
+The digest is over the file's bytes rather than its mtime, because a checkout, a
+branch switch, and a formatter that rewrites a file identically all move the
+mtime without changing what the parser would produce.
+
 ## Two gaps found by running it on real code
 
 Neither shows up in a test suite; both came from pointing the tool at a project
@@ -526,13 +568,11 @@ spot rather than a measured one.
   every caller is reported, which is correct but not always useful.
 - **Python first.** C++ needs `compile_commands.json` and libclang; text-level
   parsing is not sufficient there, and demonstrating that gap is its own result.
-- **No caching yet.** The index is rebuilt per invocation: 0.34s on this
-  26-module repository, 16.7s on the 719-module standard library. Fine for a
-  person, far too slow for an agent calling it in a loop, and the fix is a
-  content hash per file rather than anything structural. (An earlier draft said
-  7.3s for the same 719 modules; that does not reproduce here. Measured at the
-  commit before the resolver change, it is 16.75s, so the constructor and
-  class-attribute passes did not cause it.)
+- **Still too slow for a tight agent loop on a large repository.** A warm
+  rebuild is 1.8x faster (see [reuse](#what-a-cache-can-and-cannot-buy)), which
+  takes the standard library from 29s to 16s — better, not solved. The
+  remaining cost is resolution, and skipping that safely needs import-graph
+  dependency tracking.
 
 ## Development
 
