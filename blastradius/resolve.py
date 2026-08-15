@@ -235,6 +235,7 @@ class _ReferenceWalker(ast.NodeVisitor):
             self._attribute(node.func, in_call=True)
         else:
             self.visit(node.func)
+        self._constructor(node.func)
         for argument in node.args:
             self.visit(argument)
         for keyword in node.keywords:
@@ -265,6 +266,16 @@ class _ReferenceWalker(ast.NodeVisitor):
                 # definition, so there is nothing to record and nothing unknown.
                 return
 
+        base_class = self._class_of(node.value)
+        if base_class is not None:
+            member = self._graph.lookup_method(base_class, node.attr)
+            if member is not None:
+                self._record(member, node.lineno, via="class_attr")
+                # The class itself is still referred to here, and dropping that
+                # would lose the edge that a rename of the class depends on.
+                self.visit(node.value)
+                return
+
         self.unresolved.append(
             UnresolvedAttribute(
                 attribute=node.attr,
@@ -276,6 +287,45 @@ class _ReferenceWalker(ast.NodeVisitor):
             )
         )
         self.generic_visit(node)
+
+    def _constructor(self, func: ast.expr) -> None:
+        """Record `C(...)` as a use of `C.__init__`.
+
+        Calling a class runs its initialiser, but the call site names the class
+        and never the method. Without this, asking for the blast radius of an
+        `__init__` returns nothing at all -- the most misleading empty answer
+        this tool can give, since adding a required parameter to an initialiser
+        forces every construction site in the repository to change. Two of the
+        twelve recall misses in the first scored evaluation were exactly this.
+
+        An inherited initialiser resolves through the MRO, so a subclass built
+        with `Child()` still points at the base that actually defines it.
+        """
+        target = self._class_of(func)
+        if target is None:
+            return
+        initialiser = self._graph.lookup_method(target, "__init__")
+        if initialiser is not None:
+            self._record(initialiser, func.lineno, via="constructor")
+
+    def _class_of(self, expression: ast.expr) -> SymbolId | None:
+        """The class an expression names, if it names one at all.
+
+        Deliberately only handles a bare name and a module attribute -- both
+        cases where the scope chain or the import graph *proves* what the class
+        is. `value.attr` where `value` is a variable needs type inference, and
+        guessing there is how a tool starts reporting confident nonsense.
+        """
+        if isinstance(expression, ast.Name):
+            target = self._resolve(expression.id)
+        elif isinstance(expression, ast.Attribute):
+            base = self._module_of(expression.value)
+            target = self._index.member(base, expression.attr) if base is not None else None
+        else:
+            return None
+        if isinstance(target, SymbolId) and self._graph.node(target) is not None:
+            return target
+        return None
 
     def _method_on_enclosing_class(self, name: str) -> SymbolId | None:
         """Resolve `self.name` against the class the current code sits inside.

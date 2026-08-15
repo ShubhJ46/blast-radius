@@ -33,7 +33,14 @@ ScopeKind = Literal["module", "class", "function"]
 # How a reference was arrived at. Ordered loosely from most to least certain;
 # the evaluation harness reports recall broken down by this field, so that the
 # contribution of each resolution strategy is visible rather than assumed.
-ReferenceVia = Literal["name", "self_attr", "class_attr", "module_attr", "unresolved_attr"]
+ReferenceVia = Literal[
+    "name",
+    "self_attr",
+    "class_attr",
+    "module_attr",
+    "constructor",  # `C(...)`, which runs `C.__init__` without ever naming it
+    "unresolved_attr",
+]
 
 # `resolved` means a scope chain, class MRO, or import binding proved the target.
 # `name_match` means only the name agreed. The CLI reports `resolved` alone by

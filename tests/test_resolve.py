@@ -714,3 +714,133 @@ class TestUnresolvedAttributes:
     def test_attribute_assignment_is_not_counted(self):
         files = {"m.py": "class Holder:\n    def call(self):\n        self.value = 1\n"}
         assert resolve(files, "m.py").unresolved_attributes == ()
+
+
+def via_targets(files: dict[str, str], via: str, path: str = "m.py") -> list[str]:
+    return [
+        str(reference.target)
+        for reference in resolve(files, path).references
+        if reference.via == via
+    ]
+
+
+class TestConstructors:
+    """`C(...)` runs `C.__init__`, but the call site never writes that name.
+
+    Found by the mined evaluation: two of twelve recall misses were a class
+    being constructed in another file, where the tool reported the initialiser
+    as having no callers at all.
+    """
+
+    def test_constructing_a_class_uses_its_initialiser(self):
+        files = {
+            "lib.py": "class Pool:\n    def __init__(self, size):\n        pass\n",
+            "m.py": "from lib import Pool\n\npool = Pool(4)\n",
+        }
+        assert via_targets(files, "constructor") == ["lib.py::Pool.__init__"]
+
+    def test_the_class_itself_is_still_referenced(self):
+        """Losing this edge would break the blast radius of renaming the class."""
+        files = {
+            "lib.py": "class Pool:\n    def __init__(self, size):\n        pass\n",
+            "m.py": "from lib import Pool\n\npool = Pool(4)\n",
+        }
+        assert via_targets(files, "name") == ["lib.py::Pool"]
+
+    def test_an_inherited_initialiser_resolves_through_the_mro(self):
+        files = {
+            "lib.py": (
+                "class Pool:\n"
+                "    def __init__(self, size):\n"
+                "        pass\n"
+                "\n"
+                "\n"
+                "class Child(Pool):\n"
+                "    pass\n"
+            ),
+            "m.py": "from lib import Child\n\nchild = Child(4)\n",
+        }
+        assert via_targets(files, "constructor") == ["lib.py::Pool.__init__"]
+
+    def test_a_class_reached_through_a_module_attribute_counts(self):
+        files = {
+            **PKG,
+            "pkg/pool.py": "class Pool:\n    def __init__(self, size):\n        pass\n",
+            "m.py": "import pkg.pool\n\npool = pkg.pool.Pool(4)\n",
+        }
+        assert via_targets(files, "constructor") == ["pkg/pool.py::Pool.__init__"]
+
+    def test_a_class_without_an_initialiser_records_nothing(self):
+        files = {**PKG, "m.py": "from pkg.mod import Widget\n\nw = Widget()\n"}
+        assert via_targets(files, "constructor") == []
+
+    def test_calling_a_plain_function_is_not_a_construction(self):
+        files = {**PKG, "m.py": "from pkg.mod import func\n\nfunc()\n"}
+        assert via_targets(files, "constructor") == []
+
+    def test_cls_is_not_resolved_to_the_class(self):
+        """`cls(...)` inside a classmethod needs type inference, not a guess."""
+        files = {
+            "m.py": (
+                "class Pool:\n"
+                "    def __init__(self, size):\n"
+                "        pass\n"
+                "\n"
+                "    @classmethod\n"
+                "    def make(cls):\n"
+                "        return cls(1)\n"
+            )
+        }
+        assert via_targets(files, "constructor") == []
+
+    def test_calling_the_result_of_a_call_is_not_a_construction(self):
+        files = {**PKG, "m.py": "from pkg.mod import func\n\nfunc()()\n"}
+        assert via_targets(files, "constructor") == []
+
+
+class TestClassAttributes:
+    """`Config.read(...)` names a member of a class the scope chain already proved."""
+
+    def test_a_method_on_an_imported_class_resolves(self):
+        files = {
+            "lib.py": "class Config:\n    @classmethod\n    def read(cls, path):\n        pass\n",
+            "m.py": "from lib import Config\n\nConfig.read('x')\n",
+        }
+        assert via_targets(files, "class_attr") == ["lib.py::Config.read"]
+
+    def test_the_class_is_referenced_as_well_as_the_member(self):
+        files = {
+            "lib.py": "class Config:\n    @classmethod\n    def read(cls, path):\n        pass\n",
+            "m.py": "from lib import Config\n\nConfig.read('x')\n",
+        }
+        assert via_targets(files, "name") == ["lib.py::Config"]
+
+    def test_an_inherited_member_resolves_through_the_mro(self):
+        files = {
+            "lib.py": (
+                "class Base:\n"
+                "    def helper(self):\n"
+                "        pass\n"
+                "\n"
+                "\n"
+                "class Child(Base):\n"
+                "    pass\n"
+            ),
+            "m.py": "from lib import Child\n\nChild.helper(None)\n",
+        }
+        assert via_targets(files, "class_attr") == ["lib.py::Base.helper"]
+
+    def test_an_unknown_member_stays_unresolved(self):
+        files = {**PKG, "m.py": "from pkg.mod import Widget\n\nWidget.missing()\n"}
+        result = resolve(files, "m.py")
+        assert via_targets(files, "class_attr") == []
+        assert [u.attribute for u in result.unresolved_attributes] == ["missing"]
+
+    def test_an_attribute_on_a_variable_is_not_guessed(self):
+        """The receiver's type is unknown; inventing an answer here is the failure
+        mode the confidence vocabulary exists to prevent."""
+        files = {
+            "lib.py": "class Config:\n    def read(self):\n        pass\n",
+            "m.py": "from lib import Config\n\ndef go(cfg):\n    cfg.read()\n",
+        }
+        assert via_targets(files, "class_attr") == []

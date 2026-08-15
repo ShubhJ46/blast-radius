@@ -14,3 +14,8 @@ venv/
 # under evaluation/cases/ are committed instead, so the evaluation reproduces
 # without re-walking anyone's history.
 .corpora/
+
+# Scoring output is derived from the committed cases plus a corpus clone, and
+# changes with every run. The numbers that matter are quoted in the README
+# against the commit that produced them, rather than left here to go stale.
+evaluation/results/
