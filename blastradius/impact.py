@@ -14,9 +14,18 @@ without evidence trades precision for the appearance of thoroughness.
 `Impact.files` is the prediction the evaluation harness scores. It excludes the
 file the symbol is defined in: every tool gets that one right, so counting it
 inflates precision and recall equally and tells a reader nothing.
+
+`Impact.unverified` is the one place this module reports something it has not
+proved, and it is kept out of `files` for that reason. A file the parser could
+not read contributes nothing to the index, so a caller inside it is invisible --
+and understating a blast radius is the failure this tool exists to prevent.
+Naming those files when they mention the symbol converts a silent hole into a
+stated one.
 """
 
+import re
 from dataclasses import dataclass
+from pathlib import Path
 
 from blastradius.index import RepoIndex
 from blastradius.model import Definition, Reference, SymbolId
@@ -29,6 +38,11 @@ class Impact:
     callers: tuple[Reference, ...]
     overrides: tuple[SymbolId, ...]  # subclass methods that must stay compatible
     overridden: SymbolId | None  # the inherited definition this one overrides
+    # Files the parser could not read that mention the symbol by name. Not
+    # evidence -- a text match, in a file nothing has resolved -- so it is
+    # never folded into `files`. Reported so that "I could not see this" is
+    # distinguishable from "nothing depends on this".
+    unverified: tuple[str, ...] = ()
 
     @property
     def files(self) -> tuple[str, ...]:
@@ -112,6 +126,44 @@ class Impact:
         return not self.callers and not self.overrides
 
 
+def written_name(qualname: str) -> str:
+    """The identifier a caller writes, for searching text nothing has parsed.
+
+    A dunder is never written at a call site: constructing `Exit(...)` or
+    entering a `with` block names the class, not `__init__` or `__enter__`.
+    """
+    parts = qualname.split(".")
+    final = parts[-1]
+    if final.startswith("__") and final.endswith("__") and len(parts) >= 2:
+        return parts[-2]
+    return final
+
+
+def unverified_mentions(index: RepoIndex, symbol: SymbolId) -> tuple[str, ...]:
+    """Unparseable files whose text names the symbol.
+
+    Only files already in `index.skipped` are searched -- never the repository
+    at large. Everything the parser *could* read has been resolved properly,
+    and text-matching it too would reintroduce exactly the noise this tool
+    exists to remove.
+
+    A file that has since become unreadable is skipped rather than raised on:
+    the caller asked what breaks, not for a filesystem report.
+    """
+    if not index.skipped:
+        return ()
+    pattern = re.compile(rf"\b{re.escape(written_name(symbol.qualname))}\b")
+    found = []
+    for path, _reason in index.skipped:
+        try:
+            text = Path(index.root, path).read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        if pattern.search(text):
+            found.append(path)
+    return tuple(sorted(found))
+
+
 def impact_of(index: RepoIndex, symbol: SymbolId) -> Impact:
     """Collect the blast radius of a change to one symbol."""
     definition = index.definitions.get(symbol)
@@ -124,6 +176,7 @@ def impact_of(index: RepoIndex, symbol: SymbolId) -> Impact:
         callers=index.references_to(symbol),
         overrides=index.classes.overrides_of(symbol),
         overridden=index.classes.overridden(symbol),
+        unverified=unverified_mentions(index, symbol),
     )
 
 

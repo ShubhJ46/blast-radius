@@ -187,3 +187,34 @@ class TestImpactArgument:
         assert payload["argument"] == "can_borrow"
         assert payload["files"] == ["kw.py"]
         assert sorted(payload["all_caller_files"]) == ["kw.py", "plain.py"]
+
+
+class TestUnverifiedFiles:
+    """A file the parser cannot read is a hole in the answer, so it is named."""
+
+    LEGACY = {
+        "lib.py": "class Widget:\n    def render(self):\n        pass\n",
+        "good.py": "from lib import Widget\n\n\ndef go(w: Widget):\n    w.render()\n",
+        "legacy.py": "from lib import Widget\n\ndef go(w):\n    print 'py2'\n    w.render()\n",
+    }
+
+    def test_human_output_names_them_separately_from_the_radius(self, make_repo):
+        root = make_repo(self.LEGACY)
+        code, out, _ = run(["impact", "Widget.render", "--root", str(root)])
+        assert code == EXIT_OK
+        radius, _, unverified = out.partition("unverified")
+        assert "good.py" in radius
+        assert "legacy.py" not in radius
+        assert "legacy.py" in unverified
+
+    def test_json_reports_them_in_their_own_key(self, make_repo):
+        root = make_repo(self.LEGACY)
+        _, out, _ = run(["impact", "Widget.render", "--root", str(root), "--json"])
+        payload = json.loads(out)
+        assert payload["files"] == ["good.py"]
+        assert payload["unverified"] == ["legacy.py"]
+
+    def test_nothing_is_printed_when_every_file_parses(self, make_repo):
+        root = make_repo({k: v for k, v in self.LEGACY.items() if k != "legacy.py"})
+        _, out, _ = run(["impact", "Widget.render", "--root", str(root)])
+        assert "unverified" not in out

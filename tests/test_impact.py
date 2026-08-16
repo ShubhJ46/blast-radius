@@ -1,6 +1,6 @@
 import pytest
 
-from blastradius.impact import find_symbols, impact_of
+from blastradius.impact import find_symbols, impact_of, written_name
 from blastradius.index import build_index
 from blastradius.model import SymbolId
 
@@ -232,3 +232,82 @@ class TestAffectedBy:
     def test_a_removal_still_catches_positional_callers(self, make_repo):
         impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
         assert "positional.py" in impact.files_affected_by("can_borrow")
+
+
+class TestUnverifiedMentions:
+    """A file the parser cannot read contributes nothing to the index, so a
+    caller inside it is invisible. Understating a blast radius is the failure
+    this tool exists to prevent, so those files are named."""
+
+    LEGACY = {
+        "lib.py": "class Widget:\n    def render(self):\n        pass\n",
+        "good.py": "from lib import Widget\n\n\ndef go(w: Widget):\n    w.render()\n",
+        "legacy.py": "from lib import Widget\n\ndef go(w):\n    print 'py2'\n    w.render()\n",
+        "other_legacy.py": "def unrelated():\n    print 'py2'\n",
+    }
+
+    def test_an_unparseable_file_mentioning_the_symbol_is_reported(self, make_repo):
+        impact = impact_of(build_index(make_repo(self.LEGACY)), sym("lib.py", "Widget.render"))
+        assert impact.unverified == ("legacy.py",)
+
+    def test_it_is_kept_out_of_the_blast_radius(self, make_repo):
+        """A text match in a file nothing resolved is not evidence."""
+        impact = impact_of(build_index(make_repo(self.LEGACY)), sym("lib.py", "Widget.render"))
+        assert impact.files == ("good.py",)
+
+    def test_an_unparseable_file_not_mentioning_it_is_not_reported(self, make_repo):
+        impact = impact_of(build_index(make_repo(self.LEGACY)), sym("lib.py", "Widget.render"))
+        assert "other_legacy.py" not in impact.unverified
+
+    def test_files_that_parse_are_never_text_searched(self, make_repo):
+        """Everything readable is resolved properly; text-matching it too would
+        reintroduce the noise this tool exists to remove."""
+        files = {
+            "lib.py": "def helper():\n    pass\n",
+            "mentions.py": "# helper is discussed here but never called\n",
+        }
+        impact = impact_of(build_index(make_repo(files)), sym("lib.py", "helper"))
+        assert impact.unverified == ()
+        assert impact.files == ()
+
+    def test_a_clean_repository_reports_nothing(self, make_repo):
+        index = build_index(make_repo({"m.py": "def f():\n    pass\n"}))
+        assert impact_of(index, sym("m.py", "f")).unverified == ()
+
+    def test_a_substring_is_not_a_mention(self, make_repo):
+        files = {
+            "lib.py": "def helper():\n    pass\n",
+            "legacy.py": "helpers = 1\nmy_helper = 2\nprint 'py2'\n",
+        }
+        impact = impact_of(build_index(make_repo(files)), sym("lib.py", "helper"))
+        assert impact.unverified == ()
+
+    def test_an_initialiser_is_searched_by_its_class_name(self, make_repo):
+        """A caller writes `Widget(...)`, never `__init__`."""
+        files = {
+            "lib.py": "class Widget:\n    def __init__(self, a):\n        pass\n",
+            "legacy.py": "from lib import Widget\nw = Widget(1)\nprint 'py2'\n",
+        }
+        impact = impact_of(build_index(make_repo(files)), sym("lib.py", "Widget.__init__"))
+        assert impact.unverified == ("legacy.py",)
+
+    def test_a_file_that_vanished_is_skipped_not_raised(self, make_repo):
+        root = make_repo(self.LEGACY)
+        index = build_index(root)
+        (root / "legacy.py").unlink()
+        impact = impact_of(index, sym("lib.py", "Widget.render"))
+        assert impact.unverified == ()
+
+
+class TestWrittenName:
+    @pytest.mark.parametrize(
+        ("qualname", "expected"),
+        [
+            ("helper", "helper"),
+            ("Widget.render", "render"),
+            ("Widget.__init__", "Widget"),
+            ("__getattr__", "__getattr__"),
+        ],
+    )
+    def test_the_identifier_a_caller_writes(self, qualname, expected):
+        assert written_name(qualname) == expected

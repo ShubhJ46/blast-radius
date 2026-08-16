@@ -14,7 +14,8 @@
       "mypy/newsemanal/semanal_newtype.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-06-13"
   },
   {
     "id": "mypy@00b5064fdb::_load_ff_file",
@@ -28,7 +29,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2026-02-17"
   },
   {
     "id": "mypy@01a088b954::_verify_static_class_methods",
@@ -42,7 +44,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-03-24"
   },
   {
     "id": "mypy@01d6eb82e1::matches_exclude",
@@ -56,7 +59,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2021-10-21"
   },
   {
     "id": "mypy@03a1746f58::FindModuleCache.find_lib_path_dirs",
@@ -70,7 +74,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-02-01"
   },
   {
     "id": "mypy@03b12a1309::generate_methods_table",
@@ -84,7 +89,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-11-27"
   },
   {
     "id": "mypy@049a879504::LoadMem.__init__",
@@ -102,7 +108,8 @@
     "test_files": [
       "mypyc/test/test_emitfunc.py"
     ],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2020-08-13"
   },
   {
     "id": "mypy@06b01c80a1::WriteToConn.__init__",
@@ -118,7 +125,8 @@
       "mypy/dmypy_server.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-01-29"
   },
   {
     "id": "mypy@0777c1006c::ASTConverter.fail",
@@ -132,7 +140,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-03-02"
   },
   {
     "id": "mypy@07b644339d::build_fstring_join",
@@ -146,7 +155,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2026-04-30"
   },
   {
     "id": "mypy@0a83048198::TypeChecker.lookup",
@@ -160,7 +170,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-10-02"
   },
   {
     "id": "mypy@0bde4b9e82::gen_func_ir",
@@ -174,7 +185,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2021-08-09"
   },
   {
     "id": "mypy@0f09be472c::require_bool_literal_argument",
@@ -188,7 +200,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2023-04-05"
   },
   {
     "id": "mypy@0f9676e399::MessageBuilder.note_defined_here",
@@ -202,7 +215,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2026-06-15"
   },
   {
     "id": "mypy@0fe76cee22::generate_c_extension_shim",
@@ -216,7 +230,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-05-22"
   },
   {
     "id": "mypy@103f5f3ec3::restrict_subtype_away",
@@ -232,7 +247,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-01-04"
   },
   {
     "id": "mypy@109c8ce846::State.detect_possibly_undefined_vars",
@@ -248,7 +264,8 @@
       "mypy/server/update.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-12-28"
   },
   {
     "id": "mypy@116b92bae7::get_mypy_type_of_runtime_value",
@@ -262,7 +279,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-08-23"
   },
   {
     "id": "mypy@11f6e546e1::add_class_tvars",
@@ -276,7 +294,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-02-24"
   },
   {
     "id": "mypy@125ef0ddaa::find_member",
@@ -295,7 +314,8 @@
       "mypy/messages.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-09-15"
   },
   {
     "id": "mypy@131f9d92da::generate_setup_for_class",
@@ -309,7 +329,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2026-01-14"
   },
   {
     "id": "mypy@1457c5d468::IPCBase.read",
@@ -325,7 +346,8 @@
     "test_files": [
       "mypy/test/testipc.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-01-31"
   },
   {
     "id": "mypy@149f753ce3::SemanticAnalyzer.analyze_class_typevar_declaration",
@@ -339,7 +361,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-11-22"
   },
   {
     "id": "mypy@159f382fe3::Errors.__init__",
@@ -353,7 +376,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2021-06-04"
   },
   {
     "id": "mypy@15f1287521::BuildManager.parse_all",
@@ -367,7 +391,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2026-04-20"
   },
   {
     "id": "mypy@15f23850f3::lookup_fully_qualified",
@@ -381,7 +406,8 @@
       "mypy/fixup.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-10-08"
   },
   {
     "id": "mypy@16cd09ac7d::TypeAnalyser.__init__",
@@ -395,7 +421,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-05-23"
   },
   {
     "id": "mypy@171402834f::TypeArgumentAnalyzer.__init__",
@@ -409,7 +436,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-08-29"
   },
   {
     "id": "mypy@17da595f31::write_cache",
@@ -423,7 +451,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2026-02-11"
   },
   {
     "id": "mypy@17fbde108c::get_proper_types",
@@ -437,7 +466,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-08-30"
   },
   {
     "id": "mypy@18a510768b::NamedTupleAnalyzer.analyze_namedtuple_classdef",
@@ -451,7 +481,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-05-17"
   },
   {
     "id": "mypy@1a23a2939f::ForIterable.init",
@@ -467,7 +498,8 @@
       "mypyc/genops.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2019-05-06"
   },
   {
     "id": "mypy@1bcfc041bb::generate_attr_defaults",
@@ -481,7 +513,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2021-11-25"
   },
   {
     "id": "mypy@1c218ea2c6::State.parse_file",
@@ -495,7 +528,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-10-19"
   },
   {
     "id": "mypy@1db3eb3c99::TypeAnalyser.anal_type",
@@ -509,7 +543,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2023-08-19"
   },
   {
     "id": "mypy@1e220b107d::ModuleNotFoundReason.error_message_templates",
@@ -525,7 +560,8 @@
       "mypy/build.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-05-19"
   },
   {
     "id": "mypy@1e372f4027::NameGenerator.__init__",
@@ -543,7 +579,8 @@
     "test_files": [
       "mypyc/test/test_namegen.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-06-02"
   },
   {
     "id": "mypy@1eaf4c70c0::State._patch_indirect_dependencies",
@@ -557,7 +594,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-10-10"
   },
   {
     "id": "mypy@1f0ab28a0a::TypeAnalyser.pack_paramspec_args",
@@ -571,7 +609,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2026-01-12"
   },
   {
     "id": "mypy@2094639344::Errors.raise_error",
@@ -587,7 +626,8 @@
       "mypy/build.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-10-11"
   },
   {
     "id": "mypy@20e8e6896f::IRBuilder.init_final_static",
@@ -603,7 +643,8 @@
       "mypyc/irbuild/classdef.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-03-20"
   },
   {
     "id": "mypy@21e160e531::BuildManager.parse_file",
@@ -617,7 +658,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-08-03"
   },
   {
     "id": "mypy@23e02e20f5::ConstraintBuilderVisitor.infer_constraints_from_protocol_members",
@@ -631,7 +673,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-09-21"
   },
   {
     "id": "mypy@23e6072cb9::TypeIndirectionVisitor._visit",
@@ -645,7 +688,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-07-18"
   },
   {
     "id": "mypy@2475643f7e::ClassIR.get_method_and_class",
@@ -661,7 +705,8 @@
       "mypyc/irbuild/vtable.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2023-01-10"
   },
   {
     "id": "mypy@256f1f33f6::main",
@@ -675,7 +720,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-07-08"
   },
   {
     "id": "mypy@2601fb7916::generate_clear_for_class",
@@ -689,7 +735,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2026-07-17"
   },
   {
     "id": "mypy@27a9830752::LowLevelIRBuilder.check_tagged_short_int",
@@ -703,7 +750,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2020-10-18"
   },
   {
     "id": "mypy@29abf398d6::TypeAnalyser.tuple_type",
@@ -718,7 +766,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-08-26"
   },
   {
     "id": "mypy@2ab8849f64::SemanticAnalyzer.expr_to_analyzed_type",
@@ -733,7 +782,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2023-06-06"
   },
   {
     "id": "mypy@2baebda573::ExpressionChecker.dangerous_comparison",
@@ -747,7 +797,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-04-27"
   },
   {
     "id": "mypy@2d54024cb4::IRBuilder.accept",
@@ -761,7 +812,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-10-21"
   },
   {
     "id": "mypy@2e08ce69d5::StrExpr.__init__",
@@ -777,7 +829,8 @@
       "mypy/treetransform.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2022-07-28"
   },
   {
     "id": "mypy@30c46ab48f::NodeFixer.visit_symbol_table",
@@ -791,7 +844,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-02-28"
   },
   {
     "id": "mypy@3174d3f1d4::format_type_inner",
@@ -805,7 +859,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 14
+    "commit_file_count": 14,
+    "committed_at": "2025-11-02"
   },
   {
     "id": "mypy@32752ebc58::build_mypy",
@@ -820,7 +875,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-07-17"
   },
   {
     "id": "mypy@33d94d791e::TypeArgumentAnalyzer.__init__",
@@ -837,7 +893,8 @@
       "mypy/newsemanal/semanal_main.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-04-04"
   },
   {
     "id": "mypy@3412fab840::FindModuleCache.find_module",
@@ -853,7 +910,8 @@
       "mypy/dmypy_server.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-02-15"
   },
   {
     "id": "mypy@34949c8227::build_mypy",
@@ -867,7 +925,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-06-21"
   },
   {
     "id": "mypy@359ad931fe::validate_instance",
@@ -884,7 +943,8 @@
       "mypy/semanal.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2026-03-10"
   },
   {
     "id": "mypy@38f199d25d::generate_vtables",
@@ -898,7 +958,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-10-04"
   },
   {
     "id": "mypy@39156e0054::is_overlapping_types",
@@ -915,7 +976,8 @@
       "mypy/checkexpr.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2026-02-23"
   },
   {
     "id": "mypy@3adb2e952c::fail",
@@ -929,7 +991,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-06-04"
   },
   {
     "id": "mypy@3f35ebbb53::Converter.__init__",
@@ -943,7 +1006,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-03-25"
   },
   {
     "id": "mypy@41045dca88::os_path_join",
@@ -958,7 +1022,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2026-02-14"
   },
   {
     "id": "mypy@41562a0398::IPCBase.__init__",
@@ -972,7 +1037,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-01-08"
   },
   {
     "id": "mypy@41efd21f14::try_optimize_int_floor_divide",
@@ -986,7 +1052,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-10-01"
   },
   {
     "id": "mypy@43364c1be9::GroupGenerator.emit_module_def_slots",
@@ -1000,7 +1067,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-07-30"
   },
   {
     "id": "mypy@454989f7c0::load_type",
@@ -1016,7 +1084,8 @@
       "mypyc/irbuild/classdef.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-04-17"
   },
   {
     "id": "mypy@45bed9c994::TypeAnalyser.anal_array",
@@ -1030,7 +1099,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-12-28"
   },
   {
     "id": "mypy@46c7ec7ed2::run_benchmark",
@@ -1044,7 +1114,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-12-13"
   },
   {
     "id": "mypy@46e1d357d1::format_string_list",
@@ -1058,7 +1129,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2019-04-08"
   },
   {
     "id": "mypy@49ad7debc6::check_output",
@@ -1072,7 +1144,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-04"
   },
   {
     "id": "mypy@4b46d09f4e::ASTStubGenerator.process_typealias",
@@ -1086,7 +1159,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-05-01"
   },
   {
     "id": "mypy@4bec92c754::NewSemanticAnalyzer.name_not_defined",
@@ -1100,7 +1174,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-02-06"
   },
   {
     "id": "mypy@4c90aa42e6::load_singledispatch_registry",
@@ -1114,7 +1189,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2021-08-14"
   },
   {
     "id": "mypy@4f06ac9962::LowLevelIRBuilder.gen_method_call",
@@ -1130,7 +1206,8 @@
       "mypyc/genops.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2020-02-22"
   },
   {
     "id": "mypy@50a653e071::Converter.__init__",
@@ -1144,7 +1221,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2022-05-13"
   },
   {
     "id": "mypy@50ac875cbf::MessageBuilder.incompatible_conditional_function_def",
@@ -1161,7 +1239,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2022-09-26"
   },
   {
     "id": "mypy@50d6d0b145::NamedTupleAnalyzer.__init__",
@@ -1177,7 +1256,8 @@
       "mypy/semanal.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-11-25"
   },
   {
     "id": "mypy@526fec3f8a::FuncDecl.line",
@@ -1191,7 +1271,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-07-07"
   },
   {
     "id": "mypy@52c0a63f46::Server.fine_grained_increment",
@@ -1206,7 +1287,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-03-24"
   },
   {
     "id": "mypy@52de0c739d::find_attr_initializers",
@@ -1220,7 +1302,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2026-06-03"
   },
   {
     "id": "mypy@55375f6e26::format_type_bare",
@@ -1234,7 +1317,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-07-18"
   },
   {
     "id": "mypy@55fcb524ad::format_type_distinctly",
@@ -1249,7 +1333,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-01-10"
   },
   {
     "id": "mypy@56a6bf7267::FindModuleCache.__init__",
@@ -1263,7 +1348,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-11-13"
   },
   {
     "id": "mypy@5750690e62::IRBuilder.accept",
@@ -1277,7 +1363,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-07-30"
   },
   {
     "id": "mypy@57ce73d4a3::get_missing_protocol_members",
@@ -1291,7 +1378,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2022-11-13"
   },
   {
     "id": "mypy@58de753b6b::RPrimitive.__init__",
@@ -1305,7 +1393,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-01-21"
   },
   {
     "id": "mypy@5a95f9637a::SuggestionEngine.__init__",
@@ -1319,7 +1408,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-06-17"
   },
   {
     "id": "mypy@5bd2641ab5::StrToText.__init__",
@@ -1333,7 +1423,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2021-11-04"
   },
   {
     "id": "mypy@5c641282ce::ModuleIR.__init__",
@@ -1347,7 +1438,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-10-16"
   },
   {
     "id": "mypy@5cd1dabf0c::get_proper_types",
@@ -1361,7 +1453,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 20
+    "commit_file_count": 20,
+    "committed_at": "2019-08-27"
   },
   {
     "id": "mypy@5d535667e6::write_junit_xml",
@@ -1378,7 +1471,8 @@
       "mypy/main.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-01-08"
   },
   {
     "id": "mypy@5e83bd646c::RuntimeArg.__init__",
@@ -1394,7 +1488,8 @@
       "mypyc/irbuild/mapper.py"
     ],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2021-07-15"
   },
   {
     "id": "mypy@5f05bf56bb::LowLevelIRBuilder.new_tuple_with_length",
@@ -1410,7 +1505,8 @@
       "mypyc/irbuild/specialize.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2021-04-27"
   },
   {
     "id": "mypy@619d9bdf7a::SemanticAnalyzer.visit_yield_expr",
@@ -1424,7 +1520,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-01-23"
   },
   {
     "id": "mypy@673468cfc3::class_callable",
@@ -1438,7 +1535,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2019-11-05"
   },
   {
     "id": "mypy@67b70ce00e::TypedDictAnalyzer.parse_typeddict_fields_with_types",
@@ -1452,7 +1550,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-04-04"
   },
   {
     "id": "mypy@67d0902ef1::parse_section",
@@ -1466,7 +1565,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-05-21"
   },
   {
     "id": "mypy@68763aecdd::RStruct.__init__",
@@ -1483,7 +1583,8 @@
       "mypyc/test/test_emitfunc.py",
       "mypyc/test/test_struct.py"
     ],
-    "commit_file_count": 15
+    "commit_file_count": 15,
+    "committed_at": "2020-08-07"
   },
   {
     "id": "mypy@6886b7a17f::restrict_subtype_away",
@@ -1499,7 +1600,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-06-21"
   },
   {
     "id": "mypy@69eaf88a0b::ExpressionChecker.check_method_call_by_name",
@@ -1513,7 +1615,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-02-26"
   },
   {
     "id": "mypy@6d7beb4176::generate_c_property_stub",
@@ -1529,7 +1632,8 @@
     "test_files": [
       "mypy/test/teststubgen.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2021-02-11"
   },
   {
     "id": "mypy@6f0e77b859::BuildManager.parse_files_threaded_raw",
@@ -1544,7 +1648,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2026-05-21"
   },
   {
     "id": "mypy@6fac70122c::is_toml",
@@ -1558,7 +1663,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2021-05-11"
   },
   {
     "id": "mypy@70d78812b7::LoadMem.__init__",
@@ -1576,7 +1682,8 @@
       "mypyc/lower/list_ops.py"
     ],
     "test_files": [],
-    "commit_file_count": 12
+    "commit_file_count": 12,
+    "committed_at": "2025-07-15"
   },
   {
     "id": "mypy@71288c749f::PartiallyDefinedVariableVisitor.__init__",
@@ -1590,7 +1697,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-11-27"
   },
   {
     "id": "mypy@7237831d64::IRBuilder.accept",
@@ -1604,7 +1712,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-02-16"
   },
   {
     "id": "mypy@72a24313a0::IRBuilder.accept",
@@ -1620,7 +1729,8 @@
       "mypyc/irbuild/prebuildvisitor.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2026-03-18"
   },
   {
     "id": "mypy@761965d260::TypeAnalyser.find_type_var_likes",
@@ -1634,7 +1744,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-12-28"
   },
   {
     "id": "mypy@7914b2dc7b::PreBuildVisitor.__init__",
@@ -1650,7 +1761,8 @@
       "mypyc/irbuild/main.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2025-02-24"
   },
   {
     "id": "mypy@7a94183560::DataclassAttribute.to_argument",
@@ -1664,7 +1776,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-07-14"
   },
   {
     "id": "mypy@7abcffef3f::run_benchmark",
@@ -1678,7 +1791,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-12-14"
   },
   {
     "id": "mypy@7d69ce2ccf::PreBuildVisitor.__init__",
@@ -1695,7 +1809,8 @@
       "mypyc/irbuild/main.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2021-07-12"
   },
   {
     "id": "mypy@7e66e51099::FancyFormatter.format_error",
@@ -1711,7 +1826,8 @@
       "mypy/main.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-10-31"
   },
   {
     "id": "mypy@7ea925d386::transform_try_finally_stmt",
@@ -1725,7 +1841,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-07-10"
   },
   {
     "id": "mypy@8104d01988::generate_dealloc_for_class",
@@ -1739,7 +1856,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-02-14"
   },
   {
     "id": "mypy@81eaa5d1fb::Emitter.__init__",
@@ -1755,7 +1873,8 @@
       "mypyc/codegen/emitmodule.py"
     ],
     "test_files": [],
-    "commit_file_count": 16
+    "commit_file_count": 16,
+    "committed_at": "2025-11-28"
   },
   {
     "id": "mypy@8252a0ba16::MessageBuilder.unexpected_keyword_argument",
@@ -1771,7 +1890,8 @@
       "mypy/checkexpr.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-11-07"
   },
   {
     "id": "mypy@828a9eb584::find_all_sources_in_build",
@@ -1785,7 +1905,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-03-30"
   },
   {
     "id": "mypy@828c0befb4::NamedTupleAnalyzer.fail",
@@ -1799,7 +1920,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-05-18"
   },
   {
     "id": "mypy@855076b6a6::get_proper_types",
@@ -1815,7 +1937,8 @@
       "mypy/typeops.py"
     ],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2019-09-19"
   },
   {
     "id": "mypy@86515b5e12::Server.cmd_status",
@@ -1829,7 +1952,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2019-02-14"
   },
   {
     "id": "mypy@8990ebdb88::FuncDecl.__init__",
@@ -1844,7 +1968,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-10-16"
   },
   {
     "id": "mypy@8b30913218::PossiblyUndefinedVariableVisitor.__init__",
@@ -1858,7 +1983,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-01-24"
   },
   {
     "id": "mypy@8b43fb28da::RPrimitive.__init__",
@@ -1872,7 +1998,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2020-07-31"
   },
   {
     "id": "mypy@8b73cc22c6::set_any_tvars",
@@ -1888,7 +2015,8 @@
       "mypy/semanal_typeargs.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2023-09-07"
   },
   {
     "id": "mypy@8d58fce81c::collect_source_dependencies",
@@ -1902,7 +2030,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2026-04-14"
   },
   {
     "id": "mypy@8ed16d1fb2::ASTStubGenerator.get_str_type_of_node",
@@ -1917,7 +2046,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-05-16"
   },
   {
     "id": "mypy@902df03fa1::install_types",
@@ -1931,7 +2061,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-11-26"
   },
   {
     "id": "mypy@90b9a1ad04::IRBuilder.accept",
@@ -1945,7 +2076,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-03-02"
   },
   {
     "id": "mypy@92923b2ed8::StubGenerator.visit_func_def",
@@ -1959,7 +2091,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-01-14"
   },
   {
     "id": "mypy@92a78583b1::exist_added_packages",
@@ -1973,7 +2106,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2026-02-12"
   },
   {
     "id": "mypy@9393fa1e40::Emitter.emit_undefined_attr_check",
@@ -1992,7 +2126,8 @@
       "mypyc/codegen/emitfunc.py"
     ],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2022-08-31"
   },
   {
     "id": "mypy@976d1056a4::os_path_join",
@@ -2007,7 +2142,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2024-11-04"
   },
   {
     "id": "mypy@982853dc31::gen_func_item",
@@ -2021,7 +2157,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-08-12"
   },
   {
     "id": "mypy@98beb8e8fe::DataclassAttribute.__init__",
@@ -2035,7 +2172,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-11-27"
   },
   {
     "id": "mypy@990b6a6f03::TypedDictAnalyzer.fail",
@@ -2049,7 +2187,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-12-16"
   },
   {
     "id": "mypy@99e2688337::ASTConverter.fail",
@@ -2063,7 +2202,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-04-18"
   },
   {
     "id": "mypy@9a35fdc94c::add_type_promotion",
@@ -2079,7 +2219,8 @@
       "mypy/semanal_main.py"
     ],
     "test_files": [],
-    "commit_file_count": 15
+    "commit_file_count": 15,
+    "committed_at": "2022-06-03"
   },
   {
     "id": "mypy@9ce347083e::ASTConverter.fail",
@@ -2093,7 +2234,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-04-24"
   },
   {
     "id": "mypy@9d5e32c76e::Literals._encode_collection_values",
@@ -2107,7 +2249,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2026-06-22"
   },
   {
     "id": "mypy@9eb24688c2::NewSemanticAnalyzer.get_module_symbol",
@@ -2121,7 +2264,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-06-17"
   },
   {
     "id": "mypy@9edd29ae2b::State.mark_interface_stale",
@@ -2135,7 +2279,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-09-08"
   },
   {
     "id": "mypy@9f89b50596::NewSemanticAnalyzer.defer",
@@ -2149,7 +2294,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-07-04"
   },
   {
     "id": "mypy@a12565c825::write_cache_meta",
@@ -2163,7 +2309,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-09-30"
   },
   {
     "id": "mypy@a202b421bb::MessageBuilder.need_annotation_for_var",
@@ -2179,7 +2326,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 14
+    "commit_file_count": 14,
+    "committed_at": "2019-05-06"
   },
   {
     "id": "mypy@a33d2353a8::DataclassTransformer._propertize_callables",
@@ -2193,7 +2341,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-03-29"
   },
   {
     "id": "mypy@a3abd3644c::MessageBuilder.add_errors",
@@ -2209,7 +2358,8 @@
       "mypy/checkexpr.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2022-04-29"
   },
   {
     "id": "mypy@a503132749::make_simplified_union",
@@ -2225,7 +2375,8 @@
       "mypy/join.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-03-11"
   },
   {
     "id": "mypy@a6166b2f7e::FindModuleCache.__init__",
@@ -2241,7 +2392,8 @@
       "mypy/build.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2022-05-20"
   },
   {
     "id": "mypy@a618110789::BranchStatement.__init__",
@@ -2253,7 +2405,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-03-01"
   },
   {
     "id": "mypy@a6b5b1e54a::DataclassAttribute.__init__",
@@ -2267,7 +2420,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-03-15"
   },
   {
     "id": "mypy@a7c53d33be::MypyHTMLBuilder.__init__",
@@ -2281,7 +2435,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2023-11-11"
   },
   {
     "id": "mypy@a7d6e68541::_collect_field_args",
@@ -2295,7 +2450,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-09-20"
   },
   {
     "id": "mypy@a9fda34dc6::IRBuilder.gen_import_from",
@@ -2311,7 +2467,8 @@
       "mypyc/irbuild/statement.py"
     ],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2021-06-16"
   },
   {
     "id": "mypy@acccdd8a25::MessageBuilder.possible_missing_await",
@@ -2328,7 +2485,8 @@
       "mypy/checkmember.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2023-09-30"
   },
   {
     "id": "mypy@af3c8be98f::is_dunder",
@@ -2342,7 +2500,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-10-22"
   },
   {
     "id": "mypy@afdd9d5b2b::IRBuilder.accept",
@@ -2356,7 +2515,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 21
+    "commit_file_count": 21,
+    "committed_at": "2024-03-19"
   },
   {
     "id": "mypy@b027308116::NewSemanticAnalyzer.enter",
@@ -2370,7 +2530,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-02-01"
   },
   {
     "id": "mypy@b11d314777::IRBuilder.accept",
@@ -2384,7 +2545,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2026-01-22"
   },
   {
     "id": "mypy@b199f90057::SemanticAnalyzer.analyze_class_decorator_common",
@@ -2398,7 +2560,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2026-05-10"
   },
   {
     "id": "mypy@b3275572ec::is_trivial_bound",
@@ -2412,7 +2575,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 19
+    "commit_file_count": 19,
+    "committed_at": "2023-09-13"
   },
   {
     "id": "mypy@b36d8cf5d4::get_typeshed_stdlib_modules",
@@ -2428,7 +2592,8 @@
     "test_files": [
       "mypy/test/teststubtest.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-01-27"
   },
   {
     "id": "mypy@b50a4ef46c::is_legacy_bundled_package",
@@ -2447,7 +2612,8 @@
     "test_files": [
       "mypy/test/teststubinfo.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2022-07-28"
   },
   {
     "id": "mypy@b50f3a1a44::ConditionalTypeBinder.assign_type",
@@ -2463,7 +2629,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 17
+    "commit_file_count": 17,
+    "committed_at": "2025-02-05"
   },
   {
     "id": "mypy@b5107a98aa::SemanticAnalyzer.analyze_member_lvalue",
@@ -2477,7 +2644,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-05-02"
   },
   {
     "id": "mypy@b53dae73ee::report_missing",
@@ -2493,7 +2661,8 @@
       "mypy/stubgen.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-05-11"
   },
   {
     "id": "mypy@b594e6ba4d::LowLevelIRBuilder.builtin_len",
@@ -2507,7 +2676,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2021-03-25"
   },
   {
     "id": "mypy@b5b7f36fed::ForIterable.init",
@@ -2523,7 +2693,8 @@
       "mypyc/genops.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2019-04-29"
   },
   {
     "id": "mypy@b5f4df9862::add_class_tvars",
@@ -2538,7 +2709,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-11-29"
   },
   {
     "id": "mypy@b778c875cc::type_object_type_from_function",
@@ -2552,7 +2724,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-04-26"
   },
   {
     "id": "mypy@ba3e0649f1::State.__init__",
@@ -2571,7 +2744,8 @@
     "test_files": [
       "mypy/test/testgraph.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2026-01-29"
   },
   {
     "id": "mypy@bab275ff0c::generate_class_type_decl",
@@ -2587,7 +2761,8 @@
       "mypyc/emitmodule.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-05-06"
   },
   {
     "id": "mypy@bbd732f724::TypeChecker.set_inference_error_fallback_type",
@@ -2601,7 +2776,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2019-06-27"
   },
   {
     "id": "mypy@bbe68d3197::FileSystemCache.exists",
@@ -2617,7 +2793,8 @@
       "mypy/build.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2026-04-25"
   },
   {
     "id": "mypy@bc590e4efa::Environment.add_temp",
@@ -2631,7 +2808,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2020-03-10"
   },
   {
     "id": "mypy@bef9b67e62::EmitterInterface.emit_lines",
@@ -2645,7 +2823,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2019-06-18"
   },
   {
     "id": "mypy@bfabdb3317::NewSemanticAnalyzer.analyze_alias",
@@ -2659,7 +2838,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2019-02-15"
   },
   {
     "id": "mypy@bffeb2e676::type_object_type",
@@ -2673,7 +2853,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-10-01"
   },
   {
     "id": "mypy@c0372cc318::is_typeshed_file",
@@ -2693,7 +2874,8 @@
       "mypy/semanal_main.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2022-09-08"
   },
   {
     "id": "mypy@c08719d8d9::IRBuilder.accept",
@@ -2707,7 +2889,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2025-01-28"
   },
   {
     "id": "mypy@c1f2db34fb::os_path_join",
@@ -2722,7 +2905,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2024-10-16"
   },
   {
     "id": "mypy@c201a187be::os_path_join",
@@ -2737,7 +2921,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-10-16"
   },
   {
     "id": "mypy@c26f1297d4::int_neg_callback",
@@ -2751,7 +2936,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2024-02-12"
   },
   {
     "id": "mypy@c32d11e60f::FileSystemWatcher._update",
@@ -2765,7 +2951,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-10-13"
   },
   {
     "id": "mypy@c33da7438f::MessageBuilder.argument_incompatible_with_supertype",
@@ -2779,7 +2966,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-03"
   },
   {
     "id": "mypy@c4a5f56207::LowLevelIRBuilder.int_op",
@@ -2791,7 +2979,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2023-01-11"
   },
   {
     "id": "mypy@c4f55aefb1::IRBuilder.accept",
@@ -2805,7 +2994,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2023-06-02"
   },
   {
     "id": "mypy@c68bd7ae2c::supported_self_type",
@@ -2819,7 +3009,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-11-11"
   },
   {
     "id": "mypy@c94d8e3cd0::LowLevelIRBuilder.__init__",
@@ -2836,7 +3027,8 @@
       "mypyc/irbuild/builder.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2024-03-09"
   },
   {
     "id": "mypy@c9d4c61d9c::Mapper.fdef_to_sig",
@@ -2853,7 +3045,8 @@
       "mypyc/irbuild/prepare.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2024-10-18"
   },
   {
     "id": "mypy@ca2e529eea::int_binary_op",
@@ -2867,7 +3060,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-05-29"
   },
   {
     "id": "mypy@caf4787d10::type_fullname",
@@ -2881,7 +3075,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2023-05-22"
   },
   {
     "id": "mypy@cef7a63880::TypeChecker.check_subtype",
@@ -2895,7 +3090,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-10-07"
   },
   {
     "id": "mypy@cf6a48c865::ASTConverter._check_ifstmt_for_overloads",
@@ -2909,7 +3105,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-04-18"
   },
   {
     "id": "mypy@cfc0734640::IRBuilder.accept",
@@ -2925,7 +3122,8 @@
       "mypyc/irbuild/expression.py"
     ],
     "test_files": [],
-    "commit_file_count": 14
+    "commit_file_count": 14,
+    "committed_at": "2026-07-07"
   },
   {
     "id": "mypy@d0bd1c8ab2::analyze_must_defined_regs",
@@ -2941,7 +3139,8 @@
       "mypyc/transform/refcount.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2021-07-14"
   },
   {
     "id": "mypy@d180456b58::ASTConverter.make_argument",
@@ -2955,7 +3154,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2021-07-15"
   },
   {
     "id": "mypy@d1d431630d::SemanticAnalyzer.lookup_fully_qualified",
@@ -2969,7 +3169,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-10-05"
   },
   {
     "id": "mypy@d2a7f05d27::apply_generic_arguments",
@@ -2986,7 +3187,8 @@
       "mypy/subtypes.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-08-27"
   },
   {
     "id": "mypy@d2a8800e31::get_mypyc_attrs",
@@ -3003,7 +3205,8 @@
       "mypyc/irbuild/prepare.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-10-07"
   },
   {
     "id": "mypy@d35e571ef3::check_type_parameter",
@@ -3018,7 +3221,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-12-20"
   },
   {
     "id": "mypy@d503edfb90::IRBuilder.accept",
@@ -3032,7 +3236,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-07-08"
   },
   {
     "id": "mypy@d52ce3b370::get_self_type",
@@ -3046,7 +3251,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-06-19"
   },
   {
     "id": "mypy@d69419cc45::get_expr_length",
@@ -3060,7 +3266,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-10-14"
   },
   {
     "id": "mypy@d96b9dcb1d::SemanticAnalyzer.record_imported_symbol",
@@ -3074,7 +3281,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-09-23"
   },
   {
     "id": "mypy@d98ba8e3e5::LoadInt.__init__",
@@ -3090,7 +3298,8 @@
     "test_files": [
       "mypyc/test/test_emitfunc.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2020-06-05"
   },
   {
     "id": "mypy@d9c77cbe82::LowLevelIRBuilder.unary_op",
@@ -3104,7 +3313,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-08-29"
   },
   {
     "id": "mypy@d9e209f625::IRBuilder.__init__",
@@ -3118,7 +3328,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2020-02-22"
   },
   {
     "id": "mypy@dad898605d::update_typeshed",
@@ -3132,7 +3343,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-01-27"
   },
   {
     "id": "mypy@dc031c9634::build_mypy",
@@ -3146,7 +3358,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-06-22"
   },
   {
     "id": "mypy@dcb4d695e0::read_literal",
@@ -3162,7 +3375,8 @@
       "mypy/types.py"
     ],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2025-08-26"
   },
   {
     "id": "mypy@dfcff6851c::int_unary_op",
@@ -3177,7 +3391,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-06-03"
   },
   {
     "id": "mypy@e1f6d6b454::IRBuilder.accept",
@@ -3191,7 +3406,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2023-10-19"
   },
   {
     "id": "mypy@e22afc7578::name_emit",
@@ -3207,7 +3423,8 @@
       "mypyc/primitives/misc_ops.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2020-04-01"
   },
   {
     "id": "mypy@e37d92d6c2::IRBuilder.accept",
@@ -3221,7 +3438,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-03-12"
   },
   {
     "id": "mypy@e37dfb126e::for_loop_helper_with_index",
@@ -3235,7 +3453,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-06-08"
   },
   {
     "id": "mypy@e42e45dc7e::NewSemanticAnalyzer.add_unknown_symbol",
@@ -3249,7 +3468,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2019-02-20"
   },
   {
     "id": "mypy@e654572fa9::infer_method_sig",
@@ -3263,7 +3483,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-09-13"
   },
   {
     "id": "mypy@e69c5cde86::ArgSig.__init__",
@@ -3279,7 +3500,8 @@
       "mypy/stubgen.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2023-11-26"
   },
   {
     "id": "mypy@e7c095af6f::IRBuilder.accept",
@@ -3295,7 +3517,8 @@
       "mypyc/irbuild/format_str_tokenizer.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2024-11-29"
   },
   {
     "id": "mypy@e8c7ee7797::NewSemanticAnalyzer.enter",
@@ -3309,7 +3532,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-02-15"
   },
   {
     "id": "mypy@eb34a7bdcc::generate_deps_for_cache",
@@ -3323,7 +3547,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2019-08-02"
   },
   {
     "id": "mypy@eb5f4a4e0f::get_proper_types",
@@ -3337,7 +3562,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2019-08-24"
   },
   {
     "id": "mypy@ecec8bbf98::test_stubs",
@@ -3353,7 +3579,8 @@
     "test_files": [
       "mypy/test/teststubtest.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-10-21"
   },
   {
     "id": "mypy@ed2b4c76cb::DataclassAttribute.__init__",
@@ -3367,7 +3594,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-08-07"
   },
   {
     "id": "mypy@f104914b9d::best_matches",
@@ -3383,7 +3611,8 @@
       "mypy/semanal.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2023-01-02"
   },
   {
     "id": "mypy@f15d67757c::get_proper_types",
@@ -3399,7 +3628,8 @@
       "mypy/checker.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2019-08-25"
   },
   {
     "id": "mypy@f24678faac::TypeVarLikeScope.bind_new",
@@ -3417,7 +3647,8 @@
       "mypy/typeanal.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-11-20"
   },
   {
     "id": "mypy@f3367260ea::any_constraints",
@@ -3429,7 +3660,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-05-06"
   },
   {
     "id": "mypy@f3bdf5caaf::SemanticAnalyzer.expr_to_unanalyzed_type",
@@ -3445,7 +3677,8 @@
       "mypy/exprtotype.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2023-10-17"
   },
   {
     "id": "mypy@f7d047cd6d::IRBuilder.accept",
@@ -3459,7 +3692,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-10-27"
   },
   {
     "id": "mypy@f83ec9fffa::LowLevelIRBuilder.unary_not",
@@ -3473,7 +3707,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-08-29"
   },
   {
     "id": "mypy@f84e2cf1b0::SuggestionEngine.__init__",
@@ -3487,7 +3722,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2022-07-28"
   },
   {
     "id": "mypy@f8bf7ab577::options_snapshot",
@@ -3501,7 +3737,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2026-06-12"
   },
   {
     "id": "mypy@f9bf6491c4::SemanticAnalyzer.prepare_typing_namespace",
@@ -3515,7 +3752,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-11-13"
   },
   {
     "id": "mypy@fa3566a87d::IRBuilder.accept",
@@ -3532,7 +3770,8 @@
       "mypyc/irbuild/specialize.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2025-09-22"
   },
   {
     "id": "mypy@fad733ff78::State.__init__",
@@ -3548,7 +3787,8 @@
       "mypy/parse.py"
     ],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2026-06-04"
   },
   {
     "id": "mypy@fc609cdfca::merge_with_any",
@@ -3562,7 +3802,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-11-11"
   },
   {
     "id": "mypy@fca4cae253::ErrorInfo.__init__",
@@ -3576,7 +3817,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2023-06-28"
   },
   {
     "id": "mypy@fd16f84a2d::log_configuration",
@@ -3590,7 +3832,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-10-31"
   },
   {
     "id": "mypy@fd905502e8::count_stats",
@@ -3607,7 +3850,8 @@
       "mypy/main.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-03-17"
   },
   {
     "id": "mypy@fdeedd6f56::parse_section",
@@ -3621,7 +3865,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 19
+    "commit_file_count": 19,
+    "committed_at": "2021-05-05"
   },
   {
     "id": "mypy@fe6fe1d047::write_cache",
@@ -3635,7 +3880,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2026-02-12"
   },
   {
     "id": "mypy@fe8309aaed::flatten_nested_unions",
@@ -3649,7 +3895,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-12-20"
   },
   {
     "id": "mypy@fffb4b40b7::MessageBuilder.has_no_attr",
@@ -3665,6 +3912,7 @@
       "mypy/checkmember.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2019-11-23"
   }
 ]

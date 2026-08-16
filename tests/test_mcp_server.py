@@ -241,3 +241,30 @@ class TestMain:
         monkeypatch.setattr(mcp_server, "build_server", record)
         assert main([]) == 0
         assert Path(seen["root"]).resolve() == root.resolve()
+
+
+class TestUnverifiedOverMcp:
+    LEGACY = {
+        "lib.py": "class Widget:\n    def render(self):\n        pass\n",
+        "good.py": "from lib import Widget\n\n\ndef go(w: Widget):\n    w.render()\n",
+        "legacy.py": "from lib import Widget\n\ndef go(w):\n    print 'py2'\n    w.render()\n",
+    }
+
+    def test_unparseable_mentions_are_a_separate_key_and_a_caveat(self, make_repo):
+        """An agent must be able to tell 'I could not see this' from 'nothing
+        depends on this'."""
+        root = make_repo(self.LEGACY)
+        built = build_server(root)
+        result = payload(call(built, "blast_impact", {"symbol": "Widget.render",
+                                                      "root": str(root)}))
+        assert result["blast_radius"] == ["good.py"]
+        assert result["unverified"] == ["legacy.py"]
+        assert any("could not be parsed but mention this name" in n for n in result["caveats"])
+
+    def test_unrelated_unparseable_files_are_reported_as_such(self, make_repo):
+        root = make_repo({**self.LEGACY, "legacy.py": "def other():\n    print 'py2'\n"})
+        built = build_server(root)
+        result = payload(call(built, "blast_impact", {"symbol": "Widget.render",
+                                                      "root": str(root)}))
+        assert result["unverified"] == []
+        assert any("none of them mention this symbol" in n for n in result["caveats"])

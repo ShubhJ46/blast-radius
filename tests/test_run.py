@@ -40,6 +40,7 @@ def make_case(
     source_files: tuple[str, ...] = ("app.py",),
     test_files: tuple[str, ...] = (),
     commit_file_count: int = 2,
+    committed_at: str = "2024-01-01",
 ) -> Case:
     return Case(
         id=case_id,
@@ -52,6 +53,7 @@ def make_case(
         source_files=source_files,
         test_files=test_files,
         commit_file_count=commit_file_count,
+        committed_at=committed_at,
     )
 
 
@@ -482,3 +484,73 @@ class TestAffectedFiles:
         assert predict(root, symbol)[0] == frozenset({"kw.py", "plain.py"})
         narrowed, _ = predict(root, symbol, "removed", ("can_borrow",))
         assert narrowed == frozenset({"kw.py"})
+
+
+class TestEraSelection:
+    """The corpus spans 2007 to 2026 and the parser cannot read Python 2, so
+    the age of the code is a reporting-time filter like every other one."""
+
+    def test_older_cases_are_dropped(self):
+        cases = [
+            make_case(case_id="old", committed_at="2009-04-01"),
+            make_case(case_id="new", committed_at="2023-04-01"),
+        ]
+        assert [case.id for case in select(cases, since="2021")] == ["new"]
+
+    def test_a_full_date_bound_works_too(self):
+        cases = [
+            make_case(case_id="just-before", committed_at="2021-05-31"),
+            make_case(case_id="just-after", committed_at="2021-06-02"),
+        ]
+        assert [case.id for case in select(cases, since="2021-06-01")] == ["just-after"]
+
+    def test_the_boundary_date_is_included(self):
+        cases = [make_case(case_id="boundary", committed_at="2021-01-01")]
+        assert [case.id for case in select(cases, since="2021")] == ["boundary"]
+
+    def test_no_bound_keeps_everything(self):
+        cases = [
+            make_case(case_id="old", committed_at="2009-04-01"),
+            make_case(case_id="new", committed_at="2023-04-01"),
+        ]
+        assert len(select(cases)) == 2
+
+    def test_a_case_without_a_date_is_dropped_by_a_bound(self):
+        """An undated case predates the field; it cannot be claimed as modern."""
+        assert select([make_case(committed_at="")], since="2021") == []
+
+
+class TestEraReport:
+    @needs_git
+    def test_both_sides_are_shown_when_the_corpus_spans_the_boundary(self, repo):
+        repo.commit(
+            {
+                "lib.py": "def helper(a):\n    pass\n",
+                "app.py": "from lib import helper\n\nhelper(1)\n",
+            }
+        )
+        parent = repo.run("rev-parse", "HEAD").strip()
+        sha = repo.commit(
+            {
+                "lib.py": "def helper(a, b):\n    pass\n",
+                "app.py": "from lib import helper\n\nhelper(1, 2)\n",
+            }
+        )
+        results = [
+            score_case(repo.git, make_case(case_id="old", commit=sha, parent=parent,
+                                           committed_at="2009-01-01")),
+            score_case(repo.git, make_case(case_id="new", commit=sha, parent=parent,
+                                           committed_at="2023-01-01")),
+        ]
+        out = io.StringIO()
+        report(results, out)
+        text = out.getvalue()
+        assert "By the age of the code" in text
+        assert "before 2021" in text
+        assert "2021 onward" in text
+
+    def test_a_single_era_prints_no_breakdown(self, tmp_path):
+        """Nothing to compare, so the section would be noise."""
+        out = io.StringIO()
+        report(run([make_case(repo="absent", committed_at="2023-01-01")], tmp_path), out)
+        assert "By the age of the code" not in out.getvalue()

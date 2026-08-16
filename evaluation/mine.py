@@ -90,22 +90,28 @@ class Git:
             return ""
         return completed.stdout
 
-    def commits(self, revision: str, limit: int | None) -> list[tuple[str, list[str]]]:
-        """(sha, parents) walking back from a revision, merges excluded.
+    def commits(self, revision: str, limit: int | None) -> list[tuple[str, list[str], str]]:
+        """(sha, parents, date) walking back from a revision, merges excluded.
 
-        Parents come from the same call rather than one `rev-parse` per commit.
-        On a corpus of a few thousand commits that is a third of all the process
+        Parents and date come from the same call rather than one process each.
+        On a corpus of a few thousand commits that is most of the process
         spawns, which dominates runtime on Windows.
+
+        The date leads the line because the parent count varies: `%cs %H %P`
+        parses unambiguously from the left, where `%H %P %cs` would not.
         """
-        arguments = ["rev-list", "--parents", "--no-merges", revision]
+        arguments = ["log", "--no-merges", "--format=%cs %H %P", revision]
         if limit is not None:
             arguments.extend(["--max-count", str(limit)])
         rows = []
         for line in self.run(*arguments).splitlines():
             parts = line.split()
-            if parts:
-                rows.append((parts[0], parts[1:]))
+            if len(parts) >= 2:
+                rows.append((parts[1], parts[2:], parts[0]))
         return rows
+
+    def committed_at(self, sha: str) -> str:
+        return self.run("log", "-1", "--format=%cs", sha).strip()
 
     def parents(self, sha: str) -> list[str]:
         return self.run("rev-list", "--parents", "-n", "1", sha).split()[1:]
@@ -361,7 +367,12 @@ def signature_changes(path: str, before: str, after: str) -> list[SignatureChang
 
 
 def mine_commit(
-    git: Git, repo: str, sha: str, max_files: int, parents: list[str] | None = None
+    git: Git,
+    repo: str,
+    sha: str,
+    max_files: int,
+    parents: list[str] | None = None,
+    committed_at: str | None = None,
 ) -> Case | None:
     """Build a case from one commit, or None if it does not qualify.
 
@@ -369,6 +380,7 @@ def mine_commit(
     one process spawn per commit across a whole history walk.
     """
     parents = git.parents(sha) if parents is None else parents
+    committed_at = git.committed_at(sha) if committed_at is None else committed_at
     if len(parents) != 1:
         return None  # a root commit has no "before"; merges are excluded earlier
     parent = parents[0]
@@ -439,6 +451,7 @@ def mine_commit(
         source_files=tuple(sorted(p for p in touched if not is_test_path(p))),
         test_files=tuple(sorted(p for p in touched if is_test_path(p))),
         commit_file_count=len(changed),
+        committed_at=committed_at,
     )
 
 
@@ -452,8 +465,8 @@ def mine(
 ) -> list[Case]:
     cases = []
     commits = git.commits(revision, max_commits)
-    for position, (sha, parents) in enumerate(commits, start=1):
-        case = mine_commit(git, repo, sha, max_files, parents=parents)
+    for position, (sha, parents, date) in enumerate(commits, start=1):
+        case = mine_commit(git, repo, sha, max_files, parents=parents, committed_at=date)
         if case is not None:
             cases.append(case)
         if progress is not None:

@@ -84,9 +84,16 @@ def _caveats(index: RepoIndex, impact: Impact) -> list[str]:
             "are on values whose type is not declared, so some callers may be missing. "
             "Annotating the receiver makes them resolvable."
         )
-    if index.skipped:
+    if impact.unverified:
         notes.append(
-            f"{len(index.skipped)} file(s) could not be parsed and are not indexed: "
+            f"{len(impact.unverified)} file(s) could not be parsed but mention this "
+            "name -- listed under `unverified`. They are not in the blast radius "
+            "because nothing resolved them, but they may contain real callers."
+        )
+    elif index.skipped:
+        notes.append(
+            f"{len(index.skipped)} file(s) could not be parsed and are not indexed, "
+            "though none of them mention this symbol: "
             + ", ".join(path for path, _ in index.skipped[:5])
         )
     return notes
@@ -164,6 +171,11 @@ def build_server(root: Path) -> "object":
             "callers": callers,
             "overrides": [str(override) for override in impact.overrides],
             "overridden": str(impact.overridden) if impact.overridden else None,
+            # Files the parser could not read that mention this name. Not part
+            # of the blast radius -- a text match is not evidence -- but listed
+            # so "I could not see this" is distinguishable from "nothing
+            # depends on this".
+            "unverified": list(impact.unverified),
             "caveats": _caveats(index, impact),
         }
 

@@ -98,6 +98,17 @@ def _print_impact(impact: Impact, stream, argument: str | None = None) -> None:
     if not files:
         print("  none", file=stream)
 
+    if impact.unverified:
+        # A silent hole is the failure this tool exists to prevent, so it is
+        # named rather than left to the stats command.
+        print(
+            f"\nunverified  {_plural(len(impact.unverified), 'file')} could not be "
+            "parsed but mention this name",
+            file=stream,
+        )
+        for path in impact.unverified:
+            print(f"  {path}", file=stream)
+
     signature = impact.definition.signature
     known = signature is not None and any(p.name == argument for p in signature.parameters)
     if argument is not None and not known:
@@ -117,6 +128,7 @@ def _impact_payload(impact: Impact) -> dict:
         "overrides": [str(override) for override in impact.overrides],
         "overridden": str(impact.overridden) if impact.overridden else None,
         "files": list(impact.files),
+        "unverified": list(impact.unverified),
     }
 
 

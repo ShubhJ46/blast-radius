@@ -186,14 +186,26 @@ def corpus_health(cases: Iterable[Case]) -> list[CorpusHealth]:
 
 
 def select(
-    cases: Iterable[Case], forcing_only: bool = True, max_files: int | None = None
+    cases: Iterable[Case],
+    forcing_only: bool = True,
+    max_files: int | None = None,
+    since: str | None = None,
 ) -> list[Case]:
-    """Apply the reporting-time filters the miner deliberately did not apply."""
+    """Apply the reporting-time filters the miner deliberately did not apply.
+
+    `since` is a `YYYY` or `YYYY-MM-DD` bound on the committer date. It exists
+    because the corpus spans 2007 to 2026 and the tool cannot parse Python 2 at
+    all, so a blended figure measures the parser's era coverage as much as the
+    resolver. Filtering here rather than while mining keeps the decision
+    visible and reversible, the same as `forcing_only`.
+    """
     chosen = []
     for case in cases:
         if forcing_only and not case.is_forcing:
             continue
         if max_files is not None and case.commit_file_count > max_files:
+            continue
+        if since is not None and case.committed_at < since:
             continue
         chosen.append(case)
     return chosen
@@ -356,6 +368,21 @@ def _percent(value: float | None) -> str:
     return "n/a" if value is None else f"{value:.0%}"
 
 
+# Type annotations arrived in Python in 2015 and took years to become ordinary,
+# and Python 2 lingered well past its end of life. The split is a blunt line
+# through a gradual change, which is why the report shows both sides rather
+# than picking one.
+ERA_BOUNDARY = "2021"
+
+
+def _by_era(results: list[CaseResult]) -> list[tuple[str, list[CaseResult]]]:
+    """Group scored cases either side of the boundary, dropping empty sides."""
+    older = [r for r in results if r.case.committed_at and r.case.committed_at < ERA_BOUNDARY]
+    newer = [r for r in results if r.case.committed_at >= ERA_BOUNDARY]
+    groups = [(f"before {ERA_BOUNDARY}", older), (f"{ERA_BOUNDARY} onward", newer)]
+    return [(label, group) for label, group in groups if group]
+
+
 def report(results: list[CaseResult], out) -> None:
     """Print corpus health first, then the metrics it licenses.
 
@@ -398,6 +425,18 @@ def report(results: list[CaseResult], out) -> None:
         "  against it here, and is not a defect.",
         file=out,
     )
+
+    eras = _by_era(with_truth)
+    if len(eras) > 1:
+        print("\nBy the age of the code, which is what the parser's reach tracks", file=out)
+        print(f"  {'':<12} {'cases':>6} {'precision':>10} {'recall':>8}", file=out)
+        for label, group in eras:
+            totals = aggregate(result.tool for result in group)
+            print(
+                f"  {label:<12} {len(group):>6} {_percent(totals.precision):>10} "
+                f"{_percent(totals.recall):>8}",
+                file=out,
+            )
 
     if without_truth:
         print(
@@ -472,6 +511,11 @@ def main(argv: list[str] | None = None, out=None, err=None) -> int:
         "--max-files", type=int, default=None, help="skip commits touching more files than this"
     )
     parser.add_argument("--limit", type=int, default=None, help="score only the first N cases")
+    parser.add_argument(
+        "--since",
+        metavar="DATE",
+        help="skip commits older than this YYYY or YYYY-MM-DD committer date",
+    )
     arguments = parser.parse_args(argv)
 
     cases: list[Case] = []
@@ -482,7 +526,10 @@ def main(argv: list[str] | None = None, out=None, err=None) -> int:
         cases.extend(load_cases(path))
 
     chosen = select(
-        cases, forcing_only=not arguments.all_kinds, max_files=arguments.max_files
+        cases,
+        forcing_only=not arguments.all_kinds,
+        max_files=arguments.max_files,
+        since=arguments.since,
     )
     if arguments.limit is not None:
         chosen = chosen[: arguments.limit]

@@ -560,3 +560,31 @@ class TestChangedParameters:
         sha = repo.commit({"lib.py": "def helper(a):\n    pass\n"})
         case = mine_commit(repo.git, "corpus", sha, max_files=25)
         assert case.changed_parameters == ("b",)
+
+
+@needs_git
+class TestCommitDates:
+    """The committer date is recorded so the runner can filter by era without
+    re-mining, the same reason `commit_file_count` is recorded."""
+
+    def test_a_case_records_the_committer_date(self, repo):
+        repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        sha = repo.commit({"lib.py": "def helper(a, b):\n    pass\n"})
+        case = mine_commit(repo.git, "corpus", sha, max_files=25)
+        assert case.committed_at == repo.run("log", "-1", "--format=%cs", sha).strip()
+        assert len(case.committed_at) == 10  # YYYY-MM-DD
+
+    def test_the_walk_carries_the_date_so_no_extra_process_is_spawned(self, repo):
+        repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        sha = repo.commit({"lib.py": "def helper(a, b):\n    pass\n"})
+        rows = repo.git.commits("HEAD", None)
+        assert [row[0] for row in rows][0] == sha
+        assert all(len(row[2]) == 10 for row in rows)
+
+    def test_the_date_leads_so_a_varying_parent_count_still_parses(self, repo):
+        """`%cs %H %P` parses from the left; `%H %P %cs` would not."""
+        repo.commit({"lib.py": "def helper(a):\n    pass\n"})
+        first = repo.run("rev-parse", "HEAD").strip()
+        repo.commit({"lib.py": "def helper(a, b):\n    pass\n"})
+        rows = {sha: parents for sha, parents, _ in repo.git.commits("HEAD", None)}
+        assert rows[first] == []  # the root commit has no parent

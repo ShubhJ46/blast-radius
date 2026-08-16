@@ -13,7 +13,8 @@
       "sphinx/util/pycompat.py"
     ],
     "test_files": [],
-    "commit_file_count": 17
+    "commit_file_count": 17,
+    "committed_at": "2020-07-16"
   },
   {
     "id": "sphinx@00a75b2742::LaTeXTranslator.visit_index",
@@ -27,7 +28,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-11-04"
   },
   {
     "id": "sphinx@022b229c36::Comment.__init__",
@@ -41,7 +43,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-07-22"
   },
   {
     "id": "sphinx@027872f569::guess_mimetype",
@@ -55,7 +58,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-04-19"
   },
   {
     "id": "sphinx@02bccb67e1::merge_source_suffix",
@@ -69,7 +73,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-07-16"
   },
   {
     "id": "sphinx@03056a8a31::WebSupport.__init__",
@@ -83,7 +88,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2010-07-08"
   },
   {
     "id": "sphinx@033ebab15e::ModuleScanner.scan",
@@ -97,7 +103,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-03-11"
   },
   {
     "id": "sphinx@03f4a07aa1::EpubBuilder.make_id",
@@ -111,7 +118,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-02-13"
   },
   {
     "id": "sphinx@04a1ee07dd::_parse_arguments",
@@ -125,7 +133,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2023-09-21"
   },
   {
     "id": "sphinx@04bd0df100::IntersphinxRole.is_existent_role",
@@ -139,7 +148,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2024-03-25"
   },
   {
     "id": "sphinx@059dc108ba::TrimDoctestFlagsTransform.strip_doctest_flags",
@@ -153,7 +163,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-08-05"
   },
   {
     "id": "sphinx@06f86b0639::EventManager.__init__",
@@ -169,7 +180,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2019-04-16"
   },
   {
     "id": "sphinx@0792ad7498::StandaloneHTMLBuilder._get_local_toctree",
@@ -183,7 +195,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2009-09-09"
   },
   {
     "id": "sphinx@082bf7d166::ASTArray.__init__",
@@ -201,7 +214,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-25"
   },
   {
     "id": "sphinx@0859b338d8::LaTeXTranslator.latex_image_length",
@@ -215,7 +229,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-06-26"
   },
   {
     "id": "sphinx@08c7ee36cf::_docstring_lines_for_props",
@@ -229,7 +244,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2025-11-02"
   },
   {
     "id": "sphinx@092ebec8a7::SQLAlchemyStorage.__init__",
@@ -245,7 +261,8 @@
       "sphinx/websupport/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2010-08-21"
   },
   {
     "id": "sphinx@0a1b821c7f::RstGenerator.generate",
@@ -259,7 +276,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2008-12-25"
   },
   {
     "id": "sphinx@0b9ee8d451::check_anchor",
@@ -273,7 +291,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-04-21"
   },
   {
     "id": "sphinx@0bf9011509::AutosummaryRenderer.render",
@@ -287,7 +306,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-04-30"
   },
   {
     "id": "sphinx@0ca2ddf924::Theme.__init__",
@@ -301,7 +321,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-01-21"
   },
   {
     "id": "sphinx@0de9d7db7a::get_matching_docs",
@@ -315,7 +336,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2008-03-23"
   },
   {
     "id": "sphinx@0e28d366bc::DefinitionParser._parse_nested_name",
@@ -329,7 +351,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2015-12-02"
   },
   {
     "id": "sphinx@0e8bff8e63::_convert_type_spec_obj",
@@ -343,7 +366,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-01-05"
   },
   {
     "id": "sphinx@0ed845462f::PygmentsBridge.__init__",
@@ -362,7 +386,8 @@
     "test_files": [
       "tests/test_highlighting.py"
     ],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2009-06-16"
   },
   {
     "id": "sphinx@0f47e55787::find_catalog",
@@ -378,7 +403,8 @@
       "sphinx/builders/gettext.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2011-10-03"
   },
   {
     "id": "sphinx@0f49e30c51::CObject.add_target_and_index",
@@ -392,7 +418,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2020-03-15"
   },
   {
     "id": "sphinx@0f972e8bbf::EpubBuilder.build_mimetype",
@@ -406,7 +433,8 @@
       "sphinx/builders/epub3.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@0ff217e1b2::_DuplicateSymbolError.__init__",
@@ -420,7 +448,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2017-12-01"
   },
   {
     "id": "sphinx@0ff514743f::Sphinx.add_autodocumenter",
@@ -434,7 +463,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-06-30"
   },
   {
     "id": "sphinx@114f73435b::EventManager.__init__",
@@ -446,7 +476,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2019-04-16"
   },
   {
     "id": "sphinx@1173b5daaa::HTMLTranslator.add_permalink_ref",
@@ -460,7 +491,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2014-10-09"
   },
   {
     "id": "sphinx@1356aff6d7::Config.init_values",
@@ -476,7 +508,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2014-01-10"
   },
   {
     "id": "sphinx@141f3ecdf3::is_serializable",
@@ -492,7 +525,8 @@
     "test_files": [
       "tests/test_config/test_config.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-04-17"
   },
   {
     "id": "sphinx@14da7605e4::indexmarkup_role",
@@ -506,7 +540,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2008-03-16"
   },
   {
     "id": "sphinx@151b4afde2::BuildEnvironment.indexentries",
@@ -520,7 +555,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-02-16"
   },
   {
     "id": "sphinx@15d93d2c76::ASTMacroParameter.__init__",
@@ -534,7 +570,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-07-23"
   },
   {
     "id": "sphinx@16529c5604::Sphinx.add_latex_package",
@@ -550,7 +587,8 @@
     "test_files": [
       "tests/test_build_latex.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2014-09-28"
   },
   {
     "id": "sphinx@181aa903f7::TexinfoTranslator.add_menu",
@@ -565,7 +603,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-01-28"
   },
   {
     "id": "sphinx@1832284e89::IndexBuilder.__init__",
@@ -579,7 +618,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2013-01-04"
   },
   {
     "id": "sphinx@1887df0b5c::ObjectDescription.transform_content",
@@ -593,7 +633,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 20
+    "commit_file_count": 20,
+    "committed_at": "2024-07-02"
   },
   {
     "id": "sphinx@1955cb3b5a::ASTConcept.__init__",
@@ -607,7 +648,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-05-31"
   },
   {
     "id": "sphinx@1960da0921::TexinfoTranslator.add_menu_entries",
@@ -621,7 +663,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-01-28"
   },
   {
     "id": "sphinx@1996a9e5e9::PygmentsBridge.highlight_block",
@@ -635,7 +678,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-04-04"
   },
   {
     "id": "sphinx@1aa7d45695::AliasNode.__init__",
@@ -649,7 +693,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2019-03-07"
   },
   {
     "id": "sphinx@1d128f57fa::Documenter.get_attr",
@@ -663,7 +708,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2009-02-19"
   },
   {
     "id": "sphinx@1f5ed02225::main",
@@ -680,7 +726,8 @@
       "sphinx-quickstart.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2017-10-02"
   },
   {
     "id": "sphinx@203094b4c3::CatalogInfo.write_mo",
@@ -697,7 +744,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2021-11-10"
   },
   {
     "id": "sphinx@204b9cc521::Sphinx.add_stylesheet",
@@ -711,7 +759,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2015-03-12"
   },
   {
     "id": "sphinx@205d50a01d::TypedField.__init__",
@@ -725,7 +774,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2011-01-03"
   },
   {
     "id": "sphinx@222edf59e7::check_anchor",
@@ -739,7 +789,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2016-02-13"
   },
   {
     "id": "sphinx@2254da3782::CatalogInfo.write_mo",
@@ -758,7 +809,8 @@
     "test_files": [
       "tests/test_util_i18n.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-01-13"
   },
   {
     "id": "sphinx@2275c67966::SphinxComponentRegistry.add_source_input",
@@ -774,7 +826,8 @@
       "sphinx/io.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2018-02-10"
   },
   {
     "id": "sphinx@22dce02bec::babel_format_date",
@@ -788,7 +841,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-04-05"
   },
   {
     "id": "sphinx@24b4d65a02::split_index_msg",
@@ -806,7 +860,8 @@
       "sphinx/transforms/i18n.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2023-07-24"
   },
   {
     "id": "sphinx@25b96b833d::directive_helper",
@@ -820,7 +875,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-12-20"
   },
   {
     "id": "sphinx@25fc47e6b7::unwrap_all",
@@ -834,7 +890,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2020-05-01"
   },
   {
     "id": "sphinx@26fecafb49::init",
@@ -850,7 +907,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-05-06"
   },
   {
     "id": "sphinx@27bc4e3189::RstGenerator.get_doc",
@@ -866,7 +924,8 @@
     "test_files": [
       "tests/test_autodoc.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2009-01-04"
   },
   {
     "id": "sphinx@2803b64b5d::LaTeXTranslator.babel_renewcommand",
@@ -880,7 +939,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-01-16"
   },
   {
     "id": "sphinx@284738227c::ASTParametersQualifiers.__init__",
@@ -894,7 +954,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-05-01"
   },
   {
     "id": "sphinx@285908aa07::StandaloneHTMLBuilder.handle_page",
@@ -909,7 +970,8 @@
       "sphinx/builders/singlehtml.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2024-10-20"
   },
   {
     "id": "sphinx@2981664178::generate",
@@ -923,7 +985,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-10-13"
   },
   {
     "id": "sphinx@2ab934b232::WebSupport.__init__",
@@ -938,7 +1001,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2010-11-20"
   },
   {
     "id": "sphinx@2acaf03270::Cmdoption.add_target_and_index",
@@ -952,7 +1016,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2014-01-22"
   },
   {
     "id": "sphinx@2af77f7be2::EpubBuilder.content_metadata",
@@ -966,7 +1031,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-07-29"
   },
   {
     "id": "sphinx@2b0e015fcc::StandaloneHTMLBuilder.handle_page",
@@ -980,7 +1046,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2008-05-31"
   },
   {
     "id": "sphinx@2ccb75c98f::load_grammar",
@@ -996,7 +1063,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-07-12"
   },
   {
     "id": "sphinx@2ec60d5919::Sphinx.add_enumerable_node",
@@ -1012,7 +1080,8 @@
     "test_files": [
       "tests/roots/test-add_enumerable_node/test_enumerable_node.py"
     ],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2016-02-14"
   },
   {
     "id": "sphinx@309377fbbf::generate_rst",
@@ -1027,7 +1096,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-06-17"
   },
   {
     "id": "sphinx@30d6d72f47::get_catalogs",
@@ -1041,7 +1111,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2015-03-16"
   },
   {
     "id": "sphinx@30fe6d4190::Builder.status_iterator",
@@ -1055,7 +1126,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2009-03-05"
   },
   {
     "id": "sphinx@334e69fbb4::Make.__init__",
@@ -1070,7 +1142,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-08-17"
   },
   {
     "id": "sphinx@35f0b555a4::StandaloneHTMLBuilder._get_local_toctree",
@@ -1084,7 +1157,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2010-05-30"
   },
   {
     "id": "sphinx@360c7a8022::Theme.__init__",
@@ -1101,7 +1175,8 @@
     "test_files": [
       "tests/test_theming/test_theming.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-01-21"
   },
   {
     "id": "sphinx@365574f052::generate_latex_macro",
@@ -1115,7 +1190,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2019-08-01"
   },
   {
     "id": "sphinx@37557d7552::PygmentsBridge.get_stylesheet",
@@ -1129,7 +1205,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-03-15"
   },
   {
     "id": "sphinx@38d80c3d0f::isclassmethod",
@@ -1146,7 +1223,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2021-07-17"
   },
   {
     "id": "sphinx@3956cf2249::get_class_members",
@@ -1162,7 +1240,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-06-08"
   },
   {
     "id": "sphinx@39bef55fd5::BuildEnvironment.frompickle",
@@ -1176,7 +1255,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-02-20"
   },
   {
     "id": "sphinx@3a81ffa79a::signature",
@@ -1192,7 +1272,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-05-11"
   },
   {
     "id": "sphinx@3afc72fba4::Sphinx.add_stylesheet",
@@ -1206,7 +1287,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2018-04-06"
   },
   {
     "id": "sphinx@3bcc669f6c::_load_theme_with_ancestors",
@@ -1220,7 +1302,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-04-18"
   },
   {
     "id": "sphinx@3c1067c038::indexmarkup_role",
@@ -1234,7 +1317,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2014-08-20"
   },
   {
     "id": "sphinx@3ce737335e::BuildEnvironment.frompickle",
@@ -1248,7 +1332,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-02-20"
   },
   {
     "id": "sphinx@3d79d84405::term_input",
@@ -1262,7 +1347,8 @@
     "test_files": [
       "tests/test_quickstart.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-07-26"
   },
   {
     "id": "sphinx@3dec8620ae::_get_documenter",
@@ -1278,7 +1364,8 @@
       "sphinx/ext/autosummary/generate.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-10-17"
   },
   {
     "id": "sphinx@3e7bee5836::format_heading",
@@ -1292,7 +1379,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-03-23"
   },
   {
     "id": "sphinx@3edcff7952::generate_latex_macro",
@@ -1306,7 +1394,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-04-23"
   },
   {
     "id": "sphinx@3f0db5469e::BuildEnvironment.find_files",
@@ -1320,7 +1409,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-12-14"
   },
   {
     "id": "sphinx@3f9be211ee::PygmentsBridge.get_stylesheet",
@@ -1334,7 +1424,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-03-08"
   },
   {
     "id": "sphinx@3fb3fdbd53::ASTBaseClass.__init__",
@@ -1348,7 +1439,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2015-10-01"
   },
   {
     "id": "sphinx@3fdc9bcf9f::desc_sig_space.__init__",
@@ -1365,7 +1457,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-04-12"
   },
   {
     "id": "sphinx@3ffde92c54::BuildEnvironment.__init__",
@@ -1379,7 +1472,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2018-05-21"
   },
   {
     "id": "sphinx@4063a67d19::_read_from_url",
@@ -1393,7 +1487,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-09-01"
   },
   {
     "id": "sphinx@40b0f80489::setup",
@@ -1411,7 +1506,8 @@
     "test_files": [
       "tests/test_util/test_util_logging.py"
     ],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2025-06-11"
   },
   {
     "id": "sphinx@414816bb37::Sphinx.add_directive_to_domain",
@@ -1427,7 +1523,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2009-10-27"
   },
   {
     "id": "sphinx@4153ee0d9d::SphinxParallelError.__init__",
@@ -1441,7 +1538,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2017-01-08"
   },
   {
     "id": "sphinx@430be0496a::BuildEnvironment._warn_missing_reference",
@@ -1455,7 +1553,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2014-09-19"
   },
   {
     "id": "sphinx@446eab49b8::SphinxComponentRegistry.create_translator",
@@ -1471,7 +1570,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-02-20"
   },
   {
     "id": "sphinx@4627e2a498::WebSupport.init",
@@ -1483,7 +1583,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-06-04"
   },
   {
     "id": "sphinx@465b758a35::parse_generated_content",
@@ -1497,7 +1598,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2025-10-22"
   },
   {
     "id": "sphinx@467e94dc62::object_description",
@@ -1513,7 +1615,8 @@
     "test_files": [
       "tests/test_util_inspect.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-07-27"
   },
   {
     "id": "sphinx@4681c23ea3::token_xrefs",
@@ -1527,7 +1630,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-12-07"
   },
   {
     "id": "sphinx@46b6d55467::InheritanceGraph.generate_dot",
@@ -1541,7 +1645,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-02-09"
   },
   {
     "id": "sphinx@48cbb43e28::progress_message.__init__",
@@ -1557,7 +1662,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-05-22"
   },
   {
     "id": "sphinx@48f6739838::extract_summary",
@@ -1573,7 +1679,8 @@
     "test_files": [
       "tests/test_ext_autosummary/test_ext_autosummary.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2025-11-02"
   },
   {
     "id": "sphinx@4936b27996::token_xrefs",
@@ -1585,7 +1692,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2025-01-29"
   },
   {
     "id": "sphinx@49b812b856::inline_all_toctrees",
@@ -1601,7 +1709,8 @@
       "sphinx/builders/html.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2015-08-09"
   },
   {
     "id": "sphinx@4b9119f990::StandaloneHTMLBuilder.get_doc_context",
@@ -1615,7 +1724,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2008-10-18"
   },
   {
     "id": "sphinx@4c0f657ee6::do_prompt",
@@ -1632,7 +1742,8 @@
     "test_files": [
       "tests/test_quickstart.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-12-03"
   },
   {
     "id": "sphinx@4c81b055c8::Config.__init__",
@@ -1648,7 +1759,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 20
+    "commit_file_count": 20,
+    "committed_at": "2009-02-19"
   },
   {
     "id": "sphinx@4df3b067b7::LaTeXTranslator.visit_index",
@@ -1662,7 +1774,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2018-10-31"
   },
   {
     "id": "sphinx@4eab5e8950::DataDocumenter.get_doc",
@@ -1676,7 +1789,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-12-29"
   },
   {
     "id": "sphinx@500f45fd4c::AliasNode.__init__",
@@ -1691,7 +1805,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-09-13"
   },
   {
     "id": "sphinx@5066f49fbe::TestGroup.add_code",
@@ -1705,7 +1820,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-12-15"
   },
   {
     "id": "sphinx@507f172866::ShowUrlsTransform.__init__",
@@ -1719,7 +1835,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-11-11"
   },
   {
     "id": "sphinx@50fb4a9dbb::InheritanceGraph.__init__",
@@ -1733,7 +1850,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-02-02"
   },
   {
     "id": "sphinx@516cc73450::handle_doc_fields",
@@ -1747,7 +1865,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2008-11-16"
   },
   {
     "id": "sphinx@51937f8089::Sphinx.warn",
@@ -1761,7 +1880,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2016-06-24"
   },
   {
     "id": "sphinx@51fb8b435b::Sphinx.__init__",
@@ -1775,7 +1895,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2013-01-05"
   },
   {
     "id": "sphinx@52140be6b8::ASTParameters.__init__",
@@ -1789,7 +1910,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-08-13"
   },
   {
     "id": "sphinx@5392f0f2ed::Config.read",
@@ -1808,7 +1930,8 @@
     "test_files": [
       "tests/test_config/test_config.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-06-08"
   },
   {
     "id": "sphinx@53a84de822::get_node_equation_number",
@@ -1827,7 +1950,8 @@
       "sphinx/ext/pngmath.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2017-12-16"
   },
   {
     "id": "sphinx@540400635a::wrap_displaymath",
@@ -1844,7 +1968,8 @@
       "sphinx/ext/pngmath.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-01-18"
   },
   {
     "id": "sphinx@565d4104d5::IntersphinxRole.is_existent_role",
@@ -1858,7 +1983,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2024-03-19"
   },
   {
     "id": "sphinx@56b520958f::Symbol.find_name",
@@ -1872,7 +1998,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-11-26"
   },
   {
     "id": "sphinx@56bbb08b2c::LaTeXRenderer.__init__",
@@ -1888,7 +2015,8 @@
       "sphinx/writers/latex.py"
     ],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2019-10-20"
   },
   {
     "id": "sphinx@576c0bc90b::LoggingReporter.__init__",
@@ -1900,7 +2028,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-05-12"
   },
   {
     "id": "sphinx@580e1c90d3::PythonDomain.find_obj",
@@ -1914,7 +2043,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 15
+    "commit_file_count": 15,
+    "committed_at": "2010-08-05"
   },
   {
     "id": "sphinx@58585a7c0a::_get_full_modname",
@@ -1928,7 +2058,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-07-28"
   },
   {
     "id": "sphinx@587da413ca::copyfile",
@@ -1945,7 +2076,8 @@
       "sphinx/util/fileutil.py"
     ],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2024-07-19"
   },
   {
     "id": "sphinx@59ebeb7f1f::Epub3Builder.new_navlist",
@@ -1959,7 +2091,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-08-09"
   },
   {
     "id": "sphinx@5c223d20d6::HyperlinkAvailabilityCheckWorker.__init__",
@@ -1977,7 +2110,8 @@
     "test_files": [
       "tests/test_build_linkcheck.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2021-02-12"
   },
   {
     "id": "sphinx@5d272bdd0d::HTMLTranslator.visit_title",
@@ -1991,7 +2125,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2008-03-23"
   },
   {
     "id": "sphinx@5eaed2bed7::type_to_xref",
@@ -2005,7 +2140,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-11-30"
   },
   {
     "id": "sphinx@5eaf2eb29a::get_matching_docs",
@@ -2019,7 +2155,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2008-05-24"
   },
   {
     "id": "sphinx@5f0977ca30::ASTDeclSpecs.__init__",
@@ -2039,7 +2176,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2015-02-03"
   },
   {
     "id": "sphinx@5f4a88e0a4::CSSContainer.insert",
@@ -2053,7 +2191,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-05-03"
   },
   {
     "id": "sphinx@5fc8d3db91::BuildEnvironment.find_files",
@@ -2069,7 +2208,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-12-12"
   },
   {
     "id": "sphinx@5fe73576a5::Sphinx.add_description_unit",
@@ -2083,7 +2223,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2008-03-28"
   },
   {
     "id": "sphinx@5ff3b9dc4d::PythonDomain.note_module",
@@ -2097,7 +2238,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2020-03-07"
   },
   {
     "id": "sphinx@61b823ad10::AutosummaryRenderer.__init__",
@@ -2109,7 +2251,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-23"
   },
   {
     "id": "sphinx@61bf7c44df::ExtBabel.__init__",
@@ -2123,7 +2266,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-04-21"
   },
   {
     "id": "sphinx@636e6f9c04::IndexInSectionTitleTransform.apply",
@@ -2137,7 +2281,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-02-23"
   },
   {
     "id": "sphinx@6373729f1d::IndexBuilder.__init__",
@@ -2153,7 +2298,8 @@
       "sphinx/builder.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-09-23"
   },
   {
     "id": "sphinx@637dd02f14::_Theme.get_options",
@@ -2165,7 +2311,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-04-20"
   },
   {
     "id": "sphinx@6433cca6a8::generate_rst",
@@ -2179,7 +2326,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-03-25"
   },
   {
     "id": "sphinx@64533e142c::EpubBuilder.build_toc",
@@ -2193,7 +2341,8 @@
       "sphinx/builders/epub3.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@654458b525::ExtensionError.__init__",
@@ -2207,7 +2356,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-02-04"
   },
   {
     "id": "sphinx@660e746cf8::PygmentsBridge.__init__",
@@ -2223,7 +2373,8 @@
       "sphinx/writers/latex.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-11-16"
   },
   {
     "id": "sphinx@68e85d5665::TexinfoTranslator.visit_admonition",
@@ -2237,7 +2388,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-03-05"
   },
   {
     "id": "sphinx@6945551c20::safe_getmembers",
@@ -2253,7 +2405,8 @@
       "sphinx/ext/autodoc.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2013-01-31"
   },
   {
     "id": "sphinx@6a17e7d1a6::LaTeXTranslator.hypertarget",
@@ -2267,7 +2420,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2010-02-20"
   },
   {
     "id": "sphinx@6c3789a353::BuildEnvironment._resolve_citation",
@@ -2281,7 +2435,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2014-09-19"
   },
   {
     "id": "sphinx@6ca568c1d8::make_link_role",
@@ -2295,7 +2450,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-02-15"
   },
   {
     "id": "sphinx@6e1d180d57::CDesc.get_index_text",
@@ -2309,7 +2465,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2009-02-20"
   },
   {
     "id": "sphinx@6e56a12d4a::ArgumentDefExpr.__init__",
@@ -2323,7 +2480,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2014-05-12"
   },
   {
     "id": "sphinx@6efafcdca4::StandardDomain.build_reference_node",
@@ -2337,7 +2495,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2015-07-25"
   },
   {
     "id": "sphinx@6f3932660a::WebSupport.__init__",
@@ -2351,7 +2510,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2010-08-07"
   },
   {
     "id": "sphinx@6f3c5b8a2c::ObjectMember.__init__",
@@ -2363,7 +2523,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-08-13"
   },
   {
     "id": "sphinx@6f5a99a05d::_copy_except__document",
@@ -2377,7 +2538,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2023-08-09"
   },
   {
     "id": "sphinx@6fd8b30043::_load_theme_conf",
@@ -2393,7 +2555,8 @@
     "test_files": [
       "tests/test_theming/test_theming.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-04-10"
   },
   {
     "id": "sphinx@6ffe549f49::chm_htmlescape",
@@ -2408,7 +2571,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-12-24"
   },
   {
     "id": "sphinx@7126503eeb::SigElementFallbackTransform.fallback",
@@ -2422,7 +2586,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2021-04-12"
   },
   {
     "id": "sphinx@71a985c06c::FuncDefExpr.__init__",
@@ -2436,7 +2601,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2010-03-30"
   },
   {
     "id": "sphinx@729efd28b0::PythonDomain.note_object",
@@ -2450,7 +2616,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-03-07"
   },
   {
     "id": "sphinx@73ae2f9c94::get_autosummary",
@@ -2464,7 +2631,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2009-03-21"
   },
   {
     "id": "sphinx@73b7cd51ea::members_of",
@@ -2476,7 +2644,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-11-22"
   },
   {
     "id": "sphinx@74191207db::DefinitionParser._parse_template_declaration_prefix",
@@ -2490,7 +2659,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2016-05-30"
   },
   {
     "id": "sphinx@74cce431a3::EpubBuilder.add_visible_links",
@@ -2504,7 +2674,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2013-02-06"
   },
   {
     "id": "sphinx@74d36acbf7::educateQuotesLatex",
@@ -2518,7 +2689,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 19
+    "commit_file_count": 19,
+    "committed_at": "2008-08-10"
   },
   {
     "id": "sphinx@753a266fff::EpubBuilder.fix_fragment",
@@ -2532,7 +2704,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-07-26"
   },
   {
     "id": "sphinx@75ae087f7a::CombinedHtmlDiff._handle_line",
@@ -2546,7 +2719,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2010-08-04"
   },
   {
     "id": "sphinx@76fb3604fd::EventManager.__init__",
@@ -2558,7 +2732,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2019-04-16"
   },
   {
     "id": "sphinx@777386ef56::WebSupport.init",
@@ -2572,7 +2747,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2010-05-31"
   },
   {
     "id": "sphinx@79f1a1eecb::parse_py_signature",
@@ -2587,7 +2763,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2007-08-06"
   },
   {
     "id": "sphinx@7a5aa822f6::TexinfoBuilder.copy_image_files",
@@ -2601,7 +2778,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-03-02"
   },
   {
     "id": "sphinx@7ad49d5756::get_matching_docs",
@@ -2618,7 +2796,8 @@
       "sphinx/environment.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2008-05-02"
   },
   {
     "id": "sphinx@7c7d3f4010::between",
@@ -2634,7 +2813,8 @@
     "test_files": [
       "tests/test_autodoc.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2010-06-12"
   },
   {
     "id": "sphinx@7d836e16ab::ASTBaseClass.__init__",
@@ -2648,7 +2828,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2015-10-01"
   },
   {
     "id": "sphinx@7e80f60412::Config.__init__",
@@ -2664,7 +2845,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-06-04"
   },
   {
     "id": "sphinx@8006d31b32::_read_from_url",
@@ -2678,7 +2860,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2016-11-17"
   },
   {
     "id": "sphinx@804b8df9bb::init",
@@ -2692,7 +2875,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-06-26"
   },
   {
     "id": "sphinx@81832c2efc::is_suppressed_warning",
@@ -2707,7 +2891,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-07-11"
   },
   {
     "id": "sphinx@823a947bbf::BaseImageConverter.apply",
@@ -2721,7 +2906,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2019-08-21"
   },
   {
     "id": "sphinx@832914423e::directive_helper",
@@ -2735,7 +2921,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2017-12-17"
   },
   {
     "id": "sphinx@859e30e485::parse_py_signature",
@@ -2749,7 +2936,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2007-08-04"
   },
   {
     "id": "sphinx@8600ffeda2::init",
@@ -2763,7 +2951,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2015-07-25"
   },
   {
     "id": "sphinx@860b410fbc::DefinitionParser._parse_type_expr",
@@ -2777,7 +2966,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2011-09-22"
   },
   {
     "id": "sphinx@8683823536::ModuleAnalyzer.find_attr_docs",
@@ -2791,7 +2981,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 18
+    "commit_file_count": 18,
+    "committed_at": "2017-07-26"
   },
   {
     "id": "sphinx@886bb945af::BuildEnvironment._config_status",
@@ -2805,7 +2996,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2024-10-08"
   },
   {
     "id": "sphinx@8923f08676::_getdoc_internal",
@@ -2819,7 +3011,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2025-10-09"
   },
   {
     "id": "sphinx@89f9c7cab7::main",
@@ -2835,7 +3028,8 @@
       "setup.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-10-02"
   },
   {
     "id": "sphinx@89fdb83831::ModifierDefExpr.__init__",
@@ -2847,7 +3041,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-03-01"
   },
   {
     "id": "sphinx@8c39c19bf3::desc_index_text",
@@ -2861,7 +3056,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2008-10-25"
   },
   {
     "id": "sphinx@8c3ceec294::IndexBuilder.prune",
@@ -2875,7 +3071,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-02-20"
   },
   {
     "id": "sphinx@8c4e535170::WebSupport.init",
@@ -2889,7 +3086,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2010-06-24"
   },
   {
     "id": "sphinx@8de6638697::nested_parse_with_titles",
@@ -2908,7 +3106,8 @@
       "sphinx/ext/ifconfig.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2023-02-15"
   },
   {
     "id": "sphinx@8e864076a9::ASTClass.__init__",
@@ -2922,7 +3121,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2015-10-01"
   },
   {
     "id": "sphinx@8eaa0ab60f::SphinxComponentRegistry.create_source_parser",
@@ -2939,7 +3139,8 @@
       "sphinx/transforms/i18n.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-06-09"
   },
   {
     "id": "sphinx@8f647643fb::JavaScriptDomain.note_object",
@@ -2953,7 +3154,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-03-01"
   },
   {
     "id": "sphinx@8fd34b88d3::Sphinx.add_javascript",
@@ -2967,7 +3169,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2018-05-24"
   },
   {
     "id": "sphinx@90eb73e7b7::WebSupport.__init__",
@@ -2981,7 +3184,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2010-07-19"
   },
   {
     "id": "sphinx@910e488e39::SphinxFileSystemLoader.__init__",
@@ -2997,7 +3201,8 @@
       "sphinx/builder.py"
     ],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2008-03-09"
   },
   {
     "id": "sphinx@911a3b9809::NodeMatcher.__init__",
@@ -3011,7 +3216,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-05-02"
   },
   {
     "id": "sphinx@9238dd89ac::make_link_role",
@@ -3026,7 +3232,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-04-11"
   },
   {
     "id": "sphinx@924863a602::TexinfoTranslator.add_xref",
@@ -3040,7 +3247,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-03-04"
   },
   {
     "id": "sphinx@931bfcca88::AutosummaryRenderer.__init__",
@@ -3054,7 +3262,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-23"
   },
   {
     "id": "sphinx@93cf1a57d9::make_link_role",
@@ -3068,7 +3277,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-04-11"
   },
   {
     "id": "sphinx@9481a557c1::CombinedHtmlDiff.make_html",
@@ -3085,7 +3295,8 @@
       "sphinx/websupport/storage/sqlalchemystorage.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2010-11-21"
   },
   {
     "id": "sphinx@94aab04ecb::PygmentsBridge.highlight_block",
@@ -3102,7 +3313,8 @@
       "sphinx/writers/latex.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2011-07-06"
   },
   {
     "id": "sphinx@95fc3ce888::indexmarkup_role",
@@ -3116,7 +3328,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2014-08-20"
   },
   {
     "id": "sphinx@96779ffed8::DefinitionParser._parse_builtin",
@@ -3130,7 +3343,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2012-11-28"
   },
   {
     "id": "sphinx@9721327989::ObjectMember.__init__",
@@ -3144,7 +3358,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-12-17"
   },
   {
     "id": "sphinx@9753d743fc::FuncDefExpr.__init__",
@@ -3158,7 +3373,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2011-09-22"
   },
   {
     "id": "sphinx@9766c2f339::ASTNestedName.__init__",
@@ -3172,7 +3388,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2017-12-24"
   },
   {
     "id": "sphinx@97f946a598::SphinxStandaloneReader._setup_transforms",
@@ -3188,7 +3405,8 @@
     "test_files": [
       "sphinx/testing/restructuredtext.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2025-06-10"
   },
   {
     "id": "sphinx@98d24464f1::get_type_comment",
@@ -3202,7 +3420,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-02-16"
   },
   {
     "id": "sphinx@9904596da8::ClassDefExpr.__init__",
@@ -3216,7 +3435,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2011-10-08"
   },
   {
     "id": "sphinx@9aac2420d3::ASTConcept.__init__",
@@ -3230,7 +3450,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-10-26"
   },
   {
     "id": "sphinx@9b958b6dcc::traverse_parent",
@@ -3244,7 +3465,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2016-02-07"
   },
   {
     "id": "sphinx@9bfbe252f1::_convert_numpy_type_spec",
@@ -3256,7 +3478,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-07-16"
   },
   {
     "id": "sphinx@9c7e1d2dc2::TexinfoTranslator.add_anchor",
@@ -3270,7 +3493,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2011-02-08"
   },
   {
     "id": "sphinx@9e239729d4::Symbol.to_string",
@@ -3284,7 +3508,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-03-24"
   },
   {
     "id": "sphinx@9e2aba54d3::EventManager.__init__",
@@ -3300,7 +3525,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2019-04-06"
   },
   {
     "id": "sphinx@9e43f54600::FuncDefExpr.__init__",
@@ -3314,7 +3540,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2011-09-22"
   },
   {
     "id": "sphinx@9eb3d7940f::_body_alias_lines",
@@ -3329,7 +3556,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 16
+    "commit_file_count": 16,
+    "committed_at": "2025-11-05"
   },
   {
     "id": "sphinx@9fa23615ec::token_xrefs",
@@ -3341,7 +3569,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-01-25"
   },
   {
     "id": "sphinx@9fc2a9b7ad::LaTeXBuilder.assemble_doctree",
@@ -3355,7 +3584,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2008-05-04"
   },
   {
     "id": "sphinx@a097429ec8::SQLAlchemyComments.pretty_delta",
@@ -3369,7 +3599,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-07-11"
   },
   {
     "id": "sphinx@a18c04b955::Sphinx.add_stylesheet",
@@ -3384,7 +3615,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2015-03-11"
   },
   {
     "id": "sphinx@a1dd4695f3::Domain.__init__",
@@ -3398,7 +3630,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2009-07-13"
   },
   {
     "id": "sphinx@a24ef1f0cc::DeprecatedDict.update",
@@ -3412,7 +3645,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2020-04-19"
   },
   {
     "id": "sphinx@a434486dfb::LaTeXTranslator.generate_numfig_format",
@@ -3426,7 +3660,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2015-03-07"
   },
   {
     "id": "sphinx@a464c5851d::Builder.__init__",
@@ -3440,7 +3675,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2023-04-28"
   },
   {
     "id": "sphinx@a4996f9054::GoogleDocstring._consume_fields",
@@ -3454,7 +3690,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-08-07"
   },
   {
     "id": "sphinx@a523f9893a::BuildEnvironment.frompickle",
@@ -3468,7 +3705,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-03-08"
   },
   {
     "id": "sphinx@a61986256a::main",
@@ -3483,7 +3721,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2018-06-18"
   },
   {
     "id": "sphinx@a63e4945ea::PygmentsBridge.highlight_block",
@@ -3501,7 +3740,8 @@
     "test_files": [
       "tests/test_highlighting.py"
     ],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2015-01-05"
   },
   {
     "id": "sphinx@a66041b541::CPPDomain._resolve_xref_inner",
@@ -3515,7 +3755,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2016-01-27"
   },
   {
     "id": "sphinx@a686a5a03a::Sphinx.add_directive",
@@ -3529,7 +3770,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2008-03-09"
   },
   {
     "id": "sphinx@a78c6b799f::_make_subclass",
@@ -3543,7 +3785,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2021-01-24"
   },
   {
     "id": "sphinx@a84f7009ac::_substitute_copyright_year",
@@ -3557,7 +3800,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2024-10-04"
   },
   {
     "id": "sphinx@a997f98333::make_termnodes_from_paragraph_node",
@@ -3573,7 +3817,8 @@
       "sphinx/transforms.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2013-06-19"
   },
   {
     "id": "sphinx@a9d35e3c54::generate_rst",
@@ -3587,7 +3832,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2008-05-04"
   },
   {
     "id": "sphinx@a9ecb190a7::get_documenter",
@@ -3603,7 +3849,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2018-02-17"
   },
   {
     "id": "sphinx@aaff3f1ebe::EpubBuilder.fix_fragment",
@@ -3617,7 +3864,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2010-07-26"
   },
   {
     "id": "sphinx@ab3795f176::DummyApplication.__init__",
@@ -3631,7 +3879,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-23"
   },
   {
     "id": "sphinx@ab3b3e2980::read_doc",
@@ -3648,7 +3897,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-04-17"
   },
   {
     "id": "sphinx@ab7ac64e1a::get_matching_docs",
@@ -3665,7 +3915,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 10
+    "commit_file_count": 10,
+    "committed_at": "2010-01-06"
   },
   {
     "id": "sphinx@abe65423ca::ASTDeclaration.__init__",
@@ -3679,7 +3930,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-24"
   },
   {
     "id": "sphinx@ac9c2b5571::fold",
@@ -3693,7 +3945,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2022-03-08"
   },
   {
     "id": "sphinx@acaf70596e::type_to_xref",
@@ -3707,7 +3960,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-11-29"
   },
   {
     "id": "sphinx@acda414be2::HTMLWriter.__init__",
@@ -3723,7 +3977,8 @@
       "sphinx/builder.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2007-08-24"
   },
   {
     "id": "sphinx@ad5d9f7c6b::PygmentsBridge.get_formatter",
@@ -3737,7 +3992,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2011-09-22"
   },
   {
     "id": "sphinx@ad89b1f76a::_convert_numpy_type_spec",
@@ -3751,7 +4007,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-07-16"
   },
   {
     "id": "sphinx@ae9d786390::Sphinx.warn",
@@ -3766,7 +4023,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2016-02-23"
   },
   {
     "id": "sphinx@af33fd9548::Builder.__init__",
@@ -3780,7 +4038,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2007-08-09"
   },
   {
     "id": "sphinx@afb4d883f7::ASTDeclaration.__init__",
@@ -3795,7 +4054,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-06-02"
   },
   {
     "id": "sphinx@b192b3271a::BuildEnvironment.find_files",
@@ -3811,7 +4071,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-03-20"
   },
   {
     "id": "sphinx@b244dbf9b5::Sphinx.warn",
@@ -3835,7 +4096,8 @@
       "sphinx/writers/latex.py"
     ],
     "test_files": [],
-    "commit_file_count": 13
+    "commit_file_count": 13,
+    "committed_at": "2009-03-05"
   },
   {
     "id": "sphinx@b293be1fc9::FuncDefExpr.__init__",
@@ -3849,7 +4111,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2014-07-18"
   },
   {
     "id": "sphinx@b2abab1c45::Signature.__init__",
@@ -3867,7 +4130,8 @@
     "test_files": [
       "tests/test_util_inspect.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2018-05-19"
   },
   {
     "id": "sphinx@b40e6fe22e::between",
@@ -3881,7 +4145,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2008-07-05"
   },
   {
     "id": "sphinx@b437f094a7::init_console",
@@ -3893,7 +4158,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-09-27"
   },
   {
     "id": "sphinx@b482e38ca2::create_module_file",
@@ -3907,7 +4173,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-05-04"
   },
   {
     "id": "sphinx@b4ec549f04::HTMLTranslator.visit_title",
@@ -3922,7 +4189,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2008-09-09"
   },
   {
     "id": "sphinx@b4f91a5ce5::RstGenerator.format_signature",
@@ -3936,7 +4204,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2008-07-29"
   },
   {
     "id": "sphinx@b5ae1b0846::IndexBuilder.feed",
@@ -3952,7 +4221,8 @@
       "sphinx/builders/html.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-06-07"
   },
   {
     "id": "sphinx@b5bf745f68::Sphinx.add_js_file",
@@ -3968,7 +4238,8 @@
     "test_files": [
       "tests/test_build_html.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-12-25"
   },
   {
     "id": "sphinx@b61640959d::execfile_",
@@ -3982,7 +4253,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2015-02-14"
   },
   {
     "id": "sphinx@b6c422ac86::EpubBuilder.build_epub",
@@ -3996,7 +4268,8 @@
       "sphinx/builders/epub3.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@b6c4ebc37a::main",
@@ -4011,7 +4284,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2018-06-30"
   },
   {
     "id": "sphinx@b778cfe299::handle_exception",
@@ -4025,7 +4299,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2017-10-09"
   },
   {
     "id": "sphinx@b7b483d01f::Sphinx.add_node",
@@ -4039,7 +4314,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2008-08-05"
   },
   {
     "id": "sphinx@b9294de041::render_dot_html",
@@ -4055,7 +4331,8 @@
       "sphinx/ext/inheritance_diagram.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2010-01-03"
   },
   {
     "id": "sphinx@b9641ae82d::_fetch_inventory_group",
@@ -4071,7 +4348,8 @@
     "test_files": [
       "tests/test_extensions/test_ext_intersphinx.py"
     ],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2025-06-22"
   },
   {
     "id": "sphinx@ba83214386::Config.__init__",
@@ -4093,7 +4371,8 @@
       "tests/test_config.py",
       "tests/test_directive_code.py"
     ],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2018-03-23"
   },
   {
     "id": "sphinx@bd66ba5179::PyXRefRole.process_link",
@@ -4107,7 +4386,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2009-09-09"
   },
   {
     "id": "sphinx@bdeb816397::JavaScriptDomain.note_module",
@@ -4121,7 +4401,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-03-01"
   },
   {
     "id": "sphinx@bdf5816437::DefinitionParser._parse_type_expr",
@@ -4135,7 +4416,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2011-09-22"
   },
   {
     "id": "sphinx@be261ed71e::guess_mimetype",
@@ -4149,7 +4431,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-04-19"
   },
   {
     "id": "sphinx@bfc03b10ad::EpubBuilder.make_id",
@@ -4163,7 +4446,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2013-06-06"
   },
   {
     "id": "sphinx@c010b47589::ASTClass.__init__",
@@ -4177,7 +4461,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2015-01-03"
   },
   {
     "id": "sphinx@c0678a4a50::get_class_members",
@@ -4193,7 +4478,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-12-18"
   },
   {
     "id": "sphinx@c084c3f124::token_xrefs",
@@ -4207,7 +4493,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 13
+    "commit_file_count": 13,
+    "committed_at": "2020-01-22"
   },
   {
     "id": "sphinx@c09643c21f::ASTTrailingTypeSpecFundamental.__init__",
@@ -4221,7 +4508,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2021-11-30"
   },
   {
     "id": "sphinx@c1172022ed::BuildEnvironment.note_dependency",
@@ -4235,7 +4523,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2024-11-03"
   },
   {
     "id": "sphinx@c15e2f3eff::colorize",
@@ -4249,7 +4538,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-06-11"
   },
   {
     "id": "sphinx@c1bedfc105::get_doc",
@@ -4264,7 +4554,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2008-06-22"
   },
   {
     "id": "sphinx@c4fa1aed34::getdoc",
@@ -4280,7 +4571,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2018-08-17"
   },
   {
     "id": "sphinx@c62a19bca5::Theme.init_themes",
@@ -4297,7 +4589,8 @@
       "sphinx/builders/html.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2010-10-30"
   },
   {
     "id": "sphinx@c6b4114cde::_DomainsContainer._from_environment",
@@ -4313,7 +4606,8 @@
       "sphinx/environment/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-11-02"
   },
   {
     "id": "sphinx@c73628dfca::Sphinx.require_sphinx",
@@ -4327,7 +4621,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-05-11"
   },
   {
     "id": "sphinx@c74eb9448b::Sphinx.warn",
@@ -4344,7 +4639,8 @@
       "sphinx/environment/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2017-04-27"
   },
   {
     "id": "sphinx@c85e60a5ac::DefinitionParser.__init__",
@@ -4360,7 +4656,8 @@
     "test_files": [
       "tests/test_domain_cpp.py"
     ],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2016-08-06"
   },
   {
     "id": "sphinx@c8e8b1bfd4::init",
@@ -4377,7 +4674,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2009-07-03"
   },
   {
     "id": "sphinx@c92f97d848::Domain.__init__",
@@ -4391,7 +4689,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2009-07-13"
   },
   {
     "id": "sphinx@c9345b33b2::copy_static_entry",
@@ -4407,7 +4706,8 @@
       "sphinx/builders/html.py"
     ],
     "test_files": [],
-    "commit_file_count": 11
+    "commit_file_count": 11,
+    "committed_at": "2010-01-07"
   },
   {
     "id": "sphinx@c9470fac65::CPPDomain._resolve_xref_inner",
@@ -4421,7 +4721,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2015-09-06"
   },
   {
     "id": "sphinx@c9d3414be7::ObjType.__init__",
@@ -4433,7 +4734,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2024-08-16"
   },
   {
     "id": "sphinx@c9fb5ab9ad::ASTTemplateArgs.__init__",
@@ -4447,7 +4749,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-03-25"
   },
   {
     "id": "sphinx@ca7bb5140e::Theme.__init__",
@@ -4463,7 +4766,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-04-20"
   },
   {
     "id": "sphinx@cbf0b8e419::linkify_issues_in_changelog",
@@ -4477,7 +4781,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-07-14"
   },
   {
     "id": "sphinx@cc941db40b::signature_from_ast",
@@ -4491,7 +4796,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-10-05"
   },
   {
     "id": "sphinx@cd3f48bb76::Sphinx._init_builder",
@@ -4505,7 +4811,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2017-03-19"
   },
   {
     "id": "sphinx@cf795894b9::XapianSearch.add_document",
@@ -4519,7 +4826,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2016-12-16"
   },
   {
     "id": "sphinx@cfe85b4e8b::IndexBuilder.__init__",
@@ -4538,7 +4846,8 @@
     "test_files": [
       "tests/test_search.py"
     ],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2011-01-04"
   },
   {
     "id": "sphinx@d0a4d0147e::AliasNode.__init__",
@@ -4552,7 +4861,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2021-02-12"
   },
   {
     "id": "sphinx@d0e272e61f::WebSupport.__init__",
@@ -4566,7 +4876,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2010-08-05"
   },
   {
     "id": "sphinx@d4058eb67f::BaseParser.__init__",
@@ -4580,7 +4891,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2020-04-13"
   },
   {
     "id": "sphinx@d409907d9e::Changes.filter_empty_sections",
@@ -4594,7 +4906,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-07-24"
   },
   {
     "id": "sphinx@d40db5efa2::extract_summary",
@@ -4610,7 +4923,8 @@
     "test_files": [
       "tests/test_ext_autosummary.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-02-19"
   },
   {
     "id": "sphinx@d437f39bc4::EpubBuilder.build_content",
@@ -4624,7 +4938,8 @@
       "sphinx/builders/epub3.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@d4f5796f3b::Sphinx.add_config_value",
@@ -4638,7 +4953,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2009-02-19"
   },
   {
     "id": "sphinx@d4f957da8c::Builder.__init__",
@@ -4653,7 +4969,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2009-07-13"
   },
   {
     "id": "sphinx@d5e408e57e::Table.__init__",
@@ -4667,7 +4984,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-10-23"
   },
   {
     "id": "sphinx@d5ea00899c::StandaloneHTMLBuilder._get_local_toctree",
@@ -4681,7 +4999,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2009-02-16"
   },
   {
     "id": "sphinx@d769e7b616::Autosummary.get_table",
@@ -4696,7 +5015,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2009-04-04"
   },
   {
     "id": "sphinx@d81d1dcc4e::Builder.status_iterator",
@@ -4708,7 +5028,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2009-03-08"
   },
   {
     "id": "sphinx@d8a540e922::modify_field_list",
@@ -4722,7 +5043,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2022-05-15"
   },
   {
     "id": "sphinx@d9006ef5b2::ASTFunctionParameter.get_id",
@@ -4737,7 +5059,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-12-12"
   },
   {
     "id": "sphinx@d955098ef9::ModuleScanner.scan",
@@ -4751,7 +5074,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2022-03-14"
   },
   {
     "id": "sphinx@da8a4264ed::parse_opcode_signature",
@@ -4765,7 +5089,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2007-10-20"
   },
   {
     "id": "sphinx@dca9e59ea5::ASTDeclSpecsSimple.__init__",
@@ -4779,7 +5104,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-03-30"
   },
   {
     "id": "sphinx@dd20b14b19::XRefRole.__init__",
@@ -4795,7 +5121,8 @@
       "sphinx/domains.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2009-07-13"
   },
   {
     "id": "sphinx@dd32b7fdb2::formatargspec",
@@ -4809,7 +5136,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2015-07-31"
   },
   {
     "id": "sphinx@dd65d00f29::wrap_displaymath",
@@ -4825,7 +5153,8 @@
       "sphinx/ext/imgmath.py"
     ],
     "test_files": [],
-    "commit_file_count": 13
+    "commit_file_count": 13,
+    "committed_at": "2018-07-28"
   },
   {
     "id": "sphinx@dd8a02d5e1::indexmarkup_role",
@@ -4839,7 +5168,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2014-08-20"
   },
   {
     "id": "sphinx@ddb7fab16d::Sphinx.add_index_to_domain",
@@ -4856,7 +5186,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2011-11-01"
   },
   {
     "id": "sphinx@de1cd95a75::AliasTransform._render_symbol",
@@ -4870,7 +5201,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-02-12"
   },
   {
     "id": "sphinx@de24fd0b76::rmtree",
@@ -4882,7 +5214,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-10-25"
   },
   {
     "id": "sphinx@df955e6340::save_traceback",
@@ -4898,7 +5231,8 @@
       "sphinx/cmdline.py"
     ],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2013-10-02"
   },
   {
     "id": "sphinx@e1d8615ce4::setup_documenters",
@@ -4915,7 +5249,8 @@
       "tests/test_ext_autosummary.py",
       "tests/test_templating.py"
     ],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-01-07"
   },
   {
     "id": "sphinx@e2158213e8::Sphinx.__init__",
@@ -4931,7 +5266,8 @@
       "sphinx/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2008-05-02"
   },
   {
     "id": "sphinx@e34b6823c7::create_package_file",
@@ -4945,7 +5281,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2016-09-15"
   },
   {
     "id": "sphinx@e3c59615fc::normalize_func_parens",
@@ -4957,7 +5294,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2009-07-01"
   },
   {
     "id": "sphinx@e45fb5e61b::HyperlinkAvailabilityCheckWorker.limit_rate",
@@ -4973,7 +5311,8 @@
     "test_files": [
       "tests/test_build_linkcheck.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2023-07-20"
   },
   {
     "id": "sphinx@e5192ba48b::AutosummaryRenderer.render",
@@ -4987,7 +5326,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-04-25"
   },
   {
     "id": "sphinx@e5dad73cf2::PythonDomain.note_object",
@@ -5001,7 +5341,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2020-05-04"
   },
   {
     "id": "sphinx@e7fa3c6f45::get_documenter",
@@ -5017,7 +5358,8 @@
       "sphinx/ext/autosummary/generate.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2011-01-15"
   },
   {
     "id": "sphinx@e82f5ddb55::Epub3Builder.build_navigation_doc",
@@ -5029,7 +5371,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@e90f8a768b::BuildInfo.__init__",
@@ -5043,7 +5386,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2018-01-31"
   },
   {
     "id": "sphinx@e98da5ac0d::AttributeDocumenter.get_doc",
@@ -5057,7 +5401,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-07-05"
   },
   {
     "id": "sphinx@ead64dfda8::_process_documenter_options",
@@ -5075,7 +5420,8 @@
     "test_files": [
       "tests/test_extensions/autodoc_util.py"
     ],
-    "commit_file_count": 9
+    "commit_file_count": 9,
+    "committed_at": "2025-07-29"
   },
   {
     "id": "sphinx@eb07b070e4::TypeVarDocumenter.get_doc",
@@ -5089,7 +5435,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2020-07-05"
   },
   {
     "id": "sphinx@eb3fffc3e9::is_skipped_module",
@@ -5103,7 +5450,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2023-07-28"
   },
   {
     "id": "sphinx@ec392f4888::Theme.get_confstr",
@@ -5119,7 +5467,8 @@
       "sphinx/builders/html.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2009-01-10"
   },
   {
     "id": "sphinx@ee98decec1::BuildEnvironment.set_versioning_method",
@@ -5135,7 +5484,8 @@
       "sphinx/builders/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2014-10-05"
   },
   {
     "id": "sphinx@ee9c7d33a1::make_link_role",
@@ -5149,7 +5499,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2021-04-09"
   },
   {
     "id": "sphinx@eec9c59fc5::GettextRenderer.__init__",
@@ -5163,7 +5514,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-01-13"
   },
   {
     "id": "sphinx@efd24cf4ca::Config.pre_init_values",
@@ -5179,7 +5531,8 @@
       "sphinx/application.py"
     ],
     "test_files": [],
-    "commit_file_count": 8
+    "commit_file_count": 8,
+    "committed_at": "2024-01-04"
   },
   {
     "id": "sphinx@efd74a9e14::LaTeXTranslator.latex_image_length",
@@ -5193,7 +5546,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2016-06-26"
   },
   {
     "id": "sphinx@f000df8bfb::EpubBuilder.build_container",
@@ -5207,7 +5561,8 @@
       "sphinx/builders/epub3.py"
     ],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2019-01-09"
   },
   {
     "id": "sphinx@f1765c2576::SphinxStandaloneReader.__init__",
@@ -5221,7 +5576,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2016-01-17"
   },
   {
     "id": "sphinx@f224e043bc::ClassDocumenter.get_overloaded_signatures",
@@ -5235,7 +5591,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2025-10-12"
   },
   {
     "id": "sphinx@f26d492d6d::is_serializable",
@@ -5249,7 +5606,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2024-03-25"
   },
   {
     "id": "sphinx@f2bf37dad0::BuildEnvironment.app",
@@ -5265,7 +5623,8 @@
     "test_files": [
       "tests/test_environment/test_environment_record_dependencies.py"
     ],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2025-06-19"
   },
   {
     "id": "sphinx@f2c0dfe7c4::signature",
@@ -5281,7 +5640,8 @@
       "sphinx/ext/autodoc/__init__.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2020-10-03"
   },
   {
     "id": "sphinx@f2f62501e1::Sphinx.add_directive",
@@ -5297,7 +5657,8 @@
       "sphinx/ext/autodoc.py"
     ],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2009-02-17"
   },
   {
     "id": "sphinx@f2ff0419bd::PygmentsBridge.highlight_block",
@@ -5314,7 +5675,8 @@
       "sphinx/latexwriter.py"
     ],
     "test_files": [],
-    "commit_file_count": 6
+    "commit_file_count": 6,
+    "committed_at": "2008-03-09"
   },
   {
     "id": "sphinx@f366816968::SphinxStandaloneReader.__init__",
@@ -5328,7 +5690,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-01-08"
   },
   {
     "id": "sphinx@f4bb9ca112::Sphinx.add_index_to_domain",
@@ -5342,7 +5705,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2024-07-15"
   },
   {
     "id": "sphinx@f4c29949ce::CDomain.note_object",
@@ -5356,7 +5720,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 4
+    "commit_file_count": 4,
+    "committed_at": "2020-03-09"
   },
   {
     "id": "sphinx@f64ec1349a::ASTDeclSpecsSimple.__init__",
@@ -5370,7 +5735,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2016-06-26"
   },
   {
     "id": "sphinx@f7317651a1::WordCollector.is_meta_keywords",
@@ -5382,7 +5748,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2018-11-30"
   },
   {
     "id": "sphinx@f7b98a03c6::_import_object",
@@ -5397,7 +5764,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 7
+    "commit_file_count": 7,
+    "committed_at": "2025-11-04"
   },
   {
     "id": "sphinx@f9d36008e1::DefinitionParser._parse_expression",
@@ -5411,7 +5779,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-03-25"
   },
   {
     "id": "sphinx@fa100632c3::PygmentsBridge.highlight_block",
@@ -5425,7 +5794,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2012-01-29"
   },
   {
     "id": "sphinx@fa385f908e::validate_config_values",
@@ -5439,7 +5809,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2018-01-20"
   },
   {
     "id": "sphinx@fb39974486::make_link_role",
@@ -5453,7 +5824,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2021-04-11"
   },
   {
     "id": "sphinx@fb3a524a90::ASTNestedName.get_id_v2",
@@ -5469,7 +5841,8 @@
     "test_files": [
       "tests/test_domain_cpp.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2015-02-06"
   },
   {
     "id": "sphinx@fc62472a03::generate_latex_macro",
@@ -5483,7 +5856,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 23
+    "commit_file_count": 23,
+    "committed_at": "2025-01-18"
   },
   {
     "id": "sphinx@fcc6976c9d::Builder.status_iterator",
@@ -5495,7 +5869,8 @@
     "changed_parameters": [],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 1
+    "commit_file_count": 1,
+    "committed_at": "2008-06-01"
   },
   {
     "id": "sphinx@fd201666a2::Signature.__init__",
@@ -5511,7 +5886,8 @@
     "test_files": [
       "tests/test_util_inspect.py"
     ],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2017-06-17"
   },
   {
     "id": "sphinx@fd94270f1c::CheckExternalLinksBuilder.write_entry",
@@ -5525,7 +5901,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2020-02-12"
   },
   {
     "id": "sphinx@fe06909e32::import_module",
@@ -5539,7 +5916,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 5
+    "commit_file_count": 5,
+    "committed_at": "2025-01-21"
   },
   {
     "id": "sphinx@ff0f008574::ShowUrlsTransform.create_footnote",
@@ -5553,7 +5931,8 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2
+    "commit_file_count": 2,
+    "committed_at": "2018-04-20"
   },
   {
     "id": "sphinx@ff4352e794::ReSTDomain.note_object",
@@ -5567,6 +5946,7 @@
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3
+    "commit_file_count": 3,
+    "committed_at": "2020-03-01"
   }
 ]

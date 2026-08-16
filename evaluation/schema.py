@@ -74,6 +74,11 @@ class Case:
     source_files: tuple[str, ...]  # non-test files the commit touched, minus the definer
     test_files: tuple[str, ...]  # test files the commit touched
     commit_file_count: int  # total files in the commit, before any exclusion
+    # Committer date, `YYYY-MM-DD`. Recorded for the same reason as
+    # `commit_file_count`: so the runner can re-filter without re-mining. It
+    # turned out to matter more than the file count -- accuracy tracks the age
+    # of the code closely, because annotations and Python 3 syntax do.
+    committed_at: str = ""
 
     @property
     def is_forcing(self) -> bool:
@@ -91,6 +96,7 @@ class Case:
             "source_files": list(self.source_files),
             "test_files": list(self.test_files),
             "commit_file_count": self.commit_file_count,
+            "committed_at": self.committed_at,
         }
 
     @classmethod
@@ -106,6 +112,7 @@ class Case:
             source_files=tuple(raw["source_files"]),
             test_files=tuple(raw["test_files"]),
             commit_file_count=raw["commit_file_count"],
+            committed_at=raw.get("committed_at", ""),
         )
 
 
