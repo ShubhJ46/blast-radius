@@ -94,6 +94,11 @@ class _ScopeFrame:
     # about the code, not an inference this pass performed, which is why acting
     # on it does not cross the line into guessing.
     declared: dict[str, ast.expr] = field(default_factory=dict)
+    # Class frames only: attribute -> its declared type, from `self.x: Widget`
+    # anywhere in the class or `x: Widget` in the class body. Kept on the class
+    # rather than the method that wrote it, because that is the scope every
+    # other method reads it from.
+    attributes: dict[str, ast.expr] = field(default_factory=dict)
 
 
 def _import_alias_name(node: ast.Import | ast.ImportFrom, alias: ast.alias) -> str | None:
@@ -154,6 +159,40 @@ def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _Scop
     return frame
 
 
+def declared_attributes(node: ast.ClassDef) -> dict[str, ast.expr]:
+    """Types the class declares for its own attributes.
+
+    Two forms, because both are the author writing the type down: `x: Widget`
+    in the class body, and `self.x: Widget` anywhere inside a method -- almost
+    always `__init__`. The second is why this walks method bodies at all: the
+    declaration is written in one method and read from every other one.
+
+    Nested classes are skipped. Their `self` is their own, and inheriting the
+    outer class's attribute types into them would be a guess.
+
+    Pre-order so the first declaration of a name wins, which makes the result
+    depend on the source rather than on dictionary ordering.
+    """
+    found: dict[str, ast.expr] = {}
+    stack: list[ast.AST] = list(reversed(node.body))
+    while stack:
+        current = stack.pop()
+        if isinstance(current, ast.ClassDef):
+            continue
+        if isinstance(current, ast.AnnAssign) and current.annotation is not None:
+            target = current.target
+            if isinstance(target, ast.Name):
+                found.setdefault(target.id, current.annotation)
+            elif (
+                isinstance(target, ast.Attribute)
+                and isinstance(target.value, ast.Name)
+                and target.value.id in SELF_NAMES
+            ):
+                found.setdefault(target.attr, current.annotation)
+        stack.extend(reversed(list(ast.iter_child_nodes(current))))
+    return found
+
+
 def _defines_by_scope(scope: Scope) -> dict[str, dict[str, SymbolId]]:
     """Flatten the parser's scope tree to qualname -> the definitions it binds."""
     flattened = {scope.qualname: scope.defines}
@@ -207,6 +246,7 @@ class _ReferenceWalker(ast.NodeVisitor):
         frame = bound_names(node.body)
         frame.kind = "class"
         frame.qualname = qualname
+        frame.attributes = declared_attributes(node)
         self._enter(frame, node.body, prefix_parts=[node.name])
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
@@ -299,7 +339,11 @@ class _ReferenceWalker(ast.NodeVisitor):
                 self.visit(node.value)
                 return
 
-        declared_class = self._declared_class(node.value)
+        # Both forms are the same evidence -- the author declared the receiver's
+        # type -- so both are recorded as `typed_attr`.
+        declared_class = self._declared_class(node.value) or self._declared_attribute_class(
+            node.value
+        )
         if declared_class is not None:
             member = self._graph.lookup_method(declared_class, node.attr)
             if member is not None:
@@ -377,8 +421,34 @@ class _ReferenceWalker(ast.NodeVisitor):
         if not isinstance(expression, ast.Name):
             return None
         annotation = self._declared_annotation(expression.id)
-        if annotation is None:
+        return None if annotation is None else self._class_of_annotation(annotation)
+
+    def _declared_attribute_class(self, expression: ast.expr) -> SymbolId | None:
+        """The class `self.x` was declared to hold, for `self.x.method()`.
+
+        The declaration is read from the nearest enclosing class, which is where
+        `self` points -- not from the method that happened to write it down.
+
+        Only the enclosing class's own declarations are consulted. An attribute
+        annotated on a base class is not inherited here: that needs the
+        declarations to live on the class graph rather than on this walk, and
+        reading through an unresolved base would be a guess.
+        """
+        if not (
+            isinstance(expression, ast.Attribute)
+            and isinstance(expression.value, ast.Name)
+            and expression.value.id in SELF_NAMES
+        ):
             return None
+        owner = next(
+            (frame for frame in reversed(self._scopes) if frame.kind == "class"), None
+        )
+        if owner is None:
+            return None
+        annotation = owner.attributes.get(expression.attr)
+        return None if annotation is None else self._class_of_annotation(annotation)
+
+    def _class_of_annotation(self, annotation: ast.expr) -> SymbolId | None:
         if isinstance(annotation, ast.Constant) and isinstance(annotation.value, str):
             # A forward reference, `w: 'Widget'`. Only a bare name is honoured;
             # anything with brackets or dots inside the string is left alone.

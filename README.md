@@ -141,9 +141,15 @@ reachable: repeated questions between edits cost a pass of hashing rather than a
 rebuild.
 
 ```bash
-pip install -e ".[mcp]"
+pip install -e ".[mcp]"          # installs the `blast-mcp` entry point
 claude mcp add blast-radius -- blast-mcp --root .
+claude mcp list                  # blast-radius: ✔ Connected
 ```
+
+Registering at the default `local` scope keeps the server in your own Claude
+Code config rather than writing a `.mcp.json` into the repository. Servers are
+loaded when a session starts, so an already-running session will not see the
+tools until it is restarted.
 
 | Tool | Call it when |
 | --- | --- |
@@ -152,8 +158,16 @@ claude mcp add blast-radius -- blast-mcp --root .
 | `blast_find` | A bare name came back ambiguous and you need the qualified form |
 | `blast_stats` | The answers look thin — shows unindexed files and unresolved receivers |
 
-`blast_impact` takes the same `argument` narrowing as the CLI, so an agent about
-to remove a parameter gets the call sites that pass it rather than every caller.
+`blast_impact` takes the same `argument` narrowing as the CLI. Pointed at this
+repository, an agent asking about `build_index` gets:
+
+| question | files | call sites |
+| --- | ---: | ---: |
+| what depends on `build_index`? | 6 | 68 |
+| what breaks if I remove its `previous` parameter? | **2** | **16** |
+
+Four of the six files call `build_index` without ever passing `previous`, so
+that edit cannot break them — and the agent never opens them.
 
 Two things are deliberate. **Ambiguity is refused, not guessed** — a bare
 `render` matching three classes returns the candidates and an instruction to
@@ -175,13 +189,13 @@ Two corpora rather than one, because the difference between them is the finding:
 
 | Strategy | stdlib | share | mypy | share |
 | --- | ---: | ---: | ---: | ---: |
-| `name` — scope chain and imports | 15,883 | 44.6% | 34,940 | 66.4% |
-| `self_attr` — the class hierarchy | 10,324 | 29.0% | 7,721 | 14.7% |
-| `module_attr` — an imported module | 5,560 | 15.6% | 871 | 1.7% |
-| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.9% | 5,380 | 10.2% |
-| `class_attr` — a member of a resolved class | 624 | 1.8% | 293 | 0.6% |
-| `typed_attr` — a receiver with a declared type | 41 | 0.1% | 3,399 | **6.5%** |
-| **Total resolved** | **35,582** | | **52,604** | |
+| `name` — scope chain and imports | 15,883 | 44.6% | 34,940 | 65.5% |
+| `self_attr` — the class hierarchy | 10,324 | 29.0% | 7,721 | 14.5% |
+| `module_attr` — an imported module | 5,560 | 15.6% | 871 | 1.6% |
+| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.8% | 5,380 | 10.1% |
+| `class_attr` — a member of a resolved class | 624 | 1.8% | 293 | 0.5% |
+| `typed_attr` — a receiver with a declared type | 60 | 0.2% | 4,109 | **7.7%** |
+| **Total resolved** | **35,601** | | **53,314** | |
 
 The last three rows were added because the evaluation demanded them, not because
 they seemed like good ideas — see [what the evaluation
@@ -421,12 +435,20 @@ evidence as an import, whereas what a variable was last assigned stops being
 true the moment it is reassigned — and buys almost nothing anyway.
 
 Handled: parameter annotations, `x: Widget = ...`, string forward references,
-annotations reached through a module attribute, and inherited methods through
-the MRO. Refused, because resolving them would be guessing: `list[Widget]` and
+annotations reached through a module attribute, inherited methods through the
+MRO, and **`self.config: Config` declared once and read from every method** —
+whether it is written in the class body or in `__init__`, which is where it
+almost always is. That last form is the reason this walks method bodies at all:
+the declaration is written in one method and used from all the others.
+
+Refused, because resolving them would be guessing: `list[Widget]` and
 `Widget | None` name a container and a union rather than the class, `*args:
-Widget` binds a tuple, a class-body declaration is invisible to methods exactly
-as a bare name is, and an inner binding without its own declaration shadows an
-outer annotation.
+Widget` binds a tuple, an inner binding without its own declaration shadows an
+outer annotation, a nested class's `self` is its own rather than the enclosing
+class's, and `self.config = build()` with no annotation says nothing about the
+type. An attribute annotated on a *base* class is also not inherited: that
+needs the declarations to live on the class graph rather than on the module
+walk, and reading through an unresolved base would be a guess.
 
 The scored effect is the sharpest illustration in this project of why one number
 is not enough:
@@ -444,9 +466,12 @@ touched, and the headline precision falls seventeen points as a result. Recall
 is the more trustworthy half here — ground truth is files that certainly had to
 change, a true subset of the dependencies — and it improved everywhere.
 
-Still unimplemented: `self.x: Widget` declared on a class and used across its
-methods, worth a further 1.7%. It needs class-level tracking across method
-bodies rather than the per-scope table this uses.
+The `self.x: Widget` form landed later, and cost more than the 1.7% predicted
+for it. Keeping the declaration on the *class* rather than the method that wrote
+it added **710 references on mypy** — `typed_attr` from 6.5% to 7.7% of
+everything resolved — and removed 1,420 unresolved attributes, exactly twice the
+gain, because resolving `self.config.read()` also stops counting the `self.config`
+underneath it as unknown.
 
 ### Which callers a change actually breaks
 
@@ -585,11 +610,14 @@ zero callers, but `retrieval.py` does call it — as `index.search(...)`, where
 `index` came back from a function.
 
 The second of those has since been *partly* closed, and by reading rather than
-inferring: where the receiver carries a declared type, the call now resolves.
-`index = build_index()` still does not, because that would mean trusting a
-function's return annotation and then tracking the variable — but had `index`
-been a parameter annotated `BM25Index`, it would. This is why the strategy is
-worth 6.5% on mypy and 0.1% on the standard library.
+inferring: where the receiver carries a declared type, the call now resolves —
+whether that is a parameter annotated `BM25Index`, a local `index: BM25Index`,
+or `self.index: BM25Index` declared once in `__init__` and used from every
+method. `index = build_index()` still does not, because that would mean trusting
+a function's return annotation and then tracking the variable through
+reassignment. This is why the strategy is worth 7.7% on mypy and 0.2% on the
+standard library — the gap between those two numbers is how thoroughly the
+codebase is annotated, not how good the resolver is.
 
 The first — string references — cannot appear in this evaluation at all, because
 ground truth is mined from files whose diff mentions the symbol, and

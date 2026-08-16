@@ -3,7 +3,7 @@ import textwrap
 from blastradius.classes import ClassGraph
 from blastradius.imports import build_import_index
 from blastradius.parse import parse_module, parse_source
-from blastradius.resolve import ModuleReferences, resolve_module
+from blastradius.resolve import ModuleReferences, declared_attributes, resolve_module
 
 PKG = {
     "pkg/__init__.py": "",
@@ -986,3 +986,210 @@ class TestDeclaredTypes:
     def test_a_name_bound_nowhere_at_all_resolves_to_nothing(self):
         files = {**self.WIDGET, "m.py": "mystery.render()\n"}
         assert via_targets(files, "typed_attr") == []
+
+
+class TestDeclaredAttributes:
+    """`self.config: Config` written once, read from every method.
+
+    The declaration lives in one method -- almost always `__init__` -- and is
+    used from all the others, so it is kept on the class rather than on the
+    scope that wrote it.
+    """
+
+    CONFIG = {
+        "lib.py": (
+            "class Config:\n"
+            "    def read(self, path):\n"
+            "        pass\n"
+            "\n"
+            "\n"
+            "class Sub(Config):\n"
+            "    pass\n"
+        )
+    }
+
+    def test_a_class_body_declaration_resolves(self):
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    config: Config\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.config.read('x')\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == ["lib.py::Config.read"]
+
+    def test_a_declaration_in_init_is_visible_to_other_methods(self):
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    def __init__(self):\n"
+                "        self.config: Config = build()\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.config.read('x')\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == ["lib.py::Config.read"]
+
+    def test_an_inherited_method_resolves_through_the_mro(self):
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Sub\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    config: Sub\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.config.read('x')\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == ["lib.py::Config.read"]
+
+    def test_an_unannotated_assignment_is_still_a_guess(self):
+        """`self.config = build()` says nothing about the type, and tracking it
+        would be inference rather than reading a declaration."""
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    def __init__(self):\n"
+                "        self.config = build()\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.config.read('x')\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == []
+
+    def test_a_nested_class_does_not_inherit_the_outer_self(self):
+        """The inner `self` is the inner class's, and carrying the outer
+        class's attribute types into it would resolve the wrong receiver."""
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    config: Config\n"
+                "\n"
+                "    def outer(self):\n"
+                "        class Inner:\n"
+                "            def go(self):\n"
+                "                self.config.read('x')\n"
+                "        return Inner\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == []
+
+    def test_an_undeclared_attribute_stays_unresolved(self):
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    config: Config\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.other.read('x')\n"
+            ),
+        }
+        result = resolve(files, "m.py")
+        assert via_targets(files, "typed_attr") == []
+        # Both halves are counted: `read`, because the receiver's type is
+        # unknown, and `other` itself, which no declaration names either.
+        assert sorted(u.attribute for u in result.unresolved_attributes) == ["other", "read"]
+
+    def test_a_container_annotation_resolves_to_nothing(self):
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    configs: list[Config]\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.configs.read('x')\n"
+            ),
+        }
+        assert via_targets(files, "typed_attr") == []
+
+    def test_a_declaration_outside_any_class_resolves_to_nothing(self):
+        """`self` in a plain function is just a parameter name."""
+        files = {
+            **self.CONFIG,
+            "m.py": "def go(self):\n    self.config.read('x')\n",
+        }
+        assert via_targets(files, "typed_attr") == []
+
+    def test_the_receiver_shifts_the_positional_index(self):
+        """`self.config.read(p)` fills `read(self, path)` two deep."""
+        files = {
+            **self.CONFIG,
+            "m.py": (
+                "from lib import Config\n"
+                "\n"
+                "\n"
+                "class App:\n"
+                "    config: Config\n"
+                "\n"
+                "    def go(self):\n"
+                "        self.config.read('x')\n"
+            ),
+        }
+        call = next(
+            r.call for r in resolve(files, "m.py").references if r.via == "typed_attr"
+        )
+        assert call.positional == 2
+        assert call.supplies("path", 1)
+
+
+class TestDeclaredAttributeCollection:
+    def test_collects_both_declaration_forms_in_source_order(self):
+        source = (
+            "class C:\n"
+            "    first: A\n"
+            "\n"
+            "    def __init__(self):\n"
+            "        self.second: B = None\n"
+        )
+        tree = parse_source("m.py", source)
+        found = declared_attributes(tree.body[0])
+        assert list(found) == ["first", "second"]
+
+    def test_the_first_declaration_of_a_name_wins(self):
+        source = (
+            "class C:\n"
+            "    def __init__(self):\n"
+            "        self.thing: A = None\n"
+            "\n"
+            "    def later(self):\n"
+            "        self.thing: B = None\n"
+        )
+        found = declared_attributes(parse_source("m.py", source).body[0])
+        assert found["thing"].id == "A"
+
+    def test_an_unannotated_assignment_is_not_a_declaration(self):
+        found = declared_attributes(
+            parse_source("m.py", "class C:\n    def __init__(self):\n        self.x = 1\n").body[0]
+        )
+        assert found == {}
