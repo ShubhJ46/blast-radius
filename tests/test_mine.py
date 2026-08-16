@@ -120,7 +120,15 @@ class TestSignatureChanges:
         assert signature_changes("m.py", self.PROPERTY, self.PROPERTY) == []
 
     def test_a_property_pair_stays_ambiguous_when_one_arm_changes(self):
-        after = self.PROPERTY.replace("def query(self, value):", "def query(self, value, extra):")
+        after = (
+            "class C:\n"
+            "    @property\n"
+            "    def query(self):\n"
+            "        return self._q\n"
+            "    @query.setter\n"
+            "    def query(self, value, extra):\n"
+            "        self._q = value\n"
+        )
         assert signature_changes("m.py", self.PROPERTY, after) == []
 
     def test_an_overload_group_is_not_a_change(self):

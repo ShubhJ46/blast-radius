@@ -43,11 +43,12 @@ import re
 import subprocess
 import sys
 import warnings
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
 from blastradius.errors import ParseError
-from blastradius.model import Signature, SymbolId
+from blastradius.model import ModuleParse, Signature, SymbolId
 from blastradius.parse import parse_module
 from evaluation.schema import Case, ChangeKind, save_cases
 
@@ -357,7 +358,7 @@ class SignatureChange:
         return changed_parameters(self.before, self.after)
 
 
-def unambiguous_signatures(module) -> dict[str, Signature]:
+def unambiguous_signatures(module: ModuleParse) -> dict[str, Signature]:
     """Signatures by qualname, dropping any qualname that carries more than one.
 
     A property's getter and setter share a qualname while declaring different
@@ -371,17 +372,25 @@ def unambiguous_signatures(module) -> dict[str, Signature]:
     Such a qualname has no single signature to diff, so it is dropped rather
     than guessed at: a missed real change is a smaller error than an invented
     one, which enters the corpus as a case with no true blast radius at all.
+
+    That is the right trade for a property, where the getter and setter are
+    both real and neither is canonical. It is stricter than necessary for an
+    `@overload` group, which has exactly one arm that is not a stub -- the
+    implementation, the only signature a caller has to satisfy. `Definition`
+    already records `decorators`, so that arm is identifiable, and preferring
+    it would recover real cases this drops. Left undone deliberately: it
+    changes which commits become cases, so it needs a re-mine and a re-score
+    rather than a quiet edit.
     """
-    signatures: dict[str, Signature] = {}
-    ambiguous: set[str] = set()
+    declared: dict[str, set[Signature]] = defaultdict(set)
     for definition in module.definitions:
-        if definition.signature is None:
-            continue
-        qualname = definition.symbol.qualname
-        if qualname in signatures and signatures[qualname] != definition.signature:
-            ambiguous.add(qualname)
-        signatures[qualname] = definition.signature
-    return {q: s for q, s in signatures.items() if q not in ambiguous}
+        if definition.signature is not None:
+            declared[definition.symbol.qualname].add(definition.signature)
+    return {
+        qualname: signatures.pop()
+        for qualname, signatures in declared.items()
+        if len(signatures) == 1
+    }
 
 
 def signature_changes(path: str, before: str, after: str) -> list[SignatureChange]:
