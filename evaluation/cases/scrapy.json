@@ -45,21 +45,6 @@
     "committed_at": "2009-08-27"
   },
   {
-    "id": "scrapy@032e6a091a::JsonRequest.replace",
-    "repo": "scrapy",
-    "commit": "032e6a091a27b406aa48293f752d4782f8cac159",
-    "parent": "706eb8d4275be993867122e5e41c31321488309e",
-    "symbol": "scrapy/http/request/json_request.py::JsonRequest.replace",
-    "change_kind": "made_required",
-    "changed_parameters": [
-      "cls"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2024-02-29"
-  },
-  {
     "id": "scrapy@04788673e7::warn_when_subclassed",
     "repo": "scrapy",
     "commit": "04788673e7e35ead431cadbd5778d9ce699baec4",
@@ -234,23 +219,6 @@
     "committed_at": "2011-07-13"
   },
   {
-    "id": "scrapy@0b9dce3a6c::ScrapyClientContextFactory.__init__",
-    "repo": "scrapy",
-    "commit": "0b9dce3a6c17d8dc827df57367383e0b82fa8b07",
-    "parent": "67a400092805ec0d643bd7de0481cc45d5ce8471",
-    "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
-    "change_kind": "added_optional",
-    "changed_parameters": [
-      "settings",
-      "args",
-      "kwargs"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2019-07-08"
-  },
-  {
     "id": "scrapy@0bf29a7b1b::HttpCompressionMiddleware.__init__",
     "repo": "scrapy",
     "commit": "0bf29a7b1b9b6a641c486780b7b0fa455577bf39",
@@ -318,21 +286,6 @@
     "test_files": [],
     "commit_file_count": 1,
     "committed_at": "2017-02-02"
-  },
-  {
-    "id": "scrapy@0d7a5e760d::Request.replace",
-    "repo": "scrapy",
-    "commit": "0d7a5e760d5f7761fc819e788f24448349b4c129",
-    "parent": "d47f142d0ffff0e8f87eee67c4c0e7edbc71613e",
-    "symbol": "scrapy/http/request/__init__.py::Request.replace",
-    "change_kind": "made_required",
-    "changed_parameters": [
-      "cls"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2024-12-10"
   },
   {
     "id": "scrapy@0dfec04439::CrawlSpider.__init__",
@@ -479,21 +432,6 @@
     "committed_at": "2010-11-01"
   },
   {
-    "id": "scrapy@13a014d2e6::Response.replace",
-    "repo": "scrapy",
-    "commit": "13a014d2e6b5b9a3eca67a8f3d9b8e2c7b214f1d",
-    "parent": "9fffcc1b8288eabfdb42f0f89ff7e95df85f65c6",
-    "symbol": "scrapy/http/response/__init__.py::Response.replace",
-    "change_kind": "made_required",
-    "changed_parameters": [
-      "cls"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 9,
-    "committed_at": "2026-04-08"
-  },
-  {
     "id": "scrapy@150f4ed815::ClusterMaster.load_node",
     "repo": "scrapy",
     "commit": "150f4ed81530390c344c714f597a89f76bced797",
@@ -523,6 +461,21 @@
     "test_files": [],
     "commit_file_count": 5,
     "committed_at": "2015-04-15"
+  },
+  {
+    "id": "scrapy@15d0c89159::tunnel_request_data",
+    "repo": "scrapy",
+    "commit": "15d0c89159851ae9916e49a27cbcb36335b1bc2e",
+    "parent": "6539277f995bcfc9310ea92dce180cfa11d982c9",
+    "symbol": "scrapy/core/downloader/handlers/http11.py::tunnel_request_data",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "host_header"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2016-07-06"
   },
   {
     "id": "scrapy@167211ffb0::DownloadHandlers._load_handler",
@@ -773,22 +726,6 @@
     "committed_at": "2019-03-15"
   },
   {
-    "id": "scrapy@25ee023561::ScrapyClientContextFactory.__init__",
-    "repo": "scrapy",
-    "commit": "25ee023561a59401ec932d2afae8ee62e7b5e7d5",
-    "parent": "a087d2593a36dcacfeb9353d9ca1e6737478ddd9",
-    "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
-    "change_kind": "added_optional",
-    "changed_parameters": [
-      "args",
-      "kwargs"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 2,
-    "committed_at": "2016-04-14"
-  },
-  {
     "id": "scrapy@2629997a2f::Spider.update_settings",
     "repo": "scrapy",
     "commit": "2629997a2f620c54ab5b052947a0132a52042984",
@@ -1002,23 +939,6 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2022-01-28"
-  },
-  {
-    "id": "scrapy@3164543ed1::ScrapyClientContextFactory.__init__",
-    "repo": "scrapy",
-    "commit": "3164543ed1659a11cea1f6a04d8545f9cfebe367",
-    "parent": "a940a80f5886c631425c4790ac92928926b1cc92",
-    "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
-    "change_kind": "added_optional",
-    "changed_parameters": [
-      "tls_verbose_logging",
-      "args",
-      "kwargs"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 2,
-    "committed_at": "2019-08-08"
   },
   {
     "id": "scrapy@31b3d7ce1e::Scraper._scrape",
@@ -1298,23 +1218,6 @@
     "test_files": [],
     "commit_file_count": 10,
     "committed_at": "2020-08-19"
-  },
-  {
-    "id": "scrapy@42743fd9dd::ScrapyClientContextFactory.__init__",
-    "repo": "scrapy",
-    "commit": "42743fd9dd9d7116848fd3ad6b657453dd0b117d",
-    "parent": "a96a07bc762287a1f2056d1e142aff9f33e206fe",
-    "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
-    "change_kind": "added_optional",
-    "changed_parameters": [
-      "tls_verbose_logging",
-      "args",
-      "kwargs"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 3,
-    "committed_at": "2019-07-18"
   },
   {
     "id": "scrapy@42e6ed74e5::RobustScrapedItem.__init__",
@@ -2419,23 +2322,6 @@
     "committed_at": "2009-09-04"
   },
   {
-    "id": "scrapy@86e4442d17::TunnelingAgent._getEndpoint",
-    "repo": "scrapy",
-    "commit": "86e4442d177ea781f53f0f105c5ad814560a0bc4",
-    "parent": "10d03ee4192c43a4c71bbf5a7585cbbe0978bb1b",
-    "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
-    "change_kind": "other",
-    "changed_parameters": [
-      "scheme",
-      "host",
-      "port"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2016-04-11"
-  },
-  {
     "id": "scrapy@870438e5f4::get_crawler",
     "repo": "scrapy",
     "commit": "870438e5f4665de836f7ff423055895b305a4e7f",
@@ -2907,23 +2793,6 @@
     "committed_at": "2012-08-30"
   },
   {
-    "id": "scrapy@94e28adfb7::TunnelingAgent._getEndpoint",
-    "repo": "scrapy",
-    "commit": "94e28adfb7049be8ec0e9ce00bab1ab3a0b25301",
-    "parent": "e8635cd03cfb5aae26c7b324411f63afee45fd07",
-    "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
-    "change_kind": "other",
-    "changed_parameters": [
-      "scheme",
-      "host",
-      "port"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2016-03-01"
-  },
-  {
     "id": "scrapy@9523cab25c::ExecutionManager._spider_closed",
     "repo": "scrapy",
     "commit": "9523cab25cbffdae0f94e4fd31847bc54e34640c",
@@ -3131,22 +3000,6 @@
     ],
     "commit_file_count": 4,
     "committed_at": "2016-01-21"
-  },
-  {
-    "id": "scrapy@a087d2593a::ScrapyClientContextFactory.__init__",
-    "repo": "scrapy",
-    "commit": "a087d2593a36dcacfeb9353d9ca1e6737478ddd9",
-    "parent": "ba6dbad1e0e8e3392dcc5c8c412a33c44a5c95a5",
-    "symbol": "scrapy/core/downloader/contextfactory.py::ScrapyClientContextFactory.__init__",
-    "change_kind": "added_optional",
-    "changed_parameters": [
-      "args",
-      "kwargs"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2016-04-14"
   },
   {
     "id": "scrapy@a11ef7fba7::_get_form",
@@ -3760,23 +3613,6 @@
     "committed_at": "2009-08-12"
   },
   {
-    "id": "scrapy@c8dc158697::TunnelingAgent._getEndpoint",
-    "repo": "scrapy",
-    "commit": "c8dc158697453b610f168f97ce94945892163674",
-    "parent": "af2963d0eb79b1241e04b9fc7972bc4a31adf67c",
-    "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
-    "change_kind": "other",
-    "changed_parameters": [
-      "scheme",
-      "host",
-      "port"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2017-05-30"
-  },
-  {
     "id": "scrapy@c90977ca98::inspect_response",
     "repo": "scrapy",
     "commit": "c90977ca98dd51b93d91739115d843f44e6a8a94",
@@ -4050,21 +3886,6 @@
     "committed_at": "2014-08-12"
   },
   {
-    "id": "scrapy@d47f142d0f::Request.replace",
-    "repo": "scrapy",
-    "commit": "d47f142d0ffff0e8f87eee67c4c0e7edbc71613e",
-    "parent": "d6bf1464b875d40be489568bede8e8319ff770c9",
-    "symbol": "scrapy/http/request/__init__.py::Request.replace",
-    "change_kind": "made_required",
-    "changed_parameters": [
-      "cls"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 23,
-    "committed_at": "2024-12-10"
-  },
-  {
     "id": "scrapy@d4b2b61255::UrlLengthMiddleware.__init__",
     "repo": "scrapy",
     "commit": "d4b2b612551918647148013893da4cfa83fa2e7a",
@@ -4128,23 +3949,6 @@
     ],
     "commit_file_count": 3,
     "committed_at": "2016-02-18"
-  },
-  {
-    "id": "scrapy@d67ca77e61::TunnelingAgent._getEndpoint",
-    "repo": "scrapy",
-    "commit": "d67ca77e61020802c593c8b60a977e26bebfd7c6",
-    "parent": "7a745b105c628193018a1229afa7a90de2ec5051",
-    "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
-    "change_kind": "other",
-    "changed_parameters": [
-      "scheme",
-      "host",
-      "port"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2015-02-15"
   },
   {
     "id": "scrapy@d7038b2a13::SpiderManager.__init__",
@@ -4379,23 +4183,6 @@
     "test_files": [],
     "commit_file_count": 4,
     "committed_at": "2023-11-22"
-  },
-  {
-    "id": "scrapy@e17c9a48fd::TunnelingAgent._getEndpoint",
-    "repo": "scrapy",
-    "commit": "e17c9a48fdd41e838c235be75038fab1ab9bb8e2",
-    "parent": "d92f1b18580940c27f303f1dfcf47bb66e508ce4",
-    "symbol": "scrapy/core/downloader/handlers/http11.py::TunnelingAgent._getEndpoint",
-    "change_kind": "other",
-    "changed_parameters": [
-      "scheme",
-      "host",
-      "port"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2019-08-08"
   },
   {
     "id": "scrapy@e2290a5359::Rule.__init__",

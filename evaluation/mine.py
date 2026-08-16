@@ -357,6 +357,33 @@ class SignatureChange:
         return changed_parameters(self.before, self.after)
 
 
+def unambiguous_signatures(module) -> dict[str, Signature]:
+    """Signatures by qualname, dropping any qualname that carries more than one.
+
+    A property's getter and setter share a qualname while declaring different
+    parameters -- `(self)` and `(self, value)` -- as do the arms of an
+    `@overload` group. Keyed by qualname alone the last one parsed wins, so
+    comparing the winner in one revision against the winner in another
+    manufactures a signature change in a file where nothing was touched.
+    Django's property-heavy style made 51% of its mined cases these phantoms,
+    against 16% in mypy, whose `@overload` stubs hit the same edge.
+
+    Such a qualname has no single signature to diff, so it is dropped rather
+    than guessed at: a missed real change is a smaller error than an invented
+    one, which enters the corpus as a case with no true blast radius at all.
+    """
+    signatures: dict[str, Signature] = {}
+    ambiguous: set[str] = set()
+    for definition in module.definitions:
+        if definition.signature is None:
+            continue
+        qualname = definition.symbol.qualname
+        if qualname in signatures and signatures[qualname] != definition.signature:
+            ambiguous.add(qualname)
+        signatures[qualname] = definition.signature
+    return {q: s for q, s in signatures.items() if q not in ambiguous}
+
+
 def signature_changes(path: str, before: str, after: str) -> list[SignatureChange]:
     """Functions present in both versions of a file whose parameters differ."""
     try:
@@ -372,20 +399,12 @@ def signature_changes(path: str, before: str, after: str) -> list[SignatureChang
         # older history, where files targeted a Python this parser predates.
         return []
 
-    old_signatures = {
-        definition.symbol.qualname: definition.signature
-        for definition in old.definitions
-        if definition.signature is not None
-    }
+    old_signatures = unambiguous_signatures(old)
     changes = []
-    for definition in new.definitions:
-        if definition.signature is None:
-            continue
-        previous = old_signatures.get(definition.symbol.qualname)
-        if previous is not None and previous != definition.signature:
-            changes.append(
-                SignatureChange(definition.symbol.qualname, previous, definition.signature)
-            )
+    for qualname, signature in unambiguous_signatures(new).items():
+        previous = old_signatures.get(qualname)
+        if previous is not None and previous != signature:
+            changes.append(SignatureChange(qualname, previous, signature))
     return changes
 
 

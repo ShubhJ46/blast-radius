@@ -390,6 +390,21 @@
     "committed_at": "2009-06-16"
   },
   {
+    "id": "sphinx@0f09e4e428::ASTTemplateParams.get_id",
+    "repo": "sphinx",
+    "commit": "0f09e4e4288f3e11d2ca02a9b3e996dff2678d8c",
+    "parent": "3bd80e7c5485120c6b797eb0a1e0b0907128c72a",
+    "symbol": "sphinx/domains/cpp.py::ASTTemplateParams.get_id",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "exclude_requires"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2022-07-24"
+  },
+  {
     "id": "sphinx@0f47e55787::find_catalog",
     "repo": "sphinx",
     "commit": "0f47e557872eb0ed2467b5bc4cf8a88118d75ad3",
@@ -542,21 +557,6 @@
     "test_files": [],
     "commit_file_count": 1,
     "committed_at": "2008-03-16"
-  },
-  {
-    "id": "sphinx@151b4afde2::BuildEnvironment.indexentries",
-    "repo": "sphinx",
-    "commit": "151b4afde2ddcc2afac7ff5e8e2d035c547c62ae",
-    "parent": "1339948dce47a6636bab5b89cf56dddeb37c0f88",
-    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.indexentries",
-    "change_kind": "added_required",
-    "changed_parameters": [
-      "entries"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 2,
-    "committed_at": "2020-02-16"
   },
   {
     "id": "sphinx@15d93d2c76::ASTMacroParameter.__init__",
@@ -1070,6 +1070,21 @@
     "committed_at": "2016-07-12"
   },
   {
+    "id": "sphinx@2d2e0ac01a::DefinitionParser._parse_conditional_expression_tail",
+    "repo": "sphinx",
+    "commit": "2d2e0ac01a6594389eef267d04f53f1645f27bad",
+    "parent": "128f0ccc775ff392781e84ba9308599b16c7b523",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_conditional_expression_tail",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "inTemplate"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-04-17"
+  },
+  {
     "id": "sphinx@2ec60d5919::Sphinx.add_enumerable_node",
     "repo": "sphinx",
     "commit": "2ec60d59197ffa7e33e820941fd0196e576366be",
@@ -1575,6 +1590,21 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2018-02-20"
+  },
+  {
+    "id": "sphinx@450d5caa37::ASTTrailingTypeSpecName.__init__",
+    "repo": "sphinx",
+    "commit": "450d5caa373b8c2b65c16482989d94c744b6cc8d",
+    "parent": "7bc2e052c54694fea8c257516d90d80db9672322",
+    "symbol": "sphinx/domains/cpp.py::ASTTrailingTypeSpecName.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "placeholderType"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-06-24"
   },
   {
     "id": "sphinx@4627e2a498::WebSupport.init",
@@ -2382,6 +2412,21 @@
     "committed_at": "2019-11-16"
   },
   {
+    "id": "sphinx@67d673406f::ASTTrailingTypeSpecFundamental.__init__",
+    "repo": "sphinx",
+    "commit": "67d673406f2b96988fc578c631c7a9696ae6ab1d",
+    "parent": "355147e89334a32f4a08e6691010be9bab00c665",
+    "symbol": "sphinx/domains/cpp.py::ASTTrailingTypeSpecFundamental.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-11-30"
+  },
+  {
     "id": "sphinx@68e85d5665::TexinfoTranslator.visit_admonition",
     "repo": "sphinx",
     "commit": "68e85d56650543a46e95541e54f2c0f9830147fa",
@@ -2842,6 +2887,22 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2015-10-01"
+  },
+  {
+    "id": "sphinx@7dd1e5bbcf::ASTAssignmentExpr.__init__",
+    "repo": "sphinx",
+    "commit": "7dd1e5bbcfcf58039f4fe66959fd99ddd60988ae",
+    "parent": "ccfe08746ad19cbe04f603b84ab209172185b5d4",
+    "symbol": "sphinx/domains/cpp.py::ASTAssignmentExpr.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "exprs",
+      "ops"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-04-17"
   },
   {
     "id": "sphinx@7e80f60412::Config.__init__",
@@ -4815,6 +4876,23 @@
     "committed_at": "2020-10-05"
   },
   {
+    "id": "sphinx@ccfe08746a::ASTConditionalExpr.__init__",
+    "repo": "sphinx",
+    "commit": "ccfe08746ad19cbe04f603b84ab209172185b5d4",
+    "parent": "a36c09a97f4abd83e9534aec4906495be5cbbdd2",
+    "symbol": "sphinx/domains/cpp.py::ASTConditionalExpr.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "if_expr",
+      "then_expr",
+      "else_expr"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2022-04-17"
+  },
+  {
     "id": "sphinx@cd3f48bb76::Sphinx._init_builder",
     "repo": "sphinx",
     "commit": "cd3f48bb765df89dfdc9bbf5c2a52ea29ba2a7bc",
@@ -5632,23 +5710,6 @@
     "committed_at": "2024-03-25"
   },
   {
-    "id": "sphinx@f2bf37dad0::BuildEnvironment.app",
-    "repo": "sphinx",
-    "commit": "f2bf37dad05f078a4881b7a02d8c709b63fd08b2",
-    "parent": "711eb2b34ae7e293eba7d14609e1c5b583888b80",
-    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.app",
-    "change_kind": "added_required",
-    "changed_parameters": [
-      "app"
-    ],
-    "source_files": [],
-    "test_files": [
-      "tests/test_environment/test_environment_record_dependencies.py"
-    ],
-    "commit_file_count": 6,
-    "committed_at": "2025-06-19"
-  },
-  {
     "id": "sphinx@f2c0dfe7c4::signature",
     "repo": "sphinx",
     "commit": "f2c0dfe7c454589d9a2681369e51a0d073bfd4ba",
@@ -5699,21 +5760,6 @@
     "test_files": [],
     "commit_file_count": 6,
     "committed_at": "2008-03-09"
-  },
-  {
-    "id": "sphinx@f366816968::SphinxStandaloneReader.__init__",
-    "repo": "sphinx",
-    "commit": "f366816968e29ba0783fa493d58d4f0a0a03888e",
-    "parent": "d9ae68b2eec3b2c2a8a5708a2e51778511967769",
-    "symbol": "sphinx/io.py::SphinxStandaloneReader.__init__",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "parsers"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 1,
-    "committed_at": "2018-01-08"
   },
   {
     "id": "sphinx@f4bb9ca112::Sphinx.add_index_to_domain",

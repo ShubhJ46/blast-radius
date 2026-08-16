@@ -1,5 +1,20 @@
 [
   {
+    "id": "mypy@00a981518f::getattr",
+    "repo": "mypy",
+    "commit": "00a981518fe1a5ee0a26cf110fcc8bb9649d487e",
+    "parent": "a16c414809714c2872ee9a063c28cde6d4398021",
+    "symbol": "mypyc/test-data/fixtures/ir.py::getattr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "default"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2022-04-21"
+  },
+  {
     "id": "mypy@00b3a0aa06::PlaceholderNode.__init__",
     "repo": "mypy",
     "commit": "00b3a0aa06a254e11c655a71286a434ecbbe91c9",
@@ -112,6 +127,38 @@
     "committed_at": "2020-08-13"
   },
   {
+    "id": "mypy@04d44c12cf::ExpressionChecker.__init__",
+    "repo": "mypy",
+    "commit": "04d44c12cfbb3a469a96253d4656d16c21be41b9",
+    "parent": "07139ef8121fda39906e7a804ef599e61413c0c7",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "per_line_checking_time_ns"
+    ],
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2022-11-23"
+  },
+  {
+    "id": "mypy@057508b4cb::TypeStrVisitor.list_str",
+    "repo": "mypy",
+    "commit": "057508b4cb405fbc22e26b44f764b142352fcce5",
+    "parent": "39570250e35151e387e6e1daf08b4f4e4262726e",
+    "symbol": "mypy/types.py::TypeStrVisitor.list_str",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_or_syntax"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2025-05-30"
+  },
+  {
     "id": "mypy@06b01c80a1::WriteToConn.__init__",
     "repo": "mypy",
     "commit": "06b01c80a1a365cb8af80b9eecfbe4b14f04fc3e",
@@ -159,6 +206,23 @@
     "committed_at": "2026-04-30"
   },
   {
+    "id": "mypy@0873230ee6::solve_constraints",
+    "repo": "mypy",
+    "commit": "0873230ee60461110bd7bfde7ca3886878aae389",
+    "parent": "91b67405a7cd9da551411ccb4e28493647208c11",
+    "symbol": "mypy/solve.py::solve_constraints",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_polymorphic"
+    ],
+    "source_files": [
+      "mypy/infer.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 17,
+    "committed_at": "2023-06-18"
+  },
+  {
     "id": "mypy@0a83048198::TypeChecker.lookup",
     "repo": "mypy",
     "commit": "0a830481980bfc554ded61a3eaaaecde384a21e4",
@@ -187,21 +251,6 @@
     "test_files": [],
     "commit_file_count": 6,
     "committed_at": "2021-08-09"
-  },
-  {
-    "id": "mypy@0f09be472c::require_bool_literal_argument",
-    "repo": "mypy",
-    "commit": "0f09be472cad7aa06ca4af9dd73aca6b87450d84",
-    "parent": "16bd3112d070a80b749e2f0e419d6fe321443e65",
-    "symbol": "mypy/semanal_shared.py::require_bool_literal_argument",
-    "change_kind": "made_required",
-    "changed_parameters": [
-      "default"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 7,
-    "committed_at": "2023-04-05"
   },
   {
     "id": "mypy@0f9676e399::MessageBuilder.note_defined_here",
@@ -350,6 +399,23 @@
     "committed_at": "2019-01-31"
   },
   {
+    "id": "mypy@145d8a41b1::ExpressionChecker.check_awaitable_expr",
+    "repo": "mypy",
+    "commit": "145d8a41b17ab1ba8707589be9cb5d56bbebd0ea",
+    "parent": "132b8e527730b654a3f3d04684bebc9daff6cabd",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_awaitable_expr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "ignore_binder"
+    ],
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2022-06-16"
+  },
+  {
     "id": "mypy@149f753ce3::SemanticAnalyzer.analyze_class_typevar_declaration",
     "repo": "mypy",
     "commit": "149f753ce39364a404f39c73bb7da1627c1e0d0e",
@@ -363,6 +429,25 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2025-11-22"
+  },
+  {
+    "id": "mypy@1573336d12::dict.setdefault",
+    "repo": "mypy",
+    "commit": "1573336d12ec56454b6a3ed6633acff8bb2c4737",
+    "parent": "749dbf092220d992fda5f879210c907e99927a03",
+    "symbol": "mypyc/test-data/fixtures/ir.py::dict.setdefault",
+    "change_kind": "other",
+    "changed_parameters": [
+      "k",
+      "v"
+    ],
+    "source_files": [
+      "mypyc/irbuild/specialize.py",
+      "mypyc/primitives/dict_ops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2021-06-21"
   },
   {
     "id": "mypy@159f382fe3::Errors.__init__",
@@ -457,19 +542,19 @@
     "committed_at": "2026-02-11"
   },
   {
-    "id": "mypy@17fbde108c::get_proper_types",
+    "id": "mypy@183fc96ce4::FuncDecl.__init__",
     "repo": "mypy",
-    "commit": "17fbde108cc1627c423c6beca7e4de073f5f583c",
-    "parent": "162df3607cceeef6ed66b1c0cb6c264473790a37",
-    "symbol": "mypy/types.py::get_proper_types",
-    "change_kind": "renamed",
+    "commit": "183fc96ce4faab203668963110f4bb7277e8e3d2",
+    "parent": "fe91422e56e38c0ec67fccdd5f589dbeb03f3b52",
+    "symbol": "mypyc/ir/func_ir.py::FuncDecl.__init__",
+    "change_kind": "added_optional",
     "changed_parameters": [
-      "it"
+      "internal"
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 2,
-    "committed_at": "2019-08-30"
+    "commit_file_count": 5,
+    "committed_at": "2025-06-10"
   },
   {
     "id": "mypy@18a510768b::NamedTupleAnalyzer.analyze_namedtuple_classdef",
@@ -615,6 +700,21 @@
     "committed_at": "2026-01-12"
   },
   {
+    "id": "mypy@1f200dde45::InspectionStubGenerator.generate_class_stub",
+    "repo": "mypy",
+    "commit": "1f200dde451493a070b9464011998dd837df4bc2",
+    "parent": "05a9e79068a5830e57264390c9f6bca859e92053",
+    "symbol": "mypy/stubgenc.py::InspectionStubGenerator.generate_class_stub",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "parent_class"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2024-11-02"
+  },
+  {
     "id": "mypy@2094639344::Errors.raise_error",
     "repo": "mypy",
     "commit": "209463934440a726b71b9f61ef69fe34d43b518e",
@@ -664,6 +764,36 @@
     "committed_at": "2020-08-03"
   },
   {
+    "id": "mypy@222ac7bc7d::has_bytes_component",
+    "repo": "mypy",
+    "commit": "222ac7bc7d0a7837bcb2295e8c63a19c87d90bb0",
+    "parent": "e67fedf73a0250b5957184c0433e6c843554871a",
+    "symbol": "mypy/checkexpr.py::has_bytes_component",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "py2"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2022-07-28"
+  },
+  {
+    "id": "mypy@226a4f1b6d::has_bytes_component",
+    "repo": "mypy",
+    "commit": "226a4f1b6da431a9062ac174beee753d17a4051c",
+    "parent": "41db9a0c570a3e190f3749cf0b681a31823dc0f7",
+    "symbol": "mypy/checkexpr.py::has_bytes_component",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "py2"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2019-09-10"
+  },
+  {
     "id": "mypy@23e02e20f5::ConstraintBuilderVisitor.infer_constraints_from_protocol_members",
     "repo": "mypy",
     "commit": "23e02e20f50255bd5b3217d224d1f9c77d85f6ce",
@@ -711,6 +841,21 @@
     "committed_at": "2023-01-10"
   },
   {
+    "id": "mypy@256cf68fb8::CheckerScope.enclosing_class",
+    "repo": "mypy",
+    "commit": "256cf68fb89099b35a3772d34a2652e6141e6558",
+    "parent": "2d3df02d7fa5cde617bf8dd4fb4748fe43598ec8",
+    "symbol": "mypy/checker.py::CheckerScope.enclosing_class",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "func"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2025-02-21"
+  },
+  {
     "id": "mypy@256f1f33f6::main",
     "repo": "mypy",
     "commit": "256f1f33f6be15a461e8aabe9aef705ac77f7e6a",
@@ -739,6 +884,21 @@
     "test_files": [],
     "commit_file_count": 7,
     "committed_at": "2026-07-17"
+  },
+  {
+    "id": "mypy@26a77f9d37::UnrollAliasVisitor.__init__",
+    "repo": "mypy",
+    "commit": "26a77f9d373a49fa3796082fb55a54517a876364",
+    "parent": "1995155ef80a9e4ccc434240a93843868afc4a04",
+    "symbol": "mypy/types.py::UnrollAliasVisitor.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "cache"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2024-09-27"
   },
   {
     "id": "mypy@27a9830752::LowLevelIRBuilder.check_tagged_short_int",
@@ -803,21 +963,6 @@
     "committed_at": "2019-04-27"
   },
   {
-    "id": "mypy@2d54024cb4::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "2d54024cb44556302b40fed6e0bd40fd9ef56563",
-    "parent": "27c4b462aa4cf269397253eca7a88e7fbbf4e43e",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 4,
-    "committed_at": "2023-10-21"
-  },
-  {
     "id": "mypy@2e08ce69d5::StrExpr.__init__",
     "repo": "mypy",
     "commit": "2e08ce69d5d99127c7e9e9dc198140c48776a2a9",
@@ -833,6 +978,21 @@
     "test_files": [],
     "commit_file_count": 4,
     "committed_at": "2022-07-28"
+  },
+  {
+    "id": "mypy@2f2c3771b9::setattr",
+    "repo": "mypy",
+    "commit": "2f2c3771b93aeabc0eaa4a031ba81e66d43e23a4",
+    "parent": "58fb493b04c61f6202ac8ba0811d3ff8546a8e60",
+    "symbol": "mypyc/test-data/fixtures/ir.py::setattr",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "object"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-09-22"
   },
   {
     "id": "mypy@30c46ab48f::NodeFixer.visit_symbol_table",
@@ -863,6 +1023,21 @@
     "test_files": [],
     "commit_file_count": 14,
     "committed_at": "2025-11-02"
+  },
+  {
+    "id": "mypy@31adfb416e::ExpressionChecker.check_boolean_op",
+    "repo": "mypy",
+    "commit": "31adfb416e42ec4de65e823cce2774595b1f70e9",
+    "parent": "afcf6b227d96cdc2b8d07f62108cacc20ca42ece",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_boolean_op",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "context"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2025-07-27"
   },
   {
     "id": "mypy@32752ebc58::build_mypy",
@@ -949,6 +1124,23 @@
     "committed_at": "2026-03-10"
   },
   {
+    "id": "mypy@363be141eb::flatten_nested_tuples",
+    "repo": "mypy",
+    "commit": "363be141eb198ab4526ae9d6dedb02b7aa462475",
+    "parent": "cbd8c82b7426322f51654bc54c6dad963f84999a",
+    "symbol": "mypy/types.py::flatten_nested_tuples",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "handle_recursive"
+    ],
+    "source_files": [
+      "mypy/semanal_typeargs.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2026-06-03"
+  },
+  {
     "id": "mypy@38f199d25d::generate_vtables",
     "repo": "mypy",
     "commit": "38f199d25db96bf9e4424a62410e06736115073a",
@@ -982,6 +1174,19 @@
     "committed_at": "2026-02-23"
   },
   {
+    "id": "mypy@39e96f50e4::IRBuilder.enter",
+    "repo": "mypy",
+    "commit": "39e96f50e4f1de8ce1ef379a83b1d9efb40e9b01",
+    "parent": "83012da090b1b1b8f082663778acb44b2cd7ecb0",
+    "symbol": "mypyc/genops.py::IRBuilder.enter",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2020-02-15"
+  },
+  {
     "id": "mypy@3adb2e952c::fail",
     "repo": "mypy",
     "commit": "3adb2e952cf9e16d4d493440a1c7be3de4d214ef",
@@ -997,6 +1202,22 @@
     "committed_at": "2020-06-04"
   },
   {
+    "id": "mypy@3dce3fd18e::TypeChecker.refine_identity_comparison_expression",
+    "repo": "mypy",
+    "commit": "3dce3fd18e3e48c1e892951950865ea97f4ee4ed",
+    "parent": "35b50397cabd36066d2dd92b979794b94f1741d3",
+    "symbol": "mypy/checker.py::TypeChecker.refine_identity_comparison_expression",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "is_valid_target",
+      "coerce_only_in_literal_context"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2020-01-08"
+  },
+  {
     "id": "mypy@3f35ebbb53::Converter.__init__",
     "repo": "mypy",
     "commit": "3f35ebbb531ee04aa4b130c6574433b0943400e3",
@@ -1010,22 +1231,6 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2023-03-25"
-  },
-  {
-    "id": "mypy@41045dca88::os_path_join",
-    "repo": "mypy",
-    "commit": "41045dca8821e112e70108ae6b6d9751cad6c2e7",
-    "parent": "a2d715a4f79141db5c254a580cd5615fa57651d3",
-    "symbol": "mypy/util.py::os_path_join",
-    "change_kind": "other",
-    "changed_parameters": [
-      "a",
-      "p"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 3,
-    "committed_at": "2026-02-14"
   },
   {
     "id": "mypy@41562a0398::IPCBase.__init__",
@@ -1071,6 +1276,23 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2025-07-30"
+  },
+  {
+    "id": "mypy@43883fae24::IRBuilder.get_assignment_target",
+    "repo": "mypy",
+    "commit": "43883fae240f617bc5fe665a41cf23ba6bb35693",
+    "parent": "9393c22a1635e9d996a622a09e8464b1b5b51f30",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.get_assignment_target",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "for_read"
+    ],
+    "source_files": [
+      "mypyc/irbuild/expression.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2023-03-02"
   },
   {
     "id": "mypy@454989f7c0::load_type",
@@ -1150,6 +1372,23 @@
     "committed_at": "2019-01-04"
   },
   {
+    "id": "mypy@49c3fa423d::str.split",
+    "repo": "mypy",
+    "commit": "49c3fa423de3ef3d670462f4083454ed97f18b0a",
+    "parent": "f404b16ea8c1dfbcedebd4190a1cf5d73dc82ea6",
+    "symbol": "mypyc/test-data/fixtures/ir.py::str.split",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "max"
+    ],
+    "source_files": [
+      "mypyc/primitives/str_ops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2025-02-14"
+  },
+  {
     "id": "mypy@4b46d09f4e::ASTStubGenerator.process_typealias",
     "repo": "mypy",
     "commit": "4b46d09f4e74df0feea38e879e25ac4d100ecde2",
@@ -1178,6 +1417,21 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2019-02-06"
+  },
+  {
+    "id": "mypy@4c85ff01ca::NodeFixer.visit_symbol_table",
+    "repo": "mypy",
+    "commit": "4c85ff01ca52002d21ad2cb799f8ac0634deb749",
+    "parent": "801c0e5fb330cbeac5db3684b285a7d830792a7d",
+    "symbol": "mypy/fixup.py::NodeFixer.visit_symbol_table",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "table_fullname"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2026-04-09"
   },
   {
     "id": "mypy@4c90aa42e6::load_singledispatch_registry",
@@ -1210,6 +1464,38 @@
     "test_files": [],
     "commit_file_count": 7,
     "committed_at": "2020-02-22"
+  },
+  {
+    "id": "mypy@4f284a3eb3::StringFormatterChecker.__init__",
+    "repo": "mypy",
+    "commit": "4f284a3eb390d77f9d69a24c7c2a24095063ffc8",
+    "parent": "772187f5e0bb4f91fd0afd151b042ec390023089",
+    "symbol": "mypy/checkstrformat.py::StringFormatterChecker.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "exprchk"
+    ],
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2025-04-04"
+  },
+  {
+    "id": "mypy@507cfb0ba6::read_symbol",
+    "repo": "mypy",
+    "commit": "507cfb0ba615f777a1a017636e2b37d4459b9b39",
+    "parent": "4c85ff01ca52002d21ad2cb799f8ac0634deb749",
+    "symbol": "mypy/nodes.py::read_symbol",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "tag"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10,
+    "committed_at": "2026-04-09"
   },
   {
     "id": "mypy@50a653e071::Converter.__init__",
@@ -1262,19 +1548,21 @@
     "committed_at": "2023-11-25"
   },
   {
-    "id": "mypy@526fec3f8a::FuncDecl.line",
+    "id": "mypy@52172a3a01::get_proper_types",
     "repo": "mypy",
-    "commit": "526fec3f8a4b2b575a7beb8b9d4a87720f57686e",
-    "parent": "b8dd6f3556f361ae2cd312b9edcc604eb6b1f465",
-    "symbol": "mypyc/ir/func_ir.py::FuncDecl.line",
-    "change_kind": "removed",
+    "commit": "52172a3a0197e2407e666fda5b83161ea8e17183",
+    "parent": "8884f7d38c4ee190068666b633e4433d27c8293e",
+    "symbol": "mypy/types.py::get_proper_types",
+    "change_kind": "renamed",
     "changed_parameters": [
-      "line"
+      "it"
     ],
-    "source_files": [],
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
     "test_files": [],
-    "commit_file_count": 7,
-    "committed_at": "2025-07-07"
+    "commit_file_count": 2,
+    "committed_at": "2022-12-29"
   },
   {
     "id": "mypy@52c0a63f46::Server.fine_grained_increment",
@@ -1339,6 +1627,23 @@
     "committed_at": "2020-01-10"
   },
   {
+    "id": "mypy@568648df31::IRBuilder.primitive_op",
+    "repo": "mypy",
+    "commit": "568648df310ae7b145928f9947e24fa04208f313",
+    "parent": "d920e6c9859be7d5bcd2c875a5f12ff715a2a079",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.primitive_op",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "result_type"
+    ],
+    "source_files": [
+      "mypyc/irbuild/for_helpers.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2024-12-10"
+  },
+  {
     "id": "mypy@56a6bf7267::FindModuleCache.__init__",
     "repo": "mypy",
     "commit": "56a6bf7267d4d7ad97d29eda1c3d2803ff34740b",
@@ -1352,21 +1657,6 @@
     "test_files": [],
     "commit_file_count": 1,
     "committed_at": "2021-11-13"
-  },
-  {
-    "id": "mypy@5750690e62::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "5750690e625606a8c6875cff07a0ed299703646c",
-    "parent": "0f78f9c578bfbc6fbe4a20888353c20e9691178a",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 7,
-    "committed_at": "2025-07-30"
   },
   {
     "id": "mypy@57ce73d4a3::get_missing_protocol_members",
@@ -1414,6 +1704,19 @@
     "committed_at": "2019-06-17"
   },
   {
+    "id": "mypy@5adb0a05c1::bytes.decode",
+    "repo": "mypy",
+    "commit": "5adb0a05c157d9f5afbdb048a6d06a3234586ab6",
+    "parent": "ba7b50c07886f744268d664adb5a6f026ce7be37",
+    "symbol": "mypyc/test-data/fixtures/ir.py::bytes.decode",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2021-08-11"
+  },
+  {
     "id": "mypy@5bd2641ab5::StrToText.__init__",
     "repo": "mypy",
     "commit": "5bd2641ab53d4261b78a5f8f09c8d1e71ed3f14a",
@@ -1442,21 +1745,6 @@
     "test_files": [],
     "commit_file_count": 6,
     "committed_at": "2019-10-16"
-  },
-  {
-    "id": "mypy@5cd1dabf0c::get_proper_types",
-    "repo": "mypy",
-    "commit": "5cd1dabf0c0eef3acee31acbb57b51fa3d7b6b9d",
-    "parent": "ddec163790d107f1fd9982f19cbfa0b6966c2eea",
-    "symbol": "mypy/types.py::get_proper_types",
-    "change_kind": "renamed",
-    "changed_parameters": [
-      "it"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 20,
-    "committed_at": "2019-08-27"
   },
   {
     "id": "mypy@5d535667e6::write_junit_xml",
@@ -1511,6 +1799,39 @@
     "committed_at": "2021-04-27"
   },
   {
+    "id": "mypy@5fbfff97f2::TypeInfo.is_metaclass",
+    "repo": "mypy",
+    "commit": "5fbfff97f2197b38321363f4d294f47009a28139",
+    "parent": "0ea84886e5a6decdb46b5bae93c4452a0a6ca6bb",
+    "symbol": "mypy/nodes.py::TypeInfo.is_metaclass",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "precise"
+    ],
+    "source_files": [
+      "mypy/constraints.py",
+      "mypy/typeops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2025-05-31"
+  },
+  {
+    "id": "mypy@6077dc8a93::is_duplicate_mapping",
+    "repo": "mypy",
+    "commit": "6077dc8a93d63d5ba4e00879b74933568003b811",
+    "parent": "941a414080d06dd34ae9c7441f5393f2f8338107",
+    "symbol": "mypy/checkexpr.py::is_duplicate_mapping",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "actual_types"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2020-10-17"
+  },
+  {
     "id": "mypy@619d9bdf7a::SemanticAnalyzer.visit_yield_expr",
     "repo": "mypy",
     "commit": "619d9bdf7ae70ce953f1a10aebccfdc3526b7200",
@@ -1524,6 +1845,22 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2022-01-23"
+  },
+  {
+    "id": "mypy@65f35f999f::ExpressionChecker.check_any_type_call",
+    "repo": "mypy",
+    "commit": "65f35f999ff2e4b17bf43568d03dfdeb2dd2ac10",
+    "parent": "bfa957d9f1b90321739a0b47441cd38acf8ec228",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_any_type_call",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "arg_kinds",
+      "context"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2025-12-14"
   },
   {
     "id": "mypy@673468cfc3::class_callable",
@@ -1589,6 +1926,24 @@
     "committed_at": "2020-08-07"
   },
   {
+    "id": "mypy@68809c0056::bytes.decode",
+    "repo": "mypy",
+    "commit": "68809c0056c3bc6446481ec7429d48f6fcc1f5c2",
+    "parent": "6c5b13ccbad7bcdb4b45b12d9ae1d0af8cb9a0e5",
+    "symbol": "mypyc/test-data/fixtures/ir.py::bytes.decode",
+    "change_kind": "other",
+    "changed_parameters": [
+      "x",
+      "y"
+    ],
+    "source_files": [
+      "mypyc/primitives/str_ops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2025-08-19"
+  },
+  {
     "id": "mypy@6886b7a17f::restrict_subtype_away",
     "repo": "mypy",
     "commit": "6886b7a17f586e3da881be1b23c41e48916c57e4",
@@ -1619,6 +1974,21 @@
     "test_files": [],
     "commit_file_count": 4,
     "committed_at": "2019-02-26"
+  },
+  {
+    "id": "mypy@6b0f7d77a5::LowLevelIRBuilder.binary_op",
+    "repo": "mypy",
+    "commit": "6b0f7d77a598db010f8aad6f1dcc343bb305f948",
+    "parent": "212233302c82f06a29baf1acacf519689ce024f2",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.binary_op",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "expr_op"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9,
+    "committed_at": "2020-10-06"
   },
   {
     "id": "mypy@6d7beb4176::generate_c_property_stub",
@@ -1703,36 +2073,34 @@
     "committed_at": "2022-11-27"
   },
   {
-    "id": "mypy@7237831d64::IRBuilder.accept",
+    "id": "mypy@722047e369::TypeChecker.type_requires_usage",
     "repo": "mypy",
-    "commit": "7237831d64c051b2d6e4d99970f9b6ccf7a7bfce",
-    "parent": "0bbeab8b26825ee94b8fdeda16f2aa589be4282d",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
+    "commit": "722047e369657c936851a349ebba6b4c5504b8e2",
+    "parent": "ff541157ece30a7127eae840c18a2b7a6cfe04c8",
+    "symbol": "mypy/checker.py::TypeChecker.type_requires_usage",
+    "change_kind": "added_required",
     "changed_parameters": [
-      "can_borrow"
+      "s"
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 3,
-    "committed_at": "2023-02-16"
+    "commit_file_count": 2,
+    "committed_at": "2026-07-25"
   },
   {
-    "id": "mypy@72a24313a0::IRBuilder.accept",
+    "id": "mypy@72734f2d13::ExpressionChecker.check_call_expr_with_callee_type",
     "repo": "mypy",
-    "commit": "72a24313a069397ffc24f3a87e99f9a96e3c81eb",
-    "parent": "4d6c41799d514c79490ec631628ec49808d7615a",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
+    "commit": "72734f2d13455321fc891d1aecfa6e5c8fa46aff",
+    "parent": "b724ccaadb0da32ca5d26f278f26cb3185f50b82",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_call_expr_with_callee_type",
+    "change_kind": "added_optional",
     "changed_parameters": [
-      "can_borrow"
+      "member"
     ],
-    "source_files": [
-      "mypyc/irbuild/prebuildvisitor.py"
-    ],
+    "source_files": [],
     "test_files": [],
-    "commit_file_count": 7,
-    "committed_at": "2026-03-18"
+    "commit_file_count": 5,
+    "committed_at": "2019-07-04"
   },
   {
     "id": "mypy@761965d260::TypeAnalyser.find_type_var_likes",
@@ -1832,6 +2200,23 @@
     "committed_at": "2020-10-31"
   },
   {
+    "id": "mypy@7ea5ff6c14::OpExpr.__init__",
+    "repo": "mypy",
+    "commit": "7ea5ff6c1476d425b6434405add819f0e1abec67",
+    "parent": "4471c7e76f27ee51eb8d47a4803097ec15c62128",
+    "symbol": "mypy/nodes.py::OpExpr.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "analyzed"
+    ],
+    "source_files": [
+      "mypy/treetransform.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11,
+    "committed_at": "2022-11-25"
+  },
+  {
     "id": "mypy@7ea925d386::transform_try_finally_stmt",
     "repo": "mypy",
     "commit": "7ea925d38657f8c2a81975f8cfc71eb8455ade61",
@@ -1845,6 +2230,22 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2025-07-10"
+  },
+  {
+    "id": "mypy@7f65cc7570::ExpressionChecker.get_arg_infer_passes",
+    "repo": "mypy",
+    "commit": "7f65cc7570eaa4206ae086680e1c1d0489897efa",
+    "parent": "f9b1db6519cd88a081e8b8597240e166eb513245",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.get_arg_infer_passes",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "callee",
+      "args"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2023-08-25"
   },
   {
     "id": "mypy@8104d01988::generate_dealloc_for_class",
@@ -1877,6 +2278,23 @@
     "test_files": [],
     "commit_file_count": 16,
     "committed_at": "2025-11-28"
+  },
+  {
+    "id": "mypy@81efd6eaa0::ExpressionChecker.visit_typeddict_index_expr",
+    "repo": "mypy",
+    "commit": "81efd6eaa0f8300ec4bd29d6797b9e4476a06d7d",
+    "parent": "e778a58066f23982d5cbe1df5317d6540c5902fd",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.visit_typeddict_index_expr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "setitem"
+    ],
+    "source_files": [
+      "mypy/checkmember.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2023-01-27"
   },
   {
     "id": "mypy@8252a0ba16::MessageBuilder.unexpected_keyword_argument",
@@ -1926,21 +2344,34 @@
     "committed_at": "2024-05-18"
   },
   {
-    "id": "mypy@855076b6a6::get_proper_types",
+    "id": "mypy@82ce38fca6::IRBuilder.add_non_ext_class_attr",
     "repo": "mypy",
-    "commit": "855076b6a672017f7dbafe3080cf9daa31f5f1f3",
-    "parent": "0c2ec6a57e6f4b121590fdc3c3ede684a3cbc816",
-    "symbol": "mypy/types.py::get_proper_types",
-    "change_kind": "renamed",
+    "commit": "82ce38fca6338b4ca63db9ec71fc681f3c2264ca",
+    "parent": "148a1d0e96135925d676a67d08e396a6c681d29f",
+    "symbol": "mypyc/genops.py::IRBuilder.add_non_ext_class_attr",
+    "change_kind": "other",
     "changed_parameters": [
-      "it"
+      "class_ir"
     ],
-    "source_files": [
-      "mypy/typeops.py"
-    ],
+    "source_files": [],
     "test_files": [],
-    "commit_file_count": 10,
-    "committed_at": "2019-09-19"
+    "commit_file_count": 1,
+    "committed_at": "2019-08-18"
+  },
+  {
+    "id": "mypy@854a9f8f82::ExpressionChecker.union_overload_result",
+    "repo": "mypy",
+    "commit": "854a9f8f82a6dae085d3514897961871fe7005b1",
+    "parent": "a1fcad5bd6a6f71fac6f1a2f235302b2172ddd7d",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.union_overload_result",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "none_type_var_overlap"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2023-08-14"
   },
   {
     "id": "mypy@86515b5e12::Server.cmd_status",
@@ -1956,6 +2387,21 @@
     "test_files": [],
     "commit_file_count": 8,
     "committed_at": "2019-02-14"
+  },
+  {
+    "id": "mypy@87e73feb0a::ExpressionChecker.visit_await_expr",
+    "repo": "mypy",
+    "commit": "87e73feb0ac85d9d0d55ad4e367876d0c7fbe0a2",
+    "parent": "405efd23e483c214cb1293700ef2008aacf8e2ca",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.visit_await_expr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_none_return"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-05-25"
   },
   {
     "id": "mypy@8990ebdb88::FuncDecl.__init__",
@@ -2021,6 +2467,24 @@
     "committed_at": "2023-09-07"
   },
   {
+    "id": "mypy@8b9ade2d5b::ArgTypeExpander.__init__",
+    "repo": "mypy",
+    "commit": "8b9ade2d5b11d9b7e0ec3443e5744adf6af1b784",
+    "parent": "06c7433f808cc635178d59bcb4f2449234280ab7",
+    "symbol": "mypy/argmap.py::ArgTypeExpander.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "context"
+    ],
+    "source_files": [
+      "mypy/checkexpr.py",
+      "mypy/constraints.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 15,
+    "committed_at": "2021-10-31"
+  },
+  {
     "id": "mypy@8d58fce81c::collect_source_dependencies",
     "repo": "mypy",
     "commit": "8d58fce81caac0dc2b62c098bdd84bec919f9344",
@@ -2067,21 +2531,6 @@
     "committed_at": "2021-11-26"
   },
   {
-    "id": "mypy@90b9a1ad04::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "90b9a1ad0437cff1e8ad8055a769b4e00f322089",
-    "parent": "43883fae240f617bc5fe665a41cf23ba6bb35693",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 2,
-    "committed_at": "2023-03-02"
-  },
-  {
     "id": "mypy@92923b2ed8::StubGenerator.visit_func_def",
     "repo": "mypy",
     "commit": "92923b2ed8085a38c353382f805c9e2e8716e717",
@@ -2095,6 +2544,21 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2021-01-14"
+  },
+  {
+    "id": "mypy@929377ac57::ExpressionChecker.typeddict_callable_from_context",
+    "repo": "mypy",
+    "commit": "929377ac57fb1b4466d5dcc871648b56e41e583b",
+    "parent": "ac511d6c4615ca45a9404ed3eb53ea7092b0aca1",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.typeddict_callable_from_context",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "variables"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 15,
+    "committed_at": "2025-06-09"
   },
   {
     "id": "mypy@92a78583b1::exist_added_packages",
@@ -2132,20 +2596,36 @@
     "committed_at": "2022-08-31"
   },
   {
-    "id": "mypy@976d1056a4::os_path_join",
+    "id": "mypy@93eff8370a::UninhabitedType.__init__",
     "repo": "mypy",
-    "commit": "976d1056a4abd2e3d145f2476e1d74cd6962cac1",
-    "parent": "1de4871ab4890dc48653d73240eea9e48a5195e4",
-    "symbol": "mypy/util.py::os_path_join",
-    "change_kind": "other",
+    "commit": "93eff8370a05c4a4be2475649370502865247d2f",
+    "parent": "d9f17fba251699162640b74cec74931b87c0c443",
+    "symbol": "mypy/types.py::UninhabitedType.__init__",
+    "change_kind": "added_optional",
     "changed_parameters": [
-      "a",
-      "p"
+      "ambiguous"
+    ],
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2026-05-19"
+  },
+  {
+    "id": "mypy@974a58d3cb::ExpressionChecker.find_typeddict_context",
+    "repo": "mypy",
+    "commit": "974a58d3cb3029044b481f9e3154fa3a185cf0f3",
+    "parent": "55fcb524ad9a1fccdc70941274fbeb9b4d379b5a",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.find_typeddict_context",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "dict_expr"
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2024-11-04"
+    "commit_file_count": 3,
+    "committed_at": "2020-01-14"
   },
   {
     "id": "mypy@982853dc31::gen_func_item",
@@ -2178,6 +2658,24 @@
     "committed_at": "2020-11-27"
   },
   {
+    "id": "mypy@98e3faf880::is_extension_class",
+    "repo": "mypy",
+    "commit": "98e3faf880a6e8133217ddbd95d26613d20cec6e",
+    "parent": "16f134e9550f625d5711595c1cb59c8e04180a76",
+    "symbol": "mypyc/irbuild/util.py::is_extension_class",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "path",
+      "errors"
+    ],
+    "source_files": [
+      "mypyc/irbuild/prepare.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2025-03-28"
+  },
+  {
     "id": "mypy@990b6a6f03::TypedDictAnalyzer.fail",
     "repo": "mypy",
     "commit": "990b6a6f03ad82c10cb8edbe70508b943336f7f3",
@@ -2191,6 +2689,23 @@
     "test_files": [],
     "commit_file_count": 5,
     "committed_at": "2020-12-16"
+  },
+  {
+    "id": "mypy@99ba048f48::TupleType.slice",
+    "repo": "mypy",
+    "commit": "99ba048f4887eb0fbd55cde3f4243f6c177cbf7e",
+    "parent": "3d3e482e03c1efeaca9a1033acf06f56c1dfdf86",
+    "symbol": "mypy/types.py::TupleType.slice",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "fallback"
+    ],
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2023-10-01"
   },
   {
     "id": "mypy@99e2688337::ASTConverter.fail",
@@ -2255,6 +2770,25 @@
     "committed_at": "2026-06-22"
   },
   {
+    "id": "mypy@9e520c3877::UnpackType.__init__",
+    "repo": "mypy",
+    "commit": "9e520c38777267495642845f070be4383f50342d",
+    "parent": "9a35360739ced871feb6331a14a7bbacce00c7dc",
+    "symbol": "mypy/types.py::UnpackType.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "from_star_syntax"
+    ],
+    "source_files": [
+      "mypy/exprtotype.py",
+      "mypy/fastparse.py",
+      "mypy/typeanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2023-09-11"
+  },
+  {
     "id": "mypy@9eb24688c2::NewSemanticAnalyzer.get_module_symbol",
     "repo": "mypy",
     "commit": "9eb24688c2cfe132b54577eabc09a771a5c8ac0b",
@@ -2298,6 +2832,21 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2019-07-04"
+  },
+  {
+    "id": "mypy@a009879d54::extract_refexpr_names",
+    "repo": "mypy",
+    "commit": "a009879d540bf38bc46803f6043f564c782a0531",
+    "parent": "87f4dc8e7021a420bc561d491ff756d421a938ab",
+    "symbol": "mypy/checkexpr.py::extract_refexpr_names",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "output"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2025-08-31"
   },
   {
     "id": "mypy@a12565c825::write_cache_meta",
@@ -2364,6 +2913,34 @@
     "committed_at": "2022-04-29"
   },
   {
+    "id": "mypy@a4313e4956::str.strip",
+    "repo": "mypy",
+    "commit": "a4313e495673fbda2f97727819ff5f42f1fc6844",
+    "parent": "52907ac3771a713380cb2c733b8182bd7fe3756f",
+    "symbol": "mypyc/test-data/fixtures/ir.py::str.strip",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2025-03-10"
+  },
+  {
+    "id": "mypy@a4da89e054::TypeChecker.visit_import",
+    "repo": "mypy",
+    "commit": "a4da89e0543ee0d213b30216c9e15a5d00fcd578",
+    "parent": "0457d33609ef8dd7d7e32ff18dd39da3e4ecc3fc",
+    "symbol": "mypy/checker.py::TypeChecker.visit_import",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "s"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2022-11-02"
+  },
+  {
     "id": "mypy@a503132749::make_simplified_union",
     "repo": "mypy",
     "commit": "a503132749eb179eec8d1e97f6b8e372daab6ce7",
@@ -2379,6 +2956,23 @@
     "test_files": [],
     "commit_file_count": 3,
     "committed_at": "2021-03-11"
+  },
+  {
+    "id": "mypy@a53cf3da19::analyze_descriptor_access",
+    "repo": "mypy",
+    "commit": "a53cf3da199f7470290a4f1e5a6d1b9acc2705b0",
+    "parent": "605020405b4ed898b9011fe9ae93e3428e13db84",
+    "symbol": "mypy/checkmember.py::analyze_descriptor_access",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "assignment"
+    ],
+    "source_files": [
+      "mypy/checker.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2024-12-06"
   },
   {
     "id": "mypy@a6166b2f7e::FindModuleCache.__init__",
@@ -2491,6 +3085,21 @@
     "committed_at": "2023-09-30"
   },
   {
+    "id": "mypy@ad30be89f1::TypeChecker.equality_type_narrowing_helper",
+    "repo": "mypy",
+    "commit": "ad30be89f146adaae398bd854146952158a53cad",
+    "parent": "3cae656ce264f00ac5417b0559a8cba1453f5eb5",
+    "symbol": "mypy/checker.py::TypeChecker.equality_type_narrowing_helper",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "narrowable_operand_index_to_hash"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 13,
+    "committed_at": "2026-01-16"
+  },
+  {
     "id": "mypy@af3c8be98f::is_dunder",
     "repo": "mypy",
     "commit": "af3c8be98f9a3fad3fd9c7a9839278c8c1d74455",
@@ -2506,19 +3115,19 @@
     "committed_at": "2020-10-22"
   },
   {
-    "id": "mypy@afdd9d5b2b::IRBuilder.accept",
+    "id": "mypy@af5186e1bc::TypeChecker.visit_decorator_inner",
     "repo": "mypy",
-    "commit": "afdd9d5b2bb8a9ed9819571b266903396f47c5d9",
-    "parent": "7d0a8e79dfa3219135baf4d227ab4975aef710b7",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
+    "commit": "af5186e1bccdc3983a289bea962bb940ef6857f8",
+    "parent": "830a0fa765a2cc6882c7d7ca25c03abecbf0bc31",
+    "symbol": "mypy/checker.py::TypeChecker.visit_decorator_inner",
+    "change_kind": "added_optional",
     "changed_parameters": [
-      "can_borrow"
+      "skip_first_item"
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 21,
-    "committed_at": "2024-03-19"
+    "commit_file_count": 3,
+    "committed_at": "2025-03-10"
   },
   {
     "id": "mypy@b027308116::NewSemanticAnalyzer.enter",
@@ -2536,19 +3145,21 @@
     "committed_at": "2019-02-01"
   },
   {
-    "id": "mypy@b11d314777::IRBuilder.accept",
+    "id": "mypy@b137e4ed41::IRBuilder.gen_import",
     "repo": "mypy",
-    "commit": "b11d314777b83a5506bbaeae970657460eaf9b50",
-    "parent": "8615d8269e2f14f76f257e9439fa596b83e3c9d1",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
+    "commit": "b137e4ed41d6178f6dbd0e609db56b8c1ad5384a",
+    "parent": "978b711c21adadf5dae4db80127ddf270d79af5f",
+    "symbol": "mypyc/irbuild/builder.py::IRBuilder.gen_import",
+    "change_kind": "renamed",
     "changed_parameters": [
-      "can_borrow"
+      "id"
     ],
-    "source_files": [],
+    "source_files": [
+      "mypyc/irbuild/statement.py"
+    ],
     "test_files": [],
-    "commit_file_count": 5,
-    "committed_at": "2026-01-22"
+    "commit_file_count": 12,
+    "committed_at": "2026-03-26"
   },
   {
     "id": "mypy@b199f90057::SemanticAnalyzer.analyze_class_decorator_common",
@@ -2564,6 +3175,39 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2026-05-10"
+  },
+  {
+    "id": "mypy@b266dd1a23::write_cache_meta",
+    "repo": "mypy",
+    "commit": "b266dd1a238e867e6b135c54664a76dae5a00fcb",
+    "parent": "583c5f7efe5b851c140dbd2458619182137261bc",
+    "symbol": "mypy/build.py::write_cache_meta",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "meta_json"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2025-10-20"
+  },
+  {
+    "id": "mypy@b29051c897::Instance.__init__",
+    "repo": "mypy",
+    "commit": "b29051c8979ae83835204f7813e4307b05d73156",
+    "parent": "c2949e969ffcba848595d0851a9193fe1bc3e0a1",
+    "symbol": "mypy/types.py::Instance.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "extra_attrs"
+    ],
+    "source_files": [
+      "mypy/checker.py",
+      "mypy/typeops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2022-08-29"
   },
   {
     "id": "mypy@b3275572ec::is_trivial_bound",
@@ -2715,6 +3359,36 @@
     "committed_at": "2019-11-29"
   },
   {
+    "id": "mypy@b6a662c3e6::TypeChecker.check_setter_type_override",
+    "repo": "mypy",
+    "commit": "b6a662c3e639bf47a51b93a3e3198e7de25af424",
+    "parent": "d6cb14f330ea913102137a3e1a6c44f19808cba2",
+    "symbol": "mypy/checker.py::TypeChecker.check_setter_type_override",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "base_attr"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2025-04-02"
+  },
+  {
+    "id": "mypy@b6cb0ed4b2::TypeChecker.iterable_item_type",
+    "repo": "mypy",
+    "commit": "b6cb0ed4b2e2155eddaed0bb303631ddd04ad44b",
+    "parent": "31f70d7d9cafac4dbbfddcbd81c302185593f1f4",
+    "symbol": "mypy/checker.py::TypeChecker.iterable_item_type",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "instance"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2023-03-06"
+  },
+  {
     "id": "mypy@b778c875cc::type_object_type_from_function",
     "repo": "mypy",
     "commit": "b778c875cc6e92ad82666531740dab28274cf3e4",
@@ -2767,6 +3441,23 @@
     "committed_at": "2019-05-06"
   },
   {
+    "id": "mypy@bb3e49794d::LowLevelIRBuilder.load_address",
+    "repo": "mypy",
+    "commit": "bb3e49794d0581b1454b487b845c93efae4a9753",
+    "parent": "472d0343a3f7331228afdebbfe777eebc9bc3ac5",
+    "symbol": "mypyc/irbuild/ll_builder.py::LowLevelIRBuilder.load_address",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "line"
+    ],
+    "source_files": [
+      "mypyc/irbuild/vec.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10,
+    "committed_at": "2026-05-05"
+  },
+  {
     "id": "mypy@bbd732f724::TypeChecker.set_inference_error_fallback_type",
     "repo": "mypy",
     "commit": "bbd732f724eb3ef52f4e5e279ac644034839f79e",
@@ -2812,6 +3503,21 @@
     "test_files": [],
     "commit_file_count": 4,
     "committed_at": "2020-03-10"
+  },
+  {
+    "id": "mypy@bcf60ac7b7::generate_bin_op_reverse_only_wrapper",
+    "repo": "mypy",
+    "commit": "bcf60ac7b7aba645bdbb2bf803d43c51f9346197",
+    "parent": "d5860707544bdb3e51442bf6bd97b971f8c01d61",
+    "symbol": "mypyc/codegen/emitwrapper.py::generate_bin_op_reverse_only_wrapper",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "fn"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2023-02-16"
   },
   {
     "id": "mypy@bef9b67e62::EmitterInterface.emit_lines",
@@ -2880,53 +3586,6 @@
     "committed_at": "2022-09-08"
   },
   {
-    "id": "mypy@c08719d8d9::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "c08719d8d93f48fd9428f36bc690910930fdd65b",
-    "parent": "93d1ce4133467a84b02ea06e5936cf6480afe08f",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2025-01-28"
-  },
-  {
-    "id": "mypy@c1f2db34fb::os_path_join",
-    "repo": "mypy",
-    "commit": "c1f2db34fbec3b8347f9037703a804a4cd427c33",
-    "parent": "f63fdb391ac9314dc093f3750c4747c4a63c41f2",
-    "symbol": "mypy/util.py::os_path_join",
-    "change_kind": "other",
-    "changed_parameters": [
-      "a",
-      "p"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2024-10-16"
-  },
-  {
-    "id": "mypy@c201a187be::os_path_join",
-    "repo": "mypy",
-    "commit": "c201a187be998ec9e9c179004e0cd28dc2c86137",
-    "parent": "1be3a8b40153d28414fee8049b435d69db90e325",
-    "symbol": "mypy/util.py::os_path_join",
-    "change_kind": "other",
-    "changed_parameters": [
-      "a",
-      "p"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 3,
-    "committed_at": "2024-10-16"
-  },
-  {
     "id": "mypy@c26f1297d4::int_neg_callback",
     "repo": "mypy",
     "commit": "c26f1297d4f19d2d1124a30efc97caebb8c28616",
@@ -2940,6 +3599,21 @@
     "test_files": [],
     "commit_file_count": 6,
     "committed_at": "2024-02-12"
+  },
+  {
+    "id": "mypy@c32b0a50f2::generate_setup_for_class",
+    "repo": "mypy",
+    "commit": "c32b0a50f2a7329109d049bd439954fdd913e7f2",
+    "parent": "f83ec9fffa838978a6ee6411a515a313979c61fa",
+    "symbol": "mypyc/codegen/emitclass.py::generate_setup_for_class",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "func_name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2025-08-29"
   },
   {
     "id": "mypy@c32d11e60f::FileSystemWatcher._update",
@@ -2972,6 +3646,24 @@
     "committed_at": "2019-01-03"
   },
   {
+    "id": "mypy@c3bbd1cdec::UninhabitedType.__init__",
+    "repo": "mypy",
+    "commit": "c3bbd1cdeca02e63e1102a3274415f056e8d1e43",
+    "parent": "77cfb9887c8f2bba2443196d7462a027f435450f",
+    "symbol": "mypy/types.py::UninhabitedType.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "is_noreturn"
+    ],
+    "source_files": [
+      "mypy/copytype.py",
+      "mypy/typeanal.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2024-05-31"
+  },
+  {
     "id": "mypy@c4a5f56207::LowLevelIRBuilder.int_op",
     "repo": "mypy",
     "commit": "c4a5f5620763dcfe2b95847806a889d560e2aa51",
@@ -2983,21 +3675,6 @@
     "test_files": [],
     "commit_file_count": 11,
     "committed_at": "2023-01-11"
-  },
-  {
-    "id": "mypy@c4f55aefb1::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "c4f55aefb17d3c12f036f2cc99ac7cc89f252915",
-    "parent": "c0af000d068b30362c4f4f72b8823e4f3f5b3e08",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 8,
-    "committed_at": "2023-06-02"
   },
   {
     "id": "mypy@c68bd7ae2c::supported_self_type",
@@ -3081,6 +3758,42 @@
     "committed_at": "2023-05-22"
   },
   {
+    "id": "mypy@cbe28b2324::GetAttr.__init__",
+    "repo": "mypy",
+    "commit": "cbe28b23240f0091614594b05ef79708d01b5454",
+    "parent": "3df3d796ee7821f04ee0443ec5011687c6af7f45",
+    "symbol": "mypyc/ir/ops.py::GetAttr.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_null"
+    ],
+    "source_files": [
+      "mypyc/irbuild/builder.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2025-07-02"
+  },
+  {
+    "id": "mypy@cc7667a200::build_ir",
+    "repo": "mypy",
+    "commit": "cc7667a2008ef4cdcf89b06ab4e171bf478b0734",
+    "parent": "47dab6a8f5a05702f15df00c32214d90f71ef451",
+    "symbol": "mypyc/genops.py::build_ir",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "errors"
+    ],
+    "source_files": [
+      "mypyc/emitmodule.py"
+    ],
+    "test_files": [
+      "mypyc/test/testutil.py"
+    ],
+    "commit_file_count": 6,
+    "committed_at": "2019-10-04"
+  },
+  {
     "id": "mypy@cef7a63880::TypeChecker.check_subtype",
     "repo": "mypy",
     "commit": "cef7a638802f3b61b5969c75dee43f7908fc6bbc",
@@ -3096,6 +3809,23 @@
     "committed_at": "2019-10-07"
   },
   {
+    "id": "mypy@cf566bbb79::ForIterable.init",
+    "repo": "mypy",
+    "commit": "cf566bbb79a78e1e5985f7fb9e7f3cd2582cb920",
+    "parent": "ca2e529eeaec01c3f35a2aa91f0c41ecb04bb3cd",
+    "symbol": "mypyc/genops_for.py::ForIterable.init",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "target_type"
+    ],
+    "source_files": [
+      "mypyc/genops.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 10,
+    "committed_at": "2019-05-29"
+  },
+  {
     "id": "mypy@cf6a48c865::ASTConverter._check_ifstmt_for_overloads",
     "repo": "mypy",
     "commit": "cf6a48c865cc5aff23b08e651f41e1bf7b397f98",
@@ -3109,23 +3839,6 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2022-04-18"
-  },
-  {
-    "id": "mypy@cfc0734640::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "cfc07346408d92ac91c18e3698c74b9c0d3a4a65",
-    "parent": "c07d7888e7b61983924632036a864c4d210848fe",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [
-      "mypyc/irbuild/expression.py"
-    ],
-    "test_files": [],
-    "commit_file_count": 14,
-    "committed_at": "2026-07-07"
   },
   {
     "id": "mypy@d0bd1c8ab2::analyze_must_defined_regs",
@@ -3173,6 +3886,21 @@
     "test_files": [],
     "commit_file_count": 1,
     "committed_at": "2021-10-05"
+  },
+  {
+    "id": "mypy@d2a3e667bf::is_valid_inferred_type",
+    "repo": "mypy",
+    "commit": "d2a3e667bf0bedb19a1e88baaf7f3ffebc12c74a",
+    "parent": "e8de6d1fc5c908e738f69494de38ea191fb12e60",
+    "symbol": "mypy/checker.py::is_valid_inferred_type",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_lvalue_final"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2022-11-07"
   },
   {
     "id": "mypy@d2a7f05d27::apply_generic_arguments",
@@ -3227,21 +3955,6 @@
     "committed_at": "2022-12-20"
   },
   {
-    "id": "mypy@d503edfb90::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "d503edfb906814a815bf048437280ad74cd46c92",
-    "parent": "f9fe33147a9137b2579b6695dbd81980b1cca7f5",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 4,
-    "committed_at": "2025-07-08"
-  },
-  {
     "id": "mypy@d52ce3b370::get_self_type",
     "repo": "mypy",
     "commit": "d52ce3b3702bc7c194d6c14bca7affad2596e84b",
@@ -3255,6 +3968,21 @@
     "test_files": [],
     "commit_file_count": 2,
     "committed_at": "2025-06-19"
+  },
+  {
+    "id": "mypy@d54e8b3030::TypeChecker.check_rvalue_count_in_assignment",
+    "repo": "mypy",
+    "commit": "d54e8b30301620ce5cc59a0c304b8423f07a7b60",
+    "parent": "10dfafe089a75dc117586ebab35723da66309398",
+    "symbol": "mypy/checker.py::TypeChecker.check_rvalue_count_in_assignment",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "rvalue_unpack"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2023-10-08"
   },
   {
     "id": "mypy@d69419cc45::get_expr_length",
@@ -3364,6 +4092,22 @@
     "committed_at": "2025-06-22"
   },
   {
+    "id": "mypy@dc9c304091::ExpressionChecker.check_argument_count",
+    "repo": "mypy",
+    "commit": "dc9c3040910d2d239f16a4e9d64c12f60b85afc6",
+    "parent": "a0e2a2d4444ebe4af3da51ac77d93ca87cdf803c",
+    "symbol": "mypy/checkexpr.py::ExpressionChecker.check_argument_count",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "object_type",
+      "callable_name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2022-08-13"
+  },
+  {
     "id": "mypy@dcb4d695e0::read_literal",
     "repo": "mypy",
     "commit": "dcb4d695e0b3ea6fedd90572bc249ec07731b3bc",
@@ -3379,6 +4123,36 @@
     "test_files": [],
     "commit_file_count": 10,
     "committed_at": "2025-08-26"
+  },
+  {
+    "id": "mypy@dcf910e05f::SemanticAnalyzer.process_placeholder",
+    "repo": "mypy",
+    "commit": "dcf910e05fdcff00b1fb9a8b9ca85f9a6667b946",
+    "parent": "9bbb93cf69f81ea1fc33f223ff03cf2a1b604bc5",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.process_placeholder",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "force_progress"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2023-01-23"
+  },
+  {
+    "id": "mypy@de1247d761::TypeChecker._make_named_statement_for_match",
+    "repo": "mypy",
+    "commit": "de1247d76119c91ab36fa687b98dc9aabb261a6e",
+    "parent": "dcb4d695e0b3ea6fedd90572bc249ec07731b3bc",
+    "symbol": "mypy/checker.py::TypeChecker._make_named_statement_for_match",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "subject"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2025-08-27"
   },
   {
     "id": "mypy@dfcff6851c::int_unary_op",
@@ -3397,21 +4171,6 @@
     "committed_at": "2020-06-03"
   },
   {
-    "id": "mypy@e1f6d6b454::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "e1f6d6b4547f118787a68bf503f5c86a2801a2bf",
-    "parent": "838a1d4be1f3cad230d028b0e9cb8e1fb7a4fa5b",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2023-10-19"
-  },
-  {
     "id": "mypy@e22afc7578::name_emit",
     "repo": "mypy",
     "commit": "e22afc75783469b97877742ab339bbd7e20262a1",
@@ -3427,21 +4186,6 @@
     "test_files": [],
     "commit_file_count": 11,
     "committed_at": "2020-04-01"
-  },
-  {
-    "id": "mypy@e37d92d6c2::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "e37d92d6c2d1de92e74c365ee1240c67c94c24b3",
-    "parent": "a8b723d57a72aa42039548e689605d0598d0a232",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 4,
-    "committed_at": "2025-03-12"
   },
   {
     "id": "mypy@e37dfb126e::for_loop_helper_with_index",
@@ -3489,6 +4233,23 @@
     "committed_at": "2021-09-13"
   },
   {
+    "id": "mypy@e666217f64::Block.__init__",
+    "repo": "mypy",
+    "commit": "e666217f6487ec7e6490981f7d6fdd5c7e57d81b",
+    "parent": "9dad4643fac0b15c9bcd6ee0f952b529921fff91",
+    "symbol": "mypy/nodes.py::Block.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "is_unreachable"
+    ],
+    "source_files": [
+      "mypy/treetransform.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2024-12-01"
+  },
+  {
     "id": "mypy@e69c5cde86::ArgSig.__init__",
     "repo": "mypy",
     "commit": "e69c5cde8643e04a54a644cc27814ab98181541d",
@@ -3506,21 +4267,55 @@
     "committed_at": "2023-11-26"
   },
   {
-    "id": "mypy@e7c095af6f::IRBuilder.accept",
+    "id": "mypy@e731185489::str.encode",
     "repo": "mypy",
-    "commit": "e7c095af6f0b4695bd8009b642eb3364969a9e59",
-    "parent": "1711de86db110225508ebe3fae94ba02d07fa217",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
+    "commit": "e731185489cd18b31ec23354eee47eb8b949d1b1",
+    "parent": "222b104a6bee2ccb92d8023777191218095c6203",
+    "symbol": "mypyc/test-data/fixtures/ir.py::str.encode",
+    "change_kind": "other",
     "changed_parameters": [
-      "can_borrow"
+      "x",
+      "y"
     ],
     "source_files": [
-      "mypyc/irbuild/format_str_tokenizer.py"
+      "mypyc/primitives/str_ops.py"
     ],
     "test_files": [],
-    "commit_file_count": 11,
-    "committed_at": "2024-11-29"
+    "commit_file_count": 4,
+    "committed_at": "2024-12-03"
+  },
+  {
+    "id": "mypy@e7bfc0cf67::IRBuilder.visit_complex_expr",
+    "repo": "mypy",
+    "commit": "e7bfc0cf673daececbb0e451efc41d1459455aed",
+    "parent": "d9bfcd8f8249f21710d0e74683e98fb2ed718a21",
+    "symbol": "mypyc/genops.py::IRBuilder.visit_complex_expr",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "o"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2019-01-03"
+  },
+  {
+    "id": "mypy@e7ddba113d::TupleType.slice",
+    "repo": "mypy",
+    "commit": "e7ddba113d69055387996df33ceaace52b8c2c97",
+    "parent": "2f613b8b5525aa50906710aafb77ebc2f2325b90",
+    "symbol": "mypy/types.py::TupleType.slice",
+    "change_kind": "reordered",
+    "changed_parameters": [
+      "stride",
+      "end"
+    ],
+    "source_files": [
+      "mypy/checkexpr.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2019-07-08"
   },
   {
     "id": "mypy@e8c7ee7797::NewSemanticAnalyzer.enter",
@@ -3538,6 +4333,21 @@
     "committed_at": "2019-02-15"
   },
   {
+    "id": "mypy@e8de6d1fc5::TypeChecker.check_except_handler_test",
+    "repo": "mypy",
+    "commit": "e8de6d1fc5c908e738f69494de38ea191fb12e60",
+    "parent": "807da2675bfdc7ec434f8d5677c13722a555e8da",
+    "symbol": "mypy/checker.py::TypeChecker.check_except_handler_test",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "is_star"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9,
+    "committed_at": "2022-11-07"
+  },
+  {
     "id": "mypy@eb34a7bdcc::generate_deps_for_cache",
     "repo": "mypy",
     "commit": "eb34a7bdcceb4507459c0ef5472117f65bd0855d",
@@ -3553,19 +4363,19 @@
     "committed_at": "2019-08-02"
   },
   {
-    "id": "mypy@eb5f4a4e0f::get_proper_types",
+    "id": "mypy@eba9a4c392::TypeChecker.get_isinstance_type",
     "repo": "mypy",
-    "commit": "eb5f4a4e0f69e07391f48094754d31b313f145f0",
-    "parent": "b89e2fa5f0f37a42851ae8fb449bc4c67cb326bb",
-    "symbol": "mypy/types.py::get_proper_types",
-    "change_kind": "renamed",
+    "commit": "eba9a4c39211b358437abd05be638f9996d236db",
+    "parent": "09283a7ae100bd2b61f1acdf11a3bbe9452c2cb1",
+    "symbol": "mypy/checker.py::TypeChecker.get_isinstance_type",
+    "change_kind": "added_optional",
     "changed_parameters": [
-      "it"
+      "flatten_tuples"
     ],
     "source_files": [],
     "test_files": [],
-    "commit_file_count": 11,
-    "committed_at": "2019-08-24"
+    "commit_file_count": 3,
+    "committed_at": "2026-01-30"
   },
   {
     "id": "mypy@ecec8bbf98::test_stubs",
@@ -3600,6 +4410,21 @@
     "committed_at": "2021-08-07"
   },
   {
+    "id": "mypy@f09aa57e34::TypeQuery.__init__",
+    "repo": "mypy",
+    "commit": "f09aa57e345eb3cf252e2922f0f832b86360faf0",
+    "parent": "9edd29ae2b8fe8411964a0dd91ac2d067f17c006",
+    "symbol": "mypy/type_visitor.py::TypeQuery.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "strategy"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11,
+    "committed_at": "2025-09-08"
+  },
+  {
     "id": "mypy@f104914b9d::best_matches",
     "repo": "mypy",
     "commit": "f104914b9d4f58796042667a8b3d06b5868bee34",
@@ -3617,21 +4442,19 @@
     "committed_at": "2023-01-02"
   },
   {
-    "id": "mypy@f15d67757c::get_proper_types",
+    "id": "mypy@f10b462447::SemanticAnalyzer.__init__",
     "repo": "mypy",
-    "commit": "f15d67757c2e746d600a641d88f628aefa977ddd",
-    "parent": "eb5f4a4e0f69e07391f48094754d31b313f145f0",
-    "symbol": "mypy/types.py::get_proper_types",
-    "change_kind": "renamed",
+    "commit": "f10b462447900ebf9675cd81034340719438cc44",
+    "parent": "45aa599633e16b714205445ec67b4bcf80739359",
+    "symbol": "mypy/semanal.py::SemanticAnalyzer.__init__",
+    "change_kind": "added_required",
     "changed_parameters": [
-      "it"
+      "import_map"
     ],
-    "source_files": [
-      "mypy/checker.py"
-    ],
+    "source_files": [],
     "test_files": [],
-    "commit_file_count": 5,
-    "committed_at": "2019-08-25"
+    "commit_file_count": 4,
+    "committed_at": "2025-11-06"
   },
   {
     "id": "mypy@f24678faac::TypeVarLikeScope.bind_new",
@@ -3683,21 +4506,6 @@
     "test_files": [],
     "commit_file_count": 8,
     "committed_at": "2023-10-17"
-  },
-  {
-    "id": "mypy@f7d047cd6d::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "f7d047cd6dc008ab767510211d5c466d1c5e9215",
-    "parent": "090a414ba022f600bd65e7611fa3691903fd5a74",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [],
-    "test_files": [],
-    "commit_file_count": 4,
-    "committed_at": "2023-10-27"
   },
   {
     "id": "mypy@f83ec9fffa::LowLevelIRBuilder.unary_not",
@@ -3760,24 +4568,6 @@
     "committed_at": "2021-11-13"
   },
   {
-    "id": "mypy@fa3566a87d::IRBuilder.accept",
-    "repo": "mypy",
-    "commit": "fa3566a87d3466e8465d5bafea5b0f0bde3b4eaf",
-    "parent": "feeb3f00a63d31cf5c7369885c4dd4a294133f59",
-    "symbol": "mypyc/irbuild/builder.py::IRBuilder.accept",
-    "change_kind": "removed",
-    "changed_parameters": [
-      "can_borrow"
-    ],
-    "source_files": [
-      "mypyc/irbuild/expression.py",
-      "mypyc/irbuild/specialize.py"
-    ],
-    "test_files": [],
-    "commit_file_count": 6,
-    "committed_at": "2025-09-22"
-  },
-  {
     "id": "mypy@fad733ff78::State.__init__",
     "repo": "mypy",
     "commit": "fad733ff78852f1aa435485fead63ca7506849f8",
@@ -3795,6 +4585,21 @@
     "committed_at": "2026-06-04"
   },
   {
+    "id": "mypy@fbb738a462::ClassDef.deserialize",
+    "repo": "mypy",
+    "commit": "fbb738a4626976f83a7412df73533d87483a31b7",
+    "parent": "a1b4e32785b69291748579d97cb9456e1198ec21",
+    "symbol": "mypy/nodes.py::ClassDef.deserialize",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "self"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2024-01-03"
+  },
+  {
     "id": "mypy@fc609cdfca::merge_with_any",
     "repo": "mypy",
     "commit": "fc609cdfca698b3e1eaeeb50a74acf296d3a25c4",
@@ -3810,6 +4615,22 @@
     "committed_at": "2021-11-11"
   },
   {
+    "id": "mypy@fc811aedbf::PolyTranslator.__init__",
+    "repo": "mypy",
+    "commit": "fc811aedbf696c54da144851ccaeeceb19ec9a5e",
+    "parent": "3e6b5528e662d0accb6def21d6963361fe894301",
+    "symbol": "mypy/checkexpr.py::PolyTranslator.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "bound_tvars",
+      "seen_aliases"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2023-11-22"
+  },
+  {
     "id": "mypy@fca4cae253::ErrorInfo.__init__",
     "repo": "mypy",
     "commit": "fca4cae2537e2aabba2bc5393ef81f2d80cdb5ae",
@@ -3823,6 +4644,22 @@
     "test_files": [],
     "commit_file_count": 5,
     "committed_at": "2023-06-28"
+  },
+  {
+    "id": "mypy@fcabf19782::TypeChecker.node_type_from_base",
+    "repo": "mypy",
+    "commit": "fcabf19782c95372753e148629c962e3c9218b09",
+    "parent": "1214a74a33548f497ac941e71e1452153f99a94c",
+    "symbol": "mypy/checker.py::TypeChecker.node_type_from_base",
+    "change_kind": "other",
+    "changed_parameters": [
+      "node",
+      "name_override"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2025-04-04"
   },
   {
     "id": "mypy@fd16f84a2d::log_configuration",

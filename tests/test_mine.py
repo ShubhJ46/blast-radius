@@ -102,6 +102,46 @@ class TestSignatureChanges:
     def test_a_revision_that_does_not_parse_yields_nothing(self):
         assert signature_changes("m.py", "def f(:\n", "def f(a, b):\n    pass\n") == []
 
+    PROPERTY = (
+        "class C:\n"
+        "    @property\n"
+        "    def query(self):\n"
+        "        return self._q\n"
+        "    @query.setter\n"
+        "    def query(self, value):\n"
+        "        self._q = value\n"
+    )
+
+    def test_a_property_pair_is_not_a_change_when_nothing_moved(self):
+        # The getter and setter share the qualname `C.query` with different
+        # parameters. Keyed by qualname the setter wins, so the new getter used
+        # to be diffed against the old setter and reported as a gained
+        # parameter -- in a file where the signatures are byte-identical.
+        assert signature_changes("m.py", self.PROPERTY, self.PROPERTY) == []
+
+    def test_a_property_pair_stays_ambiguous_when_one_arm_changes(self):
+        after = self.PROPERTY.replace("def query(self, value):", "def query(self, value, extra):")
+        assert signature_changes("m.py", self.PROPERTY, after) == []
+
+    def test_an_overload_group_is_not_a_change(self):
+        overloaded = (
+            "from typing import overload\n"
+            "@overload\n"
+            "def f(a: int) -> int: ...\n"
+            "@overload\n"
+            "def f(a: str, b: str) -> str: ...\n"
+            "def f(a, b=None):\n"
+            "    return a\n"
+        )
+        assert signature_changes("m.py", overloaded, overloaded) == []
+
+    def test_a_qualname_repeated_with_one_signature_still_compares(self):
+        # Only differing duplicates are ambiguous. The same signature declared
+        # twice -- the usual `if TYPE_CHECKING:` split -- has one answer.
+        before = "if X:\n    def f(a):\n        pass\nelse:\n    def f(a):\n        pass\n"
+        after = "if X:\n    def f(a, b):\n        pass\nelse:\n    def f(a, b):\n        pass\n"
+        assert [c.qualname for c in signature_changes("m.py", before, after)] == ["f"]
+
 
 @needs_git
 class TestMineCommit:

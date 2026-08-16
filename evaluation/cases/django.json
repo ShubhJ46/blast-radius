@@ -1,0 +1,1736 @@
+[
+  {
+    "id": "django@02a600ff67::ContentType.get_object_for_this_type",
+    "repo": "django",
+    "commit": "02a600ff67f7b106cdcab22310bacea98c1a26ba",
+    "parent": "a47de0d6cd440d4515ede48df8335d91d7ac7793",
+    "symbol": "django/contrib/contenttypes/models.py::ContentType.get_object_for_this_type",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "using"
+    ],
+    "source_files": [
+      "django/contrib/contenttypes/fields.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2024-02-05"
+  },
+  {
+    "id": "django@053141d31f::Query.clear_ordering",
+    "repo": "django",
+    "commit": "053141d31fe5aef1c255a1be183383860e0ccce9",
+    "parent": "43d1ea6e2ff1982d52faf6b04d613390220e5d7a",
+    "symbol": "django/db/models/sql/query.py::Query.clear_ordering",
+    "change_kind": "other",
+    "changed_parameters": [
+      "force_empty"
+    ],
+    "source_files": [
+      "django/db/models/query.py",
+      "django/db/models/sql/compiler.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-06-30"
+  },
+  {
+    "id": "django@0b4fe82c74::BaseManager.contribute_to_class",
+    "repo": "django",
+    "commit": "0b4fe82c7405ba96f2eb25b954a8f498cc8364b3",
+    "parent": "c3b1e41288bc99b6e2f188ccfdafb7016d14b783",
+    "symbol": "django/db/models/manager.py::BaseManager.contribute_to_class",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "model"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2020-10-27"
+  },
+  {
+    "id": "django@0b79eb3691::get_valid_filename",
+    "repo": "django",
+    "commit": "0b79eb36915d178aef5c6a7bbce71b1e76d376d3",
+    "parent": "8de4ca74ba49b3f97a252e2b9d385cb2e70c442c",
+    "symbol": "django/utils/text.py::get_valid_filename",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "s"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_text.py"
+    ],
+    "commit_file_count": 14,
+    "committed_at": "2021-05-04"
+  },
+  {
+    "id": "django@0ebed5fa95::SetPasswordMixin.validate_passwords",
+    "repo": "django",
+    "commit": "0ebed5fa95f53b87383901bbd9341ef3c974344f",
+    "parent": "b60fd8722f305ec29c87f34d3fea262e56394ebd",
+    "symbol": "django/contrib/auth/forms.py::SetPasswordMixin.validate_passwords",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "usable_password_field_name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2024-08-19"
+  },
+  {
+    "id": "django@0ee842bb45::MigrationExecutor.record_migration",
+    "repo": "django",
+    "commit": "0ee842bb456cb3854d5546106e1259db83714d34",
+    "parent": "54a902c6e81214462388f79a7c42f1c88c863dfd",
+    "symbol": "django/db/migrations/executor.py::MigrationExecutor.record_migration",
+    "change_kind": "other",
+    "changed_parameters": [
+      "migration"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2025-02-13"
+  },
+  {
+    "id": "django@14c66825e0::Command.handle",
+    "repo": "django",
+    "commit": "14c66825e0088b7e08fe5d108fa293bd31722c39",
+    "parent": "443780780bbe88822f0af4b27517d7e8f080a6a2",
+    "symbol": "django/core/management/commands/sendtestemail.py::Command.handle",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "using"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2026-06-11"
+  },
+  {
+    "id": "django@195d885ca0::select_related_descend",
+    "repo": "django",
+    "commit": "195d885ca01b14e3ce9a1881c3b8f7074f953736",
+    "parent": "83f5478225588f31e7cbbfed63a4a2b936abc03f",
+    "symbol": "django/db/models/query_utils.py::select_related_descend",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "reverse"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2024-04-23"
+  },
+  {
+    "id": "django@1a8ad8a5c6::ImmutableList.complain",
+    "repo": "django",
+    "commit": "1a8ad8a5c6f3344959e81531177164d1c4c4e52a",
+    "parent": "c3d9b8b28f8cde57706e23b7972bf6344cff88ac",
+    "symbol": "django/utils/datastructures.py::ImmutableList.complain",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "wargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2020-10-30"
+  },
+  {
+    "id": "django@1adcf20385::Signal.__init__",
+    "repo": "django",
+    "commit": "1adcf20385c2856d3655089ff7a0b55b32e5587a",
+    "parent": "4bb30fe5d598a7acd2a3055c5e66224cf42a75e9",
+    "symbol": "django/dispatch/dispatcher.py::Signal.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "providing_args"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/signals/test_deprecation.py"
+    ],
+    "commit_file_count": 3,
+    "committed_at": "2021-01-14"
+  },
+  {
+    "id": "django@2598b371a9::Query.add_q",
+    "repo": "django",
+    "commit": "2598b371a93e21d84b7a2a99b2329535c8c0c138",
+    "parent": "db7b1ae9f6d9e26facbb3da4cf5f5a513704bfe5",
+    "symbol": "django/db/models/sql/query.py::Query.add_q",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "reuse_all"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/prefetch_related/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2025-02-06"
+  },
+  {
+    "id": "django@2638b75554::SQLInsertCompiler.field_as_sql",
+    "repo": "django",
+    "commit": "2638b75554d2624dca3062a8da113a47f855f2a2",
+    "parent": "918e7a2c766e67144f1e2bfcc029abe16ce28f54",
+    "symbol": "django/db/models/sql/compiler.py::SQLInsertCompiler.field_as_sql",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "get_placeholder"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2024-12-11"
+  },
+  {
+    "id": "django@277eea8fcc::Query._gen_cols",
+    "repo": "django",
+    "commit": "277eea8fcced7f04f3800617f189beb349a3212e",
+    "parent": "3aa545281e0c0f9fac93753e3769df9e0334dbaa",
+    "symbol": "django/db/models/sql/query.py::Query._gen_cols",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "include_external"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-02-24"
+  },
+  {
+    "id": "django@27b68bcadf::LogEntryManager.log_actions",
+    "repo": "django",
+    "commit": "27b68bcadf1ab2e9f7fd223aed42db352ccdc62d",
+    "parent": "ed984f2ac4923d6bc625adb4e8d9146765a02ab1",
+    "symbol": "django/contrib/admin/models.py::LogEntryManager.log_actions",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "single_object"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/admin_utils/test_logentry.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2025-03-12"
+  },
+  {
+    "id": "django@2b582387d5::SpatialiteSchemaEditor.alter_db_table",
+    "repo": "django",
+    "commit": "2b582387d51c44fa928351ca55f05fc8b8d2986e",
+    "parent": "f46a6b2816819ed12d4d0150c99d66920070ca15",
+    "symbol": "django/contrib/gis/db/backends/spatialite/schema.py::SpatialiteSchemaEditor.alter_db_table",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "disable_constraints"
+    ],
+    "source_files": [
+      "django/db/backends/sqlite3/schema.py"
+    ],
+    "test_files": [
+      "tests/backends/sqlite/tests.py"
+    ],
+    "commit_file_count": 12,
+    "committed_at": "2023-08-04"
+  },
+  {
+    "id": "django@2bee0b4328::AdminSite.get_app_list",
+    "repo": "django",
+    "commit": "2bee0b4328319eaf6a0d1686677d629f2ecf6dec",
+    "parent": "d44951b36ef2e698f32a8e1352671689e44c4d62",
+    "symbol": "django/contrib/admin/sites.py::AdminSite.get_app_list",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "app_label"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2022-03-25"
+  },
+  {
+    "id": "django@3071660acf::AutocompleteMixin.__init__",
+    "repo": "django",
+    "commit": "3071660acfbdf4b5c59457c8e9dc345d5e8894c5",
+    "parent": "ba3fb2e4d0aca26f6ea37d7e31488ad09043f89d",
+    "symbol": "django/contrib/admin/widgets.py::AutocompleteMixin.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "rel"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11,
+    "committed_at": "2021-01-12"
+  },
+  {
+    "id": "django@369b498219::File.open",
+    "repo": "django",
+    "commit": "369b498219be791ebec8233208f08f07621b8359",
+    "parent": "ecb6085f6fdb6319656b54cc92e6a91c1df47f23",
+    "symbol": "django/core/files/base.py::File.open",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/files/tests.py"
+    ],
+    "commit_file_count": 5,
+    "committed_at": "2023-09-11"
+  },
+  {
+    "id": "django@36be97b99d::HashedFilesMixin.url_converter",
+    "repo": "django",
+    "commit": "36be97b99d4de786746a8d80bbcd41de03752df9",
+    "parent": "35dab0ad9ee2ed23101420cb0f253deda2818191",
+    "symbol": "django/contrib/staticfiles/storage.py::HashedFilesMixin.url_converter",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "comment_blocks"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2026-03-04"
+  },
+  {
+    "id": "django@3a3e737694::Signer.__init__",
+    "repo": "django",
+    "commit": "3a3e737694b89e29308e54f12faaa375226b7060",
+    "parent": "5e4c1793b714a975400b9277a66f99efafa2d92c",
+    "symbol": "django/core/signing.py::Signer.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "args"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/signing/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2023-09-18"
+  },
+  {
+    "id": "django@3a82b5f655::IntegerField.__init__",
+    "repo": "django",
+    "commit": "3a82b5f655446f0ca89e3b6a92b100aa458f348f",
+    "parent": "68da6b389c403cb91650754be0e2287696807333",
+    "symbol": "django/forms/fields.py::IntegerField.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "step_size"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/forms_tests/field_tests/test_integerfield.py"
+    ],
+    "commit_file_count": 9,
+    "committed_at": "2022-05-12"
+  },
+  {
+    "id": "django@3aa545281e::UniqueConstraint.__init__",
+    "repo": "django",
+    "commit": "3aa545281e0c0f9fac93753e3769df9e0334dbaa",
+    "parent": "19ce1d493ae7cbc1e704d338077b1f5f5e5769c9",
+    "symbol": "django/db/models/constraints.py::UniqueConstraint.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "expressions"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/constraints/tests.py",
+      "tests/invalid_models_tests/test_models.py",
+      "tests/migrations/test_operations.py",
+      "tests/postgres_tests/test_constraints.py",
+      "tests/schema/tests.py"
+    ],
+    "commit_file_count": 15,
+    "committed_at": "2021-02-23"
+  },
+  {
+    "id": "django@42cd8c390d::run_formatters",
+    "repo": "django",
+    "commit": "42cd8c390d5f165fd7f6bbdffafd2aa4c2d9a32a",
+    "parent": "19e838daa8872ee29fbea0bc471c2a6443f26835",
+    "symbol": "django/core/management/utils.py::run_formatters",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "black_path"
+    ],
+    "source_files": [
+      "django/core/management/templates.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2022-09-07"
+  },
+  {
+    "id": "django@44ccd20375::Command.get_and_report_namespace",
+    "repo": "django",
+    "commit": "44ccd20375ba0d4da869ef994bc10a2311e9dc88",
+    "parent": "3839afb63ad5183cdf08e06e3a43a014ca4b7263",
+    "symbol": "django/core/management/commands/shell.py::Command.get_and_report_namespace",
+    "change_kind": "other",
+    "changed_parameters": [
+      "verbosity",
+      "no_imports"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/shell/tests.py"
+    ],
+    "commit_file_count": 2,
+    "committed_at": "2025-02-10"
+  },
+  {
+    "id": "django@45f778eded::BTreeIndex.__init__",
+    "repo": "django",
+    "commit": "45f778eded9dff59cfdd4dce8720daf87a08cfac",
+    "parent": "f412add786dfc18424eee6281ec8cc97220b04fc",
+    "symbol": "django/contrib/postgres/indexes.py::BTreeIndex.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "deduplicate_items"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/postgres_tests/test_indexes.py"
+    ],
+    "commit_file_count": 5,
+    "committed_at": "2024-01-02"
+  },
+  {
+    "id": "django@464a4c0c59::Query.add_select_col",
+    "repo": "django",
+    "commit": "464a4c0c59277056b5d3c1132ac1b4c6085aee08",
+    "parent": "300def5c344c65df4bcf1f5141c886da93c41ed1",
+    "symbol": "django/db/models/sql/query.py::Query.add_select_col",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [
+      "django/db/models/sql/compiler.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2020-11-14"
+  },
+  {
+    "id": "django@4b977a5d72::Aggregate.__init__",
+    "repo": "django",
+    "commit": "4b977a5d7283e7ca51288cc0ed0860e0004653ca",
+    "parent": "6d1cf5375f6fbc1496095d2356357c3b08a46324",
+    "symbol": "django/db/models/aggregates.py::Aggregate.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "order_by"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 19,
+    "committed_at": "2025-03-03"
+  },
+  {
+    "id": "django@4f92cf87b0::BaseConnectionHandler.all",
+    "repo": "django",
+    "commit": "4f92cf87b013801810226928ddd20097f6e4fccf",
+    "parent": "13378ad95206a96c3d1d261eb738032468a7acc1",
+    "symbol": "django/utils/connection.py::BaseConnectionHandler.all",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "initialized_only"
+    ],
+    "source_files": [
+      "django/contrib/postgres/apps.py",
+      "django/core/cache/__init__.py",
+      "django/core/handlers/base.py",
+      "django/db/__init__.py"
+    ],
+    "test_files": [
+      "django/test/signals.py",
+      "django/test/testcases.py"
+    ],
+    "commit_file_count": 8,
+    "committed_at": "2022-03-17"
+  },
+  {
+    "id": "django@55855bc6d0::construct_relative_path",
+    "repo": "django",
+    "commit": "55855bc6d0d2a270eb34952c578ee352389367ad",
+    "parent": "ded485464214a3f69b64402b7d82221279f80008",
+    "symbol": "django/template/loader_tags.py::construct_relative_path",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_recursion"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2024-12-06"
+  },
+  {
+    "id": "django@562898034f::func_supports_parameter",
+    "repo": "django",
+    "commit": "562898034f65e17bcdd2d951ac5236a1ec8ea690",
+    "parent": "ac72a216a7ef95e8e9cb8651b7e67320597c903b",
+    "symbol": "django/utils/inspect.py::func_supports_parameter",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "parameter"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2021-03-22"
+  },
+  {
+    "id": "django@5875f03ce6::GeneratedField.__init__",
+    "repo": "django",
+    "commit": "5875f03ce61b85dfd9ad34f7b871c231c358d432",
+    "parent": "de4884b114534f43c49cf8c5b7f10181e737f4e9",
+    "symbol": "django/db/models/fields/generated.py::GeneratedField.__init__",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "output_field"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/invalid_models_tests/test_ordinary_fields.py",
+      "tests/migrations/test_operations.py",
+      "tests/model_fields/models.py",
+      "tests/model_fields/test_generatedfield.py",
+      "tests/schema/tests.py"
+    ],
+    "commit_file_count": 9,
+    "committed_at": "2023-11-14"
+  },
+  {
+    "id": "django@58cc91275a::run_formatters",
+    "repo": "django",
+    "commit": "58cc91275a68bb42780cf0e663dad9ecf49039de",
+    "parent": "978aae4334fa71ba78a3e94408f0f3aebde8d07c",
+    "symbol": "django/core/management/utils.py::run_formatters",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "stderr"
+    ],
+    "source_files": [
+      "django/core/management/commands/makemigrations.py",
+      "django/core/management/commands/optimizemigration.py",
+      "django/core/management/commands/squashmigrations.py",
+      "django/core/management/templates.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11,
+    "committed_at": "2024-11-29"
+  },
+  {
+    "id": "django@59942a66ce::get_format_modules",
+    "repo": "django",
+    "commit": "59942a66ceb79868cb91844df3a72a24c63e39fa",
+    "parent": "37ec8721df493413d5ea5266b6faead9b8f520a9",
+    "symbol": "django/utils/formats.py::get_format_modules",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "reverse"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/i18n/tests.py"
+    ],
+    "commit_file_count": 2,
+    "committed_at": "2021-07-19"
+  },
+  {
+    "id": "django@5a8e8f80bb::DatabaseCache._cull",
+    "repo": "django",
+    "commit": "5a8e8f80bb82a867eab7e4d9d099f21d0a976d22",
+    "parent": "12b19a1d76e1a6f80923c8358290d605dacd65d4",
+    "symbol": "django/core/cache/backends/db.py::DatabaseCache._cull",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "num"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/cache/tests.py"
+    ],
+    "commit_file_count": 3,
+    "committed_at": "2021-05-26"
+  },
+  {
+    "id": "django@5b3cfce517::ModelAdmin._get_formset_with_permissions",
+    "repo": "django",
+    "commit": "5b3cfce51770f46c6dc100e9be7f199a37176762",
+    "parent": "f3ff680c768a313d34eb2e15eb7322edec60920c",
+    "symbol": "django/contrib/admin/options.py::ModelAdmin._get_formset_with_permissions",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "for_save"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2026-04-28"
+  },
+  {
+    "id": "django@5b8ef8aa5b::Query.add_filter",
+    "repo": "django",
+    "commit": "5b8ef8aa5b746d96d6558efd6bc119f347002703",
+    "parent": "5fee36973cc3a8f74b04f500264e3f5831f781aa",
+    "symbol": "django/db/models/sql/query.py::Query.add_filter",
+    "change_kind": "other",
+    "changed_parameters": [
+      "filter_clause"
+    ],
+    "source_files": [
+      "django/db/models/sql/compiler.py",
+      "django/db/models/sql/subqueries.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2021-07-28"
+  },
+  {
+    "id": "django@5c10041f46::cached_property.__init__",
+    "repo": "django",
+    "commit": "5c10041f4636c3dfe637924ab24da85dd657d790",
+    "parent": "e01970e9d23a241473671ea26126f8440db4dead",
+    "symbol": "django/utils/functional.py::cached_property.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_functional.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2023-01-17"
+  },
+  {
+    "id": "django@5d20e02078::Model._save_parents",
+    "repo": "django",
+    "commit": "5d20e0207867615f6989714261ea3c0a3eb85d88",
+    "parent": "1c4f5f314e2b0c77b3fa0c75f703218e7e06f4be",
+    "symbol": "django/db/models/base.py::Model._save_parents",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "updated_parents"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2023-06-15"
+  },
+  {
+    "id": "django@5dfcf343cd::_route_to_regex",
+    "repo": "django",
+    "commit": "5dfcf343cd414d3f7a33dabb763b4478fa081d72",
+    "parent": "595738296faec582ce90f1cffef90fbb9b18384b",
+    "symbol": "django/urls/resolvers.py::_route_to_regex",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "is_endpoint"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2024-03-02"
+  },
+  {
+    "id": "django@5f3c7b7e1d::BaseModelFormSet.save_existing",
+    "repo": "django",
+    "commit": "5f3c7b7e1d059397e915bfa71409b49648b5d524",
+    "parent": "ae1fe72e9b1f5fe3b05e5b670bd0c205cd305e71",
+    "symbol": "django/forms/models.py::BaseModelFormSet.save_existing",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "instance"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2023-02-07"
+  },
+  {
+    "id": "django@62300b81cf::SyndicationFeed.__init__",
+    "repo": "django",
+    "commit": "62300b81cf7687d176af3b40aa6101942801292d",
+    "parent": "ce1ad98565d98b7939367b2bcab755c3555ceb42",
+    "symbol": "django/utils/feedgenerator.py::SyndicationFeed.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "stylesheets"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9,
+    "committed_at": "2024-06-18"
+  },
+  {
+    "id": "django@6364b6ee10::Concat._paired",
+    "repo": "django",
+    "commit": "6364b6ee1071381eb3a23ba6b821fc0d6f0fce75",
+    "parent": "bdf30b952c66701075bb7cbbbd3467d3e908fe62",
+    "symbol": "django/db/models/functions/text.py::Concat._paired",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "output_field"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2023-11-14"
+  },
+  {
+    "id": "django@65a9f14196::cached_import",
+    "repo": "django",
+    "commit": "65a9f14196c338d70889bd54753370606b3fb4eb",
+    "parent": "f51347964a85bd4881caabf3c736b2c54d75262f",
+    "symbol": "django/utils/module_loading.py::cached_import",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "class_name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10,
+    "committed_at": "2026-07-10"
+  },
+  {
+    "id": "django@66b4046d68::PasswordResetTokenGenerator._make_token_with_timestamp",
+    "repo": "django",
+    "commit": "66b4046d68921edc7c83076da4aafd307f7dd19b",
+    "parent": "831a05b1859f960dba0aff3ac46daa40ca70704e",
+    "symbol": "django/contrib/auth/tokens.py::PasswordResetTokenGenerator._make_token_with_timestamp",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "legacy"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-01-14"
+  },
+  {
+    "id": "django@6bd5d4f705::_check_deprecated_find_param",
+    "repo": "django",
+    "commit": "6bd5d4f7055c999e5ef1f51f08bc48c8853a4e0a",
+    "parent": "8ee17037ae706178040a7fc821789e4358ea9287",
+    "symbol": "django/contrib/staticfiles/finders.py::_check_deprecated_find_param",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "stacklevel"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2024-08-28"
+  },
+  {
+    "id": "django@6ee37ada32::Truncator._text_chars",
+    "repo": "django",
+    "commit": "6ee37ada3241ed263d8d1c2901b030d964cbd161",
+    "parent": "70f39e46f86b946c273340d52109824c776ffb4c",
+    "symbol": "django/utils/text.py::Truncator._text_chars",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "truncate_len"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2024-02-07"
+  },
+  {
+    "id": "django@72e41a0df6::json_script",
+    "repo": "django",
+    "commit": "72e41a0df6db23410135364223eeda83ac2a8b27",
+    "parent": "0ee03a439b7016c068ab2e0c477d5c84f750a82c",
+    "symbol": "django/utils/html.py::json_script",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "encoder"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_html.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2022-06-28"
+  },
+  {
+    "id": "django@7530cf3900::Query.resolve_lookup_value",
+    "repo": "django",
+    "commit": "7530cf3900ab98104edcde69e8a2a415e82b345a",
+    "parent": "594873befbbec13a2d9a048a361757dd3cf178da",
+    "symbol": "django/db/models/sql/query.py::Query.resolve_lookup_value",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "summarize"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2023-11-18"
+  },
+  {
+    "id": "django@759abc4daf::Query.try_transform",
+    "repo": "django",
+    "commit": "759abc4dafef6860edb830c30754e6364ed9ea11",
+    "parent": "2c931fda5b341e0febf68269d2c2447a64875127",
+    "symbol": "django/db/models/sql/query.py::Query.try_transform",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "lookups"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2024-07-09"
+  },
+  {
+    "id": "django@76af861356::GEOSGeometryBase.normalize",
+    "repo": "django",
+    "commit": "76af861356eda3b08bc5e15ad1973f980c7604a3",
+    "parent": "d27e6b233f83c3429f21ff3c250a28ff302637ef",
+    "symbol": "django/contrib/gis/geos/geometry.py::GEOSGeometryBase.normalize",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "clone"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/gis_tests/geos_tests/test_geos.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2022-05-16"
+  },
+  {
+    "id": "django@7ae70e7504::do_checksum",
+    "repo": "django",
+    "commit": "7ae70e7504b98553ab3537be84f930ea7e28c3c9",
+    "parent": "7436661b9c7f7232cc416720825561b2fb0a6649",
+    "symbol": "scripts/do_django_release.py::do_checksum",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "dist_path"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2026-05-27"
+  },
+  {
+    "id": "django@7bbbadc693::URLField.__init__",
+    "repo": "django",
+    "commit": "7bbbadc69383f0a2b99253e153b974f8783e876d",
+    "parent": "070cbac0dbf6a09b55aad322137ab168b75bf56b",
+    "symbol": "django/forms/fields.py::URLField.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "assume_scheme"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/forms_tests/field_tests/test_urlfield.py",
+      "tests/forms_tests/tests/test_error_messages.py"
+    ],
+    "commit_file_count": 10,
+    "committed_at": "2023-04-28"
+  },
+  {
+    "id": "django@7fe9b6f6df::ErrorDict.__init__",
+    "repo": "django",
+    "commit": "7fe9b6f6df16fa875fe360a1c7d0ac53fcf08a53",
+    "parent": "b1bf8c8a4ba04049dc19217bf0e876488a4fae3c",
+    "symbol": "django/forms/utils.py::ErrorDict.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "data"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/forms_tests/tests/test_utils.py"
+    ],
+    "commit_file_count": 3,
+    "committed_at": "2021-09-24"
+  },
+  {
+    "id": "django@81739a45b5::Query.bump_prefix",
+    "repo": "django",
+    "commit": "81739a45b5ae8f534910aaabc7e9b457eaa34163",
+    "parent": "f04b44bad40369ec2df74b16adb4d3f09350e4b2",
+    "symbol": "django/db/models/sql/query.py::Query.bump_prefix",
+    "change_kind": "other",
+    "changed_parameters": [
+      "outer_query"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2021-12-08"
+  },
+  {
+    "id": "django@85750bd2f8::CheckConstraint.__init__",
+    "repo": "django",
+    "commit": "85750bd2f8ed7e595aac25c7e5fd7218528a25b1",
+    "parent": "4968f0012e7f97c613fcb71781c4e50874c31c15",
+    "symbol": "django/db/models/constraints.py::CheckConstraint.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "check"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/constraints/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2025-01-15"
+  },
+  {
+    "id": "django@859cd7c6b4::BaseFormSet.__init__",
+    "repo": "django",
+    "commit": "859cd7c6b43bf70e2852eda10f635c70feeb397f",
+    "parent": "76181308fb02e67794d0cc1471766a5d7e4c877e",
+    "symbol": "django/forms/formsets.py::BaseFormSet.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "error_messages"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2020-11-05"
+  },
+  {
+    "id": "django@868e2fcdda::ChangeList.get_queryset",
+    "repo": "django",
+    "commit": "868e2fcddae6720d5713924a785339d1665f1bb9",
+    "parent": "50ca4defcb2e5d1c987ed006562f7a812179b3df",
+    "symbol": "django/contrib/admin/views/main.py::ChangeList.get_queryset",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "exclude_parameters"
+    ],
+    "source_files": [
+      "django/contrib/admin/filters.py"
+    ],
+    "test_files": [
+      "tests/admin_filters/tests.py"
+    ],
+    "commit_file_count": 20,
+    "committed_at": "2023-03-03"
+  },
+  {
+    "id": "django@87da283338::BaseDatabaseSchemaEditor._iter_column_sql",
+    "repo": "django",
+    "commit": "87da2833384b7acd99a778a78e07ea6640f54f35",
+    "parent": "aa28c392b9491f02330905cb73b7078b1cd18c60",
+    "symbol": "django/db/backends/base/schema.py::BaseDatabaseSchemaEditor._iter_column_sql",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "field_db_params"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-04-29"
+  },
+  {
+    "id": "django@8a4e506760::prepare_lookup_value",
+    "repo": "django",
+    "commit": "8a4e5067605e608c3fcbb5ca11e0019eac8b40aa",
+    "parent": "2b76f457494414f96d3848a5591909cbb48239e9",
+    "symbol": "django/contrib/admin/utils.py::prepare_lookup_value",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "separator"
+    ],
+    "source_files": [
+      "django/contrib/admin/filters.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2021-12-08"
+  },
+  {
+    "id": "django@8e6ea1d153::SQLiteCursorWrapper.convert_query",
+    "repo": "django",
+    "commit": "8e6ea1d153a852b83eaa4807301b143df1647a44",
+    "parent": "7b94847e384b1a8c05a7d4c8778958c0290bdf9a",
+    "symbol": "django/db/backends/sqlite3/base.py::SQLiteCursorWrapper.convert_query",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "param_names"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2022-11-08"
+  },
+  {
+    "id": "django@90cf963264::log_response",
+    "repo": "django",
+    "commit": "90cf96326432df56a1cf981df215b83f4e993bfd",
+    "parent": "d05ab13c56849ed09d02c1f188b7f47f0c090a2a",
+    "symbol": "django/utils/log.py::log_response",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "exc_info"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2022-01-12"
+  },
+  {
+    "id": "django@921e4ccb77::QuerySet._chain",
+    "repo": "django",
+    "commit": "921e4ccb77ed2056d5cdfc6756ee82b54831937f",
+    "parent": "fffeb5df554c93f0f9e634a820323b4771e9bfc7",
+    "symbol": "django/db/models/query.py::QuerySet._chain",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2021-08-09"
+  },
+  {
+    "id": "django@9608678704::GeneratedField.__init__",
+    "repo": "django",
+    "commit": "9608678704a5f89b4c946eea93e90a0f6eb8e3ef",
+    "parent": "334677ad576400a3b74da3f89ac70314235c1876",
+    "symbol": "django/db/models/fields/generated.py::GeneratedField.__init__",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "db_persist"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2025-03-25"
+  },
+  {
+    "id": "django@97e9a84d27::GeoIP2._check_query",
+    "repo": "django",
+    "commit": "97e9a84d2746f76a635455c13bd512ea408755ac",
+    "parent": "7d5058d870bd3f2973122f39c235a10a3fda4162",
+    "symbol": "django/contrib/gis/geoip2/base.py::GeoIP2._check_query",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "country"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2021-12-02"
+  },
+  {
+    "id": "django@9a27c76021::GenericPrefetch.__init__",
+    "repo": "django",
+    "commit": "9a27c76021f934201cccf12215514a3091325ec8",
+    "parent": "32d163e680817e202e0def3fbb70d2450b02cffd",
+    "symbol": "django/contrib/contenttypes/prefetch.py::GenericPrefetch.__init__",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "querysets"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/contenttypes_tests/test_models.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2024-05-04"
+  },
+  {
+    "id": "django@9aabe7eae3::parse_header_parameters",
+    "repo": "django",
+    "commit": "9aabe7eae3eeb3e64c5a0f3687118cd806158550",
+    "parent": "0d92428d77fafff373e05dd5a6cdb62bd1dfbda0",
+    "symbol": "django/utils/http.py::parse_header_parameters",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "max_length"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_http.py"
+    ],
+    "commit_file_count": 3,
+    "committed_at": "2025-03-27"
+  },
+  {
+    "id": "django@9ab1991689::EmailMessage.message",
+    "repo": "django",
+    "commit": "9ab1991689000821a4d86b8617e1c1455a327482",
+    "parent": "20c62199ffe0de1410083657a6d5bac799592210",
+    "symbol": "django/core/mail/message.py::EmailMessage.message",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "policy"
+    ],
+    "source_files": [
+      "django/core/mail/__init__.py",
+      "django/core/mail/backends/smtp.py"
+    ],
+    "test_files": [
+      "tests/auth_tests/test_forms.py",
+      "tests/mail/tests.py"
+    ],
+    "commit_file_count": 9,
+    "committed_at": "2025-07-25"
+  },
+  {
+    "id": "django@a320aab512::Exists.__init__",
+    "repo": "django",
+    "commit": "a320aab5129f4019b3c1d28b7a3b509582bc56f9",
+    "parent": "c01e76c95caa1bd2995f1b6c186cbe8726c92ef9",
+    "symbol": "django/db/models/expressions.py::Exists.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "negated"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2022-10-31"
+  },
+  {
+    "id": "django@a39c28706a::querystring",
+    "repo": "django",
+    "commit": "a39c28706aa7a8c3effd0980ae6d59ae67299d85",
+    "parent": "9608678704a5f89b4c946eea93e90a0f6eb8e3ef",
+    "symbol": "django/template/defaulttags.py::querystring",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "query_dict"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/template_tests/syntax_tests/test_querystring.py"
+    ],
+    "commit_file_count": 5,
+    "committed_at": "2025-03-25"
+  },
+  {
+    "id": "django@a40b0103bc::Model._save_parents",
+    "repo": "django",
+    "commit": "a40b0103bccb8216c944188d329d8ea5eceb7e92",
+    "parent": "601ffb0da3a8c3900164b356c585650c00d238b0",
+    "symbol": "django/db/models/base.py::Model._save_parents",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "force_insert"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6,
+    "committed_at": "2023-06-29"
+  },
+  {
+    "id": "django@a9c79b4629::display_for_field",
+    "repo": "django",
+    "commit": "a9c79b462923ce366101db1b5a3fff3d1dad870c",
+    "parent": "6a1a9c0eade674780060cf8af5f5b3375156cdd5",
+    "symbol": "django/contrib/admin/utils.py::display_for_field",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "avoid_link"
+    ],
+    "source_files": [
+      "django/contrib/admin/templatetags/admin_list.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2025-01-08"
+  },
+  {
+    "id": "django@aa4acc164d::MigrationAutodetector._get_dependencies_for_foreign_key",
+    "repo": "django",
+    "commit": "aa4acc164d1247c0de515c959f7b09648b57dc42",
+    "parent": "a67849499a7aac6a18f8ce0e15f17914765a319c",
+    "symbol": "django/db/migrations/autodetector.py::MigrationAutodetector._get_dependencies_for_foreign_key",
+    "change_kind": "other",
+    "changed_parameters": [
+      "self"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-04-16"
+  },
+  {
+    "id": "django@ad18a0102c::BaseConstraint.__init__",
+    "repo": "django",
+    "commit": "ad18a0102cc2968914232814c6554763f15abbe3",
+    "parent": "31cd2852cb86197d5f3f5a637184a078ab0615f8",
+    "symbol": "django/db/models/constraints.py::BaseConstraint.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "args"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/constraints/tests.py"
+    ],
+    "commit_file_count": 5,
+    "committed_at": "2023-02-22"
+  },
+  {
+    "id": "django@b181cae2e3::Query._gen_cols",
+    "repo": "django",
+    "commit": "b181cae2e3697b2e53b5b67ac67e59f3b05a6f0d",
+    "parent": "1771998c0978b8fa06f0df3bfce8630b228c4daa",
+    "symbol": "django/db/models/sql/query.py::Query._gen_cols",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "resolve_refs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2022-11-14"
+  },
+  {
+    "id": "django@b3c5830769::is_valid_ipv6_address",
+    "repo": "django",
+    "commit": "b3c5830769d8a5dbf2f974da7116fe503c9454d9",
+    "parent": "1602666b79ab438930b74b576f2fa1b6bcf0377b",
+    "symbol": "django/utils/ipv6.py::is_valid_ipv6_address",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "ip_str"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_ipv6.py"
+    ],
+    "commit_file_count": 7,
+    "committed_at": "2025-01-15"
+  },
+  {
+    "id": "django@b55699968f::validate_file_name",
+    "repo": "django",
+    "commit": "b55699968fc9ee985384c64e37f6cc74a0a23683",
+    "parent": "b81c7562fc33f50166d5120138d6398dc42b13c3",
+    "symbol": "django/core/files/utils.py::validate_file_name",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "allow_relative_path"
+    ],
+    "source_files": [
+      "django/db/models/fields/files.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2021-05-13"
+  },
+  {
+    "id": "django@b5a6c93a18::BaseConstraint.__init__",
+    "repo": "django",
+    "commit": "b5a6c93a180e2c213e42f30a30bf63548a248957",
+    "parent": "810edfd7428e12bd640573112c6c1a024ac33da2",
+    "symbol": "django/db/models/constraints.py::BaseConstraint.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "args"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/constraints/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2025-01-15"
+  },
+  {
+    "id": "django@b731e88415::DatabaseSchemaEditor._create_missing_fk_index",
+    "repo": "django",
+    "commit": "b731e8841558ee4caaba766c83f34ea9c7004f8b",
+    "parent": "1b08e9bf7d88dbad9324f462e5fc7ec582aef3cc",
+    "symbol": "django/db/backends/mysql/schema.py::DatabaseSchemaEditor._create_missing_fk_index",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "expressions"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-09-13"
+  },
+  {
+    "id": "django@b8738aea14::Signer.__init__",
+    "repo": "django",
+    "commit": "b8738aea14446b267a47087b52b38a98b440a6aa",
+    "parent": "3fec3bf90bef36b26efe5e47a92bf5a8041a207b",
+    "symbol": "django/core/signing.py::Signer.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "args"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/signing/tests.py"
+    ],
+    "commit_file_count": 6,
+    "committed_at": "2022-12-09"
+  },
+  {
+    "id": "django@be6e468130::get_random_string",
+    "repo": "django",
+    "commit": "be6e46813010f47e3dec22dd8c360df2dcf53369",
+    "parent": "d992f4e3c29a81c956d3d616f0bc19701431b26e",
+    "symbol": "django/utils/crypto.py::get_random_string",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "length"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/utils_tests/test_crypto.py"
+    ],
+    "commit_file_count": 3,
+    "committed_at": "2021-01-14"
+  },
+  {
+    "id": "django@be80aa55ec::was_modified_since",
+    "repo": "django",
+    "commit": "be80aa55ec120b3b6645b3efb77316704d7ad948",
+    "parent": "a88fab1bca33c037bd1a12459c215d7bc1247735",
+    "symbol": "django/views/static.py::was_modified_since",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "size"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-03-15"
+  },
+  {
+    "id": "django@c09bceef68::LogEntryManager.log_actions",
+    "repo": "django",
+    "commit": "c09bceef68e5abb79accedd12dade16aa6577a09",
+    "parent": "1759c1dbd1e3cd4c9fcd345269e0d25796468f7f",
+    "symbol": "django/contrib/admin/models.py::LogEntryManager.log_actions",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "single_object"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/admin_changelist/tests.py"
+    ],
+    "commit_file_count": 8,
+    "committed_at": "2025-03-04"
+  },
+  {
+    "id": "django@c0fc1b5302::FileField.bound_data",
+    "repo": "django",
+    "commit": "c0fc1b5302f5d9d82e2255fb5758321fbac34949",
+    "parent": "64e5ef1f17cd18cb8ca24f4e7107dfd28c18b378",
+    "symbol": "django/forms/fields.py::FileField.bound_data",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "data"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2022-10-25"
+  },
+  {
+    "id": "django@c627226d05::QuerySet.abulk_create",
+    "repo": "django",
+    "commit": "c627226d05dd52aef59447dcfb29cec2c2b11b8a",
+    "parent": "e6f36ea0a97af5c7d18bd155a6c4a937cf658ce6",
+    "symbol": "django/db/models/query.py::QuerySet.abulk_create",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "update_conflicts",
+      "update_fields",
+      "unique_fields"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/async_queryset/tests.py"
+    ],
+    "commit_file_count": 2,
+    "committed_at": "2022-06-23"
+  },
+  {
+    "id": "django@ca2be7724e::clean_ipv6_address",
+    "repo": "django",
+    "commit": "ca2be7724e1244a4cb723de40a070f873c6e94bf",
+    "parent": "9a2dd9789a2edeed7344a8ec0d17142ad27443a1",
+    "symbol": "django/utils/ipv6.py::clean_ipv6_address",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "max_length"
+    ],
+    "source_files": [
+      "django/db/models/fields/__init__.py",
+      "django/forms/fields.py"
+    ],
+    "test_files": [
+      "tests/utils_tests/test_ipv6.py"
+    ],
+    "commit_file_count": 9,
+    "committed_at": "2025-01-14"
+  },
+  {
+    "id": "django@cac94dd8aa::GenericForeignKey.get_content_type",
+    "repo": "django",
+    "commit": "cac94dd8aa2fb49cd2e06b5b37cf039257284bb0",
+    "parent": "190874eadd0c6dcaae0c244cc47e838cf0faf24d",
+    "symbol": "django/contrib/contenttypes/fields.py::GenericForeignKey.get_content_type",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "model"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 15,
+    "committed_at": "2023-09-18"
+  },
+  {
+    "id": "django@cd1afd553f::RegisterLookupMixin._get_lookup",
+    "repo": "django",
+    "commit": "cd1afd553f9c175ebccfc0f50e72b43b9604bd97",
+    "parent": "fdf0f625216cc5a70d28a3ac9a41f41935f1827c",
+    "symbol": "django/db/models/query_utils.py::RegisterLookupMixin._get_lookup",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "cls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2022-09-02"
+  },
+  {
+    "id": "django@d15454a6e8::SetUnusablePasswordMixin.validate_passwords",
+    "repo": "django",
+    "commit": "d15454a6e84a595ffc8dc1b926282f484f782a8f",
+    "parent": "248d8457cbec631ef93d76137bc621106347adda",
+    "symbol": "django/contrib/auth/forms.py::SetUnusablePasswordMixin.validate_passwords",
+    "change_kind": "other",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2025-02-01"
+  },
+  {
+    "id": "django@d25710a625::EmailValidator.__init__",
+    "repo": "django",
+    "commit": "d25710a625fbb6dbb047c159417f796102fd721a",
+    "parent": "1cb495074f6d983096a015736fed16176588cd33",
+    "symbol": "django/core/validators.py::EmailValidator.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "whitelist"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/validators/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2021-09-20"
+  },
+  {
+    "id": "django@d3c4696596::ManifestFilesMixin.__init__",
+    "repo": "django",
+    "commit": "d3c4696596822281c0a5d4b9e3ee27732a4ce092",
+    "parent": "4fe3774c729f3fd5105b3001fe69a70bdca95ac3",
+    "symbol": "django/contrib/staticfiles/storage.py::ManifestFilesMixin.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "manifest_storage"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5,
+    "committed_at": "2021-08-05"
+  },
+  {
+    "id": "django@d734f1651c::OrderableAggMixin.__init__",
+    "repo": "django",
+    "commit": "d734f1651ccc0a74325f7b55f7eecc68edef6453",
+    "parent": "46b3e7dd8cc1792a40bb8b4d0c267f3d1ceef68c",
+    "symbol": "django/contrib/postgres/aggregates/mixins.py::OrderableAggMixin.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "order_by"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7,
+    "committed_at": "2025-01-06"
+  },
+  {
+    "id": "django@d7eb500338::Query.deferred_to_data",
+    "repo": "django",
+    "commit": "d7eb500338e11999962e618f0701e62af511d8e9",
+    "parent": "0a3c6fe6b2c43b0bb90cb9df3840dcb70edc22a1",
+    "symbol": "django/db/models/sql/query.py::Query.deferred_to_data",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "callback"
+    ],
+    "source_files": [
+      "django/db/models/sql/compiler.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2,
+    "committed_at": "2022-03-31"
+  },
+  {
+    "id": "django@daf7d482db::CheckConstraint.__init__",
+    "repo": "django",
+    "commit": "daf7d482dbaaa2604241a994c49f442fa15142c1",
+    "parent": "f82c67aa217c8dd4320ef697b04a6da1681aa799",
+    "symbol": "django/db/models/constraints.py::CheckConstraint.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "condition"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/admin_changelist/tests.py",
+      "tests/check_framework/test_model_checks.py",
+      "tests/constraints/tests.py",
+      "tests/invalid_models_tests/test_models.py",
+      "tests/migrations/test_operations.py",
+      "tests/migrations/test_state.py",
+      "tests/postgres_tests/test_operations.py",
+      "tests/schema/tests.py"
+    ],
+    "commit_file_count": 21,
+    "committed_at": "2024-03-01"
+  },
+  {
+    "id": "django@dfc720c521::Paginator.__init__",
+    "repo": "django",
+    "commit": "dfc720c521062cdefd64bc48a11838b0fa583439",
+    "parent": "041b0a359a0a80e147b47c6ae5f11bca9dd3b28a",
+    "symbol": "django/core/paginator.py::Paginator.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "error_messages"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/pagination/tests.py"
+    ],
+    "commit_file_count": 4,
+    "committed_at": "2023-04-12"
+  },
+  {
+    "id": "django@e23484484c::KeyTransform.preprocess_lhs",
+    "repo": "django",
+    "commit": "e23484484c98fa55f501f6dda6423c6616898f27",
+    "parent": "406eb43112055b16a1ec5018fc454969dc192773",
+    "symbol": "django/db/models/fields/json.py::KeyTransform.preprocess_lhs",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "lhs_only"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2020-12-07"
+  },
+  {
+    "id": "django@e286ce17ff::Command.write_migration_files",
+    "repo": "django",
+    "commit": "e286ce17ff8bf72a248ce3177bbd5163c50a6ded",
+    "parent": "3893fcdd94498da8f88ae7313b6939ab09bff509",
+    "symbol": "django/core/management/commands/makemigrations.py::Command.write_migration_files",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "update_previous_migration_paths"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2022-06-17"
+  },
+  {
+    "id": "django@e4d012ca05::WindowFrame.__init__",
+    "repo": "django",
+    "commit": "e4d012ca05b23445f422b0400d6dd7aa85743885",
+    "parent": "34b411762b50883d768d7b67e0a158ec39da8b09",
+    "symbol": "django/db/models/expressions.py::WindowFrame.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "exclusion"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9,
+    "committed_at": "2023-10-30"
+  },
+  {
+    "id": "django@e626716c28::SetPasswordMixin.validate_passwords",
+    "repo": "django",
+    "commit": "e626716c28b6286f8cf0f8174077f3d2244f3eb3",
+    "parent": "8a757244f9e50c4d076e559e4b74b9d83ab089b6",
+    "symbol": "django/contrib/auth/forms.py::SetPasswordMixin.validate_passwords",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "usable_password_field_name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 12,
+    "committed_at": "2024-02-20"
+  },
+  {
+    "id": "django@eba9a9b7f7::BoundField.label_tag",
+    "repo": "django",
+    "commit": "eba9a9b7f72995206af867600d6685b5405f172a",
+    "parent": "81739a45b5ae8f534910aaabc7e9b457eaa34163",
+    "symbol": "django/forms/boundfield.py::BoundField.label_tag",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "tag"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/forms_tests/tests/test_forms.py"
+    ],
+    "commit_file_count": 11,
+    "committed_at": "2021-12-09"
+  },
+  {
+    "id": "django@ed2018037d::Model._prepare_related_fields_for_save",
+    "repo": "django",
+    "commit": "ed2018037d152eef7e68f339b4562f8aadc2b7a0",
+    "parent": "9ac92b1efc5ff90e7cce5c47fbd05887d403e4cd",
+    "symbol": "django/db/models/base.py::Model._prepare_related_fields_for_save",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "fields"
+    ],
+    "source_files": [
+      "django/db/models/query.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3,
+    "committed_at": "2021-11-29"
+  },
+  {
+    "id": "django@edd74c3417::ErrorList.__init__",
+    "repo": "django",
+    "commit": "edd74c3417fa3a0b29295012ff31dbe44843303c",
+    "parent": "28f81a10190de9aa00925156c0005f6c787afeb3",
+    "symbol": "django/forms/utils.py::ErrorList.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "field_id"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10,
+    "committed_at": "2024-12-05"
+  },
+  {
+    "id": "django@f1440a752e::HashedFilesMixin.url_converter",
+    "repo": "django",
+    "commit": "f1440a752ec034277ccdad914995c3f164308e41",
+    "parent": "14c66825e0088b7e08fe5d108fa293bd31722c39",
+    "symbol": "django/contrib/staticfiles/storage.py::HashedFilesMixin.url_converter",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "comment_blocks"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4,
+    "committed_at": "2026-06-11"
+  },
+  {
+    "id": "django@f30b527f17::reverse",
+    "repo": "django",
+    "commit": "f30b527f170fd4ec9bf10b5012e1ef79776a8f8e",
+    "parent": "2ce4545de1791d6ed2405cb0657401e179bc5357",
+    "symbol": "django/urls/base.py::reverse",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "query",
+      "fragment"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/urlpatterns_reverse/tests.py"
+    ],
+    "commit_file_count": 5,
+    "committed_at": "2024-12-11"
+  },
+  {
+    "id": "django@fac26684fd::LimitedStream.__init__",
+    "repo": "django",
+    "commit": "fac26684fd6228669a38104502a2f7b76340ebd2",
+    "parent": "30a01441347d5a2146af2944b29778fa0834d4be",
+    "symbol": "django/core/handlers/wsgi.py::LimitedStream.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "buf_size"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2022-01-18"
+  },
+  {
+    "id": "django@fb35e0a2fe::Node.add",
+    "repo": "django",
+    "commit": "fb35e0a2feb36e60b93a12dd43eb9eed2015adda",
+    "parent": "fee87345967b3d917b618533585076cbfa43451b",
+    "symbol": "django/utils/tree.py::Node.add",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "squash"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1,
+    "committed_at": "2021-07-20"
+  },
+  {
+    "id": "django@fcf95e5927::FormatStylePlaceholderCursor.__init__",
+    "repo": "django",
+    "commit": "fcf95e592774a6ededec35481a2061474d467a2b",
+    "parent": "b287af5dc954628d4b336aefc5027b2edceee64b",
+    "symbol": "django/db/backends/oracle/base.py::FormatStylePlaceholderCursor.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "database"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8,
+    "committed_at": "2023-12-12"
+  }
+]
