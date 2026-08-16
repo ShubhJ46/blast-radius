@@ -14,21 +14,22 @@ mechanically.
 
 ## Status
 
-Stage 1 is complete and measured. Scored against **104 signature-changing
-commits mined from the full history of three real repositories**, with `grep`
+Stage 1 is complete and measured. Scored against **113 signature-changing
+commits mined from the full history of four real repositories**, with `grep`
 for the symbol name as the baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **67%** | 63% | **65%** |
-| `grep` | 15% | 100% | 26% |
+| **this tool** | **83%** | 64% | **72%** |
+| `grep` | 24% | 100% | 38% |
 
-`grep` finds everything and is wrong six times out of seven.
+`grep` finds everything and is wrong three times out of four.
 
-That corpus spans 2007 to 2026, and **the tool's accuracy depends heavily on how
-modern the code is** — 83% recall on commits from 2021 onward, 47% before. The
-blended number above is the honest headline; the split is the useful fact, and
-[results](#results) has both plus why the old code scores as it does.
+That corpus spans 2007 to 2026, and **the tool's recall depends heavily on how
+modern the code is** — 84% on commits from 2021 onward, 46% before. Precision
+does not vary that way (85% and 81%). The blended number above is the honest
+headline; the split is the useful fact, and [results](#results) has both plus
+why the old code scores as it does.
 
 | Component | State |
 | --- | --- |
@@ -62,24 +63,36 @@ caller writes `Widget(...)`. Fixing those took usable cases from 1 to 6.
 
 What remains is not a bug. click is a small library: its functions are called by
 *users*, so a signature change touches its own tests and nothing else internal.
-A recall number needs corpora with deep internal call graphs — applications and
-large frameworks, not focused libraries.
+A recall number needs corpora where the callers live in the repository.
 
-**That prediction held.** Three corpora — sphinx and scrapy to the root commit,
-mypy to a 6,000-commit window:
+Four corpora — sphinx and scrapy to the root commit, mypy and django to a
+6,000-commit window:
 
 | Corpus | Commits walked | Cases | Forcing | Usable for recall | On a private `_name` |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| [mypy](https://github.com/python/mypy) | 6,000 | 248 | 148 | **43 (29%)** | 27 |
-| [sphinx](https://github.com/sphinx-doc/sphinx) | 16,578 | 380 | 219 | 38 (17%) | 83 |
-| [scrapy](https://github.com/scrapy/scrapy) | 9,222 | 316 | 159 | 23 (14%) | 96 |
+| [mypy](https://github.com/python/mypy) | 6,000 | 300 | 165 | **49 (30%)** | 35 |
+| [sphinx](https://github.com/sphinx-doc/sphinx) | 16,578 | 383 | 219 | 38 (17%) | 84 |
+| [scrapy](https://github.com/scrapy/scrapy) | 9,222 | 303 | 156 | 23 (15%) | 96 |
+| [django](https://github.com/django/django) | 6,000 | 106 | 47 | 3 (6%) | 23 |
 
 mypy is a type checker — an application whose modules call each other
-constantly — and it yields the highest usable rate of the three. sphinx and
+constantly — and it yields the highest usable rate of the four. sphinx and
 scrapy are mined to the root commit, which is why their case counts are large
 relative to the window: the first pass took only the most recent 6,000 commits
 and left them resting on eight scored cases each. (Merge commits are excluded,
 so the walked counts are below each repository's raw total.)
+
+**django was added to test the rule above, and broke it.** The prediction was
+that a large framework would behave like mypy. It is the biggest repository of
+the four — 2,925 modules against mypy's 441 — and yields the *lowest* usable
+share of any corpus mined, click included. Size is not the predictor, and
+neither is application-versus-library. What predicts a usable case is whether
+the repository *contains* the callers, and django's callers are the projects
+that install it. It is shaped like click, several hundred times over.
+
+Adding it was still worth the clone, for a reason that had nothing to do with
+django: half of what it mined was fabricated by a bug in the miner, and finding
+that [moved every number on this page](#a-getter-and-a-setter-are-not-a-change).
 
 The last column explains most of the gap, and it is a property of file-level
 evaluation rather than of either tool. A private helper's callers live in its
@@ -89,15 +102,19 @@ cross-file blast radius, and cannot be scored at all:
 
 | | private forcing cases | of those, empty ground truth |
 | --- | ---: | ---: |
-| scrapy | 96 of 159 (60%) | 85 (89%) |
-| sphinx | 83 of 219 (38%) | 70 (84%) |
-| mypy | 27 of 148 (18%) | 18 (67%) |
+| scrapy | 96 of 156 (62%) | 85 (89%) |
+| django | 23 of 47 (49%) | 23 (**100%**) |
+| sphinx | 84 of 219 (38%) | 71 (85%) |
+| mypy | 35 of 165 (21%) | 22 (63%) |
 
 That is the mechanism behind the usable-case share, not a separate fact about
-it: scrapy spends 60% of its forcing cases on private helpers and almost none of
-those can be measured, while mypy spends 18% and keeps a third of even those.
-No amount of resolution accuracy moves this, which is worth knowing before
-reading a low usable share as a verdict on the tool.
+it: scrapy spends 62% of its forcing cases on private helpers and almost none of
+those can be measured, while mypy spends 21% and keeps a third of even those.
+django is the limiting case — every one of its private forcing changes has an
+empty cross-file ground truth, and a further third of its remaining empties are
+absorbed by its test suite, the highest of the four. No amount of resolution
+accuracy moves this, which is worth knowing before reading a low usable share as
+a verdict on the tool.
 
 Exercised against the Python 3.14 standard library — 719 modules, 19,892
 definitions, 4,293 module-level import bindings, zero parse failures — because
@@ -272,15 +289,93 @@ honest-looking limitation.
 
 ## Results
 
-104 cases, all with non-empty cross-file ground truth:
+113 cases, all with non-empty cross-file ground truth:
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
 | scrapy | 23 | 100% | 25% | 40% |
 | sphinx | 38 | 83% | 64% | 72% |
-| mypy | 43 | 57% | 81% | 67% |
-| **all** | **104** | **67%** | **63%** | **65%** |
-| `grep`, all | 104 | 15% | 100% | 26% |
+| mypy | 49 | 81% | 83% | 82% |
+| django | 3 | — | 0% | — |
+| **all** | **113** | **83%** | **64%** | **72%** |
+| `grep`, all | 113 | 24% | 100% | 38% |
+
+django predicted nothing at all on its three scored cases, so it has no
+precision to report and contributes only three misses. Two are worth naming
+because they are the tool's two known gaps, one each:
+`self.query.add_select_col(...)` is an unannotated receiver, and
+`self.alter_db_table(...)` is a `self.` call that dispatches across the class
+hierarchy into the subclass whose signature changed. Three cases is not a
+measurement, but it is a consistent one.
+
+### A getter and a setter are not a change
+
+Adding django as a fourth corpus was meant to test whether the accuracy claims
+generalise. It found a bug in the harness instead, and the bug was worth more
+than the corpus.
+
+`signature_changes` kept one signature per qualname. A property declares two:
+
+```python
+@property
+def query(self):            # QuerySet.query -- (self)
+    return self._query
+
+@query.setter
+def query(self, value):     # QuerySet.query -- (self, value)
+    self._query = value
+```
+
+Keyed by qualname alone, the setter overwrote the getter. The comparison then
+ran the *new* getter against the *old* setter and reported a gained required
+parameter — in a file where both signatures were byte-identical to the parent
+revision. `@overload` groups fail the same way.
+
+These phantoms are worse than noise, because they are cases with **no true blast
+radius at all**: nothing changed, so nothing had to move, and every file the
+tool correctly named as a caller scored as a false positive. They were
+concentrated in exactly the code that uses properties heavily:
+
+| | forcing cases | phantoms |
+| --- | ---: | ---: |
+| django | 47 | **51%** |
+| mypy | 165 | 16% |
+| scrapy | 156 | 3% |
+| sphinx | 219 | 1% |
+
+Eight had reached the scored set, six of them in mypy — the corpus carrying the
+headline. The fix drops a qualname that carries more than one signature rather
+than guessing which arm to diff: a missed real change is a smaller error than an
+invented one.
+
+It also cost cases in the other direction, which is the part worth keeping in
+mind. A commit carrying two signature changes is rejected as ambiguous, and
+phantoms counted toward that quota — so real cases were being thrown away beside
+the fake ones. mypy went from 248 mined cases to 300 on the same 6,000 commits.
+
+| | precision | recall | F1 | scored cases |
+| --- | ---: | ---: | ---: | ---: |
+| before | 67% | 63% | 65% | 109 |
+| after | **83%** | 64% | **72%** | 113 |
+
+Sixteen points of precision were being paid to measure eight fabricated cases,
+on symbols like `QuerySet.query` that a repository references everywhere. The
+baseline moved too — `grep` went from 15% to 24% precision — which is the
+signature of a corpus artifact rather than a change in the tool: nothing in
+`blastradius/` was touched.
+
+The era split is the clearest evidence that the old numbers were distorted
+rather than merely pessimistic:
+
+| | precision before | precision after |
+| --- | ---: | ---: |
+| commits before 2021 | 56% | **85%** |
+| commits from 2021 on | 77% | 81% |
+
+Precision does not depend on the age of the code and never did — the apparent
+27-point gap was phantoms clustering in older commits. What the era genuinely
+predicts is *recall*, and that survived the fix intact (46% against 84%). One
+real effect, not two.
 
 ### Thickening the denominator moved the numbers down
 
@@ -294,8 +389,8 @@ The cause is almost entirely the age of the code:
 
 | | cases | precision | recall |
 | --- | ---: | ---: | ---: |
-| commits from 2021 on | 43 | 75% | **83%** |
-| commits before 2021 | 61 | 56% | **47%** |
+| commits from 2021 on | 50 | 81% | **84%** |
+| commits before 2021 | 63 | 85% | **46%** |
 
 The split is not hand-computed. `Case.committed_at` records the committer date
 so the runner can filter by era without re-mining — the same reasoning as
@@ -311,14 +406,14 @@ measured rather than assumed:
 **The tool cannot parse Python 2 at all.** Checking out scrapy at a 2008 commit
 gives 200 indexed modules and **30 unparseable ones** — `print` statements that
 a Python 3 `ast` rejects. Those files are excluded from the index, so a caller
-inside one is invisible. Of the 49 missed files across the whole run, **8 are
+inside one is invisible. Of the 52 missed files across the whole run, **8 are
 source Python 3 cannot parse — every one of them before 2021, none after.**
-Excluding them lifts pre-2021 recall from 47% to 53%.
+Excluding them lifts pre-2021 recall from 46% to 51%.
 
 Those eight are no longer silent. A file the parser rejects that *mentions* the
 symbol is now reported as `unverified` — see [what it will not
 guess](#what-it-will-not-guess). That does not move the score, by design, but it
-converts 16% of the misses from a hole into a stated one.
+converts 15% of the misses from a hole into a stated one.
 
 **The rest is the unannotated receiver.** `self.middleware.download(request)` in
 2009 scrapy resolves to nothing because nothing declares what `self.middleware`
@@ -331,52 +426,67 @@ Neither is a reason to drop the old cases. They are in the corpus and in the
 headline, because a tool that only works on code written after 2021 should have
 to say so with a number rather than a caveat.
 
-**Six cases still account for most of the precision figure**, and they are all
-the same shape: a symbol called from a dozen files, where the signature change
-forced only one or two of those callers to move. They carry 35 of the run's 42
-false positives.
+**A single case accounts for most of the remaining precision gap.**
+`get_proper_types` renamed its parameter `it`; twelve files call it, and the
+commit edited one. It carries 11 of the run's 19 false positives on its own.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 104 cases | 67% | 63% | 65% |
-| the 6 heavily-called symbols | 12% | 71% | 21% |
-| the other 98 | **92%** | 63% | **75%** |
+| all 113 cases | 83% | 64% | 72% |
+| `get_proper_types` alone | 8% | 100% | 15% |
+| the other 112 | **92%** | 63% | **75%** |
 
-`IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
-parameter. Eleven files call it, and only the one or two that actually passed
-`can_borrow=...` had to change; the rest call it as `builder.accept(expr)` and
-were untouched. `--argument` cuts most of that — those six cases went from 61
-false positives to 35 — but the rest are callers that pass the parameter and
-still were not edited, because the commit only converted some of them.
-`get_proper_types` is the same story with a renamed parameter.
+Every caller writes `get_proper_types(result.arg_types)` — passing the renamed
+parameter *positionally*, where the rename cannot reach it. This was previously
+described as one of six such symbols; four of the other five were
+[phantoms](#a-getter-and-a-setter-are-not-a-change), including `IRBuilder.accept`,
+which was quoted here as the clearest example and was in fact an `@overload`
+group that never changed signature at all.
 
-The six are left in the corpus. Dropping the cases that make your own numbers
+The case is left in the corpus. Dropping the cases that make your own numbers
 look bad is how an evaluation stops meaning anything, so the 92% figure is
-quoted beside the 67% rather than instead of it.
+quoted beside the 83% rather than instead of it.
 
 ### Every false positive in the run, audited
 
-Rather than keep asserting that precision is a lower bound, each of the 44
-false-positive files was checked against the tree the tool was given, asking one
-question: does this file contain a call site that actually passes the changed
-parameter?
+Rather than keep asserting that precision is a lower bound, all 19
+false-positive files were checked against the tree the tool was given, asking
+one question: does this file contain a call site the edit actually breaks?
 
 | | files | |
 | --- | ---: | --- |
-| passes it **positionally** | 25 (57%) | a real affected call site |
-| passes it **by keyword** | 14 (32%) | a real affected call site |
-| no call supplies it | 5 (11%) | worth reading individually |
+| a **rename**, passed positionally | 14 (74%) | a real call site the rename cannot reach |
+| a real forced call site | 3 (16%) | correct, and scored wrong — see below |
+| a **removal** of a parameter never passed | 1 (5%) | a real call site, unaffected |
+| an aliased import | 1 (5%) | `from … import init as init_locale` |
 
-(Counts from the run that prompted the audit, when there were 44. Two of the
-five are now fixed, leaving 42.)
+**Every one of the 19 names a file that genuinely references the symbol.** None
+is a resolution error — the tool did not invent a caller anywhere in the run.
+What it cannot see is whether a *particular* edit reaches a *particular* call.
 
-**39 of 44 are correct.** The tool named a file containing a call that the edit
-demonstrably breaks; the commit converted only some of them. No amount of
-better resolution moves those, because there is nothing wrong with them — this
-is the lower bound, measured rather than claimed.
+The dominant category is now sharp enough to name. Fourteen of nineteen are
+renamed parameters whose callers pass positionally: `get_proper_types(x)`,
+`builder.gen_import("builtins", 1)`, `read_literal(data, marker)`,
+`wrap_displaymath(node.astext(), label, …)`. A rename breaks only the callers
+that *write the name*, so every one of these is safe. That is visible in the
+per-kind scores — renames are the worst category by a wide margin:
 
-The remaining five split again. Three are `inline_all_toctrees`, called across
-several lines in three sphinx builders:
+| kind | cases | precision | recall |
+| --- | ---: | ---: | ---: |
+| `added_required` | 54 | 94% | 67% |
+| `removed` | 25 | 88% | 47% |
+| `renamed` | 29 | **65%** | 65% |
+| `reordered` | 5 | 100% | 100% |
+
+Narrowing renames to keyword callers is the obvious fix and it is *already
+documented as tried and reverted* — see [a rule that sounded right and was
+not](#a-rule-that-sounded-right-and-was-not). The reason it failed has nothing
+to do with the phantoms: `classify` cannot distinguish a pure rename from a
+parameter *replacement*, and replacements do break positional callers. The
+numbers on this page moved; that argument did not.
+
+Three of the nineteen are correct predictions scored as wrong. They are
+`inline_all_toctrees`, called across several lines in three sphinx builders:
 
 ```python
 largetree = inline_all_toctrees(self, self.docnames, indexfile, tree,
@@ -386,21 +496,23 @@ largetree = inline_all_toctrees(self, self.docnames, indexfile, tree,
 The added argument goes on a *continuation* line, which never mentions the
 symbol — so the miner's ground truth does not include the file, and a correct
 prediction scores as wrong. That is the trade-off `Git.paths_mentioning`
-documents in as many words, now priced: 3 of 44.
+documents in as many words, now priced: 3 of 19.
 
-The last two are the only genuine over-predictions in the whole run, both on
-signatures `classify` labels a reorder, and both now fixed — see below.
+The last is `from sphinx.locale import _, init as init_locale` — a file that
+imports the changed symbol under another name. The import is a real dependency;
+whether the aliased call had to change is not something a file-level score can
+say.
 
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
 "what must change if I make *this* edit".** For a removed or renamed parameter
-those differ, and an agent handed eleven files to read when two need editing is
+those differ, and an agent handed twelve files to read when one needs editing is
 paying a real cost. That gap is what `--argument` closes — see
 [below](#which-callers-a-change-actually-breaks) — and it is the first thing the
 evaluation pointed at that was a *feature* rather than a bug.
 
-Initialisers are the best-scoring category — 11 cases at **80% precision and
-100% recall**, no misses.
+Initialisers remain the best-scoring category — 34 cases at **97% precision and
+74% recall**.
 
 ### What the fixes were worth
 
@@ -488,7 +600,8 @@ truth mined for them would be assembled from unrelated mentions of the class.
 `__init__` is the one dunder kept, because construction does write the name.
 
 Initialisers went from the worst-scoring category to the best: **11 cases, 80%
-precision, 100% recall, zero misses.**
+precision, 100% recall, zero misses** — measured when the corpus held 104 cases.
+They are still the best category on the current 113: 34 cases, 97% and 74%.
 
 The overall effect is smaller than that suggests, and worth stating exactly.
 Removing annotation matches took 5 files out of the missed column and 2 out of
@@ -552,7 +665,10 @@ not comparable with the current headline — the direction is the point:
 
 On 53 of 59 cases it raises recall seven points *and* precision one. On the six
 heavily-called symbols it finds many more genuine callers than the commit
-touched, and the headline precision falls seventeen points as a result. Recall
+touched, and the headline precision falls seventeen points as a result. (Four of
+those six were later found to be
+[phantoms](#a-getter-and-a-setter-are-not-a-change); the trade-off this table
+shows was real, but its size was inflated by them.) Recall
 is the more trustworthy half here — ground truth is files that certainly had to
 change, a true subset of the dependencies — and it improved everywhere.
 
@@ -630,6 +746,13 @@ rename, and in real commits that is usually a parameter being *replaced*:
 crawler". Positional callers must change for those. The classifier cannot tell a
 pure rename from a replacement, so the broader rule is the correct one, and the
 failed attempt is written into `affected_files` so it does not get "fixed" back.
+
+The corpus has since grown to 29 renamed cases and renames remain the
+worst-scoring kind — 65% precision, carrying 14 of the run's 19 false
+positives. That is a standing invitation to try this rule again, which is
+exactly why the reason it failed is recorded here rather than the fact that it
+did. Telling a rename from a replacement is the prerequisite, and nothing in
+this project can do that yet.
 
 Scored by change kind, which shows where the narrowing does and does not apply:
 
