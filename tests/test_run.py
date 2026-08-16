@@ -453,12 +453,12 @@ class TestAffectedFiles:
         """There is no call site that already passes it, so none can be spared."""
         assert affected_files(self._Impact(), "added_required", ("fresh",)) is None
 
-    def test_a_reorder_narrows_by_position_only(self):
-        """Keyword arguments are indifferent to order, and a call that never
-        reaches the moved position cannot break."""
+    def test_a_reorder_narrows_like_a_removal(self):
+        """The narrower positional-only rule is semantically right and lost
+        three true positives for two false ones -- see `affected_files`."""
         impact = self._Impact()
         affected_files(impact, "reordered", ("moved",))
-        assert impact.calls == [("moved", True, "positional")]
+        assert impact.calls == [("moved", True, "supplies")]
 
     def test_a_reorder_with_no_named_parameter_affects_every_caller(self):
         assert affected_files(self._Impact(), "reordered", ()) is None

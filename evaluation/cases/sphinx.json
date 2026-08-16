@@ -964,7 +964,10 @@
     "parent": "08f8e05519bcf93cda6c4f1ea7316f7ad74cfb5e",
     "symbol": "sphinx/builders/html/__init__.py::StandaloneHTMLBuilder.handle_page",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "outfilename",
+      "event_arg"
+    ],
     "source_files": [
       "sphinx/builders/_epub_base.py",
       "sphinx/builders/singlehtml.py"
@@ -1689,7 +1692,9 @@
     "parent": "5667050dd26d2429c3a00ee35603e1d0fa1e2484",
     "symbol": "sphinx/domains/std/__init__.py::token_xrefs",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "production_group"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1,
@@ -2520,7 +2525,11 @@
     "parent": "9bf0f491f9667f524d84e9e7427d1d154283f768",
     "symbol": "sphinx/ext/autodoc/__init__.py::ObjectMember.__init__",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "docstring",
+      "class_",
+      "skipped"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,
@@ -2641,7 +2650,10 @@
     "parent": "8e45229feed31786f90057dd97ff25f793841855",
     "symbol": "sphinx/ext/autosummary/generate.py::members_of",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "conf",
+      "obj"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,
@@ -3038,7 +3050,10 @@
     "parent": "27667cc0b7d66921bb686b1fa3ba49bda5cd515f",
     "symbol": "sphinx/domains/cpp.py::ModifierDefExpr.__init__",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "modifiers",
+      "typename"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1,
@@ -5025,7 +5040,11 @@
     "parent": "fc30eea875a0a616db3572ff6988826390956986",
     "symbol": "sphinx/builders/__init__.py::Builder.status_iterator",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "length",
+      "summary",
+      "colorfunc"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,
@@ -5291,7 +5310,10 @@
     "parent": "383475a94f7667286b8d1fa5c396bb5189aa7948",
     "symbol": "sphinx/roles.py::normalize_func_parens",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "target",
+      "title"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1,

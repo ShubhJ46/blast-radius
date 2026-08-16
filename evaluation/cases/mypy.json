@@ -401,7 +401,9 @@
     "parent": "e6b91bdc5c253cefba940b0864a8257d833f0d8b",
     "symbol": "mypy/lookup.py::lookup_fully_qualified",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "raise_on_missing"
+    ],
     "source_files": [
       "mypy/fixup.py"
     ],
@@ -3657,7 +3659,9 @@
     "parent": "61b36646b8f58fb4eda5ff1edc6ff38a6d230b59",
     "symbol": "mypy/constraints.py::any_constraints",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "eager"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,

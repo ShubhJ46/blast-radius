@@ -322,13 +322,23 @@ def changed_parameters(before: Signature, after: Signature) -> tuple[str, ...]:
     if newly_required:
         return newly_required
 
+    # Whatever changed about the positional list. Three shapes reach here and
+    # all three are answered by "which callers count that far":
+    #   f(a, b) -> f(b, a)     both moved
+    #   f(a, b) -> f(a, *, b)  `b` left the positional list, so a caller
+    #                          passing it positionally breaks -- this is the
+    #                          real `gunzip` case, and naming only the
+    #                          parameters that swapped *places* missed it
+    #   f(a, *, b) -> f(a, b)  `b` gained a slot; nobody was passing it
+    #                          positionally before, so nobody breaks
     before_positions = before.positional_names()
     after_positions = after.positional_names()
+    before_index = {name: position for position, name in enumerate(before_positions)}
+    after_index = {name: position for position, name in enumerate(after_positions)}
     return tuple(
         name
-        for name in after_positions
-        if name in before_positions
-        and before_positions.index(name) != after_positions.index(name)
+        for name in dict.fromkeys([*before_positions, *after_positions])
+        if before_index.get(name) != after_index.get(name)
     )
 
 

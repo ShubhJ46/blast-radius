@@ -20,7 +20,7 @@ for the symbol name as the baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **66%** | 63% | **64%** |
+| **this tool** | **67%** | 63% | **65%** |
 | `grep` | 15% | 100% | 26% |
 
 `grep` finds everything and is wrong six times out of seven.
@@ -276,10 +276,10 @@ honest-looking limitation.
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| scrapy | 23 | 88% | 25% | 39% |
+| scrapy | 23 | 100% | 25% | 40% |
 | sphinx | 38 | 83% | 64% | 72% |
-| mypy | 43 | 56% | 81% | 66% |
-| **all** | **104** | **66%** | **63%** | **64%** |
+| mypy | 43 | 57% | 81% | 67% |
+| **all** | **104** | **67%** | **63%** | **65%** |
 | `grep`, all | 104 | 15% | 100% | 26% |
 
 ### Thickening the denominator moved the numbers down
@@ -333,14 +333,14 @@ to say so with a number rather than a caveat.
 
 **Six cases still account for most of the precision figure**, and they are all
 the same shape: a symbol called from a dozen files, where the signature change
-forced only one or two of those callers to move. They carry 35 of the run's 44
+forced only one or two of those callers to move. They carry 35 of the run's 42
 false positives.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 104 cases | 66% | 63% | 64% |
+| all 104 cases | 67% | 63% | 65% |
 | the 6 heavily-called symbols | 12% | 71% | 21% |
-| the other 98 | **90%** | 63% | **74%** |
+| the other 98 | **92%** | 63% | **75%** |
 
 `IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
 parameter. Eleven files call it, and only the one or two that actually passed
@@ -351,8 +351,8 @@ still were not edited, because the commit only converted some of them.
 `get_proper_types` is the same story with a renamed parameter.
 
 The six are left in the corpus. Dropping the cases that make your own numbers
-look bad is how an evaluation stops meaning anything, so the 90% figure is
-quoted beside the 66% rather than instead of it.
+look bad is how an evaluation stops meaning anything, so the 92% figure is
+quoted beside the 67% rather than instead of it.
 
 ### Every false positive in the run, audited
 
@@ -366,6 +366,9 @@ parameter?
 | passes it **positionally** | 25 (57%) | a real affected call site |
 | passes it **by keyword** | 14 (32%) | a real affected call site |
 | no call supplies it | 5 (11%) | worth reading individually |
+
+(Counts from the run that prompted the audit, when there were 44. Two of the
+five are now fixed, leaving 42.)
 
 **39 of 44 are correct.** The tool named a file containing a call that the edit
 demonstrably breaks; the commit converted only some of them. No amount of
@@ -385,9 +388,8 @@ symbol — so the miner's ground truth does not include the file, and a correct
 prediction scores as wrong. That is the trade-off `Git.paths_mentioning`
 documents in as many words, now priced: 3 of 44.
 
-The last two are the only genuine over-predictions in the run, both reorders
-where the caller never reaches the moved position, and both now fixed — see
-below.
+The last two are the only genuine over-predictions in the whole run, both on
+signatures `classify` labels a reorder, and both now fixed — see below.
 
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
@@ -639,13 +641,35 @@ Scored by change kind, which shows where the narrowing does and does not apply:
 | `reordered` | callers that reach the moved position **by counting arguments only** |
 | `added_required` | every caller; there is nothing to narrow by |
 
-The reorder rule is the one the audit changed. It used to fall back to every
-caller, because a reorder has no single parameter to blame — but the miner can
-name the parameters whose position actually moved, and from there two kinds of
-caller are provably safe: one that passes by keyword (order is irrelevant to it)
-and one that never counts far enough to reach the move. `gunzip(response.body)`
-against a reorder of later parameters is both, and it was a false positive in
-every run until now.
+The reorder rule is the one the audit changed, and it took two attempts.
+
+It used to fall back to every caller, because a reorder has no single parameter
+to blame. The miner can in fact name them — and from there two kinds of caller
+are provably safe: one that passes by keyword, since order is irrelevant to it,
+and one that never counts far enough along the argument list to reach the change.
+
+The first attempt named only parameters that *swapped places* with each other,
+and it did not fix the case that motivated it. `classify` calls three different
+edits a reorder, and the real `gunzip` commit was the second of them:
+
+```python
+-def gunzip(data: bytes, max_size: int = 0) -> bytes:
++def gunzip(data: bytes, *, max_size: int = 0) -> bytes:
+```
+
+`max_size` swapped with nothing; it left the positional list entirely. The rule
+now compares each parameter's positional index before and after, treating
+*absent* as its own state, which covers all three shapes:
+
+| edit | named | why |
+| --- | --- | --- |
+| `f(a, b)` → `f(b, a)` | `a`, `b` | both swapped |
+| `f(d, m=0)` → `f(d, *, m=0)` | `m` | left the list, so a positional caller breaks |
+| `f(a, *, b)` → `f(a, b)` | `b` | gained a slot; nobody was passing it positionally |
+
+The third looks strange to name and is right: the index is read from the tree
+the tool is given, where `b` is still keyword-only and therefore has no
+position, so the rule correctly predicts that nobody breaks.
 
 The narrowed kinds score worse than the un-narrowed ones, which looks damning
 until you notice all six outlier cases are `removed` or `renamed`. That is the

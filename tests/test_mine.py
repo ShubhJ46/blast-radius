@@ -549,7 +549,7 @@ class TestChangedParameters:
             ("def f(a, b): pass", "def f(a, c): pass", ("b",)),  # rename: the old name
             ("def f(a): pass", "def f(a, b): pass", ("b",)),
             ("def f(a, b=1): pass", "def f(a, b): pass", ("b",)),  # lost its default
-            ("def f(a, b): pass", "def f(b, a): pass", ("b", "a")),  # both moved
+            ("def f(a, b): pass", "def f(b, a): pass", ("a", "b")),  # both moved
         ],
     )
     def test_names_the_parameter_at_risk(self, before, after, expected):
@@ -588,3 +588,37 @@ class TestCommitDates:
         repo.commit({"lib.py": "def helper(a, b):\n    pass\n"})
         rows = {sha: parents for sha, parents, _ in repo.git.commits("HEAD", None)}
         assert rows[first] == []  # the root commit has no parent
+
+
+class TestReorderedParameters:
+    """`classify` calls three different things a reorder, and all three are
+    answered by asking which callers count that far along the argument list."""
+
+    @pytest.mark.parametrize(
+        ("before", "after", "expected", "why"),
+        [
+            ("def f(a, b): pass", "def f(b, a): pass", ("a", "b"), "both swapped places"),
+            (
+                "def f(d, m=0): pass",
+                "def f(d, *, m=0): pass",
+                ("m",),
+                "left the positional list, so a positional caller breaks",
+            ),
+            (
+                "def f(a, *, b): pass",
+                "def f(a, b): pass",
+                ("b",),
+                "gained a slot; nobody was passing it positionally before",
+            ),
+            ("def f(a, b, c): pass", "def f(a, c, b): pass", ("b", "c"), "later two swapped"),
+        ],
+    )
+    def test_every_shape_of_positional_change_is_named(self, before, after, expected, why):
+        assert classify(signature(before), signature(after)) == "reordered", why
+        assert sorted(changed_parameters(signature(before), signature(after))) == sorted(expected)
+
+    def test_a_parameter_that_did_not_move_is_not_named(self):
+        moved = changed_parameters(
+            signature("def f(a, b, c): pass"), signature("def f(a, c, b): pass")
+        )
+        assert "a" not in moved

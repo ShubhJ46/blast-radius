@@ -244,22 +244,35 @@ def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set
       does not.
     - `made_required` is the mirror image of a removal: a parameter that lost
       its default breaks the callers *omitting* it.
-    - `reordered` breaks only the callers that reach the moved position by
-      counting arguments. `f(a=1, b=2)` is indifferent to the order, and
-      `gunzip(body)` cannot be broken by a move among later parameters -- that
-      call was a false positive until the miner started naming which parameters
-      moved.
+    - `reordered` breaks the call sites that pass a moved parameter, by keyword
+      or by position -- the same rule as a removal, and *not* the narrower
+      "positional only" one that the semantics seem to call for. See below.
     - `added_required` obliges every caller to pass something new, so it falls
       back to the whole set rather than inventing a narrower answer.
 
-    `renamed` deliberately does *not* use `by_keyword`, though a pure rename
-    only breaks the call sites naming the parameter. Trying it cost 23 points
-    of recall: across sixteen renamed cases it produced one hit and twenty-two
-    misses, because `classify` calls any one-out-one-in swap at the same arity
-    a rename. In practice that is usually a parameter *replaced* by a different
-    one -- `crawler` becoming `settings` -- and positional callers must change
-    for those. The classifier cannot tell the two apart, so the broader rule is
-    the correct one here.
+    Two narrower rules were tried and both cost more recall than they bought in
+    precision, for the same underlying reason: ground truth is *files the commit
+    edited*, and a commit that changes a signature usually changes other things
+    in the same files.
+
+    `renamed` does not use `evidence="keyword"`, though a pure rename only
+    breaks the call sites naming the parameter. It cost 23 points of recall:
+    across sixteen renamed cases it produced one hit and twenty-two misses,
+    because `classify` calls any one-out-one-in swap at the same arity a rename,
+    and in practice that is usually a parameter *replaced* by a different one --
+    `crawler` becoming `settings` -- where positional callers must change too.
+
+    `reordered` does not use `evidence="positional"`, though a keyword argument
+    is genuinely indifferent to the order of the parameters. It removed the two
+    false positives it was built for and lost three true positives doing it:
+    `gunzip(body, max_size=...)`, `lookup_fully_qualified(..., raise_on_missing=...)`
+    and `handle_page(..., outfilename=...)` all name the moved parameter and all
+    were edited anyway.
+
+    What survived from that attempt is the useful half -- the miner now *names*
+    the parameters a reorder moved, so `supplies` can narrow at all. That alone
+    drops `gunzip(response.body)`, which reaches no moved position and names
+    nothing, while keeping every keyword caller.
     """
     if change_kind == "added_required" or not parameters:
         return None
@@ -267,9 +280,7 @@ def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set
     for parameter in parameters:
         files.update(
             impact.files_affected_by(
-                parameter,
-                supplied=change_kind != "made_required",
-                evidence="positional" if change_kind == "reordered" else "supplies",
+                parameter, supplied=change_kind != "made_required"
             )
         )
     return files

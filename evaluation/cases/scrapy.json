@@ -257,7 +257,9 @@
     "parent": "6969041c5f6891a0298d7e68ece762adee1bb222",
     "symbol": "scrapy/downloadermiddlewares/httpcompression.py::HttpCompressionMiddleware.__init__",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "crawler"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_downloadermiddleware_httpcompression.py"
@@ -272,7 +274,9 @@
     "parent": "0bf29a7b1b9b6a641c486780b7b0fa455577bf39",
     "symbol": "scrapy/utils/gz.py::gunzip",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "max_size"
+    ],
     "source_files": [
       "scrapy/downloadermiddlewares/httpcompression.py"
     ],
@@ -879,7 +883,10 @@
     "parent": "6039b66f42fe2c6e7708febb70939952cedaedd0",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.convert_image",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "response_body",
+      "size"
+    ],
     "source_files": [],
     "test_files": [
       "tests/test_pipeline_images.py"
@@ -2085,7 +2092,9 @@
     "parent": "31f35c9c002178de20a3e124be4aab98c0a0f892",
     "symbol": "scrapy/exporters.py::BaseItemExporter.__init__",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "dont_fail"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1,
@@ -2263,7 +2272,10 @@
     "parent": "32d842326aa64c8b063e4c5483b05d2229b3cc53",
     "symbol": "scrapy/trunk/scrapy/contrib/spiders/crawl.py::CrawlSpider.process_spider_output",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "results",
+      "response"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,
@@ -2491,7 +2503,9 @@
     "parent": "5c586d78f0e1c5b66358ed644bb6e528ad4b062b",
     "symbol": "scrapy/pipelines/images.py::ImagesPipeline.thumb_path",
     "change_kind": "reordered",
-    "changed_parameters": [],
+    "changed_parameters": [
+      "item"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2,
