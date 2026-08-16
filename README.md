@@ -43,6 +43,7 @@ why neither is cherry-picked.
 | `evaluation/schema.py` — the mined-case format | done |
 | `evaluation/mine.py` — git history → cases | done |
 | `evaluation/run.py` — scoring against the corpus | done |
+| `mcp_server.py` — the tool an agent actually calls | done |
 
 ## The corpus problem
 
@@ -131,6 +132,37 @@ not a tool an agent can rely on. A bare name is resolved to an exact match
 first and a trailing segment second (`render` finds `Widget.render`); if it is
 still ambiguous, every candidate is listed and the command fails rather than
 guessing.
+
+## Using it from an agent
+
+The CLI answers one question and exits, which throws the index away every time.
+The MCP server keeps it in memory, which is the only way the reuse above is
+reachable: repeated questions between edits cost a pass of hashing rather than a
+rebuild.
+
+```bash
+pip install -e ".[mcp]"
+claude mcp add blast-radius -- blast-mcp --root .
+```
+
+| Tool | Call it when |
+| --- | --- |
+| `blast_impact` | **Before** editing, renaming, or deleting a function or method signature |
+| `blast_refs` | Reading the call sites once you know which files are affected |
+| `blast_find` | A bare name came back ambiguous and you need the qualified form |
+| `blast_stats` | The answers look thin — shows unindexed files and unresolved receivers |
+
+`blast_impact` takes the same `argument` narrowing as the CLI, so an agent about
+to remove a parameter gets the call sites that pass it rather than every caller.
+
+Two things are deliberate. **Ambiguity is refused, not guessed** — a bare
+`render` matching three classes returns the candidates and an instruction to
+re-call with `path.py::qualname`, because picking one is how a tool answers
+confidently about the wrong function and an agent has no way to notice. And
+**every result carries its own caveats**: the string-reference blind spot
+always, plus the count of unresolved receivers and unparseable files when there
+are any. An agent that treats a blast radius as complete will rename a symbol
+and break the callers this tool never resolved; saying so costs a line of JSON.
 
 ## What resolves today
 

@@ -19,10 +19,15 @@ dev = [
     "pytest==8.4.2",
     "pytest-cov==7.0.0",
     "ruff==0.12.10",
+    "mcp>=2.0.0",
 ]
+# The MCP server is the one part that needs a dependency, so it is the one part
+# behind an extra. `import blastradius` still pulls in nothing.
+mcp = ["mcp>=2.0.0"]
 
 [project.scripts]
 blast = "blastradius.cli:main"
+blast-mcp = "blastradius.mcp_server:main"
 
 [tool.setuptools.packages.find]
 include = ["blastradius*"]
