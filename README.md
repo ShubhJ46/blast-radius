@@ -297,6 +297,13 @@ The cause is almost entirely the age of the code:
 | commits from 2021 on | 43 | 75% | **83%** |
 | commits before 2021 | 61 | 56% | **47%** |
 
+The split is not hand-computed. `Case.committed_at` records the committer date
+so the runner can filter by era without re-mining — the same reasoning as
+`commit_file_count`, which exists so the file cap can be re-tuned the same way.
+`--since 2021` scores one side; the report prints both whenever the corpus
+spans the boundary. Filtering at reporting time rather than while mining keeps
+the choice visible and reversible, exactly like `forcing_only`.
+
 Year by year the trend is monotone enough to be worth stating plainly: 12–30%
 recall on 2009–2012 commits, 75–92% on 2019 onward. Two mechanisms, both
 measured rather than assumed:
@@ -307,6 +314,11 @@ a Python 3 `ast` rejects. Those files are excluded from the index, so a caller
 inside one is invisible. Of the 49 missed files across the whole run, **8 are
 source Python 3 cannot parse — every one of them before 2021, none after.**
 Excluding them lifts pre-2021 recall from 47% to 53%.
+
+Those eight are no longer silent. A file the parser rejects that *mentions* the
+symbol is now reported as `unverified` — see [what it will not
+guess](#what-it-will-not-guess). That does not move the score, by design, but it
+converts 16% of the misses from a hole into a stated one.
 
 **The rest is the unannotated receiver.** `self.middleware.download(request)` in
 2009 scrapy resolves to nothing because nothing declares what `self.middleware`
@@ -678,6 +690,37 @@ The first — string references — cannot appear in this evaluation at all, bec
 ground truth is mined from files whose diff mentions the symbol, and
 `mock.patch("app.agent.hybrid_search")` does mention it. It stays a known blind
 spot rather than a measured one.
+
+## What it will not guess
+
+Everything above is resolved: a scope chain, an import binding, an MRO, or a
+type the author declared. There is exactly one thing the tool reports without
+proving, and it is kept in its own column for that reason.
+
+A file the parser cannot read contributes nothing to the index, so a caller
+inside it is invisible — and understating a blast radius is the failure this
+tool exists to prevent. When such a file *mentions* the symbol, it is listed as
+`unverified`:
+
+```
+blast radius  1 file
+  good.py
+
+unverified  1 file could not be parsed but mention this name
+  legacy.py
+```
+
+Three constraints keep that from becoming a text search wearing a hat. It is
+never folded into the blast radius, because a text match in a file nothing
+resolved is not evidence. Only files already known to have failed parsing are
+searched — never the repository at large, since text-matching what the parser
+*could* read would reintroduce precisely the noise this tool exists to remove.
+And an initialiser is searched by its class name, because a caller writes
+`Widget(...)` and never `__init__`.
+
+The MCP server returns it under its own key with its own caveat, so an agent
+can tell *"I could not see this"* from *"nothing depends on this"* — which are
+the same empty list otherwise.
 
 ## Scope, stated up front
 
