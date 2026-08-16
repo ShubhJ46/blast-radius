@@ -16,6 +16,76 @@
     "commit_file_count": 17
   },
   {
+    "id": "sphinx@00a75b2742::LaTeXTranslator.visit_index",
+    "repo": "sphinx",
+    "commit": "00a75b2742a608ebaedf4816d66e36c8f4f18205",
+    "parent": "0f45cf75b3940a5437b7755dd94c8128d2e56e9c",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.visit_index",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "extrare"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@022b229c36::Comment.__init__",
+    "repo": "sphinx",
+    "commit": "022b229c36a1f46a5eabc9a6cb6465c8e490e88f",
+    "parent": "19042aaf94a2b08deee436455fcc7b1a78d15516",
+    "symbol": "sphinx/websupport/comments/db.py::Comment.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "proposal"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@027872f569::guess_mimetype",
+    "repo": "sphinx",
+    "commit": "027872f569c261bfd23c31dab72019eec118df5a",
+    "parent": "5f071bb4748876f894cdecf28a2bc5c0efb80d60",
+    "symbol": "sphinx/util/images.py::guess_mimetype",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "default"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@02bccb67e1::merge_source_suffix",
+    "repo": "sphinx",
+    "commit": "02bccb67e17ab241d858b2c8f952acb8c8c73514",
+    "parent": "9bc2a93d361c3505d810f8ab1953fa06a90de191",
+    "symbol": "sphinx/registry.py::merge_source_suffix",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "config"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@03056a8a31::WebSupport.__init__",
+    "repo": "sphinx",
+    "commit": "03056a8a31062034edb88521cafb2fa66238076f",
+    "parent": "ac262bb012458987adcb25941c845578232bd2ca",
+    "symbol": "sphinx/websupport/api.py::WebSupport.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "comments"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "sphinx@033ebab15e::ModuleScanner.scan",
     "repo": "sphinx",
     "commit": "033ebab15ecd498f34cea2d18d528f843607556a",
@@ -24,6 +94,20 @@
     "change_kind": "added_optional",
     "changed_parameters": [
       "attr_docs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@03f4a07aa1::EpubBuilder.make_id",
+    "repo": "sphinx",
+    "commit": "03f4a07aa19faea077485633cfb2afb2c64a3f19",
+    "parent": "4a72778e06b31b06ff88cdc096f2ba87e3e650fc",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.make_id",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "id_cache"
     ],
     "source_files": [],
     "test_files": [],
@@ -72,6 +156,36 @@
     "commit_file_count": 6
   },
   {
+    "id": "sphinx@06f86b0639::EventManager.__init__",
+    "repo": "sphinx",
+    "commit": "06f86b06399937bb2018841b5dd5fcbf4e54d7a0",
+    "parent": "419f2e5fc904ec0819177305270ae1c5c8a38813",
+    "symbol": "sphinx/events.py::EventManager.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "sphinx@0792ad7498::StandaloneHTMLBuilder._get_local_toctree",
+    "repo": "sphinx",
+    "commit": "0792ad749899bb823a13e43b90d941d128530bd8",
+    "parent": "eff5270219cf1e9fe25b2e00f7158d6e37dc1daa",
+    "symbol": "sphinx/builders/html.py::StandaloneHTMLBuilder._get_local_toctree",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "maxdepth"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
     "id": "sphinx@082bf7d166::ASTArray.__init__",
     "repo": "sphinx",
     "commit": "082bf7d166e90fe8af2d8b4ae173e14858a616b7",
@@ -90,6 +204,20 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@0859b338d8::LaTeXTranslator.latex_image_length",
+    "repo": "sphinx",
+    "commit": "0859b338d8a2f5b1a2d5165b89842b6cda6a6166",
+    "parent": "45ddb6387c34cb49eb14b0e03c7a8bb5e01526c7",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.latex_image_length",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "figure"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@08c7ee36cf::_docstring_lines_for_props",
     "repo": "sphinx",
     "commit": "08c7ee36cf567fd8429d0d1b4066d2219f215097",
@@ -102,6 +230,50 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@092ebec8a7::SQLAlchemyStorage.__init__",
+    "repo": "sphinx",
+    "commit": "092ebec8a7eb938a2c720d57b258bd6e106bff9e",
+    "parent": "7dd3f40461b87e599d5fdc19fe7153edb428cc3e",
+    "symbol": "sphinx/websupport/storage/sqlalchemystorage.py::SQLAlchemyStorage.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "engine"
+    ],
+    "source_files": [
+      "sphinx/websupport/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@0a1b821c7f::RstGenerator.generate",
+    "repo": "sphinx",
+    "commit": "0a1b821c7fbf3e4c2b6127fdabcb963ac7fe742c",
+    "parent": "b80d87412698500bf8e201b994da985be566ba73",
+    "symbol": "sphinx/ext/autodoc.py::RstGenerator.generate",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "no_docstring"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@0b9ee8d451::check_anchor",
+    "repo": "sphinx",
+    "commit": "0b9ee8d451ded14718c45988eab5111a2f36dc12",
+    "parent": "4959a75c6fb3d48fdb85514b1c1f043690806d82",
+    "symbol": "sphinx/builders/linkcheck.py::check_anchor",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "f"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@0bf9011509::AutosummaryRenderer.render",
@@ -132,6 +304,34 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@0de9d7db7a::get_matching_docs",
+    "repo": "sphinx",
+    "commit": "0de9d7db7a0c3a2e933d59de62735a6b0bffb741",
+    "parent": "325750aa7635210013740d1102ea75450f20b190",
+    "symbol": "sphinx/util/__init__.py::get_matching_docs",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "prune"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@0e28d366bc::DefinitionParser._parse_nested_name",
+    "repo": "sphinx",
+    "commit": "0e28d366bccbbf9fd36918bae2908a3a4c74bf8c",
+    "parent": "e800fef3d1a42c9112af002ca86689db7b42c1bc",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_nested_name",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "memberPointer"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@0e8bff8e63::_convert_type_spec_obj",
     "repo": "sphinx",
     "commit": "0e8bff8e63073982f8c6d5b29ad387f33d4688a9",
@@ -144,6 +344,41 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@0ed845462f::PygmentsBridge.__init__",
+    "repo": "sphinx",
+    "commit": "0ed845462f79e5117df05f422ec7fd73bbb41cbd",
+    "parent": "a6fdc4602a831125eaf555f3a6449193e07568cc",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "trim_doctest_flags"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py",
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [
+      "tests/test_highlighting.py"
+    ],
+    "commit_file_count": 8
+  },
+  {
+    "id": "sphinx@0f47e55787::find_catalog",
+    "repo": "sphinx",
+    "commit": "0f47e557872eb0ed2467b5bc4cf8a88118d75ad3",
+    "parent": "77329bf4977fa8f5b1d539a72f4555e23b7d67c2",
+    "symbol": "sphinx/util/osutil.py::find_catalog",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "config"
+    ],
+    "source_files": [
+      "sphinx/builders/gettext.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@0f49e30c51::CObject.add_target_and_index",
@@ -160,6 +395,90 @@
     "commit_file_count": 10
   },
   {
+    "id": "sphinx@0f972e8bbf::EpubBuilder.build_mimetype",
+    "repo": "sphinx",
+    "commit": "0f972e8bbfa31af57f8f91c854cf00935adb3a0c",
+    "parent": "90b93dda3376bee9078f7580824a004c5d46a0db",
+    "symbol": "sphinx/builders/_epub_base.py::EpubBuilder.build_mimetype",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/builders/epub3.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@0ff217e1b2::_DuplicateSymbolError.__init__",
+    "repo": "sphinx",
+    "commit": "0ff217e1b277db4d93a0f25e03ec5add0d570586",
+    "parent": "eff13bc4c457c0a9809952c751d62435803e79b9",
+    "symbol": "sphinx/domains/cpp.py::_DuplicateSymbolError.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "candSymbol"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@0ff514743f::Sphinx.add_autodocumenter",
+    "repo": "sphinx",
+    "commit": "0ff514743f2b90d05fb1fb1959c7eab4bdee2664",
+    "parent": "afefeebb52d2ec1fffc48f1d0691eb3b135c8edf",
+    "symbol": "sphinx/application.py::Sphinx.add_autodocumenter",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "override"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@114f73435b::EventManager.__init__",
+    "repo": "sphinx",
+    "commit": "114f73435bfbbe5d4d61442ea18e2b579eac4a92",
+    "parent": "06f86b06399937bb2018841b5dd5fcbf4e54d7a0",
+    "symbol": "sphinx/events.py::EventManager.__init__",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1173b5daaa::HTMLTranslator.add_permalink_ref",
+    "repo": "sphinx",
+    "commit": "1173b5daaa7b4d39fc47f8c9e7024f290d8f0f8d",
+    "parent": "20d55bd5b654e34e49fddddd48054433d6a258d3",
+    "symbol": "sphinx/writers/html.py::HTMLTranslator.add_permalink_ref",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "typename"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1356aff6d7::Config.init_values",
+    "repo": "sphinx",
+    "commit": "1356aff6d7a970e69a12b0dfaf69d08e55fe7973",
+    "parent": "865d677eb8bf46fe46e294d6fdd092b8f9f2fc33",
+    "symbol": "sphinx/config.py::Config.init_values",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "warn"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
     "id": "sphinx@141f3ecdf3::is_serializable",
     "repo": "sphinx",
     "commit": "141f3ecdf3e71641b3dd02d14b32bf20c5c20e37",
@@ -174,6 +493,20 @@
       "tests/test_config/test_config.py"
     ],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@14da7605e4::indexmarkup_role",
+    "repo": "sphinx",
+    "commit": "14da7605e4be71f6370e80375a33d6f4ab012b74",
+    "parent": "d739756f2a1551291f77000c21e3e2788a757319",
+    "symbol": "sphinx/roles.py::indexmarkup_role",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "text"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@151b4afde2::BuildEnvironment.indexentries",
@@ -204,6 +537,51 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@16529c5604::Sphinx.add_latex_package",
+    "repo": "sphinx",
+    "commit": "16529c5604d1efff907be4105819481f2d7b7847",
+    "parent": "6358d62718f16f5739edbb1697bf44d627f28dba",
+    "symbol": "sphinx/application.py::Sphinx.add_latex_package",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "options"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_build_latex.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@181aa903f7::TexinfoTranslator.add_menu",
+    "repo": "sphinx",
+    "commit": "181aa903f7fddecee924cfb9caf21cf002002088",
+    "parent": "15c94d69479c287265b6a7cdc57644ce0db136df",
+    "symbol": "sphinx/writers/texinfo.py::TexinfoTranslator.add_menu",
+    "change_kind": "other",
+    "changed_parameters": [
+      "section",
+      "master"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1832284e89::IndexBuilder.__init__",
+    "repo": "sphinx",
+    "commit": "1832284e89435572f778dd3abbd53ef67494cfb5",
+    "parent": "d747fa3cd01a9fa7c883a2eaddac9f27c4c24b16",
+    "symbol": "sphinx/search/__init__.py::IndexBuilder.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "scoring"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
     "id": "sphinx@1887df0b5c::ObjectDescription.transform_content",
     "repo": "sphinx",
     "commit": "1887df0b5c0dfbefff81b438982b434e34efad3e",
@@ -216,6 +594,93 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 20
+  },
+  {
+    "id": "sphinx@1955cb3b5a::ASTConcept.__init__",
+    "repo": "sphinx",
+    "commit": "1955cb3b5a47ed7009084122834e42edc3ef8479",
+    "parent": "8a64cfdd91f261925556649c779bea3d2fcfa658",
+    "symbol": "sphinx/domains/cpp.py::ASTConcept.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "initializer"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1960da0921::TexinfoTranslator.add_menu_entries",
+    "repo": "sphinx",
+    "commit": "1960da0921a7d8e407ca5f534d0c09c76bbb8258",
+    "parent": "181aa903f7fddecee924cfb9caf21cf002002088",
+    "symbol": "sphinx/writers/texinfo.py::TexinfoTranslator.add_menu_entries",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "reg"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1996a9e5e9::PygmentsBridge.highlight_block",
+    "repo": "sphinx",
+    "commit": "1996a9e5e94509813577a7b23af754b46ac35edf",
+    "parent": "454c9d3b9e4274cf33d37f623a479820a0265355",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.highlight_block",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "warn"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@1aa7d45695::AliasNode.__init__",
+    "repo": "sphinx",
+    "commit": "1aa7d45695f7df0144651c90d032fbc41a19f10a",
+    "parent": "fbb7e9d267095c00d58728901d5e5f4f1b7e7fd0",
+    "symbol": "sphinx/domains/cpp.py::AliasNode.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "warnEnv"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@1d128f57fa::Documenter.get_attr",
+    "repo": "sphinx",
+    "commit": "1d128f57fa99de52b0a83e4357bb467cea867803",
+    "parent": "bd5eb9f417748c448020c0a829158664fa9bdc93",
+    "symbol": "sphinx/ext/autodoc.py::Documenter.get_attr",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "cls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@1f5ed02225::main",
+    "repo": "sphinx",
+    "commit": "1f5ed022252066900c4ed982184e3d26885ca33d",
+    "parent": "89f9c7cab74298a243ac409c26d25eb2b137bf03",
+    "symbol": "sphinx/quickstart.py::main",
+    "change_kind": "other",
+    "changed_parameters": [
+      "argv"
+    ],
+    "source_files": [
+      "setup.py",
+      "sphinx-quickstart.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
   },
   {
     "id": "sphinx@203094b4c3::CatalogInfo.write_mo",
@@ -233,6 +698,97 @@
     ],
     "test_files": [],
     "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@204b9cc521::Sphinx.add_stylesheet",
+    "repo": "sphinx",
+    "commit": "204b9cc5217ae4a307b7d56419e482652e2eca94",
+    "parent": "2fdd06be449ef35bad1deaba046e0deedda42707",
+    "symbol": "sphinx/application.py::Sphinx.add_stylesheet",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "rel"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@205d50a01d::TypedField.__init__",
+    "repo": "sphinx",
+    "commit": "205d50a01dbbda2b7b06f57d4dfbe9abe8381e64",
+    "parent": "0cda61e88d903f5c675dc0acb193ca1e861ad751",
+    "symbol": "sphinx/util/docfields.py::TypedField.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "can_collapse"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@222edf59e7::check_anchor",
+    "repo": "sphinx",
+    "commit": "222edf59e70fa1fd6b4da67a53dc6154ba6f3370",
+    "parent": "5e8642983b27ada2e7f94df6c97c113f59befb3f",
+    "symbol": "sphinx/builders/linkcheck.py::check_anchor",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "hash"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@2254da3782::CatalogInfo.write_mo",
+    "repo": "sphinx",
+    "commit": "2254da3782b084264402a5382b660d7d4d1c03c1",
+    "parent": "34dd31994df67accedca13f3833b62cc86c3b373",
+    "symbol": "sphinx/util/i18n.py::CatalogInfo.write_mo",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "warnfunc"
+    ],
+    "source_files": [
+      "sphinx/application.py",
+      "sphinx/builders/__init__.py"
+    ],
+    "test_files": [
+      "tests/test_util_i18n.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@2275c67966::SphinxComponentRegistry.add_source_input",
+    "repo": "sphinx",
+    "commit": "2275c67966272c8c87f7eb06df3fe3ac25ecc0c6",
+    "parent": "e420d259d54aa2aa5de27777c5f590f4af8451ae",
+    "symbol": "sphinx/registry.py::SphinxComponentRegistry.add_source_input",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "filetype"
+    ],
+    "source_files": [
+      "sphinx/io.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@22dce02bec::babel_format_date",
+    "repo": "sphinx",
+    "commit": "22dce02bec1e97b00fa5dde2479ab498784a866c",
+    "parent": "1313726fd6abf5e41283e6fb88c0e9b3f7836ca2",
+    "symbol": "sphinx/util/i18n.py::babel_format_date",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "formatter"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@24b4d65a02::split_index_msg",
@@ -253,6 +809,20 @@
     "commit_file_count": 7
   },
   {
+    "id": "sphinx@25b96b833d::directive_helper",
+    "repo": "sphinx",
+    "commit": "25b96b833d79936734df5f23ee055b59969cd6a2",
+    "parent": "04995b703fbf43345ee805a140a64f6bf78b0ff9",
+    "symbol": "sphinx/util/docutils.py::directive_helper",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "options"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@25fc47e6b7::unwrap_all",
     "repo": "sphinx",
     "commit": "25fc47e6b7890aec22b2c24e68e7febfaee848e0",
@@ -265,6 +835,52 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@26fecafb49::init",
+    "repo": "sphinx",
+    "commit": "26fecafb4920a8d9dacaa9e3614bf182ce12696a",
+    "parent": "d6572259d66cfb9da967f45fb2d671d29c5d5683",
+    "symbol": "sphinx/locale/__init__.py::init",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "charset"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@27bc4e3189::RstGenerator.get_doc",
+    "repo": "sphinx",
+    "commit": "27bc4e31894a004f43b19ce10c24ff845fc6ec54",
+    "parent": "cae384f5ff2bd3da925362eca0b89fa2f985029b",
+    "symbol": "sphinx/ext/autodoc.py::RstGenerator.get_doc",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_autodoc.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@2803b64b5d::LaTeXTranslator.babel_renewcommand",
+    "repo": "sphinx",
+    "commit": "2803b64b5d42c859f85dcc0fd2fc63b6836b98fa",
+    "parent": "350d8aade0521f4741e33b08132d525c45c1aa40",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.babel_renewcommand",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "builder"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@284738227c::ASTParametersQualifiers.__init__",
@@ -296,6 +912,152 @@
     "commit_file_count": 7
   },
   {
+    "id": "sphinx@2981664178::generate",
+    "repo": "sphinx",
+    "commit": "2981664178c17cfcbd46ee5af6f3329529490b60",
+    "parent": "c3b6f8cc95211e76ac29d3109b86a3226a8434b9",
+    "symbol": "sphinx/quickstart.py::generate",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "templatedir"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@2ab934b232::WebSupport.__init__",
+    "repo": "sphinx",
+    "commit": "2ab934b2322050f3554c5f28ef4827ebecd90571",
+    "parent": "47bc250f19e80ce705a6435184c22d40e4a3b8c7",
+    "symbol": "sphinx/websupport/__init__.py::WebSupport.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "doctreedir",
+      "staticroot"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "sphinx@2acaf03270::Cmdoption.add_target_and_index",
+    "repo": "sphinx",
+    "commit": "2acaf03270ce0235397c3b9a81f51f22a0fa626b",
+    "parent": "38f47bc0ef8be5137eea33eb5386860a560d4c8c",
+    "symbol": "sphinx/domains/std.py::Cmdoption.add_target_and_index",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@2af77f7be2::EpubBuilder.content_metadata",
+    "repo": "sphinx",
+    "commit": "2af77f7be203c3269c3470e69671d1ea79eeae76",
+    "parent": "b7d0b6387c8473352df08c08feb34d3cac43f924",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.content_metadata",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "guide"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@2b0e015fcc::StandaloneHTMLBuilder.handle_page",
+    "repo": "sphinx",
+    "commit": "2b0e015fcc6605ef0192dd9d58a61834370ccf2a",
+    "parent": "2dfad25fd00a50a1248bde2a0833d115508ec9f3",
+    "symbol": "sphinx/builder.py::StandaloneHTMLBuilder.handle_page",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "event_arg"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@2ccb75c98f::load_grammar",
+    "repo": "sphinx",
+    "commit": "2ccb75c98fbe7e69e4689725affa268e7c538315",
+    "parent": "e1e82e43c9280e7486aad49c7f84a75f4ee1654b",
+    "symbol": "sphinx/pycode/pgen2/driver.py::load_grammar",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "gp",
+      "save",
+      "force"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@2ec60d5919::Sphinx.add_enumerable_node",
+    "repo": "sphinx",
+    "commit": "2ec60d59197ffa7e33e820941fd0196e576366be",
+    "parent": "a391b1a1db524be0a145fca1955ca95cb952ff36",
+    "symbol": "sphinx/application.py::Sphinx.add_enumerable_node",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "title_getter"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/roots/test-add_enumerable_node/test_enumerable_node.py"
+    ],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@309377fbbf::generate_rst",
+    "repo": "sphinx",
+    "commit": "309377fbbf10ee7bea1eb7e944abfd7bd47b3aea",
+    "parent": "6b5f4f198a631ab33ac7b4a1e4d7e17ed54743ce",
+    "symbol": "sphinx/ext/autodoc.py::generate_rst",
+    "change_kind": "other",
+    "changed_parameters": [
+      "inherited",
+      "undoc"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@30d6d72f47::get_catalogs",
+    "repo": "sphinx",
+    "commit": "30d6d72f4741031e905d09700365f1e91d477f8f",
+    "parent": "ef3a1f7b2e49e8f850e92fe358ee723f4f59dadc",
+    "symbol": "sphinx/util/i18n.py::get_catalogs",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "domains"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@30fe6d4190::Builder.status_iterator",
+    "repo": "sphinx",
+    "commit": "30fe6d4190303760d98163da983a838a49d3e162",
+    "parent": "0d75f37e2392163b762846bc041b406ac49cce30",
+    "symbol": "sphinx/builders/__init__.py::Builder.status_iterator",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "length"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@334e69fbb4::Make.__init__",
     "repo": "sphinx",
     "commit": "334e69fbb40e27ff55929976a4413ffd60c13d30",
@@ -309,6 +1071,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@35f0b555a4::StandaloneHTMLBuilder._get_local_toctree",
+    "repo": "sphinx",
+    "commit": "35f0b555a437619c730f1fc7a8622922c5598db6",
+    "parent": "cbcf99f156d60de65e79a19a2d0a7dcbb7d5fcde",
+    "symbol": "sphinx/builders/html.py::StandaloneHTMLBuilder._get_local_toctree",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "maxdepth"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
   },
   {
     "id": "sphinx@360c7a8022::Theme.__init__",
@@ -326,6 +1102,20 @@
       "tests/test_theming/test_theming.py"
     ],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@365574f052::generate_latex_macro",
+    "repo": "sphinx",
+    "commit": "365574f052fff6deb681279773772f838302cad7",
+    "parent": "763908c75a8119f85cbcc07d4135c4ef0a8fbf78",
+    "symbol": "sphinx/ext/imgmath.py::generate_latex_macro",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "image_format"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@37557d7552::PygmentsBridge.get_stylesheet",
@@ -375,6 +1165,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "sphinx@39bef55fd5::BuildEnvironment.frompickle",
+    "repo": "sphinx",
+    "commit": "39bef55fd50d0f51da5af0232b75b858b94a7201",
+    "parent": "6101cb4ab6a8e4927094e1d06003975b1c4a3f85",
+    "symbol": "sphinx/environment.py::BuildEnvironment.frompickle",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "srcdir"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@3a81ffa79a::signature",
     "repo": "sphinx",
     "commit": "3a81ffa79afc42a409bb073a8ad83bbaefb271c4",
@@ -391,6 +1195,20 @@
     "commit_file_count": 6
   },
   {
+    "id": "sphinx@3afc72fba4::Sphinx.add_stylesheet",
+    "repo": "sphinx",
+    "commit": "3afc72fba41f945610263be79d14c95d21478248",
+    "parent": "99fbd44e20efe53d663e3fe4356ceb6b9d72f85d",
+    "symbol": "sphinx/application.py::Sphinx.add_stylesheet",
+    "change_kind": "other",
+    "changed_parameters": [
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@3bcc669f6c::_load_theme_with_ancestors",
     "repo": "sphinx",
     "commit": "3bcc669f6c899127c4213e51af270a3fb02ce0a3",
@@ -403,6 +1221,34 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@3c1067c038::indexmarkup_role",
+    "repo": "sphinx",
+    "commit": "3c1067c0380e07829190a99440cec7bd18c7fa0a",
+    "parent": "3c8bc8f5fd003227d901e3b0acf48b25b5c61be0",
+    "symbol": "sphinx/roles.py::indexmarkup_role",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "etext"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@3ce737335e::BuildEnvironment.frompickle",
+    "repo": "sphinx",
+    "commit": "3ce737335e0ff7ff10859dfc09f05d3b64aa2579",
+    "parent": "889f77343c3c3d3a3ed5118c8b103d9768ccf1bc",
+    "symbol": "sphinx/environment.py::BuildEnvironment.frompickle",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "srcdir"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@3d79d84405::term_input",
@@ -435,6 +1281,48 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@3e7bee5836::format_heading",
+    "repo": "sphinx",
+    "commit": "3e7bee583604e3422c05f807a69d0a73afedfa59",
+    "parent": "895014cd7168fdef9c3552c4a3bb818615a39fce",
+    "symbol": "sphinx/apidoc.py::format_heading",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "escape"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@3edcff7952::generate_latex_macro",
+    "repo": "sphinx",
+    "commit": "3edcff7952a7e5993d9c063be87958e0593fcc2b",
+    "parent": "2757458458b53d23f40fadc5e2e226c21d6ee7c5",
+    "symbol": "sphinx/ext/imgmath.py::generate_latex_macro",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "image_format"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@3f0db5469e::BuildEnvironment.find_files",
+    "repo": "sphinx",
+    "commit": "3f0db5469e2d468fefa9ef7bdca8a295db2e538e",
+    "parent": "e645ea59dbeec3b295b6167245a9278624c64a6d",
+    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.find_files",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "buildername"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@3f9be211ee::PygmentsBridge.get_stylesheet",
     "repo": "sphinx",
     "commit": "3f9be211eeb59b1e4391cf3cb6884c86cef8f4a0",
@@ -447,6 +1335,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@3fb3fdbd53::ASTBaseClass.__init__",
+    "repo": "sphinx",
+    "commit": "3fb3fdbd53240de4a22b5e9ddc6d867bced0e426",
+    "parent": "8e864076a93a837a2ece51367f7844a7000fa2ee",
+    "symbol": "sphinx/domains/cpp.py::ASTBaseClass.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "pack"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@3fdc9bcf9f::desc_sig_space.__init__",
@@ -466,6 +1368,34 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@3ffde92c54::BuildEnvironment.__init__",
+    "repo": "sphinx",
+    "commit": "3ffde92c54c6e9d594b2a41a365a90dc0dcbac6c",
+    "parent": "ad991e7f4c3edd73401b416d26b09837594da4e7",
+    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.__init__",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@4063a67d19::_read_from_url",
+    "repo": "sphinx",
+    "commit": "4063a67d191c91f769c00aa86430756d9436901e",
+    "parent": "2ef852dce2464b225645d29afbeae943261bf2c8",
+    "symbol": "sphinx/ext/intersphinx.py::_read_from_url",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "timeout"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@40b0f80489::setup",
     "repo": "sphinx",
     "commit": "40b0f8048940865325063b68f087a16860a66c72",
@@ -482,6 +1412,78 @@
       "tests/test_util/test_util_logging.py"
     ],
     "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@414816bb37::Sphinx.add_directive_to_domain",
+    "repo": "sphinx",
+    "commit": "414816bb373379cf1ca8f4b6ef21a329fff1270f",
+    "parent": "f98a703ef3572ef7b4260405d0716fb60f6e01b0",
+    "symbol": "sphinx/application.py::Sphinx.add_directive_to_domain",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "content",
+      "arguments",
+      "options"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@4153ee0d9d::SphinxParallelError.__init__",
+    "repo": "sphinx",
+    "commit": "4153ee0d9d33074b09c7ee8b241dc1d61eb3f32f",
+    "parent": "f1d2a7ffaa1689e3e20c846b88969c2aadd284be",
+    "symbol": "sphinx/errors.py::SphinxParallelError.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "orig_exc"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@430be0496a::BuildEnvironment._warn_missing_reference",
+    "repo": "sphinx",
+    "commit": "430be0496ad68af31c052cf2367c0c8197a19cd6",
+    "parent": "8e3a8feeddd8231758d8f871d20bb87e8a058a88",
+    "symbol": "sphinx/environment.py::BuildEnvironment._warn_missing_reference",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "fromdoc"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@446eab49b8::SphinxComponentRegistry.create_translator",
+    "repo": "sphinx",
+    "commit": "446eab49b81df78d01d513bca180a13bcf963ef9",
+    "parent": "18efa1a63ac9820e990a79303890ef2634b14396",
+    "symbol": "sphinx/registry.py::SphinxComponentRegistry.create_translator",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "document"
+    ],
+    "source_files": [
+      "sphinx/builders/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@4627e2a498::WebSupport.init",
+    "repo": "sphinx",
+    "commit": "4627e2a498b66603fa0304627a724dd82976f7c3",
+    "parent": "e6c4d8f75235dbdef0fc5c7d13b707d3f372b1c4",
+    "symbol": "sphinx/websupport/api.py::WebSupport.init",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@465b758a35::parse_generated_content",
@@ -586,6 +1588,83 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@49b812b856::inline_all_toctrees",
+    "repo": "sphinx",
+    "commit": "49b812b856f3c81c6edee5ba793405c7ed927cf3",
+    "parent": "82e05e7a9c7865c5f609e31ba70bab02ab521616",
+    "symbol": "sphinx/util/nodes.py::inline_all_toctrees",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "traversed"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@4b9119f990::StandaloneHTMLBuilder.get_doc_context",
+    "repo": "sphinx",
+    "commit": "4b9119f9905e608e74335214d9e15514d0adf2f7",
+    "parent": "6ab33ea1a92e17266e41735a0f0d478803443728",
+    "symbol": "sphinx/builder.py::StandaloneHTMLBuilder.get_doc_context",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "metatags"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@4c0f657ee6::do_prompt",
+    "repo": "sphinx",
+    "commit": "4c0f657ee6423d102a8fb3f2e05ca44257874416",
+    "parent": "88d7dc1bd33a2ee91c9fa7d4237603bf33b597aa",
+    "symbol": "sphinx/cmd/quickstart.py::do_prompt",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "d",
+      "key"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_quickstart.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@4c81b055c8::Config.__init__",
+    "repo": "sphinx",
+    "commit": "4c81b055c8bb92c24efa46ab41c5a717893062b8",
+    "parent": "8e4ef0d585afd2b114c4b99c281ab9bc49c74756",
+    "symbol": "sphinx/config.py::Config.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "tags"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 20
+  },
+  {
+    "id": "sphinx@4df3b067b7::LaTeXTranslator.visit_index",
+    "repo": "sphinx",
+    "commit": "4df3b067b787b65affeccdada7102437891ef298",
+    "parent": "47bd24e7d246952a2798854a6aad88820739d87d",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.visit_index",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "scre"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "sphinx@4eab5e8950::DataDocumenter.get_doc",
     "repo": "sphinx",
     "commit": "4eab5e89509520673529000f4fc316dbcbf09c1c",
@@ -615,6 +1694,34 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@5066f49fbe::TestGroup.add_code",
+    "repo": "sphinx",
+    "commit": "5066f49fbee71ceb46533bf690afe36dbd647b62",
+    "parent": "7c02f11ec1384c8222c1bec1bb7309b2b46b80a3",
+    "symbol": "sphinx/ext/doctest.py::TestGroup.add_code",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "prepend"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@507f172866::ShowUrlsTransform.__init__",
+    "repo": "sphinx",
+    "commit": "507f172866deb5d7223f9e61c30a68b45d6f8f38",
+    "parent": "63a5eaf185228408157c4bc4ae8ebc7b84c76bc1",
+    "symbol": "sphinx/writers/latex.py::ShowUrlsTransform.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "startnode"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@50fb4a9dbb::InheritanceGraph.__init__",
     "repo": "sphinx",
     "commit": "50fb4a9dbb905af5a9b95b957ab942511c0fff9b",
@@ -627,6 +1734,48 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@516cc73450::handle_doc_fields",
+    "repo": "sphinx",
+    "commit": "516cc73450f1fc0bde7b7adcdff78d573ef1f41a",
+    "parent": "45cb5475c0900e966b7f7f7d5f61b9a8628c577f",
+    "symbol": "sphinx/directives/desc.py::handle_doc_fields",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "env"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@51937f8089::Sphinx.warn",
+    "repo": "sphinx",
+    "commit": "51937f80894632e48cb9947a81c1698f8a831972",
+    "parent": "2b60fc202795d5351e13a6da98b4d046fe0c3be8",
+    "symbol": "sphinx/application.py::Sphinx.warn",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "colorfunc"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@51fb8b435b::Sphinx.__init__",
+    "repo": "sphinx",
+    "commit": "51fb8b435b59fdfe373b2d38be7827c4ff5f45de",
+    "parent": "3cd00a0809fc1fc855b20c06e673eaaff3d659d7",
+    "symbol": "sphinx/application.py::Sphinx.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "verbosity"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
   },
   {
     "id": "sphinx@52140be6b8::ASTParameters.__init__",
@@ -662,6 +1811,42 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@53a84de822::get_node_equation_number",
+    "repo": "sphinx",
+    "commit": "53a84de822c94b14a10cb5f416668b2834983c12",
+    "parent": "04f2929f59b49fefbc6804088089994567b67ad9",
+    "symbol": "sphinx/ext/mathbase.py::get_node_equation_number",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "env"
+    ],
+    "source_files": [
+      "sphinx/ext/imgmath.py",
+      "sphinx/ext/jsmath.py",
+      "sphinx/ext/mathjax.py",
+      "sphinx/ext/pngmath.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@540400635a::wrap_displaymath",
+    "repo": "sphinx",
+    "commit": "540400635add4bf7e656c9d6e7d8ef3285fd6d68",
+    "parent": "5b92c708f823b1749c102f92a22693d4b86d2c77",
+    "symbol": "sphinx/ext/mathbase.py::wrap_displaymath",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "numbering"
+    ],
+    "source_files": [
+      "sphinx/ext/imgmath.py",
+      "sphinx/ext/pngmath.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@565d4104d5::IntersphinxRole.is_existent_role",
     "repo": "sphinx",
     "commit": "565d4104d5121f111bf1a32d4d31f4b92c5aa36a",
@@ -674,6 +1859,62 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@56b520958f::Symbol.find_name",
+    "repo": "sphinx",
+    "commit": "56b520958f554be5a8e04d57c477bc520e2d4de6",
+    "parent": "0c98d04507e2f171ecbf655e148326be54c67b43",
+    "symbol": "sphinx/domains/cpp.py::Symbol.find_name",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "typ"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@56bbb08b2c::LaTeXRenderer.__init__",
+    "repo": "sphinx",
+    "commit": "56bbb08b2cc4925e4796752ac798fe0001267a49",
+    "parent": "a499b7d83ed90ee5802dc5e39aceb56021d5addc",
+    "symbol": "sphinx/util/template.py::LaTeXRenderer.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "latex_engine"
+    ],
+    "source_files": [
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@576c0bc90b::LoggingReporter.__init__",
+    "repo": "sphinx",
+    "commit": "576c0bc90b795e0780f57dedb9b71de857e07ba1",
+    "parent": "86f179e312d6e320543c1fe651d46d9eb6821b54",
+    "symbol": "sphinx/util/docutils.py::LoggingReporter.__init__",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@580e1c90d3::PythonDomain.find_obj",
+    "repo": "sphinx",
+    "commit": "580e1c90d36c9d126f0a4301e0b492606b755e46",
+    "parent": "8c91fb78ce0ac364870c3cd1df2149397f46bd8a",
+    "symbol": "sphinx/domains/python.py::PythonDomain.find_obj",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "searchorder"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 15
   },
   {
     "id": "sphinx@58585a7c0a::_get_full_modname",
@@ -707,6 +1948,20 @@
     "commit_file_count": 10
   },
   {
+    "id": "sphinx@59ebeb7f1f::Epub3Builder.new_navlist",
+    "repo": "sphinx",
+    "commit": "59ebeb7f1ffcbfa8b8f901e2d36cd3827967d701",
+    "parent": "511a0aaef75b7390835d2c04e93983a2d45235b5",
+    "symbol": "sphinx/builders/epub3.py::Epub3Builder.new_navlist",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "has_child"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@5c223d20d6::HyperlinkAvailabilityCheckWorker.__init__",
     "repo": "sphinx",
     "commit": "5c223d20d6c275c7371cc229499b82af9b54fd55",
@@ -725,6 +1980,20 @@
     "commit_file_count": 4
   },
   {
+    "id": "sphinx@5d272bdd0d::HTMLTranslator.visit_title",
+    "repo": "sphinx",
+    "commit": "5d272bdd0d1eb765529f986859fef6b85bfcc68d",
+    "parent": "a9f2247f621e5325871da5f7980d2248322d2ce1",
+    "symbol": "sphinx/htmlwriter.py::HTMLTranslator.visit_title",
+    "change_kind": "other",
+    "changed_parameters": [
+      "move_ids"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
     "id": "sphinx@5eaed2bed7::type_to_xref",
     "repo": "sphinx",
     "commit": "5eaed2bed753c8f58e702419d997053ddec05d9c",
@@ -737,6 +2006,84 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@5eaf2eb29a::get_matching_docs",
+    "repo": "sphinx",
+    "commit": "5eaf2eb29a2e4d5ef517df5382ccdbe7540eaa54",
+    "parent": "b015fbbe8df1ca7657065e21939e0c1b9b4843d6",
+    "symbol": "sphinx/util/__init__.py::get_matching_docs",
+    "change_kind": "other",
+    "changed_parameters": [
+      "prune_dirs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@5f0977ca30::ASTDeclSpecs.__init__",
+    "repo": "sphinx",
+    "commit": "5f0977ca30379f06868537f7ea3274d64ad2627c",
+    "parent": "30a2e5ba666370f5288862b9348ec632e79d0707",
+    "symbol": "sphinx/domains/cpp.py::ASTDeclSpecs.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "storage",
+      "inline",
+      "virtual",
+      "explicit",
+      "constexpr",
+      "volatile",
+      "const"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@5f4a88e0a4::CSSContainer.insert",
+    "repo": "sphinx",
+    "commit": "5f4a88e0a4fd4e5f8d4418b71fd3bc5a72eda2d0",
+    "parent": "fa4817eb2e6491c208a7cc0c8ad56120f50e4f45",
+    "symbol": "sphinx/builders/html.py::CSSContainer.insert",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "other"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@5fc8d3db91::BuildEnvironment.find_files",
+    "repo": "sphinx",
+    "commit": "5fc8d3db9160cf9dcbb5ed1034aec9302dbac0dd",
+    "parent": "d0fe6ba21530ab90a8dca51bd117b428f69b247e",
+    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.find_files",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "buildername"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@5fe73576a5::Sphinx.add_description_unit",
+    "repo": "sphinx",
+    "commit": "5fe73576a5dbc75bda3de248885bab7607be6fb1",
+    "parent": "eaea91ff390b4cb9b8c78cca761be41ac4a6ad49",
+    "symbol": "sphinx/application.py::Sphinx.add_description_unit",
+    "change_kind": "other",
+    "changed_parameters": [
+      "indexdesc"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
   },
   {
     "id": "sphinx@5ff3b9dc4d::PythonDomain.note_module",
@@ -765,6 +2112,20 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@61bf7c44df::ExtBabel.__init__",
+    "repo": "sphinx",
+    "commit": "61bf7c44df5fc12f5ad6cdd1257238c78b2e02f2",
+    "parent": "0541c14766dee0fcf62ba819db2d7b18cd682238",
+    "symbol": "sphinx/writers/latex.py::ExtBabel.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_polyglossia"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@636e6f9c04::IndexInSectionTitleTransform.apply",
     "repo": "sphinx",
     "commit": "636e6f9c0429c7c2fdaede50ed47896fd9a1e23d",
@@ -777,6 +2138,62 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6373729f1d::IndexBuilder.__init__",
+    "repo": "sphinx",
+    "commit": "6373729f1ddc7afac0ae927e7641697f8e0d8766",
+    "parent": "449adba3b6eb7e6b50745124ffa302c9d3d21167",
+    "symbol": "sphinx/search.py::IndexBuilder.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "env"
+    ],
+    "source_files": [
+      "sphinx/builder.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@637dd02f14::_Theme.get_options",
+    "repo": "sphinx",
+    "commit": "637dd02f14ee241edacd615c3190fea81ec43d33",
+    "parent": "81ef0de7b4f943b14f83337ab7e3a3add9b8688d",
+    "symbol": "sphinx/theming.py::_Theme.get_options",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@6433cca6a8::generate_rst",
+    "repo": "sphinx",
+    "commit": "6433cca6a8d44f53b72932c78fa47f87e1f9a1ef",
+    "parent": "55aacf998a8395e81ba3ea32d59b6c1a08d3a971",
+    "symbol": "sphinx/ext/autodoc.py::generate_rst",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "filename_set"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@64533e142c::EpubBuilder.build_toc",
+    "repo": "sphinx",
+    "commit": "64533e142c39785c98ca490f4f7195cbb0aac5fb",
+    "parent": "d437f39bc46b2d7139a990b2db08557887e5ad2b",
+    "symbol": "sphinx/builders/_epub_base.py::EpubBuilder.build_toc",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/builders/epub3.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
   },
   {
     "id": "sphinx@654458b525::ExtensionError.__init__",
@@ -793,6 +2210,80 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@660e746cf8::PygmentsBridge.__init__",
+    "repo": "sphinx",
+    "commit": "660e746cf801b9fce867a35a1ad3b65ae9ef43c5",
+    "parent": "ef09ea23feaf1d21faa3d5fd990a49fb14642bfa",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "latex_engine"
+    ],
+    "source_files": [
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@68e85d5665::TexinfoTranslator.visit_admonition",
+    "repo": "sphinx",
+    "commit": "68e85d56650543a46e95541e54f2c0f9830147fa",
+    "parent": "924863a602a365fc56ed6bcf1c946a39923aeecb",
+    "symbol": "sphinx/writers/texinfo.py::TexinfoTranslator.visit_admonition",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@6945551c20::safe_getmembers",
+    "repo": "sphinx",
+    "commit": "6945551c20357906979e1857b512f2a27d30890a",
+    "parent": "a86ea846e2cade766dc4c7a82f739e6bc5babcad",
+    "symbol": "sphinx/util/inspect.py::safe_getmembers",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "attr_getter"
+    ],
+    "source_files": [
+      "sphinx/ext/autodoc.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6a17e7d1a6::LaTeXTranslator.hypertarget",
+    "repo": "sphinx",
+    "commit": "6a17e7d1a69cb90545eba66c707810d161aad724",
+    "parent": "7f8f3f86b6153584a7aa96a4fe036db626d879cc",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.hypertarget",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "text"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6c3789a353::BuildEnvironment._resolve_citation",
+    "repo": "sphinx",
+    "commit": "6c3789a35303aba74fec1a96406a6f31899f0ac9",
+    "parent": "a973daea418d361627040474c1924eb58d12280b",
+    "symbol": "sphinx/environment.py::BuildEnvironment._resolve_citation",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "fromdocname"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@6ca568c1d8::make_link_role",
     "repo": "sphinx",
     "commit": "6ca568c1d83524bb3e7f620ef84d5dcc43a72e52",
@@ -801,6 +2292,62 @@
     "change_kind": "renamed",
     "changed_parameters": [
       "prefix"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6e1d180d57::CDesc.get_index_text",
+    "repo": "sphinx",
+    "commit": "6e1d180d5747e0994c0477ba6c1a8137c1158f34",
+    "parent": "a43b6518049cb9610509291f18e19b902f15bab3",
+    "symbol": "sphinx/directives/desc.py::CDesc.get_index_text",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "modname"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@6e56a12d4a::ArgumentDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "6e56a12d4a01450076a54400f172d5b8a969e491",
+    "parent": "191f29279f8b04597dacec7037ed7fd0414a6d6e",
+    "symbol": "sphinx/domains/cpp.py::ArgumentDefExpr.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "param_pack"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6efafcdca4::StandardDomain.build_reference_node",
+    "repo": "sphinx",
+    "commit": "6efafcdca49667e37be7323592faadae3ec7972b",
+    "parent": "5f6030bec72544fb9c8f1a0acd9f8e255d57c4b6",
+    "symbol": "sphinx/domains/std.py::StandardDomain.build_reference_node",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "rolename"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@6f3932660a::WebSupport.__init__",
+    "repo": "sphinx",
+    "commit": "6f3932660aed0db590e1a8a3f31293358e3aeb19",
+    "parent": "40c7de1aff9a4efe1827b915ff447e0dd5e59080",
+    "symbol": "sphinx/websupport/__init__.py::WebSupport.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "outdir"
     ],
     "source_files": [],
     "test_files": [],
@@ -849,6 +2396,21 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@6ffe549f49::chm_htmlescape",
+    "repo": "sphinx",
+    "commit": "6ffe549f492dd8ed9cfcc286449a200a77bff235",
+    "parent": "503cf9c39e829024160145d03bc1e9bc12d65ec9",
+    "symbol": "sphinx/builders/htmlhelp.py::chm_htmlescape",
+    "change_kind": "other",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@7126503eeb::SigElementFallbackTransform.fallback",
     "repo": "sphinx",
     "commit": "7126503eeb2b13bba35dc18c87631c6e728bf6f0",
@@ -861,6 +2423,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@71a985c06c::FuncDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "71a985c06c4e079ef2987a2dbbdfe8f0ae964108",
+    "parent": "8e4311099a3f9666d599ab943a434615bc86d4ff",
+    "symbol": "sphinx/domains/cpp.py::FuncDefExpr.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "explicit"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@729efd28b0::PythonDomain.note_object",
@@ -877,6 +2453,20 @@
     "commit_file_count": 6
   },
   {
+    "id": "sphinx@73ae2f9c94::get_autosummary",
+    "repo": "sphinx",
+    "commit": "73ae2f9c940db3be706197971807e7f1355b6234",
+    "parent": "cb33979cdeffb6e8996f3f78734840e704a8f79a",
+    "symbol": "sphinx/ext/autosummary/__init__.py::get_autosummary",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "state"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@73b7cd51ea::members_of",
     "repo": "sphinx",
     "commit": "73b7cd51ea29729a41c59d623bf08b32179470f5",
@@ -887,6 +2477,222 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@74191207db::DefinitionParser._parse_template_declaration_prefix",
+    "repo": "sphinx",
+    "commit": "74191207db56d07f866de612995c798172f5e302",
+    "parent": "1825559f74e11875d44675d84406cad24e1e21cb",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_template_declaration_prefix",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "objectType"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@74cce431a3::EpubBuilder.add_visible_links",
+    "repo": "sphinx",
+    "commit": "74cce431a37de130d4634d5ea9b29f5852c9447c",
+    "parent": "b8296ad11e4547e821ec8dbcee82ec1456c19bce",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.add_visible_links",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "show_urls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@74d36acbf7::educateQuotesLatex",
+    "repo": "sphinx",
+    "commit": "74d36acbf787da74b0cade6406aa7569c7fd9da8",
+    "parent": "e9d3589140d44a38b4c7c891a3cbaf45bf290654",
+    "symbol": "sphinx/util/smartypants.py::educateQuotesLatex",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "dquotes"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 19
+  },
+  {
+    "id": "sphinx@753a266fff::EpubBuilder.fix_fragment",
+    "repo": "sphinx",
+    "commit": "753a266fffc3382cd7d5d4d9be435d203452b776",
+    "parent": "162cb22cbeb7f5e52b0986501aae0970baf7dfb4",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.fix_fragment",
+    "change_kind": "other",
+    "changed_parameters": [
+      "match"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@75ae087f7a::CombinedHtmlDiff._handle_line",
+    "repo": "sphinx",
+    "commit": "75ae087f7aece6b81c20a37641b363dc23ad5e83",
+    "parent": "248c01af3ec09ce34bb39ef43605c2ce37896bd8",
+    "symbol": "sphinx/websupport/comments/differ.py::CombinedHtmlDiff._handle_line",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "self"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@76fb3604fd::EventManager.__init__",
+    "repo": "sphinx",
+    "commit": "76fb3604fd3f797a7b0a23bf3507a436907e276f",
+    "parent": "9e2aba54d3544a9a0fe803e4afec239e539b787b",
+    "symbol": "sphinx/events.py::EventManager.__init__",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@777386ef56::WebSupport.init",
+    "repo": "sphinx",
+    "commit": "777386ef566a88246f6c4cadeba88fc79cc71d56",
+    "parent": "0e26a6d46c1a61378b57d042968500032ba41a48",
+    "symbol": "sphinx/websupport/api.py::WebSupport.init",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "comment_html"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@79f1a1eecb::parse_py_signature",
+    "repo": "sphinx",
+    "commit": "79f1a1eecb1d872eb9fdb4c232f7c53080625ae6",
+    "parent": "cc5aedc6ceeb39e298458ad47527fce17f5a646b",
+    "symbol": "sphinx/directives.py::parse_py_signature",
+    "change_kind": "other",
+    "changed_parameters": [
+      "currmodule",
+      "currclass"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "sphinx@7a5aa822f6::TexinfoBuilder.copy_image_files",
+    "repo": "sphinx",
+    "commit": "7a5aa822f6533b3e5596ae4283393e4caaecd8b4",
+    "parent": "ac9e9c0745f0001b3db30611a9a5c298634c3e08",
+    "symbol": "sphinx/builders/texinfo.py::TexinfoBuilder.copy_image_files",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "targetname"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@7ad49d5756::get_matching_docs",
+    "repo": "sphinx",
+    "commit": "7ad49d5756901a1e47f79fd9ec15e3f85cc582ce",
+    "parent": "9050ba428e5d7e0a3e7556a3d5f069a1b631ecd1",
+    "symbol": "sphinx/util/__init__.py::get_matching_docs",
+    "change_kind": "other",
+    "changed_parameters": [
+      "exclude",
+      "prune"
+    ],
+    "source_files": [
+      "sphinx/environment.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@7c7d3f4010::between",
+    "repo": "sphinx",
+    "commit": "7c7d3f40102764a5ad0e46d35ff23bfd7f0340f8",
+    "parent": "d30d286486562a51720e84e3528dfcfbef70ec26",
+    "symbol": "sphinx/ext/autodoc.py::between",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "exclude"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_autodoc.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@7d836e16ab::ASTBaseClass.__init__",
+    "repo": "sphinx",
+    "commit": "7d836e16aba8a48525dd731ea3db65b8e895b72c",
+    "parent": "8401d67909b141e369a174821b865928756bea1c",
+    "symbol": "sphinx/domains/cpp.py::ASTBaseClass.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "virtual"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@7e80f60412::Config.__init__",
+    "repo": "sphinx",
+    "commit": "7e80f604120d51cf29c84f3485db1c1e2d5860e5",
+    "parent": "5cb01d68dc1df8ea3e89c45b2b2a40c20dda812b",
+    "symbol": "sphinx/config.py::Config.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "overrides"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@8006d31b32::_read_from_url",
+    "repo": "sphinx",
+    "commit": "8006d31b32916bdc57dda1faa42605088a4a0c6d",
+    "parent": "3c3c8e7533829af03196e710c4ed09003ed701ba",
+    "symbol": "sphinx/ext/intersphinx.py::_read_from_url",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "timeout"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@804b8df9bb::init",
+    "repo": "sphinx",
+    "commit": "804b8df9bb4633b2de1df6f6c4a2ffdb4a3db74d",
+    "parent": "ba5e496a5d86000dc6dc0bc33b241973170441e2",
+    "symbol": "sphinx/locale/__init__.py::init",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "catalog"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@81832c2efc::is_suppressed_warning",
@@ -902,6 +2708,90 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@823a947bbf::BaseImageConverter.apply",
+    "repo": "sphinx",
+    "commit": "823a947bbf2a4bf63558cf0a4ed42056f5da3166",
+    "parent": "02c2c5076bb72858d90bfe19bd10e93f258a94a6",
+    "symbol": "sphinx/transforms/post_transforms/images.py::BaseImageConverter.apply",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "kwargsj"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@832914423e::directive_helper",
+    "repo": "sphinx",
+    "commit": "832914423e84067f3cf764bcb84e20ade00f02af",
+    "parent": "f07b080331f49b2b873995962c06f82ee576229c",
+    "symbol": "sphinx/util/docutils.py::directive_helper",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "options"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@859e30e485::parse_py_signature",
+    "repo": "sphinx",
+    "commit": "859e30e4857725af93543cc6b5b298faf495a3e4",
+    "parent": "07412998eb79c961606b08b05569b52cf240c5cc",
+    "symbol": "sphinx/directives.py::parse_py_signature",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "currmodule"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@8600ffeda2::init",
+    "repo": "sphinx",
+    "commit": "8600ffeda21c834cead0b321f3988493b8290510",
+    "parent": "657f6b16f00649842f57a9f6f4bd92190cea3d07",
+    "symbol": "sphinx/locale/__init__.py::init",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "charset"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@860b410fbc::DefinitionParser._parse_type_expr",
+    "repo": "sphinx",
+    "commit": "860b410fbc9d8e7a369743c3af879469141f852a",
+    "parent": "b863ecbf98db22ed275bd282499ad0ca6279c561",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_type_expr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "in_template"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@8683823536::ModuleAnalyzer.find_attr_docs",
+    "repo": "sphinx",
+    "commit": "8683823536505aef3b96627ce9ea4784d5385eb0",
+    "parent": "6900d19b7126c2719283e88218e10f9e88530a49",
+    "symbol": "sphinx/pycode/__init__.py::ModuleAnalyzer.find_attr_docs",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "scope"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 18
   },
   {
     "id": "sphinx@886bb945af::BuildEnvironment._config_status",
@@ -932,6 +2822,76 @@
     "commit_file_count": 11
   },
   {
+    "id": "sphinx@89f9c7cab7::main",
+    "repo": "sphinx",
+    "commit": "89f9c7cab74298a243ac409c26d25eb2b137bf03",
+    "parent": "d736efbdabfe1b76297357a75eafdf7267c6c58d",
+    "symbol": "sphinx/__init__.py::main",
+    "change_kind": "other",
+    "changed_parameters": [
+      "argv"
+    ],
+    "source_files": [
+      "setup.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@89fdb83831::ModifierDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "89fdb83831b53851a24cecd7308d4dcbaf936370",
+    "parent": "27667cc0b7d66921bb686b1fa3ba49bda5cd515f",
+    "symbol": "sphinx/domains/cpp.py::ModifierDefExpr.__init__",
+    "change_kind": "reordered",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@8c39c19bf3::desc_index_text",
+    "repo": "sphinx",
+    "commit": "8c39c19bf378bc74eed9273385b1aedf801ee68f",
+    "parent": "528a06ff4eba72c473e9dcbb14cb522c607093a3",
+    "symbol": "sphinx/directives/desc.py::desc_index_text",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "add_modules"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@8c3ceec294::IndexBuilder.prune",
+    "repo": "sphinx",
+    "commit": "8c3ceec294981cc1a99fc9ba13892ee4729c4af5",
+    "parent": "1f973caf06cad06189912340aba7363066423fd4",
+    "symbol": "sphinx/search/__init__.py::IndexBuilder.prune",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "filenames"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@8c4e535170::WebSupport.init",
+    "repo": "sphinx",
+    "commit": "8c4e5351702f5125e8ed9044bf2dcaa9b5485a0a",
+    "parent": "00f841be2ab3bb44766a1cff18924f6e65a98207",
+    "symbol": "sphinx/websupport/api.py::WebSupport.init",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "search"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "sphinx@8de6638697::nested_parse_with_titles",
     "repo": "sphinx",
     "commit": "8de6638697b8c785f8022e1f526b549e74d033d1",
@@ -949,6 +2909,20 @@
     ],
     "test_files": [],
     "commit_file_count": 11
+  },
+  {
+    "id": "sphinx@8e864076a9::ASTClass.__init__",
+    "repo": "sphinx",
+    "commit": "8e864076a93a837a2ece51367f7844a7000fa2ee",
+    "parent": "bf25b48d783626ab31a42d26576703dcd28cd27f",
+    "symbol": "sphinx/domains/cpp.py::ASTClass.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "final"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@8eaa0ab60f::SphinxComponentRegistry.create_source_parser",
@@ -982,6 +2956,50 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@8fd34b88d3::Sphinx.add_javascript",
+    "repo": "sphinx",
+    "commit": "8fd34b88d324f075cee7c4bb845cc2d5bac71e91",
+    "parent": "157619c4e369dace8f4caebc076080d7e66c72e0",
+    "symbol": "sphinx/application.py::Sphinx.add_javascript",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@90eb73e7b7::WebSupport.__init__",
+    "repo": "sphinx",
+    "commit": "90eb73e7b7c087de3c727ba71bdd2de7a58250de",
+    "parent": "58f6271e23829c34fa03013faf0a260a7eae51a5",
+    "symbol": "sphinx/websupport/__init__.py::WebSupport.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "comments"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@910e488e39::SphinxFileSystemLoader.__init__",
+    "repo": "sphinx",
+    "commit": "910e488e39bf8d25e04c568e3736de18b8bf3a05",
+    "parent": "f60dfdd231cb08d46480546554a2fa3a3c5dd84f",
+    "symbol": "sphinx/_jinja.py::SphinxFileSystemLoader.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "paths"
+    ],
+    "source_files": [
+      "sphinx/builder.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
     "id": "sphinx@911a3b9809::NodeMatcher.__init__",
     "repo": "sphinx",
     "commit": "911a3b9809259aeb1b301bc2e534c57807baece1",
@@ -1009,6 +3027,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@924863a602::TexinfoTranslator.add_xref",
+    "repo": "sphinx",
+    "commit": "924863a602a365fc56ed6bcf1c946a39923aeecb",
+    "parent": "2594805b2ffd5fc55c9bc051353781a700d1aa02",
+    "symbol": "sphinx/writers/texinfo.py::TexinfoTranslator.add_xref",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "ref"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@931bfcca88::AutosummaryRenderer.__init__",
@@ -1039,6 +3071,68 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@9481a557c1::CombinedHtmlDiff.make_html",
+    "repo": "sphinx",
+    "commit": "9481a557c1ae732f2b194e27a54880cfe8b8737d",
+    "parent": "9a3a3df917ce1fd513b874e974f0e4f21bff6229",
+    "symbol": "sphinx/websupport/storage/differ.py::CombinedHtmlDiff.make_html",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "source",
+      "proposal"
+    ],
+    "source_files": [
+      "sphinx/websupport/storage/sqlalchemystorage.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@94aab04ecb::PygmentsBridge.highlight_block",
+    "repo": "sphinx",
+    "commit": "94aab04ecb629430e8d61b06f643531691742e76",
+    "parent": "cab5a5edc165a524aacac1f858376e8f5446d25a",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.highlight_block",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "linenos"
+    ],
+    "source_files": [
+      "sphinx/ext/viewcode.py",
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@95fc3ce888::indexmarkup_role",
+    "repo": "sphinx",
+    "commit": "95fc3ce88817658db79cdc8b278e3fef42bcdb98",
+    "parent": "3c1067c0380e07829190a99440cec7bd18c7fa0a",
+    "symbol": "sphinx/roles.py::indexmarkup_role",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "text"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@96779ffed8::DefinitionParser._parse_builtin",
+    "repo": "sphinx",
+    "commit": "96779ffed80d9a276905ddaa4210d9b190291231",
+    "parent": "4e715ff0bf89d6f1dc557e22280369e7002d6a4c",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_builtin",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "modifier"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@9721327989::ObjectMember.__init__",
     "repo": "sphinx",
     "commit": "97213279897236c0a8db98902698a7c34ae95bbf",
@@ -1051,6 +3145,34 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@9753d743fc::FuncDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "9753d743fcd8934c518366d226403d0265304cb1",
+    "parent": "6b96b1022039dc9882e4e4e30bdb10f07be80746",
+    "symbol": "sphinx/domains/cpp.py::FuncDefExpr.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "constexpr"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@9766c2f339::ASTNestedName.__init__",
+    "repo": "sphinx",
+    "commit": "9766c2f339b2f5f16e1e66458d35651c8a7d6272",
+    "parent": "a9efb2517a0ccbd932f7e6be3e8984d78dc763b8",
+    "symbol": "sphinx/domains/cpp.py::ASTNestedName.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "templates"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@97f946a598::SphinxStandaloneReader._setup_transforms",
@@ -1083,6 +3205,48 @@
     "commit_file_count": 2
   },
   {
+    "id": "sphinx@9904596da8::ClassDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "9904596da8c84007f579d9ca9e119468d02cf5fd",
+    "parent": "38ebe67c4e934c9cfd663a0f2c2e21e8c84d29a5",
+    "symbol": "sphinx/domains/cpp.py::ClassDefExpr.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "bases"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@9aac2420d3::ASTConcept.__init__",
+    "repo": "sphinx",
+    "commit": "9aac2420d3840873928e2af29452b0cca5e60ff1",
+    "parent": "5ae72bdd28075a02213ede26accd196c1a9dba05",
+    "symbol": "sphinx/domains/cpp.py::ASTConcept.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "isFunction"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@9b958b6dcc::traverse_parent",
+    "repo": "sphinx",
+    "commit": "9b958b6dccf14346fd6a1cd083abe02940d040cb",
+    "parent": "bdc230b1ccc189989789f82a55023f369410309d",
+    "symbol": "sphinx/util/nodes.py::traverse_parent",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "cls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "sphinx@9bfbe252f1::_convert_numpy_type_spec",
     "repo": "sphinx",
     "commit": "9bfbe252f190bd3b426b8ff2e3d0454f5e49fb1e",
@@ -1090,6 +3254,20 @@
     "symbol": "sphinx/ext/napoleon/docstring.py::_convert_numpy_type_spec",
     "change_kind": "other",
     "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@9c7e1d2dc2::TexinfoTranslator.add_anchor",
+    "repo": "sphinx",
+    "commit": "9c7e1d2dc241c35283391d69e9bb2245d302b9ce",
+    "parent": "9f9c753f7e80fc7c27ec50d36d97f737351f05d8",
+    "symbol": "sphinx/writers/texinfo.py::TexinfoTranslator.add_anchor",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "msg_node"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1109,6 +3287,36 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@9e2aba54d3::EventManager.__init__",
+    "repo": "sphinx",
+    "commit": "9e2aba54d3544a9a0fe803e4afec239e539b787b",
+    "parent": "d501bc136ce5069e97a5f347dbc694717dddced8",
+    "symbol": "sphinx/events.py::EventManager.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "sphinx@9e43f54600::FuncDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "9e43f54600bcdc8adb7193d6eaa98fc7d017535e",
+    "parent": "55935bdd04aab5da256015b2af25ba0d842d89a0",
+    "symbol": "sphinx/domains/cpp.py::FuncDefExpr.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "constexpr"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@9eb3d7940f::_body_alias_lines",
     "repo": "sphinx",
     "commit": "9eb3d7940fa587f5706268f19a1d6a977ff24fad",
@@ -1124,6 +3332,75 @@
     "commit_file_count": 16
   },
   {
+    "id": "sphinx@9fa23615ec::token_xrefs",
+    "repo": "sphinx",
+    "commit": "9fa23615ec7a052097fbd7e16a74de3dfeab44f6",
+    "parent": "bcbb167b0da9789e9472ae16c8496d2b4a18b70f",
+    "symbol": "sphinx/domains/std.py::token_xrefs",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@9fc2a9b7ad::LaTeXBuilder.assemble_doctree",
+    "repo": "sphinx",
+    "commit": "9fc2a9b7ad3421c8e7db4e64986413689a6d7c22",
+    "parent": "5ed30072e35e1dc457b1ac3189b4b2accaf9a8f3",
+    "symbol": "sphinx/builder.py::LaTeXBuilder.assemble_doctree",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "toctree_only"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@a097429ec8::SQLAlchemyComments.pretty_delta",
+    "repo": "sphinx",
+    "commit": "a097429ec8d1e8fb8bcdc33653865d3111c1b3fd",
+    "parent": "d08dae898a9df196bcb02855269263917e3312d0",
+    "symbol": "sphinx/websupport/comments/__init__.py::SQLAlchemyComments.pretty_delta",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "comment"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@a18c04b955::Sphinx.add_stylesheet",
+    "repo": "sphinx",
+    "commit": "a18c04b955eed9159473046d55b46fb2ee7bc417",
+    "parent": "8f26544dc53dba3622050bb37e937d1ce0597c6c",
+    "symbol": "sphinx/application.py::Sphinx.add_stylesheet",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "rel",
+      "title"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@a1dd4695f3::Domain.__init__",
+    "repo": "sphinx",
+    "commit": "a1dd4695f3358f3dd57fed05d9910324e80a95c4",
+    "parent": "51a78a9b880993bb0075ee0fdee55cc45ee1c338",
+    "symbol": "sphinx/domains.py::Domain.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "env"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
     "id": "sphinx@a24ef1f0cc::DeprecatedDict.update",
     "repo": "sphinx",
     "commit": "a24ef1f0cc4ebc29871289b5b92d76f4fe7b7e80",
@@ -1136,6 +3413,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
+  },
+  {
+    "id": "sphinx@a434486dfb::LaTeXTranslator.generate_numfig_format",
+    "repo": "sphinx",
+    "commit": "a434486dfb406c4090ed58cce268c8fd9fb115f0",
+    "parent": "9f060278364dc6bc2068a25106c2ec75bada027a",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.generate_numfig_format",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "builder"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@a464c5851d::Builder.__init__",
@@ -1166,6 +3457,81 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@a523f9893a::BuildEnvironment.frompickle",
+    "repo": "sphinx",
+    "commit": "a523f9893a9e7742cf656056a071802c0b2e9192",
+    "parent": "5ee4c396bc4d911b3c03237b86547e7a8c187be0",
+    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.frompickle",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "cls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@a61986256a::main",
+    "repo": "sphinx",
+    "commit": "a61986256a364ba21d9f9afe1dffb7ffbef41218",
+    "parent": "62b6d209dc181978f202172e7338dabfdf21e1f4",
+    "symbol": "sphinx/apidoc.py::main",
+    "change_kind": "other",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@a63e4945ea::PygmentsBridge.highlight_block",
+    "repo": "sphinx",
+    "commit": "a63e4945ea82ce76e3600150862bcaaed759ba8b",
+    "parent": "649e2cd41beb714a19091baf5da917315cb7aefd",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.highlight_block",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "opts"
+    ],
+    "source_files": [
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [
+      "tests/test_highlighting.py"
+    ],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@a66041b541::CPPDomain._resolve_xref_inner",
+    "repo": "sphinx",
+    "commit": "a66041b54106bd0f7c9b1d23154e969d285adb20",
+    "parent": "dd08a3ac29d2b94762866944e8cb1971b986fb9e",
+    "symbol": "sphinx/domains/cpp.py::CPPDomain._resolve_xref_inner",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "typ"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@a686a5a03a::Sphinx.add_directive",
+    "repo": "sphinx",
+    "commit": "a686a5a03af4cde0450fd067b94a672904020ab7",
+    "parent": "c57890b4f4540b63cf5f07b73745531a3e7d4cb9",
+    "symbol": "sphinx/application.py::Sphinx.add_directive",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "cls"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@a78c6b799f::_make_subclass",
     "repo": "sphinx",
     "commit": "a78c6b799f0dab414dadc79fa3920d0581c01279",
@@ -1192,6 +3558,66 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@a997f98333::make_termnodes_from_paragraph_node",
+    "repo": "sphinx",
+    "commit": "a997f98333cbd62bbebbe2a17668d712dcd105e1",
+    "parent": "430d0e9895457c8f6243ec22a5019800eab7ed01",
+    "symbol": "sphinx/domains/std.py::make_termnodes_from_paragraph_node",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "new_id"
+    ],
+    "source_files": [
+      "sphinx/transforms.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@a9d35e3c54::generate_rst",
+    "repo": "sphinx",
+    "commit": "a9d35e3c546e159e0168a8db5f1a246041685892",
+    "parent": "7cf591f00aec6d150a9563b830ab318b4f7f147a",
+    "symbol": "sphinx/ext/autodoc.py::generate_rst",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "inherited"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@a9ecb190a7::get_documenter",
+    "repo": "sphinx",
+    "commit": "a9ecb190a7d9f778509ef3185fb1c938f6e65cbd",
+    "parent": "95381b38898500b6667414c055942e44b4ce80b7",
+    "symbol": "sphinx/ext/autosummary/__init__.py::get_documenter",
+    "change_kind": "other",
+    "changed_parameters": [
+      "app",
+      "obj",
+      "parent"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@aaff3f1ebe::EpubBuilder.fix_fragment",
+    "repo": "sphinx",
+    "commit": "aaff3f1ebe4046e60af24bc5f9e321a2422a600d",
+    "parent": "ee8eaeea69431e4fe1777c06ccdc0a9815494304",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.fix_fragment",
+    "change_kind": "other",
+    "changed_parameters": [
+      "match"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@ab3795f176::DummyApplication.__init__",
@@ -1223,6 +3649,23 @@
     ],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@ab7ac64e1a::get_matching_docs",
+    "repo": "sphinx",
+    "commit": "ab7ac64e1a555ef50ade8f0135d5e8f235bca2d3",
+    "parent": "c3c3f739afc1f39647e9b697f24d2699444bbab5",
+    "symbol": "sphinx/util/__init__.py::get_matching_docs",
+    "change_kind": "other",
+    "changed_parameters": [
+      "exclude_docs",
+      "exclude_dirs",
+      "exclude_trees",
+      "exclude_dirnames"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
   },
   {
     "id": "sphinx@abe65423ca::ASTDeclaration.__init__",
@@ -1267,6 +3710,36 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@acda414be2::HTMLWriter.__init__",
+    "repo": "sphinx",
+    "commit": "acda414be2c4ac027e6d9d83e05f29ba4437a0a5",
+    "parent": "a84bedff7229d75cd3d2b3e94d65ae5df9ae43fa",
+    "symbol": "sphinx/writer.py::HTMLWriter.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "buildername"
+    ],
+    "source_files": [
+      "sphinx/builder.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@ad5d9f7c6b::PygmentsBridge.get_formatter",
+    "repo": "sphinx",
+    "commit": "ad5d9f7c6b35fb0cf7d76d9a0501c20d91bd342b",
+    "parent": "5373125fc6a06228cc690bc603e99b3ebd89442d",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.get_formatter",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "kwargs_orig"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "sphinx@ad89b1f76a::_convert_numpy_type_spec",
     "repo": "sphinx",
     "commit": "ad89b1f76a5a031e14022c96d678a6240061eb11",
@@ -1275,6 +3748,35 @@
     "change_kind": "added_required",
     "changed_parameters": [
       "translations"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@ae9d786390::Sphinx.warn",
+    "repo": "sphinx",
+    "commit": "ae9d786390e62d2e265eddba5cea68485928e442",
+    "parent": "ea5fd7284c4402e9668b321c1c78cdeb52992491",
+    "symbol": "sphinx/application.py::Sphinx.warn",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "type",
+      "subtype"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@af33fd9548::Builder.__init__",
+    "repo": "sphinx",
+    "commit": "af33fd95481866f96adcdb31b0232afc0eee07ae",
+    "parent": "edd5ff70d9b56041b0024f4531ea48dd7b0dde28",
+    "symbol": "sphinx/builder.py::Builder.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "doctreedirname"
     ],
     "source_files": [],
     "test_files": [],
@@ -1296,6 +3798,92 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@b192b3271a::BuildEnvironment.find_files",
+    "repo": "sphinx",
+    "commit": "b192b3271a06e78bf82ee5b17fb5d8c783abd121",
+    "parent": "cd3f48bb765df89dfdc9bbf5c2a52ea29ba2a7bc",
+    "symbol": "sphinx/environment/__init__.py::BuildEnvironment.find_files",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "buildername"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@b244dbf9b5::Sphinx.warn",
+    "repo": "sphinx",
+    "commit": "b244dbf9b58b2c589361aff2c55f04025b33edee",
+    "parent": "9951bd3f738cb1ff47d01d0cafe3b0f198279f47",
+    "symbol": "sphinx/application.py::Sphinx.warn",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "location",
+      "prefix"
+    ],
+    "source_files": [
+      "sphinx/builders/__init__.py",
+      "sphinx/builders/html.py",
+      "sphinx/builders/latex.py",
+      "sphinx/builders/linkcheck.py",
+      "sphinx/builders/text.py",
+      "sphinx/environment.py",
+      "sphinx/theming.py",
+      "sphinx/writers/latex.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 13
+  },
+  {
+    "id": "sphinx@b293be1fc9::FuncDefExpr.__init__",
+    "repo": "sphinx",
+    "commit": "b293be1fc951605c6800838663f3b73593ab6934",
+    "parent": "da20c3713b482926bc59b6c69fa359ed401aa2a1",
+    "symbol": "sphinx/domains/cpp.py::FuncDefExpr.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "virtual"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@b2abab1c45::Signature.__init__",
+    "repo": "sphinx",
+    "commit": "b2abab1c458d9bdc6367210c655654a7a4b04aa8",
+    "parent": "b22cdccd9abb13cf329c93b6445544cc7193a2eb",
+    "symbol": "sphinx/util/inspect.py::Signature.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "has_retval"
+    ],
+    "source_files": [
+      "sphinx/ext/autodoc/__init__.py"
+    ],
+    "test_files": [
+      "tests/test_util_inspect.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@b40e6fe22e::between",
+    "repo": "sphinx",
+    "commit": "b40e6fe22e8b3acbf880396761099ccd37f7c099",
+    "parent": "17e7e61778983c3b1e22a1845689fb6b7e0bf050",
+    "symbol": "sphinx/ext/autodoc.py::between",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "keepempty"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@b437f094a7::init_console",
     "repo": "sphinx",
     "commit": "b437f094a70f9268016aa5ddf8dbe4891b4210ee",
@@ -1306,6 +3894,65 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@b482e38ca2::create_module_file",
+    "repo": "sphinx",
+    "commit": "b482e38ca2e81b241b3c16f72d5df9296a267389",
+    "parent": "035d5507f0cef2fd636bf90a08ff32a69f8a1cf6",
+    "symbol": "sphinx/ext/apidoc.py::create_module_file",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "module"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@b4ec549f04::HTMLTranslator.visit_title",
+    "repo": "sphinx",
+    "commit": "b4ec549f0435632d3395774876d074beafc54a7c",
+    "parent": "703117a77dd28aacb03ee4a9010f62dd42dca4f7",
+    "symbol": "sphinx/htmlwriter.py::HTMLTranslator.visit_title",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "args",
+      "kwds"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@b4f91a5ce5::RstGenerator.format_signature",
+    "repo": "sphinx",
+    "commit": "b4f91a5ce58c7accb2d580e84771e5d563e873d6",
+    "parent": "28e115cec1fc2fca38c285bc943dc95d1cdd6bf4",
+    "symbol": "sphinx/ext/autodoc.py::RstGenerator.format_signature",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@b5ae1b0846::IndexBuilder.feed",
+    "repo": "sphinx",
+    "commit": "b5ae1b0846667362c776202a4fcf1950ee61822b",
+    "parent": "86615e1f091b2bf08ec5b5b1242cb26bb64569e0",
+    "symbol": "sphinx/search/__init__.py::IndexBuilder.feed",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "docname"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@b5bf745f68::Sphinx.add_js_file",
@@ -1321,6 +3968,93 @@
     "test_files": [
       "tests/test_build_html.py"
     ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@b61640959d::execfile_",
+    "repo": "sphinx",
+    "commit": "b61640959d751d5d124c22f1f08b844e05a88dff",
+    "parent": "193aadb14091324d52ca441a2e59a43650b6501f",
+    "symbol": "sphinx/util/pycompat.py::execfile_",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "open"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@b6c422ac86::EpubBuilder.build_epub",
+    "repo": "sphinx",
+    "commit": "b6c422ac865e4407854404200a06d27b807edf12",
+    "parent": "64533e142c39785c98ca490f4f7195cbb0aac5fb",
+    "symbol": "sphinx/builders/_epub_base.py::EpubBuilder.build_epub",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/builders/epub3.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@b6c4ebc37a::main",
+    "repo": "sphinx",
+    "commit": "b6c4ebc37aaae48b20f709bb4712921281f5006e",
+    "parent": "e78133a83ecef14deb058617983761a99d6304bb",
+    "symbol": "sphinx/__init__.py::main",
+    "change_kind": "other",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@b778cfe299::handle_exception",
+    "repo": "sphinx",
+    "commit": "b778cfe2999930d812c5e6f16142dc5d2311996d",
+    "parent": "c68381bd6597f50e085b96d7f69a982db8baabda",
+    "symbol": "sphinx/cmdline.py::handle_exception",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "opts"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@b7b483d01f::Sphinx.add_node",
+    "repo": "sphinx",
+    "commit": "b7b483d01f030353be72334a37f5c2153d6c3ffd",
+    "parent": "432115123ed505b4670b0779812c3dd3161b23f8",
+    "symbol": "sphinx/application.py::Sphinx.add_node",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "kwds"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@b9294de041::render_dot_html",
+    "repo": "sphinx",
+    "commit": "b9294de041d1a26afe07c1f43129e58d3afe6f47",
+    "parent": "0b70a32efedb1d0fe8789e6278db52b0973f1700",
+    "symbol": "sphinx/ext/graphviz.py::render_dot_html",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "alt"
+    ],
+    "source_files": [
+      "sphinx/ext/inheritance_diagram.py"
+    ],
+    "test_files": [],
     "commit_file_count": 3
   },
   {
@@ -1340,6 +4074,42 @@
     "commit_file_count": 5
   },
   {
+    "id": "sphinx@ba83214386::Config.__init__",
+    "repo": "sphinx",
+    "commit": "ba832143860866c543d4904903a120822d17a26a",
+    "parent": "f26db5b2287b3c4fc12ce5649507440c6f2dc456",
+    "symbol": "sphinx/config.py::Config.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "dirname",
+      "filename",
+      "overrides",
+      "tags"
+    ],
+    "source_files": [
+      "sphinx/application.py"
+    ],
+    "test_files": [
+      "tests/test_config.py",
+      "tests/test_directive_code.py"
+    ],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@bd66ba5179::PyXRefRole.process_link",
+    "repo": "sphinx",
+    "commit": "bd66ba5179b0150d8d4b4ac3d076ab6425f5bf08",
+    "parent": "732e2b377fc727fd58371aeea402c89df07124bd",
+    "symbol": "sphinx/domains/python.py::PyXRefRole.process_link",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "pnode"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@bdeb816397::JavaScriptDomain.note_module",
     "repo": "sphinx",
     "commit": "bdeb81639749ae56dfe0ea6821fd96a8bb4d0982",
@@ -1352,6 +4122,62 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@bdf5816437::DefinitionParser._parse_type_expr",
+    "repo": "sphinx",
+    "commit": "bdf58164379a27fb902bf7693d416dde1a813878",
+    "parent": "ad5d9f7c6b35fb0cf7d76d9a0501c20d91bd342b",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser._parse_type_expr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "in_template"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@be261ed71e::guess_mimetype",
+    "repo": "sphinx",
+    "commit": "be261ed71ec797d32fe88dae1acf73adb2b33c8e",
+    "parent": "027872f569c261bfd23c31dab72019eec118df5a",
+    "symbol": "sphinx/util/images.py::guess_mimetype",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "content"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@bfc03b10ad::EpubBuilder.make_id",
+    "repo": "sphinx",
+    "commit": "bfc03b10adc029cfffa226eefacc0fda04fc4aeb",
+    "parent": "ce6b8fff700cd9fa2e473e438d51aad705656fd2",
+    "symbol": "sphinx/builders/epub.py::EpubBuilder.make_id",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "id_cache"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@c010b47589::ASTClass.__init__",
+    "repo": "sphinx",
+    "commit": "c010b4758986ba3f137ad0453a09d6fe45a42c99",
+    "parent": "90c7adba6d446f0b130b13b6758e3005a8f5ebb3",
+    "symbol": "sphinx/domains/cpp.py::ASTClass.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "visibility"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
   },
   {
     "id": "sphinx@c0678a4a50::get_class_members",
@@ -1368,6 +4194,20 @@
     ],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@c084c3f124::token_xrefs",
+    "repo": "sphinx",
+    "commit": "c084c3f124947bae7579cdf6a28409583f6e77b9",
+    "parent": "204564549cae0d2fc88ea270df8dde0535277a70",
+    "symbol": "sphinx/domains/std.py::token_xrefs",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "productionGroup"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 13
   },
   {
     "id": "sphinx@c09643c21f::ASTTrailingTypeSpecFundamental.__init__",
@@ -1394,6 +4234,68 @@
       "docname"
     ],
     "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@c15e2f3eff::colorize",
+    "repo": "sphinx",
+    "commit": "c15e2f3eff669f02540f66947b73639613965a08",
+    "parent": "ac9f973c9be70c9f253a42939a73035be1e9e6aa",
+    "symbol": "sphinx/util/console.py::colorize",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "input_mode"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@c1bedfc105::get_doc",
+    "repo": "sphinx",
+    "commit": "c1bedfc1055b303b067b4acd4e1194a370f8a39d",
+    "parent": "abddd960932cec9270a00a881f562a604ba9bbf9",
+    "symbol": "sphinx/ext/autodoc.py::get_doc",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "name",
+      "options"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@c4fa1aed34::getdoc",
+    "repo": "sphinx",
+    "commit": "c4fa1aed340c32ff9b4b6cb2d5a6302951dea073",
+    "parent": "b926ee8aeb620dfaa3bd28566b3cf7f900c71def",
+    "symbol": "sphinx/util/inspect.py::getdoc",
+    "change_kind": "other",
+    "changed_parameters": [
+      "object"
+    ],
+    "source_files": [
+      "sphinx/ext/autodoc/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@c62a19bca5::Theme.init_themes",
+    "repo": "sphinx",
+    "commit": "c62a19bca5b262ab46dbc7737157352805424f96",
+    "parent": "65505907f1f09ccc2385d21758254f9516abb5de",
+    "symbol": "sphinx/theming.py::Theme.init_themes",
+    "change_kind": "other",
+    "changed_parameters": [
+      "builder"
+    ],
+    "source_files": [
+      "sphinx/builders/changes.py",
+      "sphinx/builders/html.py"
+    ],
     "test_files": [],
     "commit_file_count": 3
   },
@@ -1428,6 +4330,100 @@
     "commit_file_count": 2
   },
   {
+    "id": "sphinx@c74eb9448b::Sphinx.warn",
+    "repo": "sphinx",
+    "commit": "c74eb9448b3a335510daa362be25d7ac5bd2277c",
+    "parent": "361a34257becbc0ae87c6ae10609427dab7ab11f",
+    "symbol": "sphinx/application.py::Sphinx.warn",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "prefix",
+      "colorfunc"
+    ],
+    "source_files": [
+      "sphinx/environment/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@c85e60a5ac::DefinitionParser.__init__",
+    "repo": "sphinx",
+    "commit": "c85e60a5ac8e165e6887fe8a1cfea4e322244fd9",
+    "parent": "86f3e5aabb8580b114e53e27e2e30362ac410d32",
+    "symbol": "sphinx/domains/cpp.py::DefinitionParser.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "config"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_domain_cpp.py"
+    ],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@c8e8b1bfd4::init",
+    "repo": "sphinx",
+    "commit": "c8e8b1bfd4d76f13b51cd86b48cb32ccbe7559e0",
+    "parent": "1f18db60a49e0fc6552bcfd11fe4b2be5153c68a",
+    "symbol": "sphinx/locale/__init__.py::init",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "locale_dirs",
+      "language"
+    ],
+    "source_files": [
+      "sphinx/builders/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@c92f97d848::Domain.__init__",
+    "repo": "sphinx",
+    "commit": "c92f97d848d459a2a969ff7f7b05730b97e28c3b",
+    "parent": "9941b0942839c00a2f39e5bd4ef081024d092698",
+    "symbol": "sphinx/domains.py::Domain.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@c9345b33b2::copy_static_entry",
+    "repo": "sphinx",
+    "commit": "c9345b33b28e38d646200e4d7986f73aa1203789",
+    "parent": "6db07840d1d8e68e7c9ace04197e4c153b2f8d24",
+    "symbol": "sphinx/util/__init__.py::copy_static_entry",
+    "change_kind": "other",
+    "changed_parameters": [
+      "target"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "sphinx@c9470fac65::CPPDomain._resolve_xref_inner",
+    "repo": "sphinx",
+    "commit": "c9470fac65b999dd3289c6c93e5192fc1bb1cca0",
+    "parent": "38db131ee9076b845c8bfb6b6078a4fa6e95b1b6",
+    "symbol": "sphinx/domains/cpp.py::CPPDomain._resolve_xref_inner",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "warn"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@c9d3414be7::ObjType.__init__",
     "repo": "sphinx",
     "commit": "c9d3414be7652c8b75ec8a5a037760950557b1bc",
@@ -1448,6 +4444,22 @@
     "change_kind": "added_required",
     "changed_parameters": [
       "packExpansion"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@ca7bb5140e::Theme.__init__",
+    "repo": "sphinx",
+    "commit": "ca7bb5140eb5b4c7720a22c3a08eac8e9c6ddf58",
+    "parent": "faefe2b5a522763e918ae1ad67b02ae0bcde824f",
+    "symbol": "sphinx/theming.py::Theme.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "name",
+      "theme_path",
+      "factory"
     ],
     "source_files": [],
     "test_files": [],
@@ -1482,6 +4494,53 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@cd3f48bb76::Sphinx._init_builder",
+    "repo": "sphinx",
+    "commit": "cd3f48bb765df89dfdc9bbf5c2a52ea29ba2a7bc",
+    "parent": "d4d106e7b72ca7008690f465fddc7c19b2986c79",
+    "symbol": "sphinx/application.py::Sphinx._init_builder",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "buildername"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@cf795894b9::XapianSearch.add_document",
+    "repo": "sphinx",
+    "commit": "cf795894b9290c5ab2035ae21535f0a7f4b7107a",
+    "parent": "aa49e31b64453cfbd5a34a126fbc215bfce59c84",
+    "symbol": "sphinx/websupport/search/xapiansearch.py::XapianSearch.add_document",
+    "change_kind": "other",
+    "changed_parameters": [
+      "path"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@cfe85b4e8b::IndexBuilder.__init__",
+    "repo": "sphinx",
+    "commit": "cfe85b4e8ba0f79ca028798af21feec9b772c9e5",
+    "parent": "7beb8533b56c71b07a040ecb71ca1e13a0b52932",
+    "symbol": "sphinx/search/__init__.py::IndexBuilder.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "lang",
+      "options"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py"
+    ],
+    "test_files": [
+      "tests/test_search.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
     "id": "sphinx@d0a4d0147e::AliasNode.__init__",
     "repo": "sphinx",
     "commit": "d0a4d0147e6408e5e34393381aad11f197cd291c",
@@ -1494,6 +4553,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@d0e272e61f::WebSupport.__init__",
+    "repo": "sphinx",
+    "commit": "d0e272e61f34364f5cf9345363d5680f041fdf8f",
+    "parent": "790715d37b1247a606437392a65711187885b34a",
+    "symbol": "sphinx/websupport/__init__.py::WebSupport.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "moderation_callback"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@d4058eb67f::BaseParser.__init__",
@@ -1524,6 +4597,120 @@
     "commit_file_count": 2
   },
   {
+    "id": "sphinx@d40db5efa2::extract_summary",
+    "repo": "sphinx",
+    "commit": "d40db5efa260efbecdbd7cf3d8b86d3de7280b10",
+    "parent": "20613edc033a3c193f4a1fda5f93b7b28ad8bb12",
+    "symbol": "sphinx/ext/autosummary/__init__.py::extract_summary",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "document"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_ext_autosummary.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@d437f39bc4::EpubBuilder.build_content",
+    "repo": "sphinx",
+    "commit": "d437f39bc46b2d7139a990b2db08557887e5ad2b",
+    "parent": "f000df8bfb71fe049017e4c0765b954b5c49ae71",
+    "symbol": "sphinx/builders/_epub_base.py::EpubBuilder.build_content",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/builders/epub3.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@d4f5796f3b::Sphinx.add_config_value",
+    "repo": "sphinx",
+    "commit": "d4f5796f3bd754e9fbcd66c5656146d4ea747229",
+    "parent": "2dff2e3bfa291ed7dfdd75dae35b2932a0f89560",
+    "symbol": "sphinx/application.py::Sphinx.add_config_value",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "rebuild_env"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@d4f957da8c::Builder.__init__",
+    "repo": "sphinx",
+    "commit": "d4f957da8c436347c4fbb740db73a73dbddf2324",
+    "parent": "c92f97d848d459a2a969ff7f7b05730b97e28c3b",
+    "symbol": "sphinx/builders/__init__.py::Builder.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "env",
+      "freshenv"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@d5e408e57e::Table.__init__",
+    "repo": "sphinx",
+    "commit": "d5e408e57e8f740fc7c1aabcf9b9ebbbafee005c",
+    "parent": "9b30fc938da7c84545febf7f228e38f8530e29d3",
+    "symbol": "sphinx/writers/text.py::Table.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "colwidth"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@d5ea00899c::StandaloneHTMLBuilder._get_local_toctree",
+    "repo": "sphinx",
+    "commit": "d5ea00899c8c202a209b4fa0acee31b559a47957",
+    "parent": "ddeeccd5c2459d01dff3a0affefb6da2cf12577b",
+    "symbol": "sphinx/builders/html.py::StandaloneHTMLBuilder._get_local_toctree",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "collapse"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@d769e7b616::Autosummary.get_table",
+    "repo": "sphinx",
+    "commit": "d769e7b616bb9413a3dabd6920919f1b019cc43d",
+    "parent": "c6434509c089f640c3503bd8399af68c87b6425d",
+    "symbol": "sphinx/ext/autosummary/__init__.py::Autosummary.get_table",
+    "change_kind": "other",
+    "changed_parameters": [
+      "names",
+      "no_signatures"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@d81d1dcc4e::Builder.status_iterator",
+    "repo": "sphinx",
+    "commit": "d81d1dcc4e8bad348c912e32ab3c424eb77069ab",
+    "parent": "fc30eea875a0a616db3572ff6988826390956986",
+    "symbol": "sphinx/builders/__init__.py::Builder.status_iterator",
+    "change_kind": "reordered",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@d8a540e922::modify_field_list",
     "repo": "sphinx",
     "commit": "d8a540e92281e5cf80a2b045ddc22e93bd93e7f5",
@@ -1538,6 +4725,21 @@
     "commit_file_count": 3
   },
   {
+    "id": "sphinx@d9006ef5b2::ASTFunctionParameter.get_id",
+    "repo": "sphinx",
+    "commit": "d9006ef5b287ab459007833f549bc05b19ac7218",
+    "parent": "0b0ac8b3bd0c6ff44c2465a7bdfdc67c375fe705",
+    "symbol": "sphinx/domains/cpp.py::ASTFunctionParameter.get_id",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "objectType",
+      "symbol"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@d955098ef9::ModuleScanner.scan",
     "repo": "sphinx",
     "commit": "d955098ef9bae6e41924011ec278f6cd47c63b10",
@@ -1550,6 +4752,111 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@da8a4264ed::parse_opcode_signature",
+    "repo": "sphinx",
+    "commit": "da8a4264ede94fcae176fc721e1274dc67cb464e",
+    "parent": "dad5ee1eaa6502a8495a240081c9a068ea5661fa",
+    "symbol": "sphinx/directives.py::parse_opcode_signature",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "desctype"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@dca9e59ea5::ASTDeclSpecsSimple.__init__",
+    "repo": "sphinx",
+    "commit": "dca9e59ea5810355d84b96ebb1135586477ce3a4",
+    "parent": "2b224bec5fe5de6d3dc80084254ac26c1ebd17a7",
+    "symbol": "sphinx/domains/cpp.py::ASTDeclSpecsSimple.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "threadLocal"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@dd20b14b19::XRefRole.__init__",
+    "repo": "sphinx",
+    "commit": "dd20b14b197774c12fbc7abe71e617da528c0d24",
+    "parent": "ab7cfb4a99e1496443fba87a37723347513169f5",
+    "symbol": "sphinx/roles.py::XRefRole.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "domain_name"
+    ],
+    "source_files": [
+      "sphinx/domains.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@dd32b7fdb2::formatargspec",
+    "repo": "sphinx",
+    "commit": "dd32b7fdb24d3b4e35f2c09195bcc2dcfc75c792",
+    "parent": "f53fb636276ce77384d5612b4e214457e63f193b",
+    "symbol": "sphinx/ext/autodoc.py::formatargspec",
+    "change_kind": "other",
+    "changed_parameters": [
+      "argspec"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@dd65d00f29::wrap_displaymath",
+    "repo": "sphinx",
+    "commit": "dd65d00f2996419c82158818bee592cae869fc80",
+    "parent": "2f5a66d647cfc549c9598e6d20b3f37dfb2b21dc",
+    "symbol": "sphinx/ext/mathbase.py::wrap_displaymath",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "math"
+    ],
+    "source_files": [
+      "sphinx/ext/imgmath.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 13
+  },
+  {
+    "id": "sphinx@dd8a02d5e1::indexmarkup_role",
+    "repo": "sphinx",
+    "commit": "dd8a02d5e1a4fc7103850ed99e395f7db39974bc",
+    "parent": "f14f77688a68656849f35d274e9dc7ff56e0f365",
+    "symbol": "sphinx/roles.py::indexmarkup_role",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "etext"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@ddb7fab16d::Sphinx.add_index_to_domain",
+    "repo": "sphinx",
+    "commit": "ddb7fab16da780c862af0d5fbf4b62862b1236ff",
+    "parent": "04cdfd83ebd7fde59f31c02952a6bead959db45c",
+    "symbol": "sphinx/application.py::Sphinx.add_index_to_domain",
+    "change_kind": "other",
+    "changed_parameters": [
+      "name",
+      "localname",
+      "shortname",
+      "func"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@de1cd95a75::AliasTransform._render_symbol",
@@ -1576,6 +4883,81 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@df955e6340::save_traceback",
+    "repo": "sphinx",
+    "commit": "df955e6340f5c561fbc4443634a252748d7c8970",
+    "parent": "e56b38f528d6de85381c1440634500e88b4317dd",
+    "symbol": "sphinx/util/__init__.py::save_traceback",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [
+      "sphinx/cmdline.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@e1d8615ce4::setup_documenters",
+    "repo": "sphinx",
+    "commit": "e1d8615ce4bd2e3c68f2361447e4e45bbff65d18",
+    "parent": "c2a7984e05943f33e0ce367baad1fc7855baf5f3",
+    "symbol": "sphinx/ext/autosummary/generate.py::setup_documenters",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_ext_autosummary.py",
+      "tests/test_templating.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@e2158213e8::Sphinx.__init__",
+    "repo": "sphinx",
+    "commit": "e2158213e8a3e6db0037aea23f531767a736f1a0",
+    "parent": "5a6e3b61d1d451e40d3f3b23029f314e9785b36e",
+    "symbol": "sphinx/application.py::Sphinx.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "confdir"
+    ],
+    "source_files": [
+      "sphinx/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "sphinx@e34b6823c7::create_package_file",
+    "repo": "sphinx",
+    "commit": "e34b6823c7b51d5d0f424e00bca012076d802a14",
+    "parent": "c832d36d19ba13e0009f28f54749a9be690f6500",
+    "symbol": "sphinx/apidoc.py::create_package_file",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "is_namespace"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "sphinx@e3c59615fc::normalize_func_parens",
+    "repo": "sphinx",
+    "commit": "e3c59615fc79337b19996100224fb6781c2db2d3",
+    "parent": "383475a94f7667286b8d1fa5c396bb5189aa7948",
+    "symbol": "sphinx/roles.py::normalize_func_parens",
+    "change_kind": "reordered",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "sphinx@e45fb5e61b::HyperlinkAvailabilityCheckWorker.limit_rate",
@@ -1616,6 +4998,48 @@
     "change_kind": "added_optional",
     "changed_parameters": [
       "canonical"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@e7fa3c6f45::get_documenter",
+    "repo": "sphinx",
+    "commit": "e7fa3c6f45f9917d0a3ded691ef01e1da36ce20b",
+    "parent": "c0aad06b9614866031003044a9fa93851f774c94",
+    "symbol": "sphinx/ext/autosummary/__init__.py::get_documenter",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "parent"
+    ],
+    "source_files": [
+      "sphinx/ext/autosummary/generate.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@e82f5ddb55::Epub3Builder.build_navigation_doc",
+    "repo": "sphinx",
+    "commit": "e82f5ddb554a3aca059eb909189b8769730b0bdb",
+    "parent": "b6c422ac865e4407854404200a06d27b807edf12",
+    "symbol": "sphinx/builders/epub3.py::Epub3Builder.build_navigation_doc",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@e90f8a768b::BuildInfo.__init__",
+    "repo": "sphinx",
+    "commit": "e90f8a768bb8389b7147b0c66e8b91a78a5c594f",
+    "parent": "280d2c79f835da6245c45523960b6ddf6f0088e0",
+    "symbol": "sphinx/builders/html.py::BuildInfo.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "config_categories"
     ],
     "source_files": [],
     "test_files": [],
@@ -1682,6 +5106,38 @@
     "commit_file_count": 1
   },
   {
+    "id": "sphinx@ec392f4888::Theme.get_confstr",
+    "repo": "sphinx",
+    "commit": "ec392f488818e989b123ba6da56d0895f147a05f",
+    "parent": "13d9cddd1d0b626c709567aca9e59e7a92a01a7f",
+    "symbol": "sphinx/theming.py::Theme.get_confstr",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "default"
+    ],
+    "source_files": [
+      "sphinx/builders/html.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "sphinx@ee98decec1::BuildEnvironment.set_versioning_method",
+    "repo": "sphinx",
+    "commit": "ee98decec11f4dcdfc115eb4acb7e31ea900dbe5",
+    "parent": "5eb459f5a610dae041a278a1331dfd33e8b37afe",
+    "symbol": "sphinx/environment.py::BuildEnvironment.set_versioning_method",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "compare"
+    ],
+    "source_files": [
+      "sphinx/builders/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
     "id": "sphinx@ee9c7d33a1::make_link_role",
     "repo": "sphinx",
     "commit": "ee9c7d33a140018f4c2adbd592899ab5e3ed58d5",
@@ -1694,6 +5150,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@eec9c59fc5::GettextRenderer.__init__",
+    "repo": "sphinx",
+    "commit": "eec9c59fc589bc58b9ac47922a93616595365b4e",
+    "parent": "4cecd700e04c6870bdbf1b7c93b92bb7f78456e2",
+    "symbol": "sphinx/builders/gettext.py::GettextRenderer.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "outdir"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@efd24cf4ca::Config.pre_init_values",
@@ -1710,6 +5180,48 @@
     ],
     "test_files": [],
     "commit_file_count": 8
+  },
+  {
+    "id": "sphinx@efd74a9e14::LaTeXTranslator.latex_image_length",
+    "repo": "sphinx",
+    "commit": "efd74a9e14a1ae2398a78faf97b9d146dfc5d6b2",
+    "parent": "980da84393b23d479ae0c5d755f743f2a8c47dd3",
+    "symbol": "sphinx/writers/latex.py::LaTeXTranslator.latex_image_length",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "figure"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@f000df8bfb::EpubBuilder.build_container",
+    "repo": "sphinx",
+    "commit": "f000df8bfb71fe049017e4c0765b954b5c49ae71",
+    "parent": "0f972e8bbfa31af57f8f91c854cf00935adb3a0c",
+    "symbol": "sphinx/builders/_epub_base.py::EpubBuilder.build_container",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [
+      "sphinx/builders/epub3.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@f1765c2576::SphinxStandaloneReader.__init__",
+    "repo": "sphinx",
+    "commit": "f1765c25763743edb027abe2ed504ef4f8a48775",
+    "parent": "ed196a8adf650272f40b1f66e7ff57e317702f33",
+    "symbol": "sphinx/environment.py::SphinxStandaloneReader.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "app"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@f224e043bc::ClassDocumenter.get_overloaded_signatures",
@@ -1772,6 +5284,53 @@
     "commit_file_count": 6
   },
   {
+    "id": "sphinx@f2f62501e1::Sphinx.add_directive",
+    "repo": "sphinx",
+    "commit": "f2f62501e144ed8cbcff3e1dda5276fb4464c265",
+    "parent": "82842e8d8e2ab9566e445c1aecf4bfed68b1b4c8",
+    "symbol": "sphinx/application.py::Sphinx.add_directive",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "func"
+    ],
+    "source_files": [
+      "sphinx/ext/autodoc.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "sphinx@f2ff0419bd::PygmentsBridge.highlight_block",
+    "repo": "sphinx",
+    "commit": "f2ff0419bdeb5a144fd6f74e000ad985447339d3",
+    "parent": "910e488e39bf8d25e04c568e3736de18b8bf3a05",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.highlight_block",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "linenos"
+    ],
+    "source_files": [
+      "sphinx/htmlwriter.py",
+      "sphinx/latexwriter.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "sphinx@f366816968::SphinxStandaloneReader.__init__",
+    "repo": "sphinx",
+    "commit": "f366816968e29ba0783fa493d58d4f0a0a03888e",
+    "parent": "d9ae68b2eec3b2c2a8a5708a2e51778511967769",
+    "symbol": "sphinx/io.py::SphinxStandaloneReader.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "parsers"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@f4bb9ca112::Sphinx.add_index_to_domain",
     "repo": "sphinx",
     "commit": "f4bb9ca1120b8ff7af0fa9438a57468436cbdfe1",
@@ -1798,6 +5357,32 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
+  },
+  {
+    "id": "sphinx@f64ec1349a::ASTDeclSpecsSimple.__init__",
+    "repo": "sphinx",
+    "commit": "f64ec1349a3a4a7644f02264cd10a3c5ad32b468",
+    "parent": "4be597bb349e3bd61feaf23ee13d703e43316f52",
+    "symbol": "sphinx/domains/cpp.py::ASTDeclSpecsSimple.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "attrs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@f7317651a1::WordCollector.is_meta_keywords",
+    "repo": "sphinx",
+    "commit": "f7317651a1882c7d7b2faea55b239c4350eece68",
+    "parent": "3528a68d2a2869425fd71b3a12856b8599c83d15",
+    "symbol": "sphinx/search/__init__.py::WordCollector.is_meta_keywords",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "sphinx@f7b98a03c6::_import_object",
@@ -1829,6 +5414,34 @@
     "commit_file_count": 2
   },
   {
+    "id": "sphinx@fa100632c3::PygmentsBridge.highlight_block",
+    "repo": "sphinx",
+    "commit": "fa100632c340198a50f626049c1c2b2c372f5f95",
+    "parent": "77ba99950507b23ce69085c71efe2d397723af63",
+    "symbol": "sphinx/highlighting.py::PygmentsBridge.highlight_block",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "force"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@fa385f908e::validate_config_values",
+    "repo": "sphinx",
+    "commit": "fa385f908ee7d6b9b415ba3bbb0d3157375a5be6",
+    "parent": "29df3a095a1cf2575bb5613e1129246644e3d309",
+    "symbol": "sphinx/builders/latex.py::validate_config_values",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "config"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "sphinx@fb39974486::make_link_role",
     "repo": "sphinx",
     "commit": "fb39974486ab09320f0cf45f3c0ba0175f04d7d6",
@@ -1840,6 +5453,22 @@
     ],
     "source_files": [],
     "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@fb3a524a90::ASTNestedName.get_id_v2",
+    "repo": "sphinx",
+    "commit": "fb3a524a903038da0ac4fc3be4aa657cc27a1fc8",
+    "parent": "f4cf30b95e7cecec488d97f72d839cd56868eca7",
+    "symbol": "sphinx/domains/cpp.py::ASTNestedName.get_id_v2",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "modifiers"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_domain_cpp.py"
+    ],
     "commit_file_count": 2
   },
   {
@@ -1857,6 +5486,48 @@
     "commit_file_count": 23
   },
   {
+    "id": "sphinx@fcc6976c9d::Builder.status_iterator",
+    "repo": "sphinx",
+    "commit": "fcc6976c9d44375c247022816e3e897d3526a8ed",
+    "parent": "a5523402eb2847d6a353c141bc38858d9b0669d5",
+    "symbol": "sphinx/builder.py::Builder.status_iterator",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "sphinx@fd201666a2::Signature.__init__",
+    "repo": "sphinx",
+    "commit": "fd201666a2f3d5983bfe6ebb5b02246bae9192d1",
+    "parent": "4dcc35a6490d3d00fa2eb8313e75ac0bd80ec109",
+    "symbol": "sphinx/util/inspect.py::Signature.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "bound_method"
+    ],
+    "source_files": [],
+    "test_files": [
+      "tests/test_util_inspect.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "sphinx@fd94270f1c::CheckExternalLinksBuilder.write_entry",
+    "repo": "sphinx",
+    "commit": "fd94270f1ce9f5a10d2b16e751df7fbf9417019e",
+    "parent": "5018422db35b5a1d09ac0a2866bc02677079ffdf",
+    "symbol": "sphinx/builders/linkcheck.py::CheckExternalLinksBuilder.write_entry",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "filename"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "sphinx@fe06909e32::import_module",
     "repo": "sphinx",
     "commit": "fe06909e32669470c190484cdc202fc46b09879f",
@@ -1869,6 +5540,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "sphinx@ff0f008574::ShowUrlsTransform.create_footnote",
+    "repo": "sphinx",
+    "commit": "ff0f008574878dff2045bd083a0a4bde9432deec",
+    "parent": "1c65ff762e9e746bdbbcf44549791adde347a71a",
+    "symbol": "sphinx/builders/latex/transforms.py::ShowUrlsTransform.create_footnote",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "docname"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "sphinx@ff4352e794::ReSTDomain.note_object",

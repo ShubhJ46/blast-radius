@@ -14,22 +14,21 @@ mechanically.
 
 ## Status
 
-Stage 1 is complete and measured. Scored against **59 signature-changing commits
-mined from three real repositories**, with `grep` for the symbol name as the
-baseline, because that is what an agent does today:
+Stage 1 is complete and measured. Scored against **104 signature-changing
+commits mined from the full history of three real repositories**, with `grep`
+for the symbol name as the baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **62%** | 80% | **70%** |
-| `grep` | 13% | 100% | 23% |
+| **this tool** | **66%** | 63% | **64%** |
+| `grep` | 15% | 100% | 26% |
 
-`grep` finds everything and is wrong seven times out of eight.
+`grep` finds everything and is wrong six times out of seven.
 
-That precision number is still dominated by six cases out of fifty-nine, where
-a symbol called from a dozen files had a parameter change that forced only one
-or two of those callers to move. Excluding those six, the same run is **95%
-precision at 81% recall**. Both figures are in [results](#results), along with
-why neither is cherry-picked.
+That corpus spans 2007 to 2026, and **the tool's accuracy depends heavily on how
+modern the code is** — 83% recall on commits from 2021 onward, 47% before. The
+blended number above is the honest headline; the split is the useful fact, and
+[results](#results) has both plus why the old code scores as it does.
 
 | Component | State |
 | --- | --- |
@@ -66,18 +65,21 @@ What remains is not a bug. click is a small library: its functions are called by
 A recall number needs corpora with deep internal call graphs — applications and
 large frameworks, not focused libraries.
 
-**That prediction held.** Three corpora, most recent 6,000 commits of each:
+**That prediction held.** Three corpora — sphinx and scrapy to the root commit,
+mypy to a 6,000-commit window:
 
-| Corpus | Cases | Forcing | Usable for recall | On a private `_name` |
-| --- | ---: | ---: | ---: | ---: |
-| [mypy](https://github.com/python/mypy) | 248 | 148 | **43 (29%)** | 27 |
-| [scrapy](https://github.com/scrapy/scrapy) | 155 | 74 | 8 (11%) | 47 |
-| [sphinx](https://github.com/sphinx-doc/sphinx) | 129 | 81 | 8 (10%) | 35 |
+| Corpus | Commits walked | Cases | Forcing | Usable for recall | On a private `_name` |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| [mypy](https://github.com/python/mypy) | 6,000 | 248 | 148 | **43 (29%)** | 27 |
+| [sphinx](https://github.com/sphinx-doc/sphinx) | 16,578 | 380 | 219 | 38 (17%) | 83 |
+| [scrapy](https://github.com/scrapy/scrapy) | 9,222 | 316 | 159 | 23 (14%) | 96 |
 
 mypy is a type checker — an application whose modules call each other
-constantly — and it yields nearly three times the usable rate of the two
-libraries. That is the corpus shape a recall number needs, and it supplies 43 of
-the 59 scored cases on its own.
+constantly — and it yields the highest usable rate of the three. sphinx and
+scrapy are mined to the root commit, which is why their case counts are large
+relative to the window: the first pass took only the most recent 6,000 commits
+and left them resting on eight scored cases each. (Merge commits are excluded,
+so the walked counts are below each repository's raw total.)
 
 The last column explains most of the gap, and it is a property of file-level
 evaluation rather than of either tool. A private helper's callers live in its
@@ -87,12 +89,12 @@ cross-file blast radius, and cannot be scored at all:
 
 | | private forcing cases | of those, empty ground truth |
 | --- | ---: | ---: |
-| scrapy | 47 of 74 (64%) | 45 (96%) |
-| sphinx | 35 of 81 (43%) | 32 (91%) |
+| scrapy | 96 of 159 (60%) | 85 (89%) |
+| sphinx | 83 of 219 (38%) | 70 (84%) |
 | mypy | 27 of 148 (18%) | 18 (67%) |
 
 That is the mechanism behind the usable-case share, not a separate fact about
-it: scrapy spends 64% of its forcing cases on private helpers and almost none of
+it: scrapy spends 60% of its forcing cases on private helpers and almost none of
 those can be measured, while mypy spends 18% and keeps a third of even those.
 No amount of resolution accuracy moves this, which is worth knowing before
 reading a low usable share as a verdict on the tool.
@@ -270,25 +272,63 @@ honest-looking limitation.
 
 ## Results
 
-59 cases, all with non-empty cross-file ground truth:
+104 cases, all with non-empty cross-file ground truth:
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| sphinx | 8 | 100% | 91% | 95% |
-| scrapy | 8 | 86% | 60% | 71% |
+| scrapy | 23 | 88% | 25% | 39% |
+| sphinx | 38 | 83% | 64% | 72% |
 | mypy | 43 | 56% | 81% | 66% |
-| **all** | **59** | **62%** | **80%** | **70%** |
-| `grep`, all | 59 | 13% | 100% | 23% |
+| **all** | **104** | **66%** | **63%** | **64%** |
+| `grep`, all | 104 | 15% | 100% | 26% |
 
-**Six cases account for the entire precision figure**, and they are all the same
-shape: a symbol called from a dozen files, where the signature change forced
-only one or two of those callers to move.
+### Thickening the denominator moved the numbers down
+
+sphinx and scrapy previously rested on **eight scored cases each**, drawn from
+the most recent 6,000 commits. Mining both to the root commit took them to 38
+and 23, and their scores fell hard — sphinx from 91% recall to 64%, scrapy from
+60% to 25%. The earlier figures were not wrong so much as **unrepresentative**:
+eight cases of recent, well-annotated code.
+
+The cause is almost entirely the age of the code:
+
+| | cases | precision | recall |
+| --- | ---: | ---: | ---: |
+| commits from 2021 on | 43 | 75% | **83%** |
+| commits before 2021 | 61 | 56% | **47%** |
+
+Year by year the trend is monotone enough to be worth stating plainly: 12–30%
+recall on 2009–2012 commits, 75–92% on 2019 onward. Two mechanisms, both
+measured rather than assumed:
+
+**The tool cannot parse Python 2 at all.** Checking out scrapy at a 2008 commit
+gives 200 indexed modules and **30 unparseable ones** — `print` statements that
+a Python 3 `ast` rejects. Those files are excluded from the index, so a caller
+inside one is invisible. Of the 49 missed files across the whole run, **8 are
+source Python 3 cannot parse — every one of them before 2021, none after.**
+Excluding them lifts pre-2021 recall from 47% to 53%.
+
+**The rest is the unannotated receiver.** `self.middleware.download(request)` in
+2009 scrapy resolves to nothing because nothing declares what `self.middleware`
+holds — type annotations did not exist in Python until 2015 and were not
+commonplace for years after. That is the same mechanism behind `typed_attr`
+being worth 7.7% on mypy and 0.2% on the standard library, seen from the other
+end.
+
+Neither is a reason to drop the old cases. They are in the corpus and in the
+headline, because a tool that only works on code written after 2021 should have
+to say so with a number rather than a caveat.
+
+**Six cases still account for most of the precision figure**, and they are all
+the same shape: a symbol called from a dozen files, where the signature change
+forced only one or two of those callers to move. They carry 35 of the run's 44
+false positives.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 59 cases | 62% | 80% | 70% |
+| all 104 cases | 66% | 63% | 64% |
 | the 6 heavily-called symbols | 12% | 71% | 21% |
-| the other 53 | **95%** | **81%** | **87%** |
+| the other 98 | **90%** | 63% | **74%** |
 
 `IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
 parameter. Eleven files call it, and only the one or two that actually passed
@@ -299,8 +339,8 @@ still were not edited, because the commit only converted some of them.
 `get_proper_types` is the same story with a renamed parameter.
 
 The six are left in the corpus. Dropping the cases that make your own numbers
-look bad is how an evaluation stops meaning anything, so the 95% figure is
-quoted beside the 62% rather than instead of it.
+look bad is how an evaluation stops meaning anything, so the 90% figure is
+quoted beside the 66% rather than instead of it.
 
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
@@ -451,7 +491,8 @@ needs the declarations to live on the class graph rather than on the module
 walk, and reading through an unresolved base would be a guess.
 
 The scored effect is the sharpest illustration in this project of why one number
-is not enough:
+is not enough. Measured on the 59-case corpus this predated, so the figures are
+not comparable with the current headline — the direction is the point:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
@@ -474,7 +515,7 @@ the gain, because resolving `self.config.read()` also stops counting the
 `self.config` underneath it as unknown.
 
 Scored, it is the only change in this project that moved **both halves in the
-same direction**:
+same direction** (on the 59-case corpus it was measured against):
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |

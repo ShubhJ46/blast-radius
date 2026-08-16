@@ -1,5 +1,19 @@
 [
   {
+    "id": "scrapy@0174bee4bc::fetch",
+    "repo": "scrapy",
+    "commit": "0174bee4bc81f7d7e674c2e403ec94b5d1578481",
+    "parent": "f1bb8dc2a348e296584dd6cfe20e90cab9322ae7",
+    "symbol": "scrapy/fetcher.py::fetch",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "perdomain"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@01d948f0fd::Selector.__init__",
     "repo": "scrapy",
     "commit": "01d948f0fd792c3700306efe1bd38ae2163cb042",
@@ -12,6 +26,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@02de8cb6fa::Settings.set_settings_module",
+    "repo": "scrapy",
+    "commit": "02de8cb6fa9af8f4a902dd6f8dcdf109dfb60bfe",
+    "parent": "90e6aefb4d71f60becd178c80871da4ba565d50b",
+    "symbol": "scrapy/conf/__init__.py::Settings.set_settings_module",
+    "change_kind": "made_required",
+    "changed_parameters": [
+      "settings_module_path"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@032e6a091a::JsonRequest.replace",
@@ -42,6 +70,20 @@
     "commit_file_count": 4
   },
   {
+    "id": "scrapy@061132ce88::MediaPipeline.__init__",
+    "repo": "scrapy",
+    "commit": "061132ce88c6d54fd6014ded09b83a95ad78e7ae",
+    "parent": "2108517ce02038556b3629482275dbd791e64a65",
+    "symbol": "scrapy/contrib/pipeline/media.py::MediaPipeline.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "crawler"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@061c63592a::MailSender.send",
     "repo": "scrapy",
     "commit": "061c63592a3678e059fdeb964e6878663698237b",
@@ -58,6 +100,66 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@062761166c::SimpledbStatsCollector._to_sdb_value",
+    "repo": "scrapy",
+    "commit": "062761166c7fe2e51e0696021f93401f065e5374",
+    "parent": "1f50c24b6cde3353d6db24a049e932a96078cf2d",
+    "symbol": "scrapy/stats/collector/simpledb.py::SimpledbStatsCollector._to_sdb_value",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "ref"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@06c2509634::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "06c25096346b06393005386e9e1142b73a432ebd",
+    "parent": "91ddfd6f8043335218c30cfbf9e8ee971d06e08f",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "kwargs"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/item/adaptors.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@075b59f4af::ScrapyProcessProtocol.__init__",
+    "repo": "scrapy",
+    "commit": "075b59f4af6ad96406c03fba1e529ef1e34cc73a",
+    "parent": "6a33d6c4d08f73007129657a5b16ce69c3490446",
+    "symbol": "scrapy/service.py::ScrapyProcessProtocol.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "id"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@08194186b4::safe_url_string",
+    "repo": "scrapy",
+    "commit": "08194186b4604f9bc9fc0b73bc1aa158a7fe8059",
+    "parent": "2463842acbdcc66c116143bc8b08f477ce9bacbc",
+    "symbol": "scrapy/utils/url.py::safe_url_string",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "use_encoding"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_url.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@091c336b59::RFPDupeFilter.__init__",
     "repo": "scrapy",
     "commit": "091c336b5923032362e8942497e8718bb8d1c9ec",
@@ -70,6 +172,51 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@09b11a3a7b::simhash",
+    "repo": "scrapy",
+    "commit": "09b11a3a7b28a0a2f06da4b2277fc37d8bfa3e38",
+    "parent": "c2af3124bac3f3f92e98e42cd83f28a2b4c54331",
+    "symbol": "scrapy/trunk/scrapy/contrib/downloadermiddleware/simpages/metrics/tagdepth.py::simhash",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "symnumbers"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/simpages/__init__.py",
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/simpages/metrics/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@0a5586fafd::FilesystemCacheStorage.__init__",
+    "repo": "scrapy",
+    "commit": "0a5586fafda730b2e69ff0c6704e5259c05ae8ab",
+    "parent": "9f003a73daec59a73c23a2214b1b8d15a4391a2f",
+    "symbol": "scrapy/contrib/downloadermiddleware/httpcache.py::FilesystemCacheStorage.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "settings"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@0b6c7ce9b8::Scraper.handle_spider_error",
+    "repo": "scrapy",
+    "commit": "0b6c7ce9b88923c7a0f473c825946c24bd609c56",
+    "parent": "804c0279ec9735bba20774b3bb77cf648e6b95d6",
+    "symbol": "scrapy/core/scraper.py::Scraper.handle_spider_error",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "propagated_failure"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "scrapy@0b9dce3a6c::ScrapyClientContextFactory.__init__",
@@ -116,6 +263,25 @@
     "commit_file_count": 5
   },
   {
+    "id": "scrapy@0c9631594d::Request.replace",
+    "repo": "scrapy",
+    "commit": "0c9631594d8e3d2e1917e2d46ec67afcf719d1bf",
+    "parent": "03fc6fc4774c7cf03daeeb6933c6f434ef7e6028",
+    "symbol": "scrapy/trunk/scrapy/http/request/__init__.py::Request.replace",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "callback",
+      "encoding",
+      "dont_filter"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_http_request.py",
+      "scrapy/trunk/scrapy/tests/test_http_response.py"
+    ],
+    "commit_file_count": 5
+  },
+  {
     "id": "scrapy@0cf6344cc2::TextResponse.xpath",
     "repo": "scrapy",
     "commit": "0cf6344cc22a193079ea1fd2fbe28187cc212c7a",
@@ -144,6 +310,51 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@0dfec04439::CrawlSpider.__init__",
+    "repo": "scrapy",
+    "commit": "0dfec04439334b4c2da36b154b9df4703913faaa",
+    "parent": "70ac6642d57a4400a62d2373dc2de36099cfe1d1",
+    "symbol": "scrapy/contrib_exp/crawlspider/spider.py::CrawlSpider.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "a",
+      "kw"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 25
+  },
+  {
+    "id": "scrapy@0ea37f51db::Request.__init__",
+    "repo": "scrapy",
+    "commit": "0ea37f51dbdbc57e70d34e555f317e1588e5e45f",
+    "parent": "519458bdae3619b78289c756d84f47f1c00f2e01",
+    "symbol": "scrapy/trunk/scrapy/http/request.py::Request.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "fingerprint_params"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_http_request.py"
+    ],
+    "commit_file_count": 13
+  },
+  {
+    "id": "scrapy@0ed5978abf::ScrapedItem.setadaptors",
+    "repo": "scrapy",
+    "commit": "0ed5978abf0e1d00856ae3c8a64b0000aa9fd89d",
+    "parent": "e6f73c3dfa0397a426580ba3fe819fa3266136f5",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.setadaptors",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "adaptors_dict"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@101a0c32d7::Command._genspider",
     "repo": "scrapy",
     "commit": "101a0c32d71090989be8d37f7b4a464b433705ba",
@@ -158,6 +369,82 @@
     "commit_file_count": 7
   },
   {
+    "id": "scrapy@1272b138ea::Request.__init__",
+    "repo": "scrapy",
+    "commit": "1272b138ea3dd028846ab209cdfcaed5c66ff63f",
+    "parent": "8fc4719d0c2abe76c00c0f757c97a908115e7737",
+    "symbol": "scrapy/trunk/scrapy/http/request.py::Request.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "http_user",
+      "http_pass"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_utils_request.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@127e5ae029::LinkExtractor.__init__",
+    "repo": "scrapy",
+    "commit": "127e5ae02932af67c6157939cff6ab388c89c677",
+    "parent": "1f38460ba405879cf918318cfd8883f8fe78d9bf",
+    "symbol": "scrapy/trunk/scrapy/contrib_exp/link/__init__.py::LinkExtractor.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "process"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@129b6e0203::adaptor",
+    "repo": "scrapy",
+    "commit": "129b6e020370f39f1be2b2dc0ab8f96021757282",
+    "parent": "ac21b42f8c4d7df788351f97543fa6d70798e7bc",
+    "symbol": "scrapy/contrib_exp/newitem/adaptors.py::adaptor",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "adaptor_args"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@12b04b068f::HttpDownloadHandler.__init__",
+    "repo": "scrapy",
+    "commit": "12b04b068f1513da935d14ed58ecc1cf5eb3d263",
+    "parent": "d0081290f25c283215850642712949b188e1e79f",
+    "symbol": "scrapy/core/downloader/handlers/http.py::HttpDownloadHandler.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "download_timeout"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "scrapy@130276605b::listen_tcp",
+    "repo": "scrapy",
+    "commit": "130276605b0610175f8317c6e535467de5dbfae0",
+    "parent": "b76c5c597f0d5d649444cea7a9d357b0b36ebcf2",
+    "symbol": "scrapy/utils/reactor.py::listen_tcp",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "host"
+    ],
+    "source_files": [
+      "scrapy/telnet.py",
+      "scrapy/webservice.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
     "id": "scrapy@13a014d2e6::Response.replace",
     "repo": "scrapy",
     "commit": "13a014d2e6b5b9a3eca67a8f3d9b8e2c7b214f1d",
@@ -170,6 +457,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@150f4ed815::ClusterMaster.load_node",
+    "repo": "scrapy",
+    "commit": "150f4ed81530390c344c714f597a89f76bced797",
+    "parent": "5349030b312de601db2c9c41d5d5c295a04a6fc4",
+    "symbol": "scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/master/manager.py::ClusterMaster.load_node",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "url"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
   },
   {
     "id": "scrapy@1534e8540b::FeedExporter._get_exporter",
@@ -201,6 +502,22 @@
     "commit_file_count": 8
   },
   {
+    "id": "scrapy@1b3d40e639::remove_escape_chars",
+    "repo": "scrapy",
+    "commit": "1b3d40e63902b7c6d5c84b248073c77de97641d6",
+    "parent": "7eb79488aa1c1b773271f7d2fc47102e2fb76b5e",
+    "symbol": "scrapy/utils/markup.py::remove_escape_chars",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "replace_str"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_markup.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@1c40dfa740::Stream.close",
     "repo": "scrapy",
     "commit": "1c40dfa7408026bc9ae831000a8614e8f4a9dd0d",
@@ -215,6 +532,20 @@
     ],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "scrapy@1d98fc8fb5::Scraper.handle_spider_error",
+    "repo": "scrapy",
+    "commit": "1d98fc8fb5b3a1f359d5ef0ba622c964966ce8d8",
+    "parent": "13d806678875cdede987af6b72092357d0577dca",
+    "symbol": "scrapy/core/scraper.py::Scraper.handle_spider_error",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "response"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "scrapy@1dff1fbf75::walk_modules",
@@ -273,6 +604,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@1fa947dd67::AdaptorPipe.__init__",
+    "repo": "scrapy",
+    "commit": "1fa947dd678e02e449c033df6b8c2d125fa7311b",
+    "parent": "82a9fa9ffc538243f6b165c69c557ac39312a71c",
+    "symbol": "scrapy/trunk/scrapy/item/adaptors.py::AdaptorPipe.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "define_from"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@204737042a::FeedExporter._start_new_batch",
     "repo": "scrapy",
     "commit": "204737042ac6672eee73c975d0bd6735893d684c",
@@ -281,6 +626,35 @@
     "change_kind": "renamed",
     "changed_parameters": [
       "previous_batch_slot"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@20e82335e2::XmlItemExporter._export_xml_field",
+    "repo": "scrapy",
+    "commit": "20e82335e2127448809b7a30d0de484602cae23e",
+    "parent": "6b7162f3caa6ca97eb150a83665466ed0e17e8fa",
+    "symbol": "scrapy/contrib/exporter/__init__.py::XmlItemExporter._export_xml_field",
+    "change_kind": "other",
+    "changed_parameters": [
+      "field",
+      "value"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@2167bfb20d::_adapt_eventdict",
+    "repo": "scrapy",
+    "commit": "2167bfb20d186c1cc74299b01a95e96b6a785d1b",
+    "parent": "ae692c05b78959ce43899526a3d14d6fdf031354",
+    "symbol": "scrapy/log.py::_adapt_eventdict",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "prepend_level"
     ],
     "source_files": [],
     "test_files": [],
@@ -313,6 +687,23 @@
       "tests/test_spider.py"
     ],
     "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@2322322ee6::Request.replace",
+    "repo": "scrapy",
+    "commit": "2322322ee67021fedd410242fc39de53a0aa87e9",
+    "parent": "60961e54994a14f527e069b761d7e0f59568fb94",
+    "symbol": "scrapy/http/request/__init__.py::Request.replace",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "priority",
+      "errback"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_http_request.py"
+    ],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@25e616fa04::ImagesPipeline.convert_image",
@@ -383,6 +774,36 @@
     "commit_file_count": 20
   },
   {
+    "id": "scrapy@290702d988::ClusterWorker.remote_register_crawler",
+    "repo": "scrapy",
+    "commit": "290702d988547b33f0422a49c3f07248c1d42f65",
+    "parent": "5b4d9f8f85f0b145a15e83e4dd4d9d2886ab9bff",
+    "symbol": "scrapy/trunk/scrapy/contrib/pbcluster/worker/manager.py::ClusterWorker.remote_register_crawler",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "domain"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@29c3715c5a::canonicalize_url",
+    "repo": "scrapy",
+    "commit": "29c3715c5a11d93d9019d6792b92692e685e4f4f",
+    "parent": "30803b9e89427f70fae5e5d809ddc8940b33984a",
+    "symbol": "scrapy/trunk/scrapy/utils/url.py::canonicalize_url",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "remove_fragments"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_utils_url.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@2a6524ee3a::Scheduler.__init__",
     "repo": "scrapy",
     "commit": "2a6524ee3a21283db01dae8bf3a11832eca79614",
@@ -411,6 +832,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@2ac08a713d::Downloader._download",
+    "repo": "scrapy",
+    "commit": "2ac08a713d7f8100de28612e5576306643121bd0",
+    "parent": "d6b83fee3e8d6f13f162265b5b5850ae73f86334",
+    "symbol": "scrapy/core/downloader/__init__.py::Downloader._download",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "site"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "scrapy@2bbbd02bda::GCSFeedStorage.__init__",
     "repo": "scrapy",
     "commit": "2bbbd02bda368c2f052f3aa38f99498a632328bb",
@@ -427,6 +862,34 @@
     "commit_file_count": 3
   },
   {
+    "id": "scrapy@2de03b5e2a::LinkExtractor.__init__",
+    "repo": "scrapy",
+    "commit": "2de03b5e2ad6e72603a54818774e764a5315e6fd",
+    "parent": "2c29d6d60f765e256a2c2f55b4eee19ccf2caf30",
+    "symbol": "scrapy/trunk/scrapy/link/__init__.py::LinkExtractor.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "process_value"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@2e74ccaa7e::CSVFeedSpider.parse_row",
+    "repo": "scrapy",
+    "commit": "2e74ccaa7e088e059cc261cfb8f00f6b48c18a80",
+    "parent": "03bc21898759286e8cc99c08f1701403acd301f8",
+    "symbol": "scrapy/contrib/spiders/feed.py::CSVFeedSpider.parse_row",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "response"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@2fb160e3ba::FTPDownloadHandler.__init__",
     "repo": "scrapy",
     "commit": "2fb160e3bac9e09373a49cb0b2d764ddf782987c",
@@ -438,6 +901,22 @@
     ],
     "source_files": [],
     "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@2fe8afdade::mysql_connect",
+    "repo": "scrapy",
+    "commit": "2fe8afdade5caf4884bbbe5edbee6f1b771ca337",
+    "parent": "f373fc0f7cc8e9926136549078376ad9b76f1a61",
+    "symbol": "scrapy/trunk/scrapy/utils/db.py::mysql_connect",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "db_uri"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_storedb.py"
+    ],
     "commit_file_count": 2
   },
   {
@@ -469,6 +948,34 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@31b3d7ce1e::Scraper._scrape",
+    "repo": "scrapy",
+    "commit": "31b3d7ce1e60a5c91d8b9bfd1bd3d49113b0a73b",
+    "parent": "4f1d388733d2cb99719efcf49f27fba8586430c5",
+    "symbol": "scrapy/core/scraper.py::Scraper._scrape",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "request_result"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "scrapy@323241b6d6::CrawlSpider._parse_wrapper",
+    "repo": "scrapy",
+    "commit": "323241b6d6a017b815bf2dd4ad3d5f2ef5514ee0",
+    "parent": "c5d134053bd5d4b6b1a46c82de0d69e403583fa3",
+    "symbol": "scrapy/trunk/scrapy/contrib/spiders.py::CrawlSpider._parse_wrapper",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@3259a42525::CrawlSpider._callback",
@@ -541,6 +1048,34 @@
     "commit_file_count": 6
   },
   {
+    "id": "scrapy@37760eb13f::start",
+    "repo": "scrapy",
+    "commit": "37760eb13fba85bc592f9b5169475f0d23476cb6",
+    "parent": "f0689a9ee8f7958d90c206f1dc4d217523014bb8",
+    "symbol": "scrapy/log.py::start",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "log_stdout"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "scrapy@39499a2437::ResponseTypes.from_content_type",
+    "repo": "scrapy",
+    "commit": "39499a24377770e6eeca91101f1be59e738764e0",
+    "parent": "9acc99e723295710d9b42525b97fe2246048398b",
+    "symbol": "scrapy/core/downloader/responsetypes/__init__.py::ResponseTypes.from_content_type",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "content_encoding"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "scrapy@39df675f09::RetryMiddleware.__init__",
     "repo": "scrapy",
     "commit": "39df675f091cf904dc904acd9538a0bebe2e55cd",
@@ -567,6 +1102,39 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 6
+  },
+  {
+    "id": "scrapy@3d731ba641::url_query_cleaner",
+    "repo": "scrapy",
+    "commit": "3d731ba641f58e67ca5af9419ff6293163e2186b",
+    "parent": "c0d45846b87d1a275184d79f17ef78d7a953570a",
+    "symbol": "scrapy/utils/url.py::url_query_cleaner",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "remove",
+      "unique"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_url.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@3e62ce35a0::DownloadHandlers.__init__",
+    "repo": "scrapy",
+    "commit": "3e62ce35a0234fa441dab0cd65a8482a515335b7",
+    "parent": "334ad71a2e78ab0383049d5e1dddf187c3e85848",
+    "symbol": "scrapy/core/downloader/handlers/__init__.py::DownloadHandlers.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "settings"
+    ],
+    "source_files": [
+      "scrapy/core/downloader/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@3ffa2c5759::FTPDownloadHandler.__init__",
@@ -659,6 +1227,36 @@
     "commit_file_count": 3
   },
   {
+    "id": "scrapy@42e6ed74e5::RobustScrapedItem.__init__",
+    "repo": "scrapy",
+    "commit": "42e6ed74e501b5c69982abcc78a10e8a51119744",
+    "parent": "06c25096346b06393005386e9e1142b73a432ebd",
+    "symbol": "scrapy/trunk/scrapy/contrib/item/models.py::RobustScrapedItem.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "adaptors_pipe"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@460f690c5c::add_or_replace_parameter",
+    "repo": "scrapy",
+    "commit": "460f690c5cc85e3ed0657b5287e8fd14b07efe6c",
+    "parent": "c205f7d8e5258a1248d03bde0706d46dd8d28fb5",
+    "symbol": "scrapy/utils/url.py::add_or_replace_parameter",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "url_is_quoted"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_url.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@46ef9cf771::CrawlerProcess.start",
     "repo": "scrapy",
     "commit": "46ef9cf771789f1db513bbf2f65243d3320ce695",
@@ -703,6 +1301,37 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@495152bd50::DepthMiddleware.__init__",
+    "repo": "scrapy",
+    "commit": "495152bd505bccddfe9de7a4fd8585d7815657bb",
+    "parent": "accb6ed8307054a6703a37bea20990119c1e166c",
+    "symbol": "scrapy/contrib/spidermiddleware/depth.py::DepthMiddleware.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "verbose_stats"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_spidermiddleware_depth.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@4c7d29b7f7::XPathSelector.__init__",
+    "repo": "scrapy",
+    "commit": "4c7d29b7f7fd6071449e925ce4f6df6e5b36c808",
+    "parent": "ac4f6cc17cffed99d6ba218d2323a7383c1a80cf",
+    "symbol": "scrapy/selector/lxmlsel.py::XPathSelector.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "root",
+      "expr"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@4d77c3084e::S3FeedStorage.__init__",
     "repo": "scrapy",
     "commit": "4d77c3084e64d351e3acf9092b4171d4418925fe",
@@ -732,6 +1361,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@509b05db57::RegexLinkExtractor._extract_links",
+    "repo": "scrapy",
+    "commit": "509b05db571aac659c51ec36b75f83166a2eda49",
+    "parent": "ab1c9cfc56cdb4d6aff4f0cf7d9f00c9a433095e",
+    "symbol": "scrapy/contrib/linkextractors/regex.py::RegexLinkExtractor._extract_links",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "base_url"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@509cc8d41e::start_python_console",
@@ -766,6 +1409,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@52596f350c::ScrapyProcessProtocol.__init__",
+    "repo": "scrapy",
+    "commit": "52596f350c0975f7af736665066182d4215b3608",
+    "parent": "3e1ad8d6530819afc09fc0ae9e356c8bff9cdfad",
+    "symbol": "scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/worker/manager.py::ScrapyProcessProtocol.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "procman"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@58a98b0c04::TunnelingTCP4ClientEndpoint.connect",
     "repo": "scrapy",
     "commit": "58a98b0c04b7dd10720b4310de1aef5765570885",
@@ -778,6 +1435,22 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@5944f6590a::DownloaderMiddlewareManager.download",
+    "repo": "scrapy",
+    "commit": "5944f6590ab2080d02be646f637a3a2ab0737c88",
+    "parent": "cd1ad337b173632f0f42534930b893787936c8d7",
+    "symbol": "scrapy/core/downloader/middleware.py::DownloaderMiddlewareManager.download",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "download_func"
+    ],
+    "source_files": [
+      "scrapy/core/downloader/manager.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@59ce27afdd::H2ConnectionPool.__init__",
@@ -794,6 +1467,20 @@
     ],
     "test_files": [],
     "commit_file_count": 7
+  },
+  {
+    "id": "scrapy@5a46ce47ee::Config.__init__",
+    "repo": "scrapy",
+    "commit": "5a46ce47ee9ce1444187f6be19aacd45ab7d79ee",
+    "parent": "c02d6db6a34e3a135b2a00e6c6bebd0507ec4d56",
+    "symbol": "scrapyd/config.py::Config.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "extra_sources"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@5a7e132486::Downloader._get_slot",
@@ -826,6 +1513,50 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@5c4f562ec4::ScrapyProcessProtocol.__init__",
+    "repo": "scrapy",
+    "commit": "5c4f562ec47d0e3fa588f38140791addd6a88d9c",
+    "parent": "df54ed004193a9e85607ff48bb198644f9b4e3df",
+    "symbol": "scrapyd/launcher.py::ScrapyProcessProtocol.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "env"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "scrapy@5c60ef69ab::remove_tags",
+    "repo": "scrapy",
+    "commit": "5c60ef69ab50c22e77cd5442fa98ee82c5a0b1db",
+    "parent": "94e6acebabd4e38f47cc493eedbf739664abaf9e",
+    "symbol": "scrapy/utils/markup.py::remove_tags",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "keep"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_markup.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@5cae22b665::Link.__init__",
+    "repo": "scrapy",
+    "commit": "5cae22b665c250935d7a0c3fdd0e583beff08500",
+    "parent": "cfd11df5395bca8e91d5271c37f0fb97fddf509e",
+    "symbol": "scrapy/link.py::Link.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "nofollow"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@5d0058492c::MediaPipeline.__init__",
     "repo": "scrapy",
     "commit": "5d0058492c07d3f89f46ccfd2b8e33849f8bd30e",
@@ -838,6 +1569,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@5eb7e5ba89::_normalize_input",
+    "repo": "scrapy",
+    "commit": "5eb7e5ba89dfbcc4fd56b3e14716d34806388a8a",
+    "parent": "fc3f66bd1cb8fc2d1b122ac80737da8d3f992e5f",
+    "symbol": "scrapy/trunk/scrapy/utils/iterators.py::_normalize_input",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "unicode"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 12
   },
   {
     "id": "scrapy@5f2827efe7::HttpCompressionMiddleware.__init__",
@@ -932,6 +1677,82 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@63e4355fba::_get_form",
+    "repo": "scrapy",
+    "commit": "63e4355fba1ec90bec9cf751b8b6fc3483062377",
+    "parent": "5c03c1df2daef56c11221e770f328d865848c89a",
+    "symbol": "scrapy/http/request/form.py::_get_form",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "root"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@640e8b9131::Report.__init__",
+    "repo": "scrapy",
+    "commit": "640e8b91312f9ef8cabfda34490faba844487ebb",
+    "parent": "02b87f7d496b82ad746440d01694d46f3539ad27",
+    "symbol": "scrapy/trunk/scrapy/report/__init__.py::Report.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "passed"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/command/commands/crawl.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@6420c407d2::Downloader.__init__",
+    "repo": "scrapy",
+    "commit": "6420c407d2c23fe1cd71d39cbee3ccc67511e76f",
+    "parent": "f39b7b507a597d102e51ef3735b8fd5efc365093",
+    "symbol": "scrapy/trunk/scrapy/core/downloader/manager.py::Downloader.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "engine"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/core/engine.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@64ba6e7982::StackTraceDump.__init__",
+    "repo": "scrapy",
+    "commit": "64ba6e7982fcf7f4ee9f7582de47c72db8fe0cc5",
+    "parent": "023232f7d49b50fdcffbcb277e801eb5652db9e9",
+    "symbol": "scrapy/contrib/debug.py::StackTraceDump.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "crawler"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@654b49c86e::Response.__init__",
+    "repo": "scrapy",
+    "commit": "654b49c86e79d571190e60ba28c8c551582bba28",
+    "parent": "8ecc6808e01ffd7338bd22a9c2999b972bbd4d56",
+    "symbol": "scrapy/trunk/scrapy/http/response.py::Response.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "meta"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_http_response.py"
+    ],
+    "commit_file_count": 5
+  },
+  {
     "id": "scrapy@6760bca74b::Request.__init__",
     "repo": "scrapy",
     "commit": "6760bca74b1f51ce83ed73318d5ddcef03c9d129",
@@ -946,6 +1767,22 @@
       "tests/spiders.py"
     ],
     "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@677d0c366f::Request.__init__",
+    "repo": "scrapy",
+    "commit": "677d0c366f60222b8cc441af103c36c5b8dba483",
+    "parent": "12d0bd4dbb83fa9753145208cb0778ac8f9bb88d",
+    "symbol": "scrapy/trunk/scrapy/http/request.py::Request.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "url_encoding"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_http_request.py"
+    ],
+    "commit_file_count": 3
   },
   {
     "id": "scrapy@690dd7f38b::Stream.close",
@@ -978,6 +1815,22 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@6abb3c17ee::FormRequest.from_response",
+    "repo": "scrapy",
+    "commit": "6abb3c17ee90c0c070b2abbdb6a427b1382a4993",
+    "parent": "789cba2bd892727f0494cca70b38eabc3ea7e2b4",
+    "symbol": "scrapy/http/request/form.py::FormRequest.from_response",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "clickdata"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_http_request.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@6b4439eacc::SelectorList.extract_first",
     "repo": "scrapy",
     "commit": "6b4439eacc5612ce584de94053e725610f2e15a5",
@@ -986,6 +1839,34 @@
     "change_kind": "added_optional",
     "changed_parameters": [
       "default"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@6d4b764f29::BaseSpider.log",
+    "repo": "scrapy",
+    "commit": "6d4b764f29fc3c5fbaa64506289d3c15eabbe44f",
+    "parent": "c0a7040f16c8f399a02c71037a1522522de38523",
+    "symbol": "scrapy/spider.py::BaseSpider.log",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "kw"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@6d5a130b96::Rule.__init__",
+    "repo": "scrapy",
+    "commit": "6d5a130b96411f97a21e0810866f1e8f675510b3",
+    "parent": "1b92fef9a70b89871a83f8146386b85a6df02b08",
+    "symbol": "scrapy/trunk/scrapy/contrib/spiders2/crawl.py::Rule.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "link_filter"
     ],
     "source_files": [],
     "test_files": [],
@@ -1024,6 +1905,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@6f0e492390::Slot.finish_response",
+    "repo": "scrapy",
+    "commit": "6f0e492390ec6c59d3b0d39ff5bd2ba3bfc51bc9",
+    "parent": "6e50f94406884f29f61735620907b125b55cea9d",
+    "symbol": "scrapy/core/scraper.py::Slot.finish_response",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "request"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@7130df2d96::Command.get_requests",
     "repo": "scrapy",
     "commit": "7130df2d96836467c33f87196699076f159df9f0",
@@ -1039,6 +1934,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@719fc2e7df::SimpledbStatsCollector._to_sdb_value",
+    "repo": "scrapy",
+    "commit": "719fc2e7df4ca70ebdd7076854e7cf92c49ee9a8",
+    "parent": "7cb546ba28a53b50969db384e79dc6bb394de4ad",
+    "symbol": "scrapy/stats/collector/simpledb.py::SimpledbStatsCollector._to_sdb_value",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "ref"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@7417a9871c::BaseItemExporter.__init__",
     "repo": "scrapy",
     "commit": "7417a9871c489686b7d3ac1b85b964eca253c979",
@@ -1046,6 +1955,34 @@
     "symbol": "scrapy/exporters.py::BaseItemExporter.__init__",
     "change_kind": "reordered",
     "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@79bf4c817a::TextResponse.headers_encoding",
+    "repo": "scrapy",
+    "commit": "79bf4c817ae8f48071407559ab669546843dcd64",
+    "parent": "4f2925420f01d3d86c2b8855683f80502da8aacf",
+    "symbol": "scrapy/http/response/text.py::TextResponse.headers_encoding",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "headers"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "scrapy@7af94be3a9::_v20_S3Connection._mexe",
+    "repo": "scrapy",
+    "commit": "7af94be3a9e635cc2e9f305b0f45e82063b2f90c",
+    "parent": "7a4c012db498cc763f33e3180a36c3cfd4e09d7e",
+    "symbol": "scrapy/core/downloader/handlers/s3.py::_v20_S3Connection._mexe",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "kwargs"
+    ],
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
@@ -1061,6 +1998,50 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "scrapy@7b9fa7fbaa::OffsiteMiddleware.get_host_regex",
+    "repo": "scrapy",
+    "commit": "7b9fa7fbaaf007106cd87bc88cffa7c35ca9967c",
+    "parent": "1b11563383a9971c9e1375f2e7987042e64ebf93",
+    "symbol": "scrapy/contrib/spidermiddleware/offsite.py::OffsiteMiddleware.get_host_regex",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "domains"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@7bf0af7a58::get_func_args",
+    "repo": "scrapy",
+    "commit": "7bf0af7a588911984236e29b097dc967c9c74eeb",
+    "parent": "251d9a9033ae98a0f55164ffbc470056872c1c76",
+    "symbol": "scrapy/utils/python.py::get_func_args",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "stripself"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_utils_python.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@7cfc379230::ExecutionQueue.__init__",
+    "repo": "scrapy",
+    "commit": "7cfc37923014fba120a78521b1acc8d529aa5a59",
+    "parent": "37776618a30cd50a80c71a27fbb9da05d0d8eca2",
+    "symbol": "scrapy/queue.py::ExecutionQueue.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "_spiders"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 16
   },
   {
     "id": "scrapy@7d88209543::MediaPipeline._key_for_pipe",
@@ -1091,6 +2072,20 @@
     "commit_file_count": 6
   },
   {
+    "id": "scrapy@7eb79488aa::remove_escape_chars",
+    "repo": "scrapy",
+    "commit": "7eb79488aa1c1b773271f7d2fc47102e2fb76b5e",
+    "parent": "77b25d3036a6b013886d048f5a282b0f7ebd2aef",
+    "symbol": "scrapy/utils/markup.py::remove_escape_chars",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "replace_str"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@80925ab845::Response.__init__",
     "repo": "scrapy",
     "commit": "80925ab845b7f55be97d9bb91015ceee90efc333",
@@ -1119,6 +2114,18 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@8278c0cffc::CrawlSpider.process_spider_output",
+    "repo": "scrapy",
+    "commit": "8278c0cffccee7f2c5e8c701284d5a6bacce9bbe",
+    "parent": "32d842326aa64c8b063e4c5483b05d2229b3cc53",
+    "symbol": "scrapy/trunk/scrapy/contrib/spiders/crawl.py::CrawlSpider.process_spider_output",
+    "change_kind": "reordered",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@82d138e87e::xmliter_lxml",
     "repo": "scrapy",
     "commit": "82d138e87e68b1e198dfdc3b0d7f62d0de2e1ceb",
@@ -1127,6 +2134,20 @@
     "change_kind": "added_optional",
     "changed_parameters": [
       "prefix"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@830cd4f19f::Downloader._download",
+    "repo": "scrapy",
+    "commit": "830cd4f19f71a5171c1f0fd309e86e7d0b2bf157",
+    "parent": "87df33ce0a0e4b65846afd682efe24a4f958c168",
+    "symbol": "scrapy/core/downloader/manager.py::Downloader._download",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "deferred"
     ],
     "source_files": [],
     "test_files": [],
@@ -1145,6 +2166,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@8480f49cf6::CoreStats.stats_domain_closing",
+    "repo": "scrapy",
+    "commit": "8480f49cf627f745f4d3f31fb068878ed2f1d8d5",
+    "parent": "0227c53b13bb17bd442c591f0ee1ab4fb85dddb2",
+    "symbol": "scrapy/stats/corestats.py::CoreStats.stats_domain_closing",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "spider"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 24
   },
   {
     "id": "scrapy@84fb0edd5f::LogStatsExtended.__init__",
@@ -1205,6 +2240,20 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@86de5180fc::RobotsTxtMiddleware.robot_parser",
+    "repo": "scrapy",
+    "commit": "86de5180fcb1be576dcb44ce4ca072e8a719fbdb",
+    "parent": "dad05957f3f40c30da78ef5db6f06a5b7310dfc5",
+    "symbol": "scrapy/contrib/downloadermiddleware/robotstxt.py::RobotsTxtMiddleware.robot_parser",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "url"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@86e4442d17::TunnelingAgent._getEndpoint",
     "repo": "scrapy",
     "commit": "86e4442d177ea781f53f0f105c5ad814560a0bc4",
@@ -1251,6 +2300,34 @@
     "commit_file_count": 21
   },
   {
+    "id": "scrapy@87fbc9c58c::SpiderMiddlewareManager._validate_output",
+    "repo": "scrapy",
+    "commit": "87fbc9c58c6877c1e600354dd898e0014e6ef687",
+    "parent": "727e67af5e82128839f084196809fa745bc8921f",
+    "symbol": "scrapy/spider/middleware.py::SpiderMiddlewareManager._validate_output",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "spider"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@894a5d81d3::Item.__init__",
+    "repo": "scrapy",
+    "commit": "894a5d81d3f24ac2b9638393ef551f550e72017a",
+    "parent": "6fcbd03bff4e871ae908ac1d7142c9249032fe44",
+    "symbol": "scrapy/contrib_exp/newitem/models.py::Item.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "values"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "scrapy@896f16f2de::ImagesPipeline.thumb_path",
     "repo": "scrapy",
     "commit": "896f16f2def7c276350421352dddf6e7b0145519",
@@ -1274,6 +2351,58 @@
       "kwargs"
     ],
     "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@8a5c08a6bc::CsvItemExporter.__init__",
+    "repo": "scrapy",
+    "commit": "8a5c08a6bcde96938ed92ee4996aafb6655c3688",
+    "parent": "84dee1f77fb12e170d151d5e9c615a4cc3252939",
+    "symbol": "scrapy/contrib/exporter/__init__.py::CsvItemExporter.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "join_multivalued"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_contrib_exporter.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@8aa7d153ae::ScrapyHTTPClientFactory.__init__",
+    "repo": "scrapy",
+    "commit": "8aa7d153ae0938539654bdfba3b4edcc23c34d81",
+    "parent": "40dc867ac378d98f570e1a8c13f553f4ec499c40",
+    "symbol": "scrapy/core/downloader/webclient.py::ScrapyHTTPClientFactory.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "url",
+      "method",
+      "body",
+      "headers",
+      "parsedurl"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_webclient.py"
+    ],
+    "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@8b09be8601::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "8b09be8601b0be7e0aa7f6af995dd1d0a4fde1e4",
+    "parent": "09b11a3a7b28a0a2f06da4b2277fc37d8bfa3e38",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "pipeargs"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/item/adaptors.py"
+    ],
     "test_files": [],
     "commit_file_count": 2
   },
@@ -1306,6 +2435,36 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@8d1d3493e7::DefaultHeadersMiddleware.__init__",
+    "repo": "scrapy",
+    "commit": "8d1d3493e75e72ac4d02d519094becb96898f592",
+    "parent": "00d55fbbd10812d59ac993253e453c9378a104db",
+    "symbol": "scrapy/contrib/downloadermiddleware/defaultheaders.py::DefaultHeadersMiddleware.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "settings"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 10
+  },
+  {
+    "id": "scrapy@8d24175c81::Crawler.configure",
+    "repo": "scrapy",
+    "commit": "8d24175c8159cf5bd209f53bdcfc133b78c5a70f",
+    "parent": "54024d1d3fdc9a82385abbca149ef724feff5190",
+    "symbol": "scrapy/crawler.py::Crawler.configure",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "control_reactor"
+    ],
+    "source_files": [
+      "scrapy/cmdline.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@8da9836db3::Slot.__init__",
     "repo": "scrapy",
     "commit": "8da9836db3d6071eff6d0267ed47a7af81b830d3",
@@ -1318,6 +2477,40 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@8db67b17a3::ExecutionManager.start",
+    "repo": "scrapy",
+    "commit": "8db67b17a372fee109a6b2872b35742bf6f70740",
+    "parent": "32f9c5fe68800376e730ad1cecd5ea4537d573c8",
+    "symbol": "scrapy/core/manager.py::ExecutionManager.start",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "keep_alive"
+    ],
+    "source_files": [
+      "scrapy/command/commands/start.py",
+      "scrapy/shell.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
+    "id": "scrapy@8de0dc3647::send_catch_log",
+    "repo": "scrapy",
+    "commit": "8de0dc3647b0e9e317303fe715b3f32b1df741b7",
+    "parent": "2aa84073aba24d54d65747d8bdef62c93f8f1c0d",
+    "symbol": "scrapy/utils/signal.py::send_catch_log",
+    "change_kind": "other",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [
+      "scrapy/core/engine.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@8e813953bd::RobotsTxtMiddleware._parse_robots",
@@ -1334,6 +2527,34 @@
     "commit_file_count": 9
   },
   {
+    "id": "scrapy@8ecc6808e0::Request.__init__",
+    "repo": "scrapy",
+    "commit": "8ecc6808e01ffd7338bd22a9c2999b972bbd4d56",
+    "parent": "7e640da4332180477534fb242a53a5fedabb133d",
+    "symbol": "scrapy/trunk/scrapy/http/request.py::Request.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "context"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@8f2dda12cc::MemoryDebugger.__init__",
+    "repo": "scrapy",
+    "commit": "8f2dda12cc593e318c6ad924f7872491874cc612",
+    "parent": "cd823018aab286a8e1fb3e0ae5e4bbf6589b02f9",
+    "symbol": "scrapy/contrib/memdebug.py::MemoryDebugger.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "trackrefs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
     "id": "scrapy@900a487682::_adapt_eventdict",
     "repo": "scrapy",
     "commit": "900a487682b11696ccab5d18c9f13e0addd25f12",
@@ -1348,6 +2569,35 @@
     "commit_file_count": 4
   },
   {
+    "id": "scrapy@90b716f7e4::Downloader._process_queue",
+    "repo": "scrapy",
+    "commit": "90b716f7e490c1b52a2a48477948a85f87b3c4af",
+    "parent": "549298e38dbbe64f3cfafdc5bb722ab9e9e6992f",
+    "symbol": "scrapy/core/downloader/__init__.py::Downloader._process_queue",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "slot"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@90d408b04f::CacheMiddleware.__init__",
+    "repo": "scrapy",
+    "commit": "90d408b04fa1471cee0b9ea03a5423cd3011fdc2",
+    "parent": "19f2992b2604203c0c5abc02fb7525ec4e0e8384",
+    "symbol": "scrapy/contrib/downloadermiddleware/cache.py::CacheMiddleware.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "args",
+      "kwargs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 8
+  },
+  {
     "id": "scrapy@915d7cf247::iterloc",
     "repo": "scrapy",
     "commit": "915d7cf247a87054a3026be7c12eee6f90edade9",
@@ -1359,6 +2609,56 @@
     ],
     "source_files": [],
     "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@91e1e0aff3::FilterWordsPipeline.process_item",
+    "repo": "scrapy",
+    "commit": "91e1e0aff30c57b4cfb2ab72a42467d9a77763ab",
+    "parent": "bd16d1cd488eca45eeac079bb4644388fd9d6214",
+    "symbol": "examples/googledir/googledir/pipelines.py::FilterWordsPipeline.process_item",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "domain"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@9270810840::urljoin_rfc",
+    "repo": "scrapy",
+    "commit": "92708108409ccddbacef4fd2e52a08ec65a6184a",
+    "parent": "d5d2c5c924157c4151d6f373e0b1ebe08ee3bdca",
+    "symbol": "scrapy/utils/url.py::urljoin_rfc",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "encoding"
+    ],
+    "source_files": [
+      "scrapy/contrib/downloadermiddleware/redirect.py",
+      "scrapy/contrib/linkextractors/htmlparser.py",
+      "scrapy/contrib/linkextractors/lxmlparser.py",
+      "scrapy/contrib/linkextractors/regex.py",
+      "scrapy/contrib/linkextractors/sgml.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@9288f622f9::FormRequest.from_response",
+    "repo": "scrapy",
+    "commit": "9288f622f9d24510e83c83ae4e09c43738e9d671",
+    "parent": "400c4134af7d14f5f0ebe5efacd0e0129aff8799",
+    "symbol": "scrapy/http/request/form.py::FormRequest.from_response",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "formname"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_http_request.py"
+    ],
     "commit_file_count": 3
   },
   {
@@ -1377,6 +2677,40 @@
     "commit_file_count": 5
   },
   {
+    "id": "scrapy@934535740b::Headers.__init__",
+    "repo": "scrapy",
+    "commit": "934535740bfdd1c643f875905f919ed6faecd778",
+    "parent": "f4b55bfd203b22db2f101f804ddfbdb015ad90e4",
+    "symbol": "scrapy/trunk/scrapy/http/headers.py::Headers.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "dictorstr",
+      "fromdict",
+      "fromstr"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/cache.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 5
+  },
+  {
+    "id": "scrapy@94b40162a9::get_spider_list",
+    "repo": "scrapy",
+    "commit": "94b40162a9f2da77fbc0fc509e8e8be664378e7c",
+    "parent": "3904f5f55a626b9f189d94e26ca9b3034442e6d9",
+    "symbol": "scrapyd/utils.py::get_spider_list",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "pythonpath"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapyd/tests/test_utils.py"
+    ],
+    "commit_file_count": 6
+  },
+  {
     "id": "scrapy@94e28adfb7::TunnelingAgent._getEndpoint",
     "repo": "scrapy",
     "commit": "94e28adfb7049be8ec0e9ce00bab1ab3a0b25301",
@@ -1391,6 +2725,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@9523cab25c::ExecutionManager._spider_closed",
+    "repo": "scrapy",
+    "commit": "9523cab25cbffdae0f94e4fd31847bc54e34640c",
+    "parent": "fcdc4ee7d9983615df7d4600ee94eedbb1a5f0ed",
+    "symbol": "scrapy/core/manager.py::ExecutionManager._spider_closed",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "spider"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@95ba68683e::Settings.__init__",
@@ -1453,6 +2801,22 @@
     "commit_file_count": 3
   },
   {
+    "id": "scrapy@9ae3a1946d::ScrapyHTTPClientFactory.__init__",
+    "repo": "scrapy",
+    "commit": "9ae3a1946d414b1eb820fb46435fa5566dccf5d7",
+    "parent": "29710461f62c39ad3b8bef5d65f6502a6d6179de",
+    "symbol": "scrapy/core/downloader/webclient.py::ScrapyHTTPClientFactory.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "parsedurl"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_webclient.py"
+    ],
+    "commit_file_count": 17
+  },
+  {
     "id": "scrapy@9bfa58e36c::DownloadHandlers._close",
     "repo": "scrapy",
     "commit": "9bfa58e36ccac20193c2175f3fc55636cd44f585",
@@ -1510,6 +2874,39 @@
     "commit_file_count": 4
   },
   {
+    "id": "scrapy@9dd144f487::Response.__init__",
+    "repo": "scrapy",
+    "commit": "9dd144f48741a27b296c597c7458d399911601e9",
+    "parent": "f3f34d0816863ea78d10e9db8d94c14e9d866f3a",
+    "symbol": "scrapy/trunk/scrapy/http/response.py::Response.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "parent"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/cache.py",
+      "scrapy/trunk/scrapy/core/downloader/handlers.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "scrapy@9fccc11363::Crawler.__init__",
+    "repo": "scrapy",
+    "commit": "9fccc113631fee4a3148fe688164d7b750ace45f",
+    "parent": "52c1e137e56d65b4bcc7a590ad6ae3c95db0f646",
+    "symbol": "scrapy/crawler.py::Crawler.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "extensions"
+    ],
+    "source_files": [
+      "scrapy/project.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
     "id": "scrapy@a06a5f00f4::HttpProxyMiddleware.__init__",
     "repo": "scrapy",
     "commit": "a06a5f00f4a62028416ada4919994efd7d439eb2",
@@ -1541,6 +2938,36 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@a11ef7fba7::_get_form",
+    "repo": "scrapy",
+    "commit": "a11ef7fba704c68049516a323bcca69d6fc4d03b",
+    "parent": "9e10abcc430aa53a09caa25f734d56000cb84918",
+    "symbol": "scrapy/http/request/form.py::_get_form",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "hxs"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@a244d23b89::FormRequest.from_response",
+    "repo": "scrapy",
+    "commit": "a244d23b89f346c05286e2ec8c82feead316381d",
+    "parent": "9b5fef4f48b135d5e3f71b177ab52765b6d26fdb",
+    "symbol": "scrapy/http/request/form.py::FormRequest.from_response",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "dont_click"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_http_request.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@a2d6fa5adc::CsvItemExporter.__init__",
     "repo": "scrapy",
     "commit": "a2d6fa5adc17035cebb8dad4a3bd2020236b4f71",
@@ -1553,6 +2980,38 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@a33e8b507f::ScrapyProcessProtocol.__init__",
+    "repo": "scrapy",
+    "commit": "a33e8b507f5d9721fd2c014bd4bbb8299d6f05c1",
+    "parent": "075b59f4af6ad96406c03fba1e529ef1e34cc73a",
+    "symbol": "scrapy/service.py::ScrapyProcessProtocol.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "service"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@a66bef7925::ExecutionQueue.__init__",
+    "repo": "scrapy",
+    "commit": "a66bef7925d2d9f33fecb7ac5e7ace499ea66cf9",
+    "parent": "b800fdcb4de9e8eb8176be1f47dec92aee0f120d",
+    "symbol": "scrapy/queue.py::ExecutionQueue.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "keepalive"
+    ],
+    "source_files": [
+      "scrapy/crawler.py"
+    ],
+    "test_files": [
+      "scrapy/tests/test_queue.py"
+    ],
+    "commit_file_count": 5
   },
   {
     "id": "scrapy@a676017fe4::MailSender.send",
@@ -1569,6 +3028,36 @@
       "scrapy/tests/test_mail.py"
     ],
     "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@a6ff165332::MediaPipeline.item_completed",
+    "repo": "scrapy",
+    "commit": "a6ff165332faa8450236528f453c73cefceb13b7",
+    "parent": "5ccd4df0cd75de652632841776238b088446271b",
+    "symbol": "scrapy/trunk/scrapy/contrib/pipeline/media.py::MediaPipeline.item_completed",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "results"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@a8a44aa035::Downloader.__init__",
+    "repo": "scrapy",
+    "commit": "a8a44aa035d73f38350a847cbe35fe98aacf0d7f",
+    "parent": "5271d1f185b4fd70f9ff6f561061e077fda3bc86",
+    "symbol": "scrapy/core/downloader/manager.py::Downloader.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "engine"
+    ],
+    "source_files": [
+      "scrapy/core/engine.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@a9e96f9907::_isiterable",
@@ -1613,6 +3102,36 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@aadf7ff143::start",
+    "repo": "scrapy",
+    "commit": "aadf7ff143f2caeecc8567b7395d35a9705c4319",
+    "parent": "391cc0606382c0c2a5bf430a8b024256212cbaea",
+    "symbol": "scrapy/log.py::start",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "logencoding"
+    ],
+    "source_files": [
+      "scrapy/command.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 11
+  },
+  {
+    "id": "scrapy@ad43917322::MediaPipeline.__init__",
+    "repo": "scrapy",
+    "commit": "ad439173228ae8780b26de43fffc3a0e6e9a7a57",
+    "parent": "d17edd4a5972d252b1290b76108aa441bf155333",
+    "symbol": "scrapy/contrib/pipeline/media.py::MediaPipeline.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "download_func"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@ad587ea792::spidercls_for_request",
     "repo": "scrapy",
     "commit": "ad587ea792d4f401abc69d010b350dcafe84eab6",
@@ -1647,6 +3166,25 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@b1745f49f1::Response.__init__",
+    "repo": "scrapy",
+    "commit": "b1745f49f1b2cfd3078508a30a6f5c55d1f50603",
+    "parent": "7b545381bd7bd51c6102920e2f67ab9671e7ca82",
+    "symbol": "scrapy/trunk/scrapy/http/response.py::Response.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "original_url"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/cache.py",
+      "scrapy/trunk/scrapy/core/downloader/handlers.py"
+    ],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_http_response.py"
+    ],
+    "commit_file_count": 4
+  },
+  {
     "id": "scrapy@b41ad38fab::create_deprecated_class",
     "repo": "scrapy",
     "commit": "b41ad38fab85199d02a8b2754722bd1b0a40e14d",
@@ -1661,6 +3199,65 @@
       "scrapy/tests/test_utils_deprecate.py"
     ],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@b47f5330fd::Link.__init__",
+    "repo": "scrapy",
+    "commit": "b47f5330fd969eb6a071cc7cf7314411a1aca87a",
+    "parent": "e9ca309b6d3d408b38706f7d9c099ce23444cc60",
+    "symbol": "scrapy/link.py::Link.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "fragment"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_link.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@b56a5d933e::SpiderMiddlewareManager.__init__",
+    "repo": "scrapy",
+    "commit": "b56a5d933e0d4e0359a8743eeb55c3468a01b9ae",
+    "parent": "c7b3fae97ac80b0ad790f09768f82001a6f5bc67",
+    "symbol": "scrapy/trunk/scrapy/spider/middleware.py::SpiderMiddlewareManager.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "callback",
+      "errback"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@b5b79042ab::Node.__init__",
+    "repo": "scrapy",
+    "commit": "b5b79042abcdf503fd5e41ec7998059c86638966",
+    "parent": "980369ba6068c5d0023394b3b370e97784b4c33d",
+    "symbol": "scrapy/trunk/scrapy/contrib/pbcluster/master/manager.py::Node.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "status"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@b6246cbc37::csviter",
+    "repo": "scrapy",
+    "commit": "b6246cbc37a7a5688d759b5ffa973940a489f5b8",
+    "parent": "4013497edb717eb1270518148c29e194471c4474",
+    "symbol": "scrapy/trunk/scrapy/utils/iterators.py::csviter",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "encoding"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@b6a023ce98::build_component_list",
@@ -1693,6 +3290,20 @@
     "commit_file_count": 8
   },
   {
+    "id": "scrapy@b88bdd05c4::_get_clickable",
+    "repo": "scrapy",
+    "commit": "b88bdd05c4ccb6a388069368a0b4965bdafd5906",
+    "parent": "51e5aadd1db42d2f1aa4a69df89a57e7e7954a7c",
+    "symbol": "scrapy/http/request/form.py::_get_clickable",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "clickables"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@bc70584344::CrawlerRunner.crawl",
     "repo": "scrapy",
     "commit": "bc705843444472dbcb8eb583b8d87e055a1b9798",
@@ -1705,6 +3316,80 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@bd8d7f5cf4::ScrapyHTTPClientFactory._build_response",
+    "repo": "scrapy",
+    "commit": "bd8d7f5cf438364de5ab22a3e032b13cb706e5fe",
+    "parent": "668dfcabf368722fe6088f36481c265bd860062c",
+    "symbol": "scrapy/core/downloader/webclient.py::ScrapyHTTPClientFactory._build_response",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "request"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@bda22a539c::unquote_markup",
+    "repo": "scrapy",
+    "commit": "bda22a539c9e371c05bf776264d86da9323c8ee4",
+    "parent": "08150f5acb5e9fa60c4304d31aec4cc7fab9d206",
+    "symbol": "scrapy/trunk/scrapy/utils/markup.py::unquote_markup",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "keep",
+      "remove_illegal"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@bea2f94357::Crawler.__init__",
+    "repo": "scrapy",
+    "commit": "bea2f94357fb7aa545bbb28bf1ca2dd4267928df",
+    "parent": "8d24175c8159cf5bd209f53bdcfc133b78c5a70f",
+    "symbol": "scrapy/crawler.py::Crawler.__init__",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "spiders"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@bfc6c3809b::xmliter_lxml",
+    "repo": "scrapy",
+    "commit": "bfc6c3809b538ac72b5b677234ebcaacfd1190db",
+    "parent": "936353d5f10ca1f266caedf733e7d766559f9c35",
+    "symbol": "scrapy/contrib_exp/iterators.py::xmliter_lxml",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "namespace"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@bfe6168f3b::compare",
+    "repo": "scrapy",
+    "commit": "bfe6168f3b5ba2c2bb9db7ad7af436ca852062c0",
+    "parent": "eee86b98273958cb46e8da5b3c1826bea7d446a5",
+    "symbol": "scrapy/trunk/scrapy/contrib/downloadermiddleware/simpages/metrics/tagdepth.py::compare",
+    "change_kind": "other",
+    "changed_parameters": [
+      "fp1",
+      "fp2"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/downloadermiddleware/simpages/__init__.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
   },
   {
     "id": "scrapy@c22cc1096b::MediaPipeline._key_for_pipe",
@@ -1738,6 +3423,66 @@
     "commit_file_count": 6
   },
   {
+    "id": "scrapy@c3f7bfea1f::remove_entities",
+    "repo": "scrapy",
+    "commit": "c3f7bfea1fc050be15ad0c129928af8f3a7dc0da",
+    "parent": "80db8abee28c84ead88d041175398be2e9449f50",
+    "symbol": "scrapy/utils/markup.py::remove_entities",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "encoding"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@c476681c06::encoding_exists",
+    "repo": "scrapy",
+    "commit": "c476681c0608fce9eec523d446daf142be3a95e0",
+    "parent": "6769b9249380ca8df6e2cc41b7aa9f891a9bb10d",
+    "symbol": "scrapy/utils/encoding.py::encoding_exists",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "_aliases"
+    ],
+    "source_files": [
+      "scrapy/http/response/text.py"
+    ],
+    "test_files": [
+      "scrapy/tests/test_utils_encoding.py"
+    ],
+    "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@c5d134053b::CrawlSpider._parse_wrapper",
+    "repo": "scrapy",
+    "commit": "c5d134053bd5d4b6b1a46c82de0d69e403583fa3",
+    "parent": "6db6b8c52ec034ba432e24b80f48c2b1d6768fa2",
+    "symbol": "scrapy/trunk/scrapy/contrib/spiders.py::CrawlSpider._parse_wrapper",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "callback"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@c6435c5aa7::ScrapyProcessProtocol.log",
+    "repo": "scrapy",
+    "commit": "c6435c5aa7f935bf43d6b368db06210cae77a720",
+    "parent": "7c8af83138001ac39e225aff34612cfa28f8b10f",
+    "symbol": "scrapyd/launcher.py::ScrapyProcessProtocol.log",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "msg"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@c7bb2fa8ce::XmlItemExporter._beautify_newline",
     "repo": "scrapy",
     "commit": "c7bb2fa8ce2633d92a7ec2840f84b174a5494428",
@@ -1750,6 +3495,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 5
+  },
+  {
+    "id": "scrapy@c83fb1c7d1::BaseItemExporter._default_serializer",
+    "repo": "scrapy",
+    "commit": "c83fb1c7d123bc510f11ed2f75d424f2b5c8a446",
+    "parent": "bc4ec80db7e34fc0134cc3fb5a8b75a76c242193",
+    "symbol": "scrapy/newitem/exporters/__init__.py::BaseItemExporter._default_serializer",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "self"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@c8dc158697::TunnelingAgent._getEndpoint",
@@ -1782,6 +3541,20 @@
     "commit_file_count": 9
   },
   {
+    "id": "scrapy@c913d6ffcf::ScrapyProcessProtocol.processEnded",
+    "repo": "scrapy",
+    "commit": "c913d6ffcf922f3dde5592b35c95a1813340a27b",
+    "parent": "f7275f6b0efe7d7cb6216700b782f21ab766c641",
+    "symbol": "scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/worker/manager.py::ScrapyProcessProtocol.processEnded",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "reason"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@c92c9af075::AddonManager.__init__",
     "repo": "scrapy",
     "commit": "c92c9af075217c2296af364a4d9ea55463dbe7f0",
@@ -1800,6 +3573,68 @@
     "commit_file_count": 4
   },
   {
+    "id": "scrapy@cc72f03e10::StdoutFeedStorage.__init__",
+    "repo": "scrapy",
+    "commit": "cc72f03e103176db2dd6c3e2c4b3ac391c1d892d",
+    "parent": "e3d67d74f73045f82ec9aae11439020c87a4b371",
+    "symbol": "scrapy/contrib/feedexport.py::StdoutFeedStorage.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "_stdout"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@cca0b91000::Scheduler.__init__",
+    "repo": "scrapy",
+    "commit": "cca0b910007846a4eeb147c374b2baeb31ea188e",
+    "parent": "789e1493e98ecae9df4a5ae0baf8885b77c3cc50",
+    "symbol": "scrapy/core/scheduler.py::Scheduler.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "logunser"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@cd148c946e::extract",
+    "repo": "scrapy",
+    "commit": "cd148c946e7708dcdd06437e420e5319a9ddf210",
+    "parent": "66852b8291355d1f55fbf37f027e985287159cd4",
+    "symbol": "scrapy/trunk/scrapy/contrib/adaptors/extraction.py::extract",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "use_unquote"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/adaptors/__init__.py"
+    ],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_adaptors.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@cd85c12c33::SgmlLinkExtractor.__init__",
+    "repo": "scrapy",
+    "commit": "cd85c12c3383ea185d24c9023c33076081cce7a9",
+    "parent": "495152bd505bccddfe9de7a4fd8585d7815657bb",
+    "symbol": "scrapy/contrib/linkextractors/sgml.py::SgmlLinkExtractor.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "deny_extensions"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_contrib_linkextractors.py"
+    ],
+    "commit_file_count": 6
+  },
+  {
     "id": "scrapy@ce21884a97::Selector.__init__",
     "repo": "scrapy",
     "commit": "ce21884a976a35d28fd0d1a3b8efd73c178a7595",
@@ -1814,6 +3649,95 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@ce3bbd1a2b::ClusterNodeBroker.__init__",
+    "repo": "scrapy",
+    "commit": "ce3bbd1a2bfce21a6c4056e5ef58ede2bbc0cf24",
+    "parent": "215151dd8628839b53534bf4bd76ba0bfdadebcf",
+    "symbol": "scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/master/manager.py::ClusterNodeBroker.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "remote"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@cf638e682c::ListField.__init__",
+    "repo": "scrapy",
+    "commit": "cf638e682c9548ea02636cefd7b5be401575a08b",
+    "parent": "d8b85ae7ad19530a1cd8876271dfe5a2829d6b70",
+    "symbol": "scrapy/newitem/fields.py::ListField.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "field_type"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_itemadaptor.py",
+      "scrapy/tests/test_newitem.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@cfafa01109::SpiderMiddlewareManager.call",
+    "repo": "scrapy",
+    "commit": "cfafa011090cb4fc02776d6f4de11ba5e86dd439",
+    "parent": "0f690b03dc216424f7c92bf06a2ba0864bfa390f",
+    "symbol": "scrapy/spider/middleware.py::SpiderMiddlewareManager.call",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "response"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@cfddc314ce::SpiderState.__init__",
+    "repo": "scrapy",
+    "commit": "cfddc314cec18e6998c4abac9e02b5562219b39f",
+    "parent": "2559f211a8326eb05a913e8709c4f96883f65b0b",
+    "symbol": "scrapy/contrib/spiderstate.py::SpiderState.__init__",
+    "change_kind": "other",
+    "changed_parameters": [],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_contrib_spiderstate.py"
+    ],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@d1e260a8d4::ExecutionEngine.__init__",
+    "repo": "scrapy",
+    "commit": "d1e260a8d40a3a639526cbfaaa861a525649c0db",
+    "parent": "f6c11af4c2741313fc671d49555864315b64ce73",
+    "symbol": "scrapy/core/engine.py::ExecutionEngine.__init__",
+    "change_kind": "other",
+    "changed_parameters": [
+      "crawler"
+    ],
+    "source_files": [
+      "scrapy/crawler.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@d21a22eab5::DummyStatsCollector.inc_value",
+    "repo": "scrapy",
+    "commit": "d21a22eab5eeee66518244e05613f67b1a098083",
+    "parent": "38c3f7d0b455b07b1904778aa3f03d47ee775ab5",
+    "symbol": "scrapy/stats/collector/__init__.py::DummyStatsCollector.inc_value",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "start"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
   },
   {
     "id": "scrapy@d311779887::_FeedSlot.__init__",
@@ -1889,6 +3813,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@d59ef48231::BaseSgmlLinkExtractor._extract_links",
+    "repo": "scrapy",
+    "commit": "d59ef4823100f51bcf24831b0bc0154fece99528",
+    "parent": "426b6fa1009a0404b8fd1a6573a2fd5a5290e33e",
+    "symbol": "scrapy/contrib/linkextractors/sgml.py::BaseSgmlLinkExtractor._extract_links",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "base_url"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@d60636d0de::_build_redirect_request",
     "repo": "scrapy",
     "commit": "d60636d0de94c5a08c25d1d6820faed0b45506b7",
@@ -1952,6 +3890,20 @@
     "commit_file_count": 6
   },
   {
+    "id": "scrapy@d7daf836d5::AutoThrottle._get_slot",
+    "repo": "scrapy",
+    "commit": "d7daf836d5091bf2190dc4711339aed3af5f83a0",
+    "parent": "85c9881724321e7e58b40e307d992d692a620ded",
+    "symbol": "scrapy/contrib/throttle.py::AutoThrottle._get_slot",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "spider"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@d85c39f5bc::ImagesPipeline.convert_image",
     "repo": "scrapy",
     "commit": "d85c39f5bcd728915fccece86f2b2e4ef37c0e53",
@@ -1968,6 +3920,62 @@
     "commit_file_count": 22
   },
   {
+    "id": "scrapy@d8722c8c34::parse_uri",
+    "repo": "scrapy",
+    "commit": "d8722c8c3459500a59144dcc1b5bf4661f5f6d55",
+    "parent": "bebc8b20276e6b3bd6bc08a49edb0454ad1689a9",
+    "symbol": "scrapy/utils/db.py::parse_uri",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "db_uri"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@da6a24b662::Response.replace",
+    "repo": "scrapy",
+    "commit": "da6a24b66281bb9a9ebbd0a0bded6521b2166d24",
+    "parent": "b1745f49f1b2cfd3078508a30a6f5c55d1f50603",
+    "symbol": "scrapy/trunk/scrapy/http/response.py::Response.replace",
+    "change_kind": "other",
+    "changed_parameters": [
+      "kw"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 14
+  },
+  {
+    "id": "scrapy@da7b87962a::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "da7b87962a8f08482a96e2e033e39326ce9412a3",
+    "parent": "789d8d3531b1f4915465ff3718468a1d8941a613",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "match_condition"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@da7b9358a4::remove_escape",
+    "repo": "scrapy",
+    "commit": "da7b9358a4973b44859433c11377c888d559361e",
+    "parent": "1b3d40e63902b7c6d5c84b248073c77de97641d6",
+    "symbol": "scrapy/contrib_exp/adaptors/markup.py::remove_escape",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "replace_str"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@db794d351c::LogStatsExtended.log",
     "repo": "scrapy",
     "commit": "db794d351c6218c8b849682bb1aa0048788e7f1d",
@@ -1976,6 +3984,38 @@
     "change_kind": "removed",
     "changed_parameters": [
       "spider"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@dbaf602730::remove_tags",
+    "repo": "scrapy",
+    "commit": "dbaf6027304a1c9244437cdd8fbbbb834409c78d",
+    "parent": "33df3c81c2d2c10fbd8e28d9aaf35571c09a8c54",
+    "symbol": "scrapy/trunk/scrapy/contrib_exp/adaptors/markup.py::remove_tags",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "value"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib_exp/adaptors/__init__.py"
+    ],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_adaptors.py"
+    ],
+    "commit_file_count": 6
+  },
+  {
+    "id": "scrapy@dbe0a6875c::Settings.__init__",
+    "repo": "scrapy",
+    "commit": "dbe0a6875cedb8ef44cdf12ef08961f80c2a8312",
+    "parent": "925eecce70da2aa27ea0f33d4b0f088f2f1d5a75",
+    "symbol": "scrapy/conf/__init__.py::Settings.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "overrides"
     ],
     "source_files": [],
     "test_files": [],
@@ -1995,6 +4035,34 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@de4909faca::get_spider_list_from_eggfile",
+    "repo": "scrapy",
+    "commit": "de4909faca75143b5c5b4d95af7fd226bf09489d",
+    "parent": "7ba972d8cf833902b29082dc4802604f8d34b9c6",
+    "symbol": "scrapyd/eggutils.py::get_spider_list_from_eggfile",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "eggrunner"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@df54ed0041::ScrapyProcessProtocol.__init__",
+    "repo": "scrapy",
+    "commit": "df54ed004193a9e85607ff48bb198644f9b4e3df",
+    "parent": "46e5d694e6396dcf10aac0fce144dfbf6f9a4d70",
+    "symbol": "scrapyd/launcher.py::ScrapyProcessProtocol.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "job"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 11
   },
   {
     "id": "scrapy@df68c4b9b1::FTPFeedStorage.__init__",
@@ -2041,6 +4109,20 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@e2290a5359::Rule.__init__",
+    "repo": "scrapy",
+    "commit": "e2290a5359ee80c75d8bcf8de8b6894e61fad83a",
+    "parent": "4e2859e5d567103a1da9b448f128081e75e8cf68",
+    "symbol": "scrapy/contrib/spiders/crawl.py::Rule.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "process_request"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
     "id": "scrapy@e285b1d6c2::RetryMiddleware.__init__",
     "repo": "scrapy",
     "commit": "e285b1d6c2aaa1fdfe788f1894b0196bc64d1be1",
@@ -2053,6 +4135,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 7
+  },
+  {
+    "id": "scrapy@e3fe0ef297::Item.__init__",
+    "repo": "scrapy",
+    "commit": "e3fe0ef29775f3778efa24f79718e6cefdf1c3ca",
+    "parent": "5054b67a02c5ef91da31e20e2d28dd1187663da2",
+    "symbol": "scrapy/contrib_exp/newitem/models.py::Item.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "values"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 5
   },
   {
     "id": "scrapy@e43f37fff3::S3DownloadHandler.from_crawler",
@@ -2086,6 +4182,52 @@
     "commit_file_count": 21
   },
   {
+    "id": "scrapy@e4852bca78::extract",
+    "repo": "scrapy",
+    "commit": "e4852bca78e476873d3acf5a188b98f63cd9d439",
+    "parent": "41fbcbde4879c65efede0ebaf9bda09a3d010c2d",
+    "symbol": "scrapy/trunk/scrapy/contrib/adaptors/extraction.py::extract",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "use_unquote"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_adaptors.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@e5474d8cc6::Crawler.__init__",
+    "repo": "scrapy",
+    "commit": "e5474d8cc63ed06f750750cd18154bad6e97055a",
+    "parent": "c1225e0f451fd9261fbaba8b737ed6a9603aa69d",
+    "symbol": "scrapy/crawler.py::Crawler.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "extensions"
+    ],
+    "source_files": [
+      "scrapy/project.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@e5bf6bf880::CookieJar.__init__",
+    "repo": "scrapy",
+    "commit": "e5bf6bf880d94c81bba6432cb329d1ab84b39dcf",
+    "parent": "ea77342b554d67f72cd4f07c76bd0c7779daec0f",
+    "symbol": "scrapy/http/cookies.py::CookieJar.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "check_expired_frequency"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
     "id": "scrapy@e6048d55f9::DummyPolicy.is_cached_response_fresh",
     "repo": "scrapy",
     "commit": "e6048d55f905ca0be2b32f9b566d257f34752c71",
@@ -2094,6 +4236,20 @@
     "change_kind": "renamed",
     "changed_parameters": [
       "response"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@e6bf2821ef::Downloader._download",
+    "repo": "scrapy",
+    "commit": "e6bf2821ef8e106863bae86470d7216f9fa0eb96",
+    "parent": "400a54bf7c765f6f443358ca647b5b439b746e70",
+    "symbol": "scrapy/core/downloader/manager.py::Downloader._download",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "deferred"
     ],
     "source_files": [],
     "test_files": [],
@@ -2116,6 +4272,22 @@
     "commit_file_count": 1
   },
   {
+    "id": "scrapy@e8ecc00cfb::_parse",
+    "repo": "scrapy",
+    "commit": "e8ecc00cfbc197175743d9ab2840b401b9ae2077",
+    "parent": "0842fafd63e82051a27d8d0fe6c3cba0551799b1",
+    "symbol": "scrapy/trunk/scrapy/core/downloader/webclient.py::_parse",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "defaultPort"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/trunk/scrapy/tests/test_webclient.py"
+    ],
+    "commit_file_count": 3
+  },
+  {
     "id": "scrapy@e924d38238::make_builtin_addon",
     "repo": "scrapy",
     "commit": "e924d382380a6bc7285b8a9713ac14588681af3b",
@@ -2134,6 +4306,20 @@
     "commit_file_count": 2
   },
   {
+    "id": "scrapy@ea3bf6d95d::Slot.__init__",
+    "repo": "scrapy",
+    "commit": "ea3bf6d95d180232d7fd26b6160ec7ec7deb8472",
+    "parent": "209ecdf471fad43d84a45b275d117e0a584067b3",
+    "symbol": "scrapy/core/engine.py::Slot.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "nextcall"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
     "id": "scrapy@eabb149f4b::ScrapyClientContextFactory.__init__",
     "repo": "scrapy",
     "commit": "eabb149f4bf7737eb469319c7ce2c98ed0a6c32d",
@@ -2146,6 +4332,20 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 9
+  },
+  {
+    "id": "scrapy@eb2d87259f::Downloader._enqueue_request",
+    "repo": "scrapy",
+    "commit": "eb2d87259fb5c3da1cad5cec8de66553b2210608",
+    "parent": "d7daf836d5091bf2190dc4711339aed3af5f83a0",
+    "symbol": "scrapy/core/downloader/__init__.py::Downloader._enqueue_request",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "slot"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
   },
   {
     "id": "scrapy@ec4d407022::S3DownloadHandler.__init__",
@@ -2207,6 +4407,128 @@
     "commit_file_count": 11
   },
   {
+    "id": "scrapy@eed6eb49da::data_path",
+    "repo": "scrapy",
+    "commit": "eed6eb49dade4ce780a6c633b6ee75904f57effe",
+    "parent": "8f2dda12cc593e318c6ad924f7872491874cc612",
+    "symbol": "scrapy/utils/project.py::data_path",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "createdir"
+    ],
+    "source_files": [
+      "scrapy/contrib/httpcache.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
+    "id": "scrapy@ef7a097272::EngineStatusResource.__init__",
+    "repo": "scrapy",
+    "commit": "ef7a0972720b5ea1ff168af95aeaf61c23c9a770",
+    "parent": "8fc78c4d0ad512dd2c23c23a7ad5c1c24be5e00b",
+    "symbol": "scrapy/contrib/webservice/enginestatus.py::EngineStatusResource.__init__",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "_manager"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@efa08318be::ItemLoader.__init__",
+    "repo": "scrapy",
+    "commit": "efa08318be39ded91ce9ce8a868e4ac8e6e4db93",
+    "parent": "3658acd9dac1dbf25266043ca18e6041118c949b",
+    "symbol": "scrapy/newitem/loader/__init__.py::ItemLoader.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "item"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 4
+  },
+  {
+    "id": "scrapy@eff8ea6173::Scraper._itemproc_finished",
+    "repo": "scrapy",
+    "commit": "eff8ea61730ec8c3f202fa8dfcf1fa16cb5345fa",
+    "parent": "aba16c20c4ff420c92c59014b30fa78f3ce59b0a",
+    "symbol": "scrapy/core/scraper.py::Scraper._itemproc_finished",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "response"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@f1962c1c0a::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "f1962c1c0af52e1ae6700d680685f65182b5097c",
+    "parent": "3c4012f924d6a77133e93cbc23d7724feb4d3a3e",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "override",
+      "add"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 3
+  },
+  {
+    "id": "scrapy@f2bab50979::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "f2bab509796ddf13495a1e17c5b8a3846fec979d",
+    "parent": "776818db71653a65dc6921bb0f7a7132cbdbddcf",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "add"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 6
+  },
+  {
+    "id": "scrapy@f3013bb9ad::ScrapedItem.attribute",
+    "repo": "scrapy",
+    "commit": "f3013bb9adabbe6bc1dc2a7f131e487e9f9f4421",
+    "parent": "0e6562cb478b3574ac03cbd0ef22f91e828c2ae9",
+    "symbol": "scrapy/trunk/scrapy/item/models.py::ScrapedItem.attribute",
+    "change_kind": "renamed",
+    "changed_parameters": [
+      "name"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@f3769651af::get_spider_queues",
+    "repo": "scrapy",
+    "commit": "f3769651af2a375572f72025dfdeaf6d6cf1f8ce",
+    "parent": "0ffc8d29b67e68f492d21d6705417a33f6f30574",
+    "symbol": "scrapyd/utils.py::get_spider_queues",
+    "change_kind": "other",
+    "changed_parameters": [
+      "eggsdir",
+      "dbsdir"
+    ],
+    "source_files": [
+      "scrapyd/poller.py",
+      "scrapyd/scheduler.py"
+    ],
+    "test_files": [
+      "scrapyd/tests/test_poller.py",
+      "scrapyd/tests/test_scheduler.py"
+    ],
+    "commit_file_count": 5
+  },
+  {
     "id": "scrapy@f45b4c7f8d::CachingHostnameResolver.__init__",
     "repo": "scrapy",
     "commit": "f45b4c7f8d191c6855c12f3497ece6b6121289df",
@@ -2219,6 +4541,36 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 2
+  },
+  {
+    "id": "scrapy@f467c233b2::Downloader._download",
+    "repo": "scrapy",
+    "commit": "f467c233b2bab852eb10e8d0dd01ca7c3ee68b6f",
+    "parent": "0c4c1538196b8a7c5c820f47b866fe2e0f53f922",
+    "symbol": "scrapy/core/downloader/manager.py::Downloader._download",
+    "change_kind": "removed",
+    "changed_parameters": [
+      "deferred"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@f515942f54::Node.status_as_dict",
+    "repo": "scrapy",
+    "commit": "f515942f546f73befcac86f794d9a7746ae3d2d8",
+    "parent": "5403fd3d9f4189745f00769eef1bf49c999fc183",
+    "symbol": "scrapy/trunk/scrapy/contrib/pbcluster/master/manager.py::Node.status_as_dict",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "verbosity"
+    ],
+    "source_files": [
+      "scrapy/trunk/scrapy/contrib/pbcluster/master/web.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 4
   },
   {
     "id": "scrapy@f6ed5edc31::CookiesMiddleware._format_cookie",
@@ -2235,6 +4587,20 @@
     "commit_file_count": 4
   },
   {
+    "id": "scrapy@f850a44784::Scheduler.__init__",
+    "repo": "scrapy",
+    "commit": "f850a4478415b60516752696d08588ec5aa0428c",
+    "parent": "cfddc314cec18e6998c4abac9e02b5562219b39f",
+    "symbol": "scrapy/core/scheduler.py::Scheduler.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "mqclass"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 7
+  },
+  {
     "id": "scrapy@f875af4a86::HttpxDownloadHandler._log_tls_info",
     "repo": "scrapy",
     "commit": "f875af4a86b294eb168cb64daba0f60b63d389f4",
@@ -2247,6 +4613,36 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 13
+  },
+  {
+    "id": "scrapy@f8a6e2fc7c::unique",
+    "repo": "scrapy",
+    "commit": "f8a6e2fc7c7729a3f7dbea5a91290ed3c5f5445f",
+    "parent": "e1c738a49e504b69b625a793196e6c6543d8241b",
+    "symbol": "scrapy/trunk/scrapy/utils/python.py::unique",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "key"
+    ],
+    "source_files": [],
+    "test_files": [],
+    "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@faf7a7da83::ExecutionEngine.__init__",
+    "repo": "scrapy",
+    "commit": "faf7a7da835a4c43294f92b67c37d4b899bbd905",
+    "parent": "053d45e79f394dc3dcd356505b7ed43fd0e82c0a",
+    "symbol": "scrapy/core/engine.py::ExecutionEngine.__init__",
+    "change_kind": "added_required",
+    "changed_parameters": [
+      "crawler"
+    ],
+    "source_files": [
+      "scrapy/core/manager.py"
+    ],
+    "test_files": [],
+    "commit_file_count": 25
   },
   {
     "id": "scrapy@fc9a45ee91::Command._copytree",
@@ -2290,6 +4686,22 @@
     "source_files": [],
     "test_files": [],
     "commit_file_count": 1
+  },
+  {
+    "id": "scrapy@fe1dd3a93d::ImagesPipeline.__init__",
+    "repo": "scrapy",
+    "commit": "fe1dd3a93d2a942440f9b0b18bce7b495ddd2d32",
+    "parent": "ad439173228ae8780b26de43fffc3a0e6e9a7a57",
+    "symbol": "scrapy/contrib/pipeline/images.py::ImagesPipeline.__init__",
+    "change_kind": "added_optional",
+    "changed_parameters": [
+      "download_func"
+    ],
+    "source_files": [],
+    "test_files": [
+      "scrapy/tests/test_pipeline_images.py"
+    ],
+    "commit_file_count": 3
   },
   {
     "id": "scrapy@ffc7b7fd6c::build_component_list",
