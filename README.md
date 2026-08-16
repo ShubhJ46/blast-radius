@@ -354,6 +354,41 @@ The six are left in the corpus. Dropping the cases that make your own numbers
 look bad is how an evaluation stops meaning anything, so the 90% figure is
 quoted beside the 66% rather than instead of it.
 
+### Every false positive in the run, audited
+
+Rather than keep asserting that precision is a lower bound, each of the 44
+false-positive files was checked against the tree the tool was given, asking one
+question: does this file contain a call site that actually passes the changed
+parameter?
+
+| | files | |
+| --- | ---: | --- |
+| passes it **positionally** | 25 (57%) | a real affected call site |
+| passes it **by keyword** | 14 (32%) | a real affected call site |
+| no call supplies it | 5 (11%) | worth reading individually |
+
+**39 of 44 are correct.** The tool named a file containing a call that the edit
+demonstrably breaks; the commit converted only some of them. No amount of
+better resolution moves those, because there is nothing wrong with them — this
+is the lower bound, measured rather than claimed.
+
+The remaining five split again. Three are `inline_all_toctrees`, called across
+several lines in three sphinx builders:
+
+```python
+largetree = inline_all_toctrees(self, self.docnames, indexfile, tree,
+                                colorfunc, [])          # the new argument lands here
+```
+
+The added argument goes on a *continuation* line, which never mentions the
+symbol — so the miner's ground truth does not include the file, and a correct
+prediction scores as wrong. That is the trade-off `Git.paths_mentioning`
+documents in as many words, now priced: 3 of 44.
+
+The last two are the only genuine over-predictions in the run, both reorders
+where the caller never reaches the moved position, and both now fixed — see
+below.
+
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
 "what must change if I make *this* edit".** For a removed or renamed parameter
@@ -596,12 +631,21 @@ failed attempt is written into `affected_files` so it does not get "fixed" back.
 
 Scored by change kind, which shows where the narrowing does and does not apply:
 
-| kind | cases | precision | recall | |
-| --- | ---: | ---: | ---: | --- |
-| `added_required` | 24 | 100% | 73% | every caller, no narrowing possible |
-| `reordered` | 4 | 71% | 100% | no one parameter to blame |
-| `renamed` | 16 | 45% | 83% | narrowed |
-| `removed` | 15 | 46% | 61% | narrowed |
+| kind | rule |
+| --- | --- |
+| `removed` | callers that pass the parameter, by keyword or by position |
+| `renamed` | the same, deliberately — see below |
+| `made_required` | the mirror image: callers *omitting* it |
+| `reordered` | callers that reach the moved position **by counting arguments only** |
+| `added_required` | every caller; there is nothing to narrow by |
+
+The reorder rule is the one the audit changed. It used to fall back to every
+caller, because a reorder has no single parameter to blame — but the miner can
+name the parameters whose position actually moved, and from there two kinds of
+caller are provably safe: one that passes by keyword (order is irrelevant to it)
+and one that never counts far enough to reach the move. `gunzip(response.body)`
+against a reorder of later parameters is both, and it was a false positive in
+every run until now.
 
 The narrowed kinds score worse than the un-narrowed ones, which looks damning
 until you notice all six outlier cases are `removed` or `renamed`. That is the

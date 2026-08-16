@@ -549,7 +549,7 @@ class TestChangedParameters:
             ("def f(a, b): pass", "def f(a, c): pass", ("b",)),  # rename: the old name
             ("def f(a): pass", "def f(a, b): pass", ("b",)),
             ("def f(a, b=1): pass", "def f(a, b): pass", ("b",)),  # lost its default
-            ("def f(a, b): pass", "def f(b, a): pass", ()),  # reorder blames nobody
+            ("def f(a, b): pass", "def f(b, a): pass", ("b", "a")),  # both moved
         ],
     )
     def test_names_the_parameter_at_risk(self, before, after, expected):

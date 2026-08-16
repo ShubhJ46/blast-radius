@@ -67,7 +67,7 @@ class Impact:
         return None
 
     def affected_by(
-        self, parameter: str, *, supplied: bool = True, by_keyword: bool = False
+        self, parameter: str, *, supplied: bool = True, evidence: str = "supplies"
     ) -> tuple[Reference, ...]:
         """Callers a change to `parameter` actually forces to move.
 
@@ -79,38 +79,49 @@ class Impact:
         `supplied=False` asks the opposite question, for a parameter that has
         just *lost* its default: there it is the callers omitting it that break.
 
-        `by_keyword=True` is for a *rename*, where only the call sites naming
-        the parameter break -- `f(x, flag=1)` has to be edited and `f(x, 1)`
-        does not, because a positional argument never mentions the name.
+        `evidence` selects what counts as passing the parameter, because the
+        answer depends on the edit:
+
+        - `"supplies"` -- by keyword or by position. Right for a removal: both
+          forms break when the parameter goes away.
+        - `"keyword"` -- named at the call site only. Right for a *pure* rename,
+          since a positional argument never mentions the name. The runner does
+          not use it; see the note in `evaluation/run.py`.
+        - `"positional"` -- reached by counting arguments only. Right for a
+          reorder: `f(a=1, b=2)` is indifferent to the order, and a call that
+          never reaches the moved position cannot break either.
 
         A caller whose arguments could not be lined up with the signature --
         `f(*args)`, or a member reached through its class -- counts as affected
-        either way, because the alternative is dropping a dependency on a guess.
+        under every mode, because the alternative is dropping a dependency on a
+        guess.
         """
         index = self.parameter_index(parameter)
         chosen = []
         for reference in self.callers:
-            if reference.call is None:
+            call = reference.call
+            if call is None:
                 continue  # a bound method passed as a value, not called here
-            if reference.call.opaque:
+            if call.opaque:
                 chosen.append(reference)
                 continue
-            passes = (
-                parameter in reference.call.keywords
-                if by_keyword
-                else reference.call.supplies(parameter, index)
-            )
+            if evidence == "keyword":
+                passes = parameter in call.keywords
+            elif evidence == "positional":
+                passes = index is not None and call.positional > index
+            else:
+                passes = call.supplies(parameter, index)
             if passes == supplied:
                 chosen.append(reference)
         return tuple(chosen)
 
     def files_affected_by(
-        self, parameter: str, *, supplied: bool = True, by_keyword: bool = False
+        self, parameter: str, *, supplied: bool = True, evidence: str = "supplies"
     ) -> tuple[str, ...]:
         paths = {
             reference.path
             for reference in self.affected_by(
-                parameter, supplied=supplied, by_keyword=by_keyword
+                parameter, supplied=supplied, evidence=evidence
             )
         }
         paths |= {override.path for override in self.overrides}

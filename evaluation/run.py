@@ -244,9 +244,13 @@ def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set
       does not.
     - `made_required` is the mirror image of a removal: a parameter that lost
       its default breaks the callers *omitting* it.
-    - `added_required` obliges every caller to pass something new, and
-      `reordered` has no one parameter to blame, so both fall back to the whole
-      set rather than inventing a narrower answer.
+    - `reordered` breaks only the callers that reach the moved position by
+      counting arguments. `f(a=1, b=2)` is indifferent to the order, and
+      `gunzip(body)` cannot be broken by a move among later parameters -- that
+      call was a false positive until the miner started naming which parameters
+      moved.
+    - `added_required` obliges every caller to pass something new, so it falls
+      back to the whole set rather than inventing a narrower answer.
 
     `renamed` deliberately does *not* use `by_keyword`, though a pure rename
     only breaks the call sites naming the parameter. Trying it cost 23 points
@@ -257,12 +261,16 @@ def affected_files(impact, change_kind: str, parameters: tuple[str, ...]) -> set
     for those. The classifier cannot tell the two apart, so the broader rule is
     the correct one here.
     """
-    if change_kind in ("added_required", "reordered") or not parameters:
+    if change_kind == "added_required" or not parameters:
         return None
     files: set[str] = set()
     for parameter in parameters:
         files.update(
-            impact.files_affected_by(parameter, supplied=change_kind != "made_required")
+            impact.files_affected_by(
+                parameter,
+                supplied=change_kind != "made_required",
+                evidence="positional" if change_kind == "reordered" else "supplies",
+            )
         )
     return files
 

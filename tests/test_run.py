@@ -428,32 +428,39 @@ class TestAffectedFiles:
         def __init__(self):
             self.calls = []
 
-        def files_affected_by(self, parameter, *, supplied=True, by_keyword=False):
-            self.calls.append((parameter, supplied, by_keyword))
+        def files_affected_by(self, parameter, *, supplied=True, evidence="supplies"):
+            self.calls.append((parameter, supplied, evidence))
             return {f"{parameter}-{'supplied' if supplied else 'omitted'}.py"}
 
     def test_a_removal_narrows_to_the_callers_passing_it(self):
         impact = self._Impact()
         assert affected_files(impact, "removed", ("can_borrow",)) == {"can_borrow-supplied.py"}
-        assert impact.calls == [("can_borrow", True, False)]
+        assert impact.calls == [("can_borrow", True, "supplies")]
 
     def test_a_rename_narrows_like_a_removal(self):
         """A pure rename would only break keyword callers, but `classify` cannot
         identify pure renames -- see the note in `affected_files`."""
         impact = self._Impact()
         affected_files(impact, "renamed", ("old",))
-        assert impact.calls == [("old", True, False)]
+        assert impact.calls == [("old", True, "supplies")]
 
     def test_making_a_parameter_required_narrows_to_the_callers_omitting_it(self):
         impact = self._Impact()
         assert affected_files(impact, "made_required", ("flag",)) == {"flag-omitted.py"}
-        assert impact.calls == [("flag", False, False)]
+        assert impact.calls == [("flag", False, "supplies")]
 
     def test_a_new_required_parameter_affects_every_caller(self):
         """There is no call site that already passes it, so none can be spared."""
         assert affected_files(self._Impact(), "added_required", ("fresh",)) is None
 
-    def test_a_reorder_affects_every_caller(self):
+    def test_a_reorder_narrows_by_position_only(self):
+        """Keyword arguments are indifferent to order, and a call that never
+        reaches the moved position cannot break."""
+        impact = self._Impact()
+        affected_files(impact, "reordered", ("moved",))
+        assert impact.calls == [("moved", True, "positional")]
+
+    def test_a_reorder_with_no_named_parameter_affects_every_caller(self):
         assert affected_files(self._Impact(), "reordered", ()) is None
 
     def test_no_named_parameter_falls_back_to_every_caller(self):

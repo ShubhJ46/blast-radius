@@ -224,7 +224,7 @@ class TestAffectedBy:
     def test_a_rename_spares_positional_callers(self, make_repo):
         """A positional argument never names the parameter, so a rename cannot break it."""
         impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
-        assert impact.files_affected_by("can_borrow", by_keyword=True) == (
+        assert impact.files_affected_by("can_borrow", evidence="keyword") == (
             "keyword.py",
             "starred.py",
         )
@@ -311,3 +311,23 @@ class TestWrittenName:
     )
     def test_the_identifier_a_caller_writes(self, qualname, expected):
         assert written_name(qualname) == expected
+
+    def test_a_reorder_spares_callers_that_never_reach_the_moved_position(self, make_repo):
+        """`gunzip(response.body)` cannot be broken by a move among later
+        parameters -- it was a false positive in the scored run until this."""
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        affected = impact.files_affected_by("can_borrow", evidence="positional")
+        assert "plain.py" not in affected      # b.accept(1) never reaches index 2
+        assert "positional.py" in affected     # b.accept(1, True) does
+        assert "starred.py" in affected        # opaque, so reported either way
+
+    def test_a_reorder_spares_keyword_callers(self, make_repo):
+        """Keyword arguments are indifferent to the order of the parameters."""
+        impact = impact_of(build_index(make_repo(ACCEPT)), SymbolId("lib.py", "Builder.accept"))
+        assert "keyword.py" not in impact.files_affected_by("can_borrow", evidence="positional")
+
+    def test_a_keyword_only_parameter_has_no_position_to_reach(self, make_repo):
+        files = {"lib.py": "def helper(a, *, flag=False):\n    pass\n",
+                 "call.py": "from lib import helper\n\nhelper(1, flag=True)\n"}
+        impact = impact_of(build_index(make_repo(files)), SymbolId("lib.py", "helper"))
+        assert impact.files_affected_by("flag", evidence="positional") == ()

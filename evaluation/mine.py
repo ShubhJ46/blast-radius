@@ -302,9 +302,11 @@ def changed_parameters(before: Signature, after: Signature) -> tuple[str, ...]:
     """The parameters that moved, named as a *caller* would have to write them.
 
     For a removal or a rename that is the old name, since the call sites at risk
-    are the ones still passing it. For an addition it is the new name. A
-    reordering has no single parameter to blame, so it reports none and the
-    runner falls back to treating every caller as affected.
+    are the ones still passing it. For an addition it is the new name. For a
+    reorder it is the parameters that actually moved, which bounds the damage:
+    a call that never reaches the first moved position cannot be broken by the
+    move. `gunzip(response.body)` against a reorder of later parameters is
+    exactly that, and was a false positive until this named them.
     """
     before_names = [parameter.name for parameter in before.parameters]
     after_names = [parameter.name for parameter in after.parameters]
@@ -315,8 +317,19 @@ def changed_parameters(before: Signature, after: Signature) -> tuple[str, ...]:
         return removed  # covers both `removed` and the old half of a rename
     if added:
         return added
-    # Same names on both sides: only a default can have moved.
-    return tuple(sorted(after.required_names() - before.required_names()))
+    # Same names on both sides: a default moved, or the order did.
+    newly_required = tuple(sorted(after.required_names() - before.required_names()))
+    if newly_required:
+        return newly_required
+
+    before_positions = before.positional_names()
+    after_positions = after.positional_names()
+    return tuple(
+        name
+        for name in after_positions
+        if name in before_positions
+        and before_positions.index(name) != after_positions.index(name)
+    )
 
 
 @dataclass(frozen=True)
