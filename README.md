@@ -20,7 +20,7 @@ baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **61%** | 75% | **67%** |
+| **this tool** | **62%** | 80% | **70%** |
 | `grep` | 13% | 100% | 23% |
 
 `grep` finds everything and is wrong seven times out of eight.
@@ -28,7 +28,7 @@ baseline, because that is what an agent does today:
 That precision number is still dominated by six cases out of fifty-nine, where
 a symbol called from a dozen files had a parameter change that forced only one
 or two of those callers to move. Excluding those six, the same run is **95%
-precision at 75% recall**. Both figures are in [results](#results), along with
+precision at 81% recall**. Both figures are in [results](#results), along with
 why neither is cherry-picked.
 
 | Component | State |
@@ -276,8 +276,8 @@ honest-looking limitation.
 | --- | ---: | ---: | ---: | ---: |
 | sphinx | 8 | 100% | 91% | 95% |
 | scrapy | 8 | 86% | 60% | 71% |
-| mypy | 43 | 54% | 74% | 62% |
-| **all** | **59** | **61%** | **75%** | **67%** |
+| mypy | 43 | 56% | 81% | 66% |
+| **all** | **59** | **62%** | **80%** | **70%** |
 | `grep`, all | 59 | 13% | 100% | 23% |
 
 **Six cases account for the entire precision figure**, and they are all the same
@@ -286,9 +286,9 @@ only one or two of those callers to move.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 59 cases | 61% | 75% | 67% |
+| all 59 cases | 62% | 80% | 70% |
 | the 6 heavily-called symbols | 12% | 71% | 21% |
-| the other 53 | **95%** | **75%** | **84%** |
+| the other 53 | **95%** | **81%** | **87%** |
 
 `IRBuilder.accept` is the clearest example. Four commits removed its `can_borrow`
 parameter. Eleven files call it, and only the one or two that actually passed
@@ -300,7 +300,7 @@ still were not edited, because the commit only converted some of them.
 
 The six are left in the corpus. Dropping the cases that make your own numbers
 look bad is how an evaluation stops meaning anything, so the 95% figure is
-quoted beside the 61% rather than instead of it.
+quoted beside the 62% rather than instead of it.
 
 But this is not purely a measurement artifact, and it would be convenient to
 pretend it is. **The tool answers "what calls this", when the question asked is
@@ -466,12 +466,25 @@ touched, and the headline precision falls seventeen points as a result. Recall
 is the more trustworthy half here — ground truth is files that certainly had to
 change, a true subset of the dependencies — and it improved everywhere.
 
-The `self.x: Widget` form landed later, and cost more than the 1.7% predicted
-for it. Keeping the declaration on the *class* rather than the method that wrote
-it added **710 references on mypy** — `typed_attr` from 6.5% to 7.7% of
-everything resolved — and removed 1,420 unresolved attributes, exactly twice the
-gain, because resolving `self.config.read()` also stops counting the `self.config`
-underneath it as unknown.
+The `self.x: Widget` form landed later, and was worth more than the 1.7%
+predicted for it. Keeping the declaration on the *class* rather than the method
+that wrote it added **710 references on mypy** — `typed_attr` from 6.5% to 7.7%
+of everything resolved — and removed 1,420 unresolved attributes, exactly twice
+the gain, because resolving `self.config.read()` also stops counting the
+`self.config` underneath it as unknown.
+
+Scored, it is the only change in this project that moved **both halves in the
+same direction**:
+
+| | precision | recall | F1 |
+| --- | ---: | ---: | ---: |
+| before `self.x` | 61% | 75% | 67% |
+| after | **62%** | **80%** | **70%** |
+
+Recall rose five points on mypy's 43 cases specifically (74% → 81%), which is
+where the annotated `self.x` receivers are. Everything else this project added
+traded one half against the other; reading a declaration the author already
+wrote is the one move that costs nothing.
 
 ### Which callers a change actually breaks
 
@@ -504,8 +517,9 @@ is worse than reporting too many.
 members reached through their class, where a `classmethod` binds `cls` and a
 plain method does not. Over-reporting a small category beats guessing at it.
 
-Precision rose from 47% to 61% and F1 from 59% to 67%, the best so far, at a
-cost of two points of recall. Both files behind that cost were read
+Precision rose from 47% to 61% and F1 from 59% to 67% at a cost of two points
+of recall — and recall came back, with interest, once declared attribute types
+landed (below). Both files behind that cost were read
 individually, and neither was over-narrowing: `format_str_tokenizer.py` calls
 `builder.accept(x)` and was edited in that commit by an unrelated `call_c` →
 `primitive_op` refactor, and `scrapy/shell.py` grew a `shells=` argument because
