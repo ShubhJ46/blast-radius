@@ -103,26 +103,31 @@ class ModuleTable:
     conflicts: tuple[tuple[str, str], ...] = ()
 
     @classmethod
-    def build(cls, paths: Iterable[str], unreadable: Iterable[str] = ()) -> "ModuleTable":
-        """Name every module, given the files that parsed and the ones that did not.
+    def build(cls, paths: Iterable[str], discovered: Iterable[str] = ()) -> "ModuleTable":
+        """Name every module. Packages come from the tree, names from the parses.
 
-        `unreadable` exists because a directory is a package by holding an
-        `__init__.py`, not by that file being parseable, and the difference is
-        not local. Names are built by climbing while each parent is a package,
-        so a package root that drops out of the set renames everything beneath
-        it: with scrapy's Python 2 `scrapy/__init__.py` unreadable,
-        `scrapy/utils/encoding.py` called itself `utils.encoding`, every
-        `from scrapy.utils.encoding import ...` in 294 modules failed to match,
-        and the whole repository's import graph resolved as external.
+        Those are two different questions and were once answered from one list.
+        A directory is a package by holding an `__init__.py`, not by that file
+        being parseable, and the difference is not local: names are built by
+        climbing while each parent is a package, so a package root dropping out
+        of the set renames everything beneath it. With scrapy's Python 2
+        `scrapy/__init__.py` unreadable, `scrapy/utils/encoding.py` called
+        itself `utils.encoding`, every `from scrapy.utils.encoding import ...`
+        in 294 modules failed to match, and the whole repository's import graph
+        resolved as external.
 
-        Only parsed files are given names here. An unreadable file still has no
-        definitions to point at -- the fix is to stop it from taking its
-        siblings down with it, not to pretend it was read.
+        `discovered` is every file found on disk and is the authority on which
+        directories are packages; `paths` is the subset that parsed and is the
+        only thing given a name, since a file nothing could read has no
+        definitions to point at. Passing the discovered list whole, rather than
+        the difference between the two, is what keeps them from drifting apart
+        if a file ever gains a disposition that is neither. It defaults to
+        `paths` so a caller holding only parses still gets sensible names.
         """
         ordered = sorted(set(paths))
         package_dirs = {
             posixpath.dirname(path)
-            for path in (*ordered, *unreadable)
+            for path in (discovered or ordered)
             if posixpath.basename(path) == INIT_BASENAME
         }
 
@@ -360,12 +365,12 @@ class ImportIndex:
 
 
 def build_import_index(
-    parses: Mapping[str, ModuleParse], unreadable: Iterable[str] = ()
+    parses: Mapping[str, ModuleParse], discovered: Iterable[str] = ()
 ) -> tuple[ImportIndex, ModuleTable]:
     """Convenience wrapper: derive the module table from the parses themselves.
 
-    `unreadable` names files that were discovered but could not be parsed; they
-    still count towards which directories are packages. See `ModuleTable.build`.
+    `discovered` is every file found on disk, including any that could not be
+    parsed; it decides which directories are packages. See `ModuleTable.build`.
     """
-    table = ModuleTable.build(parses.keys(), unreadable)
+    table = ModuleTable.build(parses.keys(), discovered)
     return ImportIndex(parses, table), table

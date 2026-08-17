@@ -47,25 +47,11 @@ class TestBuildIndex:
         assert SymbolId("pkg/base.py", "Widget.render") in index.definitions
         assert SymbolId("pkg/base.py", "helper") in index.definitions
 
-    def test_a_property_is_the_getter_not_the_setter(self, make_repo):
+    def test_a_property_is_the_getter_not_the_setter(self, property_repo):
         # The setter is written last, so a dict keyed by qualname kept it and
         # `blast-radius impact` reported `(self, value)` and the setter's lines
         # as the definition of the name.
-        root = make_repo(
-            {
-                "m.py": """
-                    class Store:
-                        @property
-                        def query(self):
-                            return self._q
-
-                        @query.setter
-                        def query(self, value):
-                            self._q = value
-                """
-            }
-        )
-        definition = build_index(root).definitions[SymbolId("m.py", "Store.query")]
+        definition = build_index(property_repo).definitions[SymbolId("m.py", "Store.query")]
         assert definition.start_line == 3  # the getter's `def`, not the setter's
         assert definition.decorators == ("property",)
 
@@ -108,22 +94,8 @@ class TestBuildIndex:
         definition = build_index(root).definitions[SymbolId("m.py", "f")]
         assert definition.start_line == 5
 
-    def test_the_other_arms_stay_reachable(self, make_repo):
-        root = make_repo(
-            {
-                "m.py": """
-                    class Store:
-                        @property
-                        def query(self):
-                            return self._q
-
-                        @query.setter
-                        def query(self, value):
-                            self._q = value
-                """
-            }
-        )
-        index = build_index(root)
+    def test_the_other_arms_stay_reachable(self, property_repo):
+        index = build_index(property_repo)
         arms = index.definitions_of(SymbolId("m.py", "Store.query"))
         assert [(d.start_line, d.decorators) for d in arms] == [
             (3, ("property",)),

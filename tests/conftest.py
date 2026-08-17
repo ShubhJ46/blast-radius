@@ -47,6 +47,29 @@ SAMPLE_REPO = {
 }
 
 
+# One symbol written as two definitions. Shared because the index, the CLI and
+# the MCP server each have to answer for it, and four hand-copied versions had
+# already drifted apart on the class and method names.
+PROPERTY_REPO = {
+    "m.py": """
+        class Store:
+            @property
+            def query(self):
+                return self._q
+
+            @query.setter
+            def query(self, value):
+                self._q = value
+    """,
+}
+
+
+@pytest.fixture
+def property_repo(make_repo) -> Path:
+    """A repository whose only symbol is a property with a getter and a setter."""
+    return make_repo(PROPERTY_REPO)
+
+
 @pytest.fixture
 def make_repo(tmp_path):
     """Write a {path: source} mapping to disk and return the root."""

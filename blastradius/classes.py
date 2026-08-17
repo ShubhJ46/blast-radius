@@ -22,7 +22,7 @@ from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 
 from blastradius.imports import ImportIndex, ModuleRef
-from blastradius.model import Definition, ModuleParse, SymbolId
+from blastradius.model import Definition, ModuleParse, SymbolId, canonical_definition
 
 
 @dataclass(frozen=True)
@@ -206,11 +206,22 @@ def _merge(sequences: list[list[SymbolId]]) -> list[SymbolId]:
 
 
 def _definitions_by_symbol(parses: Iterable[ModuleParse]) -> dict[SymbolId, Definition]:
-    return {
-        definition.symbol: definition
-        for parse in parses
-        for definition in parse.definitions
-    }
+    """Definitions keyed by symbol, picking the arm the name means.
+
+    Only `.kind` and `.symbol` are read back out of this, and neither varies
+    between a property's arms or an `@overload` group's, so last-wins would
+    give the same answers today. It goes through `canonical_definition` anyway
+    because the next thing to read `.signature` or `.start_line` off this map
+    would silently inherit the bug that one already caused in `RepoIndex`.
+    """
+    definitions: dict[SymbolId, Definition] = {}
+    for parse in parses:
+        for definition in parse.definitions:
+            existing = definitions.get(definition.symbol)
+            definitions[definition.symbol] = (
+                definition if existing is None else canonical_definition(existing, definition)
+            )
+    return definitions
 
 
 def _methods_by_owner(

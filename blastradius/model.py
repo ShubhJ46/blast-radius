@@ -141,6 +141,11 @@ class Definition:
         The implementation below the stubs is the only signature a caller has
         to satisfy, so a stub's parameters must never be mistaken for the
         symbol's own.
+
+        Matched on the decorator's source text, which is what a `Definition`
+        carries. A local `def overload` shadowing `typing.overload` would be
+        read as the real thing -- see `canonical_definition` for why that is
+        tolerable here and where it stops being so.
         """
         return any(name == "overload" or name.endswith(".overload") for name in self.decorators)
 
@@ -151,8 +156,54 @@ class Definition:
         These share a qualname with the `@property` getter without replacing
         it: the three compose into one descriptor rather than the last one
         winning, which is what makes the getter the definition the name means.
+
+        Text-matched like `is_overload_stub`: a descriptor of one's own that
+        borrows the `.setter` spelling would read as a property.
         """
         return any(name.endswith((".setter", ".deleter")) for name in self.decorators)
+
+
+def canonical_definition(previous: Definition, current: Definition) -> Definition:
+    """Which of two definitions sharing one `SymbolId` the name actually means.
+
+    A qualname is not a unique key. Three shapes produce more than one
+    definition under one name, and they do not all resolve the same way:
+
+    * A plain redefinition -- two `def`s in different branches of an `if` --
+      *replaces* the earlier binding. The last one is what Python leaves bound,
+      so the last one wins, which is also what this function does by default.
+    * An `@overload` group *composes*: the stubs declare types for a checker
+      and only the undecorated implementation is callable. Taking the last arm
+      is right only when the implementation happens to be written last, which
+      across four corpora it is in 8 of 19 groups -- so in the other 11 the
+      index held a stub's parameters and answered `--argument` against a
+      signature that does not exist at runtime.
+    * A property composes the same way, and here the last arm is the *setter*
+      in every case measured. Reporting `(self, value)` and the setter's line
+      range for `Widget.name` is wrong in both halves.
+
+    Preferring the real callable is not a guess between two candidates: the
+    stub and the mutator are parts of one object, not rivals to it. Where there
+    is a genuine choice -- two plain redefinitions -- this defers to Python.
+
+    The two predicates read decorator *text*, so a local name that borrows the
+    `overload` or `.setter` spelling is taken at its word. That is a weaker
+    footing than `CallShape.opaque`, which refuses to guess when a decorator
+    would have to be resolved, and the difference is deliberate: here a wrong
+    answer picks a same-named arm a few lines away, where there it would
+    mis-count every argument at a call site. Resolving the decorator through
+    `ImportIndex` is what to do if that ever stops being true.
+
+    Lives here rather than beside its caller because it is a fact about what a
+    `Definition` means, and three places build a map keyed by `SymbolId` --
+    `RepoIndex`, `ClassGraph`, and `ModuleParse.by_qualname` -- each of which
+    would otherwise have to rediscover it.
+    """
+    if current.is_overload_stub != previous.is_overload_stub:
+        return previous if current.is_overload_stub else current
+    if current.is_property_mutator != previous.is_property_mutator:
+        return previous if current.is_property_mutator else current
+    return current
 
 
 @dataclass(frozen=True)

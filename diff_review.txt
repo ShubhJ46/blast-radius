@@ -1,0 +1,478 @@
+diff --git a/blastradius/cli.py b/blastradius/cli.py
+index 771d16a..fb6ef2c 100644
+--- a/blastradius/cli.py
++++ b/blastradius/cli.py
+@@ -71,6 +71,13 @@ def _print_impact(impact: Impact, stream, argument: str | None = None) -> None:
+         f"lines {definition.start_line}-{definition.end_line}",
+         file=stream,
+     )
++    for other in impact.also_defined:
++        decorators = " ".join(f"@{name}" for name in other.decorators)
++        print(
++            f"  also defined at lines {other.start_line}-{other.end_line}"
++            f"{'  ' + decorators if decorators else ''}",
++            file=stream,
++        )
+ 
+     print(
+         f"\ncallers  {_plural(len(impact.callers), 'reference')} "
+@@ -129,6 +136,14 @@ def _impact_payload(impact: Impact) -> dict:
+         "overridden": str(impact.overridden) if impact.overridden else None,
+         "files": list(impact.files),
+         "unverified": list(impact.unverified),
++        "also_defined": [
++            {
++                "start_line": other.start_line,
++                "end_line": other.end_line,
++                "decorators": list(other.decorators),
++            }
++            for other in impact.also_defined
++        ],
+     }
+ 
+ 
+diff --git a/blastradius/impact.py b/blastradius/impact.py
+index a59e5e3..f197229 100644
+--- a/blastradius/impact.py
++++ b/blastradius/impact.py
+@@ -43,6 +43,11 @@ class Impact:
+     # never folded into `files`. Reported so that "I could not see this" is
+     # distinguishable from "nothing depends on this".
+     unverified: tuple[str, ...] = ()
++    # The other definitions written under this same name: a property's setter,
++    # the `@overload` stubs above an implementation. `definition` is the one
++    # the name means, but these are real lines in the same file that a reader
++    # changing the signature almost certainly has to change too.
++    also_defined: tuple[Definition, ...] = ()
+ 
+     @property
+     def files(self) -> tuple[str, ...]:
+@@ -188,6 +193,9 @@ def impact_of(index: RepoIndex, symbol: SymbolId) -> Impact:
+         overrides=index.classes.overrides_of(symbol),
+         overridden=index.classes.overridden(symbol),
+         unverified=unverified_mentions(index, symbol),
++        also_defined=tuple(
++            other for other in index.definitions_of(symbol) if other != definition
++        ),
+     )
+ 
+ 
+diff --git a/blastradius/imports.py b/blastradius/imports.py
+index 73a06ce..524c8ce 100644
+--- a/blastradius/imports.py
++++ b/blastradius/imports.py
+@@ -103,11 +103,26 @@ class ModuleTable:
+     conflicts: tuple[tuple[str, str], ...] = ()
+ 
+     @classmethod
+-    def build(cls, paths: Iterable[str]) -> "ModuleTable":
++    def build(cls, paths: Iterable[str], unreadable: Iterable[str] = ()) -> "ModuleTable":
++        """Name every module, given the files that parsed and the ones that did not.
++
++        `unreadable` exists because a directory is a package by holding an
++        `__init__.py`, not by that file being parseable, and the difference is
++        not local. Names are built by climbing while each parent is a package,
++        so a package root that drops out of the set renames everything beneath
++        it: with scrapy's Python 2 `scrapy/__init__.py` unreadable,
++        `scrapy/utils/encoding.py` called itself `utils.encoding`, every
++        `from scrapy.utils.encoding import ...` in 294 modules failed to match,
++        and the whole repository's import graph resolved as external.
++
++        Only parsed files are given names here. An unreadable file still has no
++        definitions to point at -- the fix is to stop it from taking its
++        siblings down with it, not to pretend it was read.
++        """
+         ordered = sorted(set(paths))
+         package_dirs = {
+             posixpath.dirname(path)
+-            for path in ordered
++            for path in (*ordered, *unreadable)
+             if posixpath.basename(path) == INIT_BASENAME
+         }
+ 
+@@ -344,7 +359,13 @@ class ImportIndex:
+         return expansion
+ 
+ 
+-def build_import_index(parses: Mapping[str, ModuleParse]) -> tuple[ImportIndex, ModuleTable]:
+-    """Convenience wrapper: derive the module table from the parses themselves."""
+-    table = ModuleTable.build(parses.keys())
++def build_import_index(
++    parses: Mapping[str, ModuleParse], unreadable: Iterable[str] = ()
++) -> tuple[ImportIndex, ModuleTable]:
++    """Convenience wrapper: derive the module table from the parses themselves.
++
++    `unreadable` names files that were discovered but could not be parsed; they
++    still count towards which directories are packages. See `ModuleTable.build`.
++    """
++    table = ModuleTable.build(parses.keys(), unreadable)
+     return ImportIndex(parses, table), table
+diff --git a/blastradius/index.py b/blastradius/index.py
+index bbd2d09..d8ac781 100644
+--- a/blastradius/index.py
++++ b/blastradius/index.py
+@@ -69,6 +69,52 @@ class RepoIndex:
+     def references_to(self, symbol: SymbolId) -> tuple[Reference, ...]:
+         return self.references.get(symbol, ())
+ 
++    def definitions_of(self, symbol: SymbolId) -> tuple[Definition, ...]:
++        """Every definition written under one symbol, in source order.
++
++        `definitions` holds the one the name means -- see
++        `canonical_definition` -- which for a property or an `@overload` group
++        is one arm of several. The rest are still real source a reader may have
++        to edit, so they stay reachable rather than being dropped on the floor.
++
++        Read back off the parse instead of being stored a second time: a cached
++        copy of a subset of `parses` is a chance for the two to disagree.
++        """
++        parse = self.parses.get(symbol.path)
++        if parse is None:
++            return ()
++        return tuple(d for d in parse.definitions if d.symbol == symbol)
++
++
++def canonical_definition(previous: Definition, current: Definition) -> Definition:
++    """Which of two definitions sharing one `SymbolId` the name actually means.
++
++    A qualname is not a unique key. Three shapes produce more than one
++    definition under one name, and they do not all resolve the same way:
++
++    * A plain redefinition -- two `def`s in different branches of an `if` --
++      *replaces* the earlier binding. The last one is what Python leaves bound,
++      so the last one wins, which is also what this function does by default.
++    * An `@overload` group *composes*: the stubs declare types for a checker
++      and only the undecorated implementation is callable. Taking the last arm
++      is right only when the implementation happens to be written last, which
++      across four corpora it is in 8 of 19 groups -- so in the other 11 the
++      index held a stub's parameters and answered `--argument` against a
++      signature that does not exist at runtime.
++    * A property composes the same way, and here the last arm is the *setter*
++      in every case measured. Reporting `(self, value)` and the setter's line
++      range for `Widget.name` is wrong in both halves.
++
++    Preferring the real callable is not a guess between two candidates: the
++    stub and the mutator are parts of one object, not rivals to it. Where there
++    is a genuine choice -- two plain redefinitions -- this defers to Python.
++    """
++    if current.is_overload_stub != previous.is_overload_stub:
++        return previous if current.is_overload_stub else current
++    if current.is_property_mutator != previous.is_property_mutator:
++        return previous if current.is_property_mutator else current
++    return current
++
+ 
+ @dataclass
+ class _Collected:
+@@ -178,7 +224,9 @@ def build_index(root: Path, previous: RepoIndex | None = None) -> RepoIndex:
+             reused=collected.reused,
+         )
+ 
+-    imports, modules = build_import_index(collected.parses)
++    imports, modules = build_import_index(
++        collected.parses, [path for path, _ in collected.skipped]
++    )
+     classes = ClassGraph.build(collected.parses, imports)
+ 
+     references: dict[SymbolId, list[Reference]] = {}
+@@ -189,11 +237,13 @@ def build_index(root: Path, previous: RepoIndex | None = None) -> RepoIndex:
+             references.setdefault(reference.target, []).append(reference)
+         unresolved += len(resolved.unresolved_attributes)
+ 
+-    definitions = {
+-        definition.symbol: definition
+-        for parse in collected.parses.values()
+-        for definition in parse.definitions
+-    }
++    definitions: dict[SymbolId, Definition] = {}
++    for parse in collected.parses.values():
++        for definition in parse.definitions:
++            previous = definitions.get(definition.symbol)
++            definitions[definition.symbol] = (
++                definition if previous is None else canonical_definition(previous, definition)
++            )
+ 
+     return RepoIndex(
+         root=root,
+diff --git a/blastradius/mcp_server.py b/blastradius/mcp_server.py
+index 27977bc..fcd3122 100644
+--- a/blastradius/mcp_server.py
++++ b/blastradius/mcp_server.py
+@@ -84,6 +84,13 @@ def _caveats(index: RepoIndex, impact: Impact) -> list[str]:
+             "are on values whose type is not declared, so some callers may be missing. "
+             "Annotating the receiver makes them resolvable."
+         )
++    if impact.also_defined:
++        notes.append(
++            f"This name has {len(impact.also_defined) + 1} definitions in the same file "
++            "-- a property's getter and setter, or an `@overload` group. `lines` and "
++            "the signature describe the one the name means; the rest are under "
++            "`also_defined` and usually have to change with it."
++        )
+     if impact.unverified:
+         notes.append(
+             f"{len(impact.unverified)} file(s) could not be parsed but mention this "
+@@ -176,6 +183,10 @@ def build_server(root: Path) -> "object":
+             # so "I could not see this" is distinguishable from "nothing
+             # depends on this".
+             "unverified": list(impact.unverified),
++            "also_defined": [
++                {"lines": [other.start_line, other.end_line], "decorators": list(other.decorators)}
++                for other in impact.also_defined
++            ],
+             "caveats": _caveats(index, impact),
+         }
+ 
+diff --git a/blastradius/model.py b/blastradius/model.py
+index 704fc5d..97e0fee 100644
+--- a/blastradius/model.py
++++ b/blastradius/model.py
+@@ -134,6 +134,26 @@ class Definition:
+         """
+         return "<locals>" in self.symbol.qualname
+ 
++    @property
++    def is_overload_stub(self) -> bool:
++        """True for an `@overload` arm, which declares a type and no callable.
++
++        The implementation below the stubs is the only signature a caller has
++        to satisfy, so a stub's parameters must never be mistaken for the
++        symbol's own.
++        """
++        return any(name == "overload" or name.endswith(".overload") for name in self.decorators)
++
++    @property
++    def is_property_mutator(self) -> bool:
++        """True for a `@x.setter` or `@x.deleter` arm of a property.
++
++        These share a qualname with the `@property` getter without replacing
++        it: the three compose into one descriptor rather than the last one
++        winning, which is what makes the getter the definition the name means.
++        """
++        return any(name.endswith((".setter", ".deleter")) for name in self.decorators)
++
+ 
+ @dataclass(frozen=True)
+ class CallShape:
+@@ -240,4 +260,13 @@ class ModuleParse:
+     imports: tuple[RawImport, ...] = ()
+ 
+     def by_qualname(self) -> dict[str, Definition]:
++        """Definitions keyed by qualname, last one winning.
++
++        A qualname is not unique -- a property's arms and an `@overload` group
++        share one -- so this drops definitions silently and is only safe when
++        the caller already knows the name is singular. Building the same map
++        over a whole repository is what made `blastradius impact` report a
++        property's setter as the definition of its name; `RepoIndex` picks the
++        right arm through `canonical_definition` rather than reusing this.
++        """
+         return {definition.symbol.qualname: definition for definition in self.definitions}
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 259c2ef..ee0d50f 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -36,6 +36,24 @@ class TestImpactCommand:
+         _, out, _ = run(["impact", "Widget.render", "--root", root])
+         assert "pkg/impl.py::Big.render" in out
+ 
++    def test_a_property_names_the_arm_reported_and_the_one_that_is_not(self, make_repo):
++        path = str(
++            make_repo(
++                {
++                    "m.py": "class S:\n"
++                    "    @property\n"
++                    "    def q(self):\n"
++                    "        return self._q\n"
++                    "    @q.setter\n"
++                    "    def q(self, value):\n"
++                    "        self._q = value\n"
++                }
++            )
++        )
++        _, out, _ = run(["impact", "S.q", "--root", path])
++        assert "lines 3-4" in out
++        assert "also defined at lines 6-7  @q.setter" in out
++
+     def test_json_output(self, root):
+         code, out, _ = run(["impact", "helper", "--root", root, "--json"])
+         assert code == EXIT_OK
+diff --git a/tests/test_imports.py b/tests/test_imports.py
+index a339c3f..0320c89 100644
+--- a/tests/test_imports.py
++++ b/tests/test_imports.py
+@@ -62,6 +62,24 @@ class TestModuleTable:
+         table = ModuleTable.build(["__init__.py", "mod.py"])
+         assert table.by_name == {"mod": "mod.py"}
+ 
++    def test_an_unreadable_init_still_makes_its_directory_a_package(self):
++        # scrapy's Python 2 `scrapy/__init__.py` did not parse, so it was
++        # absent from the parses the table was built from -- which renamed
++        # every module under it and made the whole repository's imports
++        # resolve as external.
++        table = ModuleTable.build(["pkg/mod.py"], ["pkg/__init__.py"])
++        assert table.module_for_path("pkg/mod.py") == "pkg.mod"
++
++    def test_an_unreadable_module_is_not_given_a_name_of_its_own(self):
++        # It counts towards which directories are packages and nothing more:
++        # there is no parse behind it to point a reference at.
++        table = ModuleTable.build(["pkg/mod.py"], ["pkg/__init__.py"])
++        assert table.path_for_module("pkg") is None
++
++    def test_a_package_is_still_recognised_from_the_parses_alone(self):
++        table = ModuleTable.build(["pkg/__init__.py", "pkg/mod.py"], [])
++        assert table.module_for_path("pkg/mod.py") == "pkg.mod"
++
+ 
+ class TestPackageOf:
+     @pytest.mark.parametrize(
+diff --git a/tests/test_index.py b/tests/test_index.py
+index 7c10bf4..8a6f619 100644
+--- a/tests/test_index.py
++++ b/tests/test_index.py
+@@ -47,6 +47,93 @@ class TestBuildIndex:
+         assert SymbolId("pkg/base.py", "Widget.render") in index.definitions
+         assert SymbolId("pkg/base.py", "helper") in index.definitions
+ 
++    def test_a_property_is_the_getter_not_the_setter(self, make_repo):
++        # The setter is written last, so a dict keyed by qualname kept it and
++        # `blast-radius impact` reported `(self, value)` and the setter's lines
++        # as the definition of the name.
++        root = make_repo(
++            {
++                "m.py": """
++                    class Store:
++                        @property
++                        def query(self):
++                            return self._q
++
++                        @query.setter
++                        def query(self, value):
++                            self._q = value
++                """
++            }
++        )
++        definition = build_index(root).definitions[SymbolId("m.py", "Store.query")]
++        assert definition.start_line == 3  # the getter's `def`, not the setter's
++        assert definition.decorators == ("property",)
++
++    def test_an_overload_group_is_the_implementation_not_a_stub(self, make_repo):
++        # A stub declares a type for a checker and is not callable, so its
++        # parameters are not the ones a caller has to satisfy.
++        root = make_repo(
++            {
++                "m.py": """
++                    from typing import overload
++
++                    @overload
++                    def f(a: int) -> int: ...
++                    @overload
++                    def f(a: str, b: str) -> str: ...
++                    def f(a, b=None):
++                        return a
++                """
++            }
++        )
++        definition = build_index(root).definitions[SymbolId("m.py", "f")]
++        assert definition.decorators == ()
++        assert definition.signature.positional_names() == ("a", "b")
++
++    def test_a_plain_redefinition_keeps_the_last_one(self, make_repo):
++        # Not a decorator protocol: the second `def` replaces the first, which
++        # is what Python leaves bound, so deferring to it is correct.
++        root = make_repo(
++            {
++                "m.py": """
++                    if True:
++                        def f(a):
++                            pass
++                    else:
++                        def f(a, b):
++                            pass
++                """
++            }
++        )
++        definition = build_index(root).definitions[SymbolId("m.py", "f")]
++        assert definition.start_line == 5
++
++    def test_the_other_arms_stay_reachable(self, make_repo):
++        root = make_repo(
++            {
++                "m.py": """
++                    class Store:
++                        @property
++                        def query(self):
++                            return self._q
++
++                        @query.setter
++                        def query(self, value):
++                            self._q = value
++                """
++            }
++        )
++        index = build_index(root)
++        arms = index.definitions_of(SymbolId("m.py", "Store.query"))
++        assert [(d.start_line, d.decorators) for d in arms] == [
++            (3, ("property",)),
++            (7, ("query.setter",)),
++        ]
++
++    def test_definitions_of_an_unknown_file_is_empty(self, sample_repo):
++        index = build_index(sample_repo)
++        assert index.definitions_of(SymbolId("nope.py", "thing")) == ()
++
+     def test_inverts_references_onto_their_target(self, sample_repo):
+         index = build_index(sample_repo)
+         uses = index.references_to(SymbolId("pkg/base.py", "helper"))
+@@ -81,6 +168,24 @@ class TestUnparseableFiles:
+         assert index.module_count == 1
+         assert [path for path, _ in index.skipped] == ["bad.py"]
+ 
++    def test_a_broken_package_init_does_not_sever_its_siblings(self, make_repo):
++        # The damage from an unparseable file used to spread: `pkg/__init__.py`
++        # dropping out of the parses stopped `pkg/` counting as a package, so
++        # `pkg/mod.py` named itself `mod` and every `from pkg.mod import ...`
++        # in the repository resolved as an external reference.
++        root = make_repo(
++            {
++                "pkg/__init__.py": "print 'python 2'\n",
++                "pkg/mod.py": "def helper():\n    pass\n",
++                "app.py": "from pkg.mod import helper\n\n\ndef run():\n    helper()\n",
++            }
++        )
++        index = build_index(root)
++        assert [path for path, _ in index.skipped] == ["pkg/__init__.py"]
++        assert index.modules.module_for_path("pkg/mod.py") == "pkg.mod"
++        uses = index.references_to(SymbolId("pkg/mod.py", "helper"))
++        assert [(use.path, use.line) for use in uses] == [("app.py", 5)]
++
+     def test_an_unreadable_file_is_skipped_rather_than_fatal(self, make_repo, monkeypatch):
+         """A broken symlink or a permissions problem must not lose the whole index."""
+         root = make_repo({"a.py": "def f():\n    pass\n", "b.py": ""})
+diff --git a/tests/test_mcp_server.py b/tests/test_mcp_server.py
+index 40e01bd..37ecd14 100644
+--- a/tests/test_mcp_server.py
++++ b/tests/test_mcp_server.py
+@@ -120,6 +120,22 @@ class TestCaveats:
+         impact = impact_of(index, SymbolId("lib.py", "helper"))
+         assert any("not declared" in note for note in _caveats(index, impact))
+ 
++    def test_a_property_declares_that_the_name_has_another_arm(self, make_repo):
++        root = make_repo(
++            {
++                "lib.py": "class S:\n"
++                "    @property\n"
++                "    def q(self):\n"
++                "        return self._q\n"
++                "    @q.setter\n"
++                "    def q(self, value):\n"
++                "        self._q = value\n"
++            }
++        )
++        index = build_index(root)
++        impact = impact_of(index, SymbolId("lib.py", "S.q"))
++        assert any("2 definitions" in note for note in _caveats(index, impact))
++
+     def test_unparseable_files_are_reported(self, make_repo):
+         index = build_index(make_repo({**WIDGET, "broken.py": "def f(:\n"}))
+         impact = impact_of(index, SymbolId("lib.py", "helper"))

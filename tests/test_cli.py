@@ -36,23 +36,10 @@ class TestImpactCommand:
         _, out, _ = run(["impact", "Widget.render", "--root", root])
         assert "pkg/impl.py::Big.render" in out
 
-    def test_a_property_names_the_arm_reported_and_the_one_that_is_not(self, make_repo):
-        path = str(
-            make_repo(
-                {
-                    "m.py": "class S:\n"
-                    "    @property\n"
-                    "    def q(self):\n"
-                    "        return self._q\n"
-                    "    @q.setter\n"
-                    "    def q(self, value):\n"
-                    "        self._q = value\n"
-                }
-            )
-        )
-        _, out, _ = run(["impact", "S.q", "--root", path])
+    def test_a_property_names_the_arm_reported_and_the_one_that_is_not(self, property_repo):
+        _, out, _ = run(["impact", "Store.query", "--root", str(property_repo)])
         assert "lines 3-4" in out
-        assert "also defined at lines 6-7  @q.setter" in out
+        assert "also defined at lines 7-8  @query.setter" in out
 
     def test_json_output(self, root):
         code, out, _ = run(["impact", "helper", "--root", root, "--json"])
