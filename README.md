@@ -20,14 +20,14 @@ for the symbol name as the baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **84%** | 69% | **76%** |
+| **this tool** | **85%** | 74% | **79%** |
 | `grep` | 24% | 100% | 38% |
 
 `grep` finds everything and is wrong three times out of four.
 
 That corpus spans 2007 to 2026, and **the tool's recall depends heavily on how
-modern the code is** — 84% on commits from 2021 onward, 57% before. Precision
-does not vary that way (88% and 81%). The blended number above is the honest
+modern the code is** — 85% on commits from 2021 onward, 64% before. Precision
+does not vary that way (89% and 81%). The blended number above is the honest
 headline; the split is the useful fact, and [results](#results) has both plus
 why the old code scores as it does.
 
@@ -208,24 +208,42 @@ Two corpora rather than one, because the difference between them is the finding:
 
 | Strategy | stdlib | share | mypy | share |
 | --- | ---: | ---: | ---: | ---: |
-| `name` — scope chain and imports | 15,883 | 44.6% | 34,940 | 65.5% |
-| `self_attr` — the class hierarchy | 10,324 | 29.0% | 7,721 | 14.5% |
-| `module_attr` — an imported module | 5,560 | 15.6% | 871 | 1.6% |
-| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.8% | 5,380 | 10.1% |
-| `class_attr` — a member of a resolved class | 624 | 1.8% | 293 | 0.5% |
-| `typed_attr` — a receiver with a declared type | 60 | 0.2% | 4,109 | **7.7%** |
-| **Total resolved** | **35,601** | | **53,314** | |
+| `name` — scope chain and imports | 15,883 | 41.8% | 34,940 | 64.6% |
+| `self_attr` — the class hierarchy | 10,324 | 27.2% | 7,721 | 14.3% |
+| `module_attr` — an imported module | 5,560 | 14.6% | 871 | 1.6% |
+| `constructor` — `C(...)` reaching `C.__init__` | 3,150 | 8.3% | 5,380 | 10.0% |
+| `bound_attr` — a receiver whose bindings agree | 2,355 | **6.2%** | 753 | 1.4% |
+| `class_attr` — a member of a resolved class | 624 | 1.6% | 293 | 0.5% |
+| `typed_attr` — a receiver with a declared type | 60 | 0.2% | 4,109 | **7.6%** |
+| **Total resolved** | **37,956** | | **54,067** | |
 
 The last three rows were added because the evaluation demanded them, not because
 they seemed like good ideas — see [what the evaluation
 changed](#what-the-evaluation-changed). Without `constructor`, every `__init__`
 in every repository reported zero callers.
 
-`typed_attr` is 0.1% of the standard library and 6.5% of mypy. That 65-fold gap
-is not noise: it is the difference between a codebase written before type hints
-and one that is thoroughly annotated. What this strategy is worth depends
-entirely on the target, and the modern code an agent is asked to edit looks like
-mypy.
+`typed_attr` is 0.2% of the standard library and 7.6% of mypy. That gap is not
+noise: it is the difference between a codebase written before type hints and one
+that is thoroughly annotated. What that strategy is worth depends entirely on
+the target.
+
+**`bound_attr` runs the other way, which is the point of having it.** It is
+6.2% of the standard library against 1.4% of mypy — worth *most* where
+annotations are scarcest, because a codebase that does not declare types still
+constructs objects. The two together mean a receiver now resolves whether or not
+the author wrote the type down. Across the four corpora the inversion is
+consistent:
+
+| | `typed_attr` | `bound_attr` |
+| --- | ---: | ---: |
+| mypy | 7.6% | 1.4% |
+| sphinx | 7.0% | 3.8% |
+| standard library | 0.2% | 6.2% |
+| django | **0.0%** (3 references) | **5.8%** (8,584) |
+
+django is the extreme: three declared receiver types in 2,925 modules, against
+8,584 resolved from bindings. Before this strategy, the largest corpus here had
+essentially no working receiver resolution at all.
 
 (An earlier revision of this table read 1,123 modules and 46,856 references.
 That root also included `Lib/site-packages`, so it was never the standard
@@ -293,11 +311,11 @@ honest-looking limitation.
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| scrapy | 23 | 100% | 54% | 70% |
-| sphinx | 38 | 83% | 64% | 72% |
-| mypy | 49 | 81% | 83% | 82% |
+| scrapy | 23 | 100% | 57% | 73% |
+| sphinx | 38 | 84% | 68% | 75% |
+| mypy | 49 | 82% | 89% | 85% |
 | django | 3 | — | 0% | — |
-| **all** | **113** | **84%** | **69%** | **76%** |
+| **all** | **113** | **85%** | **74%** | **79%** |
 | `grep`, all | 113 | 24% | 100% | 38% |
 
 django predicted nothing at all on its three scored cases, so it has no
@@ -389,8 +407,8 @@ The cause is almost entirely the age of the code:
 
 | | cases | precision | recall |
 | --- | ---: | ---: | ---: |
-| commits from 2021 on | 50 | 81% | **84%** |
-| commits before 2021 | 63 | 88% | **57%** |
+| commits from 2021 on | 50 | 81% | **85%** |
+| commits before 2021 | 63 | 89% | **64%** |
 
 The split is not hand-computed. `Case.committed_at` records the committer date
 so the runner can filter by era without re-mining — the same reasoning as
@@ -406,14 +424,14 @@ measured rather than assumed:
 **The tool cannot parse Python 2 at all.** Checking out scrapy at a 2008 commit
 gives 200 indexed modules and **30 unparseable ones** — `print` statements that
 a Python 3 `ast` rejects. Those files are excluded from the index, so a caller
-inside one is invisible. Of the 44 missed files across the whole run, **8 are
+inside one is invisible. Of the 37 missed files across the whole run, **8 are
 source Python 3 cannot parse — every one of them before 2021, none after.**
-Excluding them lifts pre-2021 recall from 57% to 63%.
+Excluding them lifts pre-2021 recall from 64% to 72%.
 
 Those eight are no longer silent. A file the parser rejects that *mentions* the
 symbol is now reported as `unverified` — see [what it will not
 guess](#what-it-will-not-guess). That does not move the score, by design, but it
-converts 18% of the misses from a hole into a stated one.
+converts 22% of the misses from a hole into a stated one.
 
 **The rest is the unannotated receiver.** `self.middleware.download(request)` in
 2009 scrapy resolves to nothing because nothing declares what `self.middleware`
@@ -432,9 +450,9 @@ commit edited one. It carries 11 of the run's 19 false positives on its own.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 113 cases | 84% | 69% | 76% |
+| all 113 cases | 85% | 74% | 79% |
 | `get_proper_types` alone | 8% | 100% | 15% |
-| the other 112 | **92%** | 69% | **79%** |
+| the other 112 | **93%** | 74% | **82%** |
 
 Every caller writes `get_proper_types(result.arg_types)` — passing the renamed
 parameter *positionally*, where the rename cannot reach it. This was previously
@@ -445,7 +463,7 @@ group that never changed signature at all.
 
 The case is left in the corpus. Dropping the cases that make your own numbers
 look bad is how an evaluation stops meaning anything, so the 92% figure is
-quoted beside the 84% rather than instead of it.
+quoted beside the 85% rather than instead of it.
 
 ### Every false positive in the run, audited
 
@@ -473,8 +491,8 @@ per-kind scores — renames are the worst category by a wide margin:
 
 | kind | cases | precision | recall |
 | --- | ---: | ---: | ---: |
-| `added_required` | 54 | 94% | 75% |
-| `removed` | 25 | 89% | 53% |
+| `added_required` | 54 | 95% | 82% |
+| `removed` | 25 | 90% | 60% |
 | `renamed` | 29 | **66%** | 68% |
 | `reordered` | 5 | 100% | 100% |
 
@@ -513,6 +531,68 @@ evaluation pointed at that was a *feature* rather than a bug.
 
 Initialisers remain the best-scoring category — 34 cases at **97% precision and
 90% recall**.
+
+### Reading a binding, having refused to infer one
+
+The audit above said what to build next, and it was not what was planned. The
+queued work was inheriting `self.x: Config` from a base class. **Not one of the
+44 misses was that.** The attributes behind them are assigned, not annotated —
+`self.mapper = mapper`, `self.builder = LowLevelIRBuilder(...)` — so that work
+would have changed no answer in the corpus. It was dropped on the evidence.
+
+What the misses wanted was a receiver typed by its *binding*. This page
+previously said, in as many words, that no attempt is made to track what a
+variable was last assigned, "because that is inference and it is wrong as soon
+as the variable is reassigned". That reasoning was kept and the conclusion
+narrowed: what is wrong is following the **last** assignment. Following the only
+one is a different claim.
+
+```python
+w = Widget()
+w.render()          # resolved: nothing disagrees about what `w` holds
+
+w = Widget()
+w = Gadget()
+w.render()          # nothing: two bindings, no answer
+```
+
+A name is typed by its binding only when no binding disagrees. A parameter, a
+loop target, a `with`, an unpacking, a `del`, an `except as`, a match capture,
+or any assignment that is not a construction all count as disagreement, and one
+of them discards the name outright. mypy's `IRBuilder.builder` — assigned
+`LowLevelIRBuilder(...)` in one place and `self.builders[-1]` in another — stays
+unresolved, which is the case the guard exists for.
+
+The same rule reads an attribute assigned from an annotated parameter, which is
+the commonest shape in Python and needs no inference at all:
+
+```python
+def __init__(self, config: Config):
+    self.config = config       # the author declared `Config`; this follows it
+```
+
+**It cost nothing.** Seven cases gained hits, none lost any, and the
+false-positive count did not move:
+
+| | precision | recall | F1 | false positives |
+| --- | ---: | ---: | ---: | ---: |
+| before | 84% | 69% | 76% | 19 |
+| after | **85%** | **74%** | **79%** | **19** |
+
+Every other change in this project traded one half against the other. This one
+did not, and the reason is the guard rather than the idea: a strategy that
+refuses whenever the evidence is mixed cannot invent a caller.
+
+It resolves under its own `bound_attr` so the harness reports it apart from
+`typed_attr`. That was decided before the numbers came back, so that a
+disappointing result could be attributed and reverted rather than argued about.
+
+**One false positive was found, and not by a test.** Probing the collector
+directly turned up a bare `name = Widget()` inside a *method* being recorded as a
+class attribute, so a local variable in one method typed a `self.thing` the class
+never assigns anywhere — a caller invented from a coincidence of names. A bare
+name is an attribute only in the class body; inside a method it binds a local.
+Green tests said nothing about it, which is the recurring lesson here.
 
 ### Every recall miss in the run, audited
 
