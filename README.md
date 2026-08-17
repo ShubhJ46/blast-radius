@@ -20,14 +20,14 @@ for the symbol name as the baseline, because that is what an agent does today:
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| **this tool** | **83%** | 64% | **72%** |
+| **this tool** | **84%** | 69% | **76%** |
 | `grep` | 24% | 100% | 38% |
 
 `grep` finds everything and is wrong three times out of four.
 
 That corpus spans 2007 to 2026, and **the tool's recall depends heavily on how
-modern the code is** — 84% on commits from 2021 onward, 46% before. Precision
-does not vary that way (85% and 81%). The blended number above is the honest
+modern the code is** — 84% on commits from 2021 onward, 57% before. Precision
+does not vary that way (88% and 81%). The blended number above is the honest
 headline; the split is the useful fact, and [results](#results) has both plus
 why the old code scores as it does.
 
@@ -293,11 +293,11 @@ honest-looking limitation.
 
 | Corpus | Cases | precision | recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| scrapy | 23 | 100% | 25% | 40% |
+| scrapy | 23 | 100% | 54% | 70% |
 | sphinx | 38 | 83% | 64% | 72% |
 | mypy | 49 | 81% | 83% | 82% |
 | django | 3 | — | 0% | — |
-| **all** | **113** | **83%** | **64%** | **72%** |
+| **all** | **113** | **84%** | **69%** | **76%** |
 | `grep`, all | 113 | 24% | 100% | 38% |
 
 django predicted nothing at all on its three scored cases, so it has no
@@ -390,7 +390,7 @@ The cause is almost entirely the age of the code:
 | | cases | precision | recall |
 | --- | ---: | ---: | ---: |
 | commits from 2021 on | 50 | 81% | **84%** |
-| commits before 2021 | 63 | 85% | **46%** |
+| commits before 2021 | 63 | 88% | **57%** |
 
 The split is not hand-computed. `Case.committed_at` records the committer date
 so the runner can filter by era without re-mining — the same reasoning as
@@ -406,14 +406,14 @@ measured rather than assumed:
 **The tool cannot parse Python 2 at all.** Checking out scrapy at a 2008 commit
 gives 200 indexed modules and **30 unparseable ones** — `print` statements that
 a Python 3 `ast` rejects. Those files are excluded from the index, so a caller
-inside one is invisible. Of the 52 missed files across the whole run, **8 are
+inside one is invisible. Of the 44 missed files across the whole run, **8 are
 source Python 3 cannot parse — every one of them before 2021, none after.**
-Excluding them lifts pre-2021 recall from 46% to 51%.
+Excluding them lifts pre-2021 recall from 57% to 63%.
 
 Those eight are no longer silent. A file the parser rejects that *mentions* the
 symbol is now reported as `unverified` — see [what it will not
 guess](#what-it-will-not-guess). That does not move the score, by design, but it
-converts 15% of the misses from a hole into a stated one.
+converts 18% of the misses from a hole into a stated one.
 
 **The rest is the unannotated receiver.** `self.middleware.download(request)` in
 2009 scrapy resolves to nothing because nothing declares what `self.middleware`
@@ -432,9 +432,9 @@ commit edited one. It carries 11 of the run's 19 false positives on its own.
 
 | | precision | recall | F1 |
 | --- | ---: | ---: | ---: |
-| all 113 cases | 83% | 64% | 72% |
+| all 113 cases | 84% | 69% | 76% |
 | `get_proper_types` alone | 8% | 100% | 15% |
-| the other 112 | **92%** | 63% | **75%** |
+| the other 112 | **92%** | 69% | **79%** |
 
 Every caller writes `get_proper_types(result.arg_types)` — passing the renamed
 parameter *positionally*, where the rename cannot reach it. This was previously
@@ -445,7 +445,7 @@ group that never changed signature at all.
 
 The case is left in the corpus. Dropping the cases that make your own numbers
 look bad is how an evaluation stops meaning anything, so the 92% figure is
-quoted beside the 83% rather than instead of it.
+quoted beside the 84% rather than instead of it.
 
 ### Every false positive in the run, audited
 
@@ -473,9 +473,9 @@ per-kind scores — renames are the worst category by a wide margin:
 
 | kind | cases | precision | recall |
 | --- | ---: | ---: | ---: |
-| `added_required` | 54 | 94% | 67% |
-| `removed` | 25 | 88% | 47% |
-| `renamed` | 29 | **65%** | 65% |
+| `added_required` | 54 | 94% | 75% |
+| `removed` | 25 | 89% | 53% |
+| `renamed` | 29 | **66%** | 68% |
 | `reordered` | 5 | 100% | 100% |
 
 Narrowing renames to keyword callers is the obvious fix and it is *already
@@ -512,7 +512,64 @@ paying a real cost. That gap is what `--argument` closes — see
 evaluation pointed at that was a *feature* rather than a bug.
 
 Initialisers remain the best-scoring category — 34 cases at **97% precision and
-74% recall**.
+90% recall**.
+
+### Every recall miss in the run, audited
+
+The false positives had been audited twice. The misses never had — 8 of them
+were known to be unparseable Python 2 and the other 44 were uncategorised, which
+meant the next thing to build was going to be chosen by guesswork. Classifying
+all 52 by the syntactic form of the reference the tool failed to resolve put
+**94% of them into three mechanisms**:
+
+| cause | files | share |
+| --- | ---: | ---: |
+| the receiver has no declared type | 29 | 56% |
+| a package severed by an unreadable `__init__.py` | 12 | 23% |
+| the calling file is Python 2 and does not parse | 8 | 15% |
+| a string reference, an aliased import, a non-call attribute | 3 | 6% |
+
+The first row is the structural limit this project already claims, measured
+rather than assumed: `self.middleware.download(request)` cannot resolve while
+nothing declares what `self.middleware` holds. The third was already stated.
+
+**The second row was a bug, and no aggregate would ever have shown it.** Twelve
+misses were plain `from x import name` followed by `name(...)` — the easiest
+form there is, and every one of them in scrapy, every one before 2021. A shape
+that simple failing meant something structural was wrong, so the cause was worth
+chasing rather than filing under "old code scores badly".
+
+`ModuleTable.build` decided which directories were packages from the files that
+*parsed*. Module names are built by climbing while each parent is a package, so
+a package root dropping out of that set renames everything beneath it. scrapy's
+Python 2 `scrapy/__init__.py` does not parse, so at those revisions
+`scrapy/utils/encoding.py` called itself `utils.encoding`, every
+`from scrapy.utils.encoding import ...` across 294 modules failed to match, and
+**the entire repository's import graph resolved as external**. One unreadable
+file, and no cross-module reference in the project resolved at all.
+
+A directory is a package because it holds an `__init__.py`, not because that
+file could be read. Fixing that:
+
+| | precision | recall | F1 |
+| --- | ---: | ---: | ---: |
+| before | 83% | 64% | 72% |
+| after | 84% | **69%** | **76%** |
+
+scrapy went from 25% recall to **54%**, and pre-2021 recall from 46% to 57%.
+The false-positive count is identical at 19, so unlike every other change in
+this project this one traded nothing: eight files moved straight from missed to
+hit. Of the twelve, the four that remain are excluded by the `--argument`
+narrowing rather than by the bug — their call sites genuinely do not pass the
+removed parameter, so `encoding_exists(enc)` is not broken by dropping
+`_aliases`.
+
+The reason it survived this long is worth stating plainly: **it is invisible at
+`HEAD`.** All four corpora parse cleanly today, so the module table is identical
+with and without the fix, and every run of the tool against a current checkout
+was correct. It only bites at the historical revisions the scorer checks out —
+which is to say the bug lived exactly where the evaluation looks and nowhere a
+casual test would.
 
 ### What the fixes were worth
 
@@ -601,7 +658,7 @@ truth mined for them would be assembled from unrelated mentions of the class.
 
 Initialisers went from the worst-scoring category to the best: **11 cases, 80%
 precision, 100% recall, zero misses** — measured when the corpus held 104 cases.
-They are still the best category on the current 113: 34 cases, 97% and 74%.
+They are still the best category on the current 113: 34 cases, 97% and 90%.
 
 The overall effect is smaller than that suggests, and worth stating exactly.
 Removing annotation matches took 5 files out of the missed column and 2 out of
@@ -748,7 +805,7 @@ pure rename from a replacement, so the broader rule is the correct one, and the
 failed attempt is written into `affected_files` so it does not get "fixed" back.
 
 The corpus has since grown to 29 renamed cases and renames remain the
-worst-scoring kind — 65% precision, carrying 14 of the run's 19 false
+worst-scoring kind — 66% precision, carrying 14 of the run's 19 false
 positives. That is a standing invitation to try this rule again, which is
 exactly why the reason it failed is recorded here rather than the fact that it
 did. Telling a rename from a replacement is the prerequisite, and nothing in
