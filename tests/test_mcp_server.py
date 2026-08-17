@@ -120,6 +120,22 @@ class TestCaveats:
         impact = impact_of(index, SymbolId("lib.py", "helper"))
         assert any("not declared" in note for note in _caveats(index, impact))
 
+    def test_a_property_declares_that_the_name_has_another_arm(self, make_repo):
+        root = make_repo(
+            {
+                "lib.py": "class S:\n"
+                "    @property\n"
+                "    def q(self):\n"
+                "        return self._q\n"
+                "    @q.setter\n"
+                "    def q(self, value):\n"
+                "        self._q = value\n"
+            }
+        )
+        index = build_index(root)
+        impact = impact_of(index, SymbolId("lib.py", "S.q"))
+        assert any("2 definitions" in note for note in _caveats(index, impact))
+
     def test_unparseable_files_are_reported(self, make_repo):
         index = build_index(make_repo({**WIDGET, "broken.py": "def f(:\n"}))
         impact = impact_of(index, SymbolId("lib.py", "helper"))

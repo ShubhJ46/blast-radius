@@ -71,6 +71,13 @@ def _print_impact(impact: Impact, stream, argument: str | None = None) -> None:
         f"lines {definition.start_line}-{definition.end_line}",
         file=stream,
     )
+    for other in impact.also_defined:
+        decorators = " ".join(f"@{name}" for name in other.decorators)
+        print(
+            f"  also defined at lines {other.start_line}-{other.end_line}"
+            f"{'  ' + decorators if decorators else ''}",
+            file=stream,
+        )
 
     print(
         f"\ncallers  {_plural(len(impact.callers), 'reference')} "
@@ -129,6 +136,14 @@ def _impact_payload(impact: Impact) -> dict:
         "overridden": str(impact.overridden) if impact.overridden else None,
         "files": list(impact.files),
         "unverified": list(impact.unverified),
+        "also_defined": [
+            {
+                "start_line": other.start_line,
+                "end_line": other.end_line,
+                "decorators": list(other.decorators),
+            }
+            for other in impact.also_defined
+        ],
     }
 
 

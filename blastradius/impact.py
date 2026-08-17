@@ -43,6 +43,11 @@ class Impact:
     # never folded into `files`. Reported so that "I could not see this" is
     # distinguishable from "nothing depends on this".
     unverified: tuple[str, ...] = ()
+    # The other definitions written under this same name: a property's setter,
+    # the `@overload` stubs above an implementation. `definition` is the one
+    # the name means, but these are real lines in the same file that a reader
+    # changing the signature almost certainly has to change too.
+    also_defined: tuple[Definition, ...] = ()
 
     @property
     def files(self) -> tuple[str, ...]:
@@ -188,6 +193,9 @@ def impact_of(index: RepoIndex, symbol: SymbolId) -> Impact:
         overrides=index.classes.overrides_of(symbol),
         overridden=index.classes.overridden(symbol),
         unverified=unverified_mentions(index, symbol),
+        also_defined=tuple(
+            other for other in index.definitions_of(symbol) if other != definition
+        ),
     )
 
 

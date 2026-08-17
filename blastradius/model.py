@@ -134,6 +134,26 @@ class Definition:
         """
         return "<locals>" in self.symbol.qualname
 
+    @property
+    def is_overload_stub(self) -> bool:
+        """True for an `@overload` arm, which declares a type and no callable.
+
+        The implementation below the stubs is the only signature a caller has
+        to satisfy, so a stub's parameters must never be mistaken for the
+        symbol's own.
+        """
+        return any(name == "overload" or name.endswith(".overload") for name in self.decorators)
+
+    @property
+    def is_property_mutator(self) -> bool:
+        """True for a `@x.setter` or `@x.deleter` arm of a property.
+
+        These share a qualname with the `@property` getter without replacing
+        it: the three compose into one descriptor rather than the last one
+        winning, which is what makes the getter the definition the name means.
+        """
+        return any(name.endswith((".setter", ".deleter")) for name in self.decorators)
+
 
 @dataclass(frozen=True)
 class CallShape:
@@ -240,4 +260,13 @@ class ModuleParse:
     imports: tuple[RawImport, ...] = ()
 
     def by_qualname(self) -> dict[str, Definition]:
+        """Definitions keyed by qualname, last one winning.
+
+        A qualname is not unique -- a property's arms and an `@overload` group
+        share one -- so this drops definitions silently and is only safe when
+        the caller already knows the name is singular. Building the same map
+        over a whole repository is what made `blastradius impact` report a
+        property's setter as the definition of its name; `RepoIndex` picks the
+        right arm through `canonical_definition` rather than reusing this.
+        """
         return {definition.symbol.qualname: definition for definition in self.definitions}

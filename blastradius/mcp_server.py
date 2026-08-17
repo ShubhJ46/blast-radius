@@ -84,6 +84,13 @@ def _caveats(index: RepoIndex, impact: Impact) -> list[str]:
             "are on values whose type is not declared, so some callers may be missing. "
             "Annotating the receiver makes them resolvable."
         )
+    if impact.also_defined:
+        notes.append(
+            f"This name has {len(impact.also_defined) + 1} definitions in the same file "
+            "-- a property's getter and setter, or an `@overload` group. `lines` and "
+            "the signature describe the one the name means; the rest are under "
+            "`also_defined` and usually have to change with it."
+        )
     if impact.unverified:
         notes.append(
             f"{len(impact.unverified)} file(s) could not be parsed but mention this "
@@ -176,6 +183,10 @@ def build_server(root: Path) -> "object":
             # so "I could not see this" is distinguishable from "nothing
             # depends on this".
             "unverified": list(impact.unverified),
+            "also_defined": [
+                {"lines": [other.start_line, other.end_line], "decorators": list(other.decorators)}
+                for other in impact.also_defined
+            ],
             "caveats": _caveats(index, impact),
         }
 

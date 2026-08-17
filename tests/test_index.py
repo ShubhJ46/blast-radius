@@ -47,6 +47,93 @@ class TestBuildIndex:
         assert SymbolId("pkg/base.py", "Widget.render") in index.definitions
         assert SymbolId("pkg/base.py", "helper") in index.definitions
 
+    def test_a_property_is_the_getter_not_the_setter(self, make_repo):
+        # The setter is written last, so a dict keyed by qualname kept it and
+        # `blast-radius impact` reported `(self, value)` and the setter's lines
+        # as the definition of the name.
+        root = make_repo(
+            {
+                "m.py": """
+                    class Store:
+                        @property
+                        def query(self):
+                            return self._q
+
+                        @query.setter
+                        def query(self, value):
+                            self._q = value
+                """
+            }
+        )
+        definition = build_index(root).definitions[SymbolId("m.py", "Store.query")]
+        assert definition.start_line == 3  # the getter's `def`, not the setter's
+        assert definition.decorators == ("property",)
+
+    def test_an_overload_group_is_the_implementation_not_a_stub(self, make_repo):
+        # A stub declares a type for a checker and is not callable, so its
+        # parameters are not the ones a caller has to satisfy.
+        root = make_repo(
+            {
+                "m.py": """
+                    from typing import overload
+
+                    @overload
+                    def f(a: int) -> int: ...
+                    @overload
+                    def f(a: str, b: str) -> str: ...
+                    def f(a, b=None):
+                        return a
+                """
+            }
+        )
+        definition = build_index(root).definitions[SymbolId("m.py", "f")]
+        assert definition.decorators == ()
+        assert definition.signature.positional_names() == ("a", "b")
+
+    def test_a_plain_redefinition_keeps_the_last_one(self, make_repo):
+        # Not a decorator protocol: the second `def` replaces the first, which
+        # is what Python leaves bound, so deferring to it is correct.
+        root = make_repo(
+            {
+                "m.py": """
+                    if True:
+                        def f(a):
+                            pass
+                    else:
+                        def f(a, b):
+                            pass
+                """
+            }
+        )
+        definition = build_index(root).definitions[SymbolId("m.py", "f")]
+        assert definition.start_line == 5
+
+    def test_the_other_arms_stay_reachable(self, make_repo):
+        root = make_repo(
+            {
+                "m.py": """
+                    class Store:
+                        @property
+                        def query(self):
+                            return self._q
+
+                        @query.setter
+                        def query(self, value):
+                            self._q = value
+                """
+            }
+        )
+        index = build_index(root)
+        arms = index.definitions_of(SymbolId("m.py", "Store.query"))
+        assert [(d.start_line, d.decorators) for d in arms] == [
+            (3, ("property",)),
+            (7, ("query.setter",)),
+        ]
+
+    def test_definitions_of_an_unknown_file_is_empty(self, sample_repo):
+        index = build_index(sample_repo)
+        assert index.definitions_of(SymbolId("nope.py", "thing")) == ()
+
     def test_inverts_references_onto_their_target(self, sample_repo):
         index = build_index(sample_repo)
         uses = index.references_to(SymbolId("pkg/base.py", "helper"))

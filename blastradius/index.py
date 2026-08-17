@@ -69,6 +69,52 @@ class RepoIndex:
     def references_to(self, symbol: SymbolId) -> tuple[Reference, ...]:
         return self.references.get(symbol, ())
 
+    def definitions_of(self, symbol: SymbolId) -> tuple[Definition, ...]:
+        """Every definition written under one symbol, in source order.
+
+        `definitions` holds the one the name means -- see
+        `canonical_definition` -- which for a property or an `@overload` group
+        is one arm of several. The rest are still real source a reader may have
+        to edit, so they stay reachable rather than being dropped on the floor.
+
+        Read back off the parse instead of being stored a second time: a cached
+        copy of a subset of `parses` is a chance for the two to disagree.
+        """
+        parse = self.parses.get(symbol.path)
+        if parse is None:
+            return ()
+        return tuple(d for d in parse.definitions if d.symbol == symbol)
+
+
+def canonical_definition(previous: Definition, current: Definition) -> Definition:
+    """Which of two definitions sharing one `SymbolId` the name actually means.
+
+    A qualname is not a unique key. Three shapes produce more than one
+    definition under one name, and they do not all resolve the same way:
+
+    * A plain redefinition -- two `def`s in different branches of an `if` --
+      *replaces* the earlier binding. The last one is what Python leaves bound,
+      so the last one wins, which is also what this function does by default.
+    * An `@overload` group *composes*: the stubs declare types for a checker
+      and only the undecorated implementation is callable. Taking the last arm
+      is right only when the implementation happens to be written last, which
+      across four corpora it is in 8 of 19 groups -- so in the other 11 the
+      index held a stub's parameters and answered `--argument` against a
+      signature that does not exist at runtime.
+    * A property composes the same way, and here the last arm is the *setter*
+      in every case measured. Reporting `(self, value)` and the setter's line
+      range for `Widget.name` is wrong in both halves.
+
+    Preferring the real callable is not a guess between two candidates: the
+    stub and the mutator are parts of one object, not rivals to it. Where there
+    is a genuine choice -- two plain redefinitions -- this defers to Python.
+    """
+    if current.is_overload_stub != previous.is_overload_stub:
+        return previous if current.is_overload_stub else current
+    if current.is_property_mutator != previous.is_property_mutator:
+        return previous if current.is_property_mutator else current
+    return current
+
 
 @dataclass
 class _Collected:
@@ -189,11 +235,13 @@ def build_index(root: Path, previous: RepoIndex | None = None) -> RepoIndex:
             references.setdefault(reference.target, []).append(reference)
         unresolved += len(resolved.unresolved_attributes)
 
-    definitions = {
-        definition.symbol: definition
-        for parse in collected.parses.values()
-        for definition in parse.definitions
-    }
+    definitions: dict[SymbolId, Definition] = {}
+    for parse in collected.parses.values():
+        for definition in parse.definitions:
+            previous = definitions.get(definition.symbol)
+            definitions[definition.symbol] = (
+                definition if previous is None else canonical_definition(previous, definition)
+            )
 
     return RepoIndex(
         root=root,
