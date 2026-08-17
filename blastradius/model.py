@@ -40,6 +40,12 @@ ReferenceVia = Literal[
     "module_attr",
     "constructor",  # `C(...)`, which runs `C.__init__` without ever naming it
     "typed_attr",  # `w.render()` where `w` was *declared* to be a `Widget`
+    # `w.render()` where `w` was never declared but is *bound* once, to something
+    # that names a class outright: `w = Widget()`. Weaker evidence than
+    # `typed_attr` and kept separate from it for exactly that reason -- the
+    # harness reports the two apart, so this strategy can be judged, and dropped,
+    # on its own numbers.
+    "bound_attr",
     "unresolved_attr",
 ]
 

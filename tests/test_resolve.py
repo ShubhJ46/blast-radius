@@ -1193,3 +1193,232 @@ class TestDeclaredAttributeCollection:
             parse_source("m.py", "class C:\n    def __init__(self):\n        self.x = 1\n").body[0]
         )
         assert found == {}
+
+
+class TestBoundTypes:
+    """`w.render()` resolves when `w` was *bound* once, to something naming a class.
+
+    Weaker evidence than an annotation and reported under its own `via` for that
+    reason. The guard is what makes it safe: a name with any binding that
+    disagrees resolves to nothing, so a reassigned variable is never guessed at.
+    """
+
+    WIDGET = {
+        "lib.py": (
+            "class Widget:\n"
+            "    def render(self):\n"
+            "        pass\n"
+            "\n"
+            "\n"
+            "class Gadget:\n"
+            "    def render(self):\n"
+            "        pass\n"
+        )
+    }
+
+    def bound(self, body: str, imports: str = "from lib import Widget, Gadget") -> list[str]:
+        source = f"{imports}\n\n\n{textwrap.dedent(body).strip()}\n"
+        return via_targets({**self.WIDGET, "m.py": source}, "bound_attr")
+
+    def test_a_constructor_binding_resolves_the_call(self):
+        assert self.bound("def go():\n    w = Widget()\n    w.render()\n") == [
+            "lib.py::Widget.render"
+        ]
+
+    def test_the_same_class_bound_twice_still_agrees(self):
+        assert self.bound(
+            "def go(flag):\n"
+            "    if flag:\n"
+            "        w = Widget()\n"
+            "    else:\n"
+            "        w = Widget()\n"
+            "    w.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_two_different_classes_resolve_nothing(self):
+        assert self.bound(
+            "def go():\n    w = Widget()\n    w = Gadget()\n    w.render()\n"
+        ) == []
+
+    def test_a_binding_that_is_not_a_construction_disagrees(self):
+        assert self.bound(
+            "def go(source):\n    w = Widget()\n    w = source\n    w.render()\n"
+        ) == []
+
+    def test_a_parameter_is_never_typed_by_a_later_binding(self):
+        assert self.bound("def go(w):\n    w = Widget()\n    w.render()\n") == []
+
+    def test_a_loop_target_resolves_nothing(self):
+        assert self.bound("def go(items):\n    for w in items:\n        w.render()\n") == []
+
+    def test_a_with_binding_resolves_nothing(self):
+        assert self.bound(
+            "def go(ctx):\n    w = Widget()\n    with ctx as w:\n        w.render()\n"
+        ) == []
+
+    def test_unpacking_resolves_nothing(self):
+        assert self.bound(
+            "def go():\n    w, other = Widget(), Widget()\n    w.render()\n"
+        ) == []
+
+    def test_a_deleted_name_resolves_nothing(self):
+        assert self.bound("def go():\n    w = Widget()\n    del w\n    w.render()\n") == []
+
+    def test_an_except_binding_resolves_nothing(self):
+        assert self.bound(
+            "def go():\n"
+            "    w = Widget()\n"
+            "    try:\n"
+            "        pass\n"
+            "    except ValueError as w:\n"
+            "        w.render()\n"
+        ) == []
+
+    def test_a_call_that_is_not_a_class_resolves_nothing(self):
+        assert self.bound("def go():\n    w = helper()\n    w.render()\n") == []
+
+    def test_a_declared_type_wins_over_a_binding(self):
+        # The annotation is the stronger evidence, so the call is `typed_attr`
+        # and the binding never gets a say.
+        source = (
+            "from lib import Widget, Gadget\n\n\n"
+            "def go():\n    w: Gadget = Widget()\n    w.render()\n"
+        )
+        files = {**self.WIDGET, "m.py": source}
+        assert via_targets(files, "typed_attr") == ["lib.py::Gadget.render"]
+        assert via_targets(files, "bound_attr") == []
+
+    def test_a_nested_function_does_not_disagree_with_the_outer_name(self):
+        assert self.bound(
+            "def go():\n"
+            "    w = Widget()\n"
+            "\n"
+            "    def inner():\n"
+            "        w = Gadget()\n"
+            "        return w\n"
+            "\n"
+            "    w.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_an_attribute_built_in_init_resolves_from_another_method(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self):\n"
+            "        self.thing = Widget()\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_an_attribute_assigned_from_an_annotated_parameter_resolves(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self, given: Widget):\n"
+            "        self.thing = given\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_an_attribute_assigned_from_a_bare_parameter_resolves_nothing(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self, given):\n"
+            "        self.thing = given\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == []
+
+    def test_an_attribute_assigned_twice_in_different_methods_disagrees(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self):\n"
+            "        self.thing = Widget()\n"
+            "\n"
+            "    def swap(self, values):\n"
+            "        self.thing = values[0]\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == []
+
+    def test_a_class_body_assignment_types_the_attribute(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    thing = Widget()\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_a_nested_class_does_not_inherit_the_outer_binding(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self):\n"
+            "        self.thing = Widget()\n"
+            "\n"
+            "    class Inner:\n"
+            "        def use(self):\n"
+            "            self.thing.render()\n"
+        ) == []
+
+    def test_a_bound_receiver_fills_the_first_parameter(self):
+        # `w.render(mode)` reaches `render(self, mode)` two deep. Getting this
+        # wrong silently reports the wrong callers for `--argument`.
+        files = {
+            "lib.py": "class Widget:\n    def render(self, mode):\n        pass\n",
+            "m.py": (
+                "from lib import Widget\n\n\ndef go():\n"
+                "    w = Widget()\n    w.render('fast')\n"
+            ),
+        }
+        call = next(
+            reference
+            for reference in resolve(files, "m.py").references
+            if reference.via == "bound_attr"
+        )
+        assert call.call is not None
+        assert call.call.positional == 2
+
+    def test_a_local_in_another_method_does_not_type_an_attribute(self):
+        # `thing` is a local in `other`, and `self.thing` is never assigned
+        # anywhere in the class. Reading the two as one invents a caller out of
+        # a coincidence of names.
+        assert self.bound(
+            "class Holder:\n"
+            "    def other(self):\n"
+            "        thing = Widget()\n"
+            "        return thing\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == []
+
+    def test_a_local_in_a_method_does_not_disagree_with_a_class_attribute(self):
+        # The class body assigns `thing`; a method's unrelated local of the same
+        # name must neither type it nor poison it.
+        assert self.bound(
+            "class Holder:\n"
+            "    thing = Widget()\n"
+            "\n"
+            "    def other(self):\n"
+            "        thing = Gadget()\n"
+            "        return thing\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == ["lib.py::Widget.render"]
+
+    def test_a_closure_can_still_assign_the_attribute(self):
+        assert self.bound(
+            "class Holder:\n"
+            "    def __init__(self):\n"
+            "        def build():\n"
+            "            self.thing = Widget()\n"
+            "\n"
+            "        build()\n"
+            "\n"
+            "    def use(self):\n"
+            "        self.thing.render()\n"
+        ) == ["lib.py::Widget.render"]

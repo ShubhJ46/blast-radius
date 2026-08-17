@@ -99,6 +99,13 @@ class _ScopeFrame:
     # rather than the method that wrote it, because that is the scope every
     # other method reads it from.
     attributes: dict[str, ast.expr] = field(default_factory=dict)
+    # name -> an expression naming the class it was *bound* to, for names the
+    # author never annotated. Only survives when every binding in the scope
+    # agrees; see `bound_names`. Weaker than `declared` and consulted only after
+    # it, so an annotation always wins over an assignment.
+    bound_class: dict[str, ast.expr] = field(default_factory=dict)
+    # Class frames only: the same thing for `self.x`, from `bound_attributes`.
+    bound_attributes: dict[str, ast.expr] = field(default_factory=dict)
 
 
 def _import_alias_name(node: ast.Import | ast.ImportFrom, alias: ast.alias) -> str | None:
@@ -110,13 +117,49 @@ def _import_alias_name(node: ast.Import | ast.ImportFrom, alias: ast.alias) -> s
     return alias.name.split(".")[0] or None
 
 
+def _constructed_class(value: ast.expr) -> ast.expr | None:
+    """The expression naming the class a value constructs, if it constructs one.
+
+    Only the callee of a direct call is returned, and whether it actually names a
+    class is settled later by `_class_of` against the class graph -- so
+    `helper()` yields an expression here and resolves to nothing there, rather
+    than being guessed at from a naming convention.
+    """
+    if isinstance(value, ast.Call) and isinstance(value.func, ast.Name | ast.Attribute):
+        return value.func
+    return None
+
+
+def _agreed(events: list[ast.expr | None]) -> ast.expr | None:
+    """The one class expression every binding agrees on, or nothing.
+
+    A single `None` -- one binding that was not a construction -- discards the
+    name outright. This is the whole guard: a name is typed by its binding only
+    when there is nothing to disagree with.
+    """
+    if not events or any(event is None for event in events):
+        return None
+    first, *rest = events
+    dumped = ast.dump(first)
+    return first if all(ast.dump(other) == dumped for other in rest) else None
+
+
 def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _ScopeFrame:
     """Names a scope binds, without descending into nested function or class bodies.
 
     A nested `def` binds its own *name* here; its contents belong to its own
     scope and are collected when that scope is entered.
+
+    Also records, for each name, every binding that could name a class, so that
+    `bound_class` can keep the ones where they all agree. A parameter counts as a
+    binding that does not -- its value comes from the caller -- which is what
+    stops `def f(w): w = Widget()` from claiming to know what `w` holds.
     """
     frame = _ScopeFrame(kind="function", qualname="", bound=set(parameters))
+    events: dict[str, list[ast.expr | None]] = {name: [None] for name in parameters}
+    # Name nodes already accounted for as a simple `x = ...`; every other way of
+    # binding a name reaches the generic handler below and discards it.
+    assigned: set[int] = set()
     stack: list[ast.AST] = list(body)
 
     while stack:
@@ -124,7 +167,14 @@ def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _Scop
 
         if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
             frame.bound.add(node.name)
+            events.setdefault(node.name, []).append(None)
             continue  # its body is a different scope
+
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    assigned.add(id(target))
+                    events.setdefault(target.id, []).append(_constructed_class(node.value))
         if isinstance(node, ast.Global):
             frame.declared_global.update(node.names)
             continue
@@ -145,17 +195,30 @@ def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _Scop
 
         if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store | ast.Del):
             frame.bound.add(node.id)
+            if id(node) not in assigned:
+                # A loop target, a `with ... as`, an unpacking, an augmented
+                # assignment, a walrus, a `del`: every one of these is a binding
+                # this pass will not read a class out of.
+                events.setdefault(node.id, []).append(None)
         elif isinstance(node, ast.arg):
             frame.bound.add(node.arg)  # reached through a lambda
+            events.setdefault(node.arg, []).append(None)
         elif isinstance(node, ast.ExceptHandler) and node.name:
             frame.bound.add(node.name)
+            events.setdefault(node.name, []).append(None)
         elif isinstance(node, ast.MatchAs | ast.MatchStar) and node.name:
             frame.bound.add(node.name)
+            events.setdefault(node.name, []).append(None)
         elif isinstance(node, ast.MatchMapping) and node.rest:
             frame.bound.add(node.rest)
+            events.setdefault(node.rest, []).append(None)
 
         stack.extend(ast.iter_child_nodes(node))
 
+    for name, seen in events.items():
+        agreed = _agreed(seen)
+        if agreed is not None:
+            frame.bound_class[name] = agreed
     return frame
 
 
@@ -191,6 +254,79 @@ def declared_attributes(node: ast.ClassDef) -> dict[str, ast.expr]:
                 found.setdefault(target.attr, current.annotation)
         stack.extend(reversed(list(ast.iter_child_nodes(current))))
     return found
+
+
+def bound_attributes(node: ast.ClassDef) -> dict[str, ast.expr]:
+    """Classes the class's attributes are *bound* to, where every binding agrees.
+
+    The counterpart to `declared_attributes` for the code that never wrote the
+    type down, which in practice is most of it. Two sources, both of which name
+    a class without anything being inferred:
+
+    * `self.x = Widget()` -- the construction names the class outright.
+    * `self.x = config` inside `def __init__(self, config: Config)` -- the type
+      is one the author declared on the parameter, followed across a single
+      assignment rather than guessed at.
+
+    Every assignment to an attribute anywhere in the class is collected, and the
+    attribute is kept only if they all agree. mypy's `IRBuilder.builder` is the
+    case this exists to refuse: assigned `LowLevelIRBuilder(...)` in one place
+    and `self.builders[-1]` in another, so it stays unresolved.
+
+    Not followed: a return annotation (`self.x = make_widget()`), an attribute of
+    something else (`self.x = other.thing`), or a parameter of a *nested*
+    function, whose annotations are not read here. Each would be a second
+    inference step on top of the first.
+    """
+    events: dict[str, list[ast.expr | None]] = {}
+
+    def record(name: str, value: ast.expr, annotations: dict[str, ast.expr]) -> None:
+        constructed = _constructed_class(value)
+        if constructed is None and isinstance(value, ast.Name):
+            constructed = annotations.get(value.id)
+        events.setdefault(name, []).append(constructed)
+
+    def walk(body: list[ast.stmt], annotations: dict[str, ast.expr], *, bare: bool) -> None:
+        """`bare` marks source where an unqualified name is an attribute.
+
+        True only in the class body itself. Inside a method the same statement
+        binds a local, and conflating the two let a `thing = Widget()` in one
+        method type a `self.thing` that the class never assigns anywhere -- a
+        caller invented out of a coincidence of names.
+        """
+        stack: list[tuple[ast.AST, bool]] = [(statement, bare) for statement in body]
+        while stack:
+            current, bare_here = stack.pop()
+            if isinstance(current, ast.ClassDef):
+                continue  # its `self` is its own
+            if isinstance(current, ast.Assign):
+                for target in current.targets:
+                    if (
+                        isinstance(target, ast.Attribute)
+                        and isinstance(target.value, ast.Name)
+                        and target.value.id in SELF_NAMES
+                    ):
+                        record(target.attr, current.value, annotations)
+                    elif bare_here and isinstance(target, ast.Name):
+                        record(target.id, current.value, annotations)
+            # `self.x = ...` keeps its meaning inside a closure; a bare name
+            # stops being an attribute the moment the walk enters one.
+            inside = bare_here and not isinstance(
+                current, ast.FunctionDef | ast.AsyncFunctionDef | ast.Lambda
+            )
+            stack.extend((child, inside) for child in ast.iter_child_nodes(current))
+
+    for statement in node.body:
+        if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef):
+            walk(statement.body, _annotated_parameters(statement.args), bare=False)
+        elif not isinstance(statement, ast.ClassDef):
+            walk([statement], {}, bare=True)
+
+    return {
+        name: agreed
+        for name, events_for in events.items()
+        if (agreed := _agreed(events_for)) is not None
+    }
 
 
 def _defines_by_scope(scope: Scope) -> dict[str, dict[str, SymbolId]]:
@@ -247,6 +383,7 @@ class _ReferenceWalker(ast.NodeVisitor):
         frame.kind = "class"
         frame.qualname = qualname
         frame.attributes = declared_attributes(node)
+        frame.bound_attributes = bound_attributes(node)
         self._enter(frame, node.body, prefix_parts=[node.name])
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
@@ -350,6 +487,16 @@ class _ReferenceWalker(ast.NodeVisitor):
                 self._record(member, node.lineno, via="typed_attr")
                 return
 
+        # Last, and deliberately after every declared type: a receiver nobody
+        # annotated, whose bindings all agree on a class. Separate `via` so its
+        # precision is reported apart from `typed_attr`'s.
+        bound_class = self._bound_class(node.value) or self._bound_attribute_class(node.value)
+        if bound_class is not None:
+            member = self._graph.lookup_method(bound_class, node.attr)
+            if member is not None:
+                self._record(member, node.lineno, via="bound_attr")
+                return
+
         self.unresolved.append(
             UnresolvedAttribute(
                 attribute=node.attr,
@@ -404,11 +551,16 @@ class _ReferenceWalker(ast.NodeVisitor):
     def _declared_class(self, expression: ast.expr) -> SymbolId | None:
         """The class a name was *declared* to hold, from an annotation.
 
-        This is the one place the tool acts on a type, and it is deliberately
-        reading rather than inferring: `def render(w: Widget)` is a statement
-        the author wrote down, the same kind of evidence as an import. No
-        attempt is made to track what a variable was last assigned, because
-        that is inference and it is wrong as soon as the variable is reassigned.
+        Reading rather than inferring: `def render(w: Widget)` is a statement
+        the author wrote down, the same kind of evidence as an import.
+
+        This used to be the only place the tool acted on a type, on the grounds
+        that tracking assignments "is wrong as soon as the variable is
+        reassigned". That reasoning was kept and the conclusion narrowed: what
+        is wrong is following the *last* assignment. `_bound_class` follows a
+        binding only when a name has no binding that disagrees, so a reassigned
+        variable still resolves to nothing. It is a weaker kind of evidence and
+        is recorded under its own `via` so it can be judged separately.
 
         The declared type may name a base class while the value is a subclass
         overriding the method. That is the same assumption `self_attr` already
@@ -433,6 +585,12 @@ class _ReferenceWalker(ast.NodeVisitor):
         annotated on a base class is not inherited here: that needs the
         declarations to live on the class graph rather than on this walk, and
         reading through an unresolved base would be a guess.
+
+        That inheritance was planned and then dropped on the evidence. Auditing
+        every recall miss across four corpora found *no* case where the missing
+        attribute was annotated on a base class -- the ones that matter are
+        assigned rather than annotated (`self.mapper = mapper`), which is what
+        `bound_attributes` reads instead.
         """
         if not (
             isinstance(expression, ast.Attribute)
@@ -460,6 +618,58 @@ class _ReferenceWalker(ast.NodeVisitor):
         # everything else -- so `list[Widget]` and `Widget | None` resolve to
         # nothing rather than to their container.
         return self._class_of(annotation)
+
+    def _bound_class(self, expression: ast.expr) -> SymbolId | None:
+        """The class a name was *bound* to, for a receiver nobody annotated.
+
+        `x = Widget()` names `Widget` outright, so acting on it is not the type
+        inference this tool refuses -- there is no annotation to trust and no
+        value to guess at. What makes it safe is the guard rather than the
+        construction: `bound_names` discards a name the moment two bindings
+        disagree, so a reassigned variable resolves to nothing at all.
+
+        Not followed: a return annotation (`x = make_widget()`), a value that
+        arrived as a parameter, or anything reached through a subscript or
+        another attribute. Each is a second step away from something written
+        down, and this strategy is worth keeping only while it is one.
+        """
+        if not isinstance(expression, ast.Name):
+            return None
+        bound = self._bound_expression(expression.id)
+        return None if bound is None else self._class_of(bound)
+
+    def _bound_attribute_class(self, expression: ast.expr) -> SymbolId | None:
+        """The class `self.x` was bound to, for `self.x.method()`.
+
+        Read from the nearest enclosing class, like `_declared_attribute_class`,
+        because that is the scope `self` points at and the assignment is usually
+        in `__init__` while the use is somewhere else entirely.
+        """
+        if not (
+            isinstance(expression, ast.Attribute)
+            and isinstance(expression.value, ast.Name)
+            and expression.value.id in SELF_NAMES
+        ):
+            return None
+        owner = next(
+            (frame for frame in reversed(self._scopes) if frame.kind == "class"), None
+        )
+        if owner is None:
+            return None
+        bound = owner.bound_attributes.get(expression.attr)
+        return None if bound is None else self._class_of(bound)
+
+    def _bound_expression(self, name: str) -> ast.expr | None:
+        """Find an agreed binding for `name`, walking scopes the way a lookup does."""
+        for position, frame in enumerate(reversed(self._scopes)):
+            if frame.kind == "class" and position != 0:
+                continue
+            bound = frame.bound_class.get(name)
+            if bound is not None:
+                return bound
+            if name in frame.bound:
+                return None  # bound here without agreement: shadows any outer one
+        return None
 
     def _declared_annotation(self, name: str) -> ast.expr | None:
         """Find a declaration for `name`, walking scopes the way a lookup does."""
@@ -576,7 +786,7 @@ def _parameter_names(args: ast.arguments) -> tuple[str, ...]:
 
 # Strategies where the receiver is bound by the call itself, so the first
 # declared parameter -- `self`, or `cls` on a constructor -- is already filled.
-_BOUND_VIA = frozenset({"self_attr", "typed_attr", "constructor"})
+_BOUND_VIA = frozenset({"self_attr", "typed_attr", "bound_attr", "constructor"})
 
 
 def _call_shape(node: ast.Call) -> CallShape:
