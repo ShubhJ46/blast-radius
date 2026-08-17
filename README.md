@@ -851,6 +851,57 @@ The digest is over the file's bytes rather than its mtime, because a checkout, a
 branch switch, and a formatter that rewrites a file identically all move the
 mtime without changing what the parser would produce.
 
+## A qualname is not a unique key
+
+The miner's [phantom bug](#a-getter-and-a-setter-are-not-a-change) was fixed in
+`evaluation/`, and the fix was reported as done. It was not. A cleanup review of
+that commit asked whether the *library* made the same assumption, and it did:
+`RepoIndex.definitions` was a dict keyed by `SymbolId`, so a symbol written as
+more than one definition kept whichever was parsed last.
+
+That is worse than the harness bug it mirrors. A phantom case corrupts a
+statistic; this answered an agent's question with an arbitrary arm's signature
+and line range, and nothing in the output indicated a choice had been made.
+Across the four corpora, **101 symbols hold definitions whose signatures
+differ**. They come in three shapes that do not resolve the same way:
+
+| shape | what the arms do | correct pick |
+| --- | --- | --- |
+| plain redefinition | the second *replaces* the first | the last — it is what Python leaves bound |
+| `@overload` group | stubs declare types; one arm is callable | the undecorated implementation |
+| property | getter and setter *compose* into one descriptor | the `@property` getter |
+
+Last-wins was already right for the first and wrong for the other two. It is
+wrong more often than "the implementation is written last" suggests: across the
+corpora that holds in **8 of 19** overload groups, so in the other 11 the index
+carried a stub's parameters — a signature that does not exist at runtime — and
+narrowed `--argument` against it. For properties the losing arm was the getter
+in every case measured, so `impact Widget.name` reported `(self, value)` and the
+setter's line range as the meaning of the name.
+
+Choosing the real callable is not guessing between two candidates, which is what
+[`find_symbols`](#using-it) refuses to do. A stub and a setter are *parts of one
+object*, not rivals to it. Where there genuinely are rivals — two plain `def`s in
+different branches — the tie goes to Python.
+
+The arms that lose are not dropped, on the same reasoning as `unverified`: a
+silent omission is worse than a stated one. They are read back off the parse
+rather than stored again, and reported everywhere the definition is.
+
+```
+pkg/core.py::Store.query  method  lines 3-4
+  also defined at lines 7-8  @query.setter
+```
+
+**The scores did not move, and provably rather than by rerunning.** No scored
+case's canonical signature differs from the old pick: the only multi-arm symbol
+among the 113 is `get_proper_types`, an `@overload` group whose arms differ only
+in annotations, which `Signature` does not carry. A subset rescore including it
+reproduces byte-identical per-case results. The bug was never *measured* by this
+evaluation — which is the uncomfortable part, and the reason it survived a full
+scoring run and a README rewrite before a review that never ran the tool caught
+it by reading.
+
 ## Two gaps found by running it on real code
 
 Neither shows up in a test suite; both came from pointing the tool at a project
