@@ -103,11 +103,26 @@ class ModuleTable:
     conflicts: tuple[tuple[str, str], ...] = ()
 
     @classmethod
-    def build(cls, paths: Iterable[str]) -> "ModuleTable":
+    def build(cls, paths: Iterable[str], unreadable: Iterable[str] = ()) -> "ModuleTable":
+        """Name every module, given the files that parsed and the ones that did not.
+
+        `unreadable` exists because a directory is a package by holding an
+        `__init__.py`, not by that file being parseable, and the difference is
+        not local. Names are built by climbing while each parent is a package,
+        so a package root that drops out of the set renames everything beneath
+        it: with scrapy's Python 2 `scrapy/__init__.py` unreadable,
+        `scrapy/utils/encoding.py` called itself `utils.encoding`, every
+        `from scrapy.utils.encoding import ...` in 294 modules failed to match,
+        and the whole repository's import graph resolved as external.
+
+        Only parsed files are given names here. An unreadable file still has no
+        definitions to point at -- the fix is to stop it from taking its
+        siblings down with it, not to pretend it was read.
+        """
         ordered = sorted(set(paths))
         package_dirs = {
             posixpath.dirname(path)
-            for path in ordered
+            for path in (*ordered, *unreadable)
             if posixpath.basename(path) == INIT_BASENAME
         }
 
@@ -344,7 +359,13 @@ class ImportIndex:
         return expansion
 
 
-def build_import_index(parses: Mapping[str, ModuleParse]) -> tuple[ImportIndex, ModuleTable]:
-    """Convenience wrapper: derive the module table from the parses themselves."""
-    table = ModuleTable.build(parses.keys())
+def build_import_index(
+    parses: Mapping[str, ModuleParse], unreadable: Iterable[str] = ()
+) -> tuple[ImportIndex, ModuleTable]:
+    """Convenience wrapper: derive the module table from the parses themselves.
+
+    `unreadable` names files that were discovered but could not be parsed; they
+    still count towards which directories are packages. See `ModuleTable.build`.
+    """
+    table = ModuleTable.build(parses.keys(), unreadable)
     return ImportIndex(parses, table), table

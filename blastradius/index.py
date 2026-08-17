@@ -224,7 +224,9 @@ def build_index(root: Path, previous: RepoIndex | None = None) -> RepoIndex:
             reused=collected.reused,
         )
 
-    imports, modules = build_import_index(collected.parses)
+    imports, modules = build_import_index(
+        collected.parses, [path for path, _ in collected.skipped]
+    )
     classes = ClassGraph.build(collected.parses, imports)
 
     references: dict[SymbolId, list[Reference]] = {}

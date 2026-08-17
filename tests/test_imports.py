@@ -62,6 +62,24 @@ class TestModuleTable:
         table = ModuleTable.build(["__init__.py", "mod.py"])
         assert table.by_name == {"mod": "mod.py"}
 
+    def test_an_unreadable_init_still_makes_its_directory_a_package(self):
+        # scrapy's Python 2 `scrapy/__init__.py` did not parse, so it was
+        # absent from the parses the table was built from -- which renamed
+        # every module under it and made the whole repository's imports
+        # resolve as external.
+        table = ModuleTable.build(["pkg/mod.py"], ["pkg/__init__.py"])
+        assert table.module_for_path("pkg/mod.py") == "pkg.mod"
+
+    def test_an_unreadable_module_is_not_given_a_name_of_its_own(self):
+        # It counts towards which directories are packages and nothing more:
+        # there is no parse behind it to point a reference at.
+        table = ModuleTable.build(["pkg/mod.py"], ["pkg/__init__.py"])
+        assert table.path_for_module("pkg") is None
+
+    def test_a_package_is_still_recognised_from_the_parses_alone(self):
+        table = ModuleTable.build(["pkg/__init__.py", "pkg/mod.py"], [])
+        assert table.module_for_path("pkg/mod.py") == "pkg.mod"
+
 
 class TestPackageOf:
     @pytest.mark.parametrize(

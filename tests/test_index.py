@@ -168,6 +168,24 @@ class TestUnparseableFiles:
         assert index.module_count == 1
         assert [path for path, _ in index.skipped] == ["bad.py"]
 
+    def test_a_broken_package_init_does_not_sever_its_siblings(self, make_repo):
+        # The damage from an unparseable file used to spread: `pkg/__init__.py`
+        # dropping out of the parses stopped `pkg/` counting as a package, so
+        # `pkg/mod.py` named itself `mod` and every `from pkg.mod import ...`
+        # in the repository resolved as an external reference.
+        root = make_repo(
+            {
+                "pkg/__init__.py": "print 'python 2'\n",
+                "pkg/mod.py": "def helper():\n    pass\n",
+                "app.py": "from pkg.mod import helper\n\n\ndef run():\n    helper()\n",
+            }
+        )
+        index = build_index(root)
+        assert [path for path, _ in index.skipped] == ["pkg/__init__.py"]
+        assert index.modules.module_for_path("pkg/mod.py") == "pkg.mod"
+        uses = index.references_to(SymbolId("pkg/mod.py", "helper"))
+        assert [(use.path, use.line) for use in uses] == [("app.py", 5)]
+
     def test_an_unreadable_file_is_skipped_rather_than_fatal(self, make_repo, monkeypatch):
         """A broken symlink or a permissions problem must not lose the whole index."""
         root = make_repo({"a.py": "def f():\n    pass\n", "b.py": ""})
