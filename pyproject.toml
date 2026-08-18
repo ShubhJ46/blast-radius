@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Deterministic impact analysis for Python: what breaks if I change this symbol?"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
-authors = [{ name = "ShubhJ46", email = "jainshubham37@gmail.com" }]
+license = { file = "LICENSE" }
+authors = [{ name = "Shubham Jain", email = "jainshubham37@gmail.com" }]
 keywords = [
     "static-analysis",
     "impact-analysis",
