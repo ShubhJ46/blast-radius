@@ -9,10 +9,38 @@ description = "Deterministic impact analysis for Python: what breaks if I change
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
+authors = [{ name = "ShubhJ46", email = "jainshubham37@gmail.com" }]
+keywords = [
+    "static-analysis",
+    "impact-analysis",
+    "call-graph",
+    "refactoring",
+    "ast",
+    "mcp",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
 # No runtime dependencies on purpose. Parsing is stdlib `ast`, which is exact
 # for Python and cannot drift from the language the way a third-party grammar
 # can. Anything that needs a dependency belongs behind an optional extra.
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/ShubhJ46/blast-radius"
+Repository = "https://github.com/ShubhJ46/blast-radius"
+Issues = "https://github.com/ShubhJ46/blast-radius/issues"
 
 [project.optional-dependencies]
 dev = [

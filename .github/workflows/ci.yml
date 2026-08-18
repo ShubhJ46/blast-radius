@@ -1,0 +1,42 @@
+name: CI
+
+# The two commands the README documents as the dev loop, run on every push so
+# that "533 tests, 100% coverage" is a thing a reader can check rather than a
+# claim they have to take on trust.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor is what `requires-python` promises; the ceiling is what the
+        # project is developed on. Both ends are worth running: the parser reads
+        # syntax that changes between versions.
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check .
+
+      # 100% is an invariant of this project rather than an aspiration, so it is
+      # enforced here instead of reported. The corpora are not cloned: every test
+      # builds the repository it needs in a temporary directory.
+      - name: Test
+        run: pytest --cov --cov-fail-under=100

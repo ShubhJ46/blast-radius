@@ -1,5 +1,7 @@
 # blast-radius
 
+[![CI](https://github.com/ShubhJ46/blast-radius/actions/workflows/ci.yml/badge.svg)](https://github.com/ShubhJ46/blast-radius/actions/workflows/ci.yml)
+
 *Working title.*
 
 Ask what breaks before you change it. Given a Python symbol, report the call
@@ -45,80 +47,18 @@ why the old code scores as it does.
 | `evaluation/run.py` — scoring against the corpus | done |
 | `mcp_server.py` — the tool an agent actually calls | done |
 
-## The corpus problem
+## Install
 
-Mining works. The first corpus does not, and finding out why cost more than
-building the miner.
+```bash
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
 
-Mining [click](https://github.com/pallets/click) — 2,137 commits — yields 44
-cases, of which 18 are forcing changes. **Only 3 of those 18 have a non-empty
-source-file ground truth.** Recall is undefined for the rest, so the corpus can
-measure precision and nothing else.
+pip install .                   # the `blast` CLI
+pip install ".[mcp]"            # adds the `blast-mcp` server for agents
+```
 
-Hand-auditing individual commits, rather than trusting the aggregate, found
-three miner bugs behind part of that: test functions were being mined as
-subjects (their caller is pytest), nested functions too (they cannot be
-imported), and the ground-truth filter searched diffs for `__init__` when a
-caller writes `Widget(...)`. Fixing those took usable cases from 1 to 6.
-
-What remains is not a bug. click is a small library: its functions are called by
-*users*, so a signature change touches its own tests and nothing else internal.
-A recall number needs corpora where the callers live in the repository.
-
-Four corpora — sphinx and scrapy to the root commit, mypy and django to a
-6,000-commit window:
-
-| Corpus | Commits walked | Cases | Forcing | Usable for recall | On a private `_name` |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| [mypy](https://github.com/python/mypy) | 6,000 | 300 | 165 | **49 (30%)** | 35 |
-| [sphinx](https://github.com/sphinx-doc/sphinx) | 16,578 | 383 | 219 | 38 (17%) | 84 |
-| [scrapy](https://github.com/scrapy/scrapy) | 9,222 | 303 | 156 | 23 (15%) | 96 |
-| [django](https://github.com/django/django) | 6,000 | 106 | 47 | 3 (6%) | 23 |
-
-mypy is a type checker — an application whose modules call each other
-constantly — and it yields the highest usable rate of the four. sphinx and
-scrapy are mined to the root commit, which is why their case counts are large
-relative to the window: the first pass took only the most recent 6,000 commits
-and left them resting on eight scored cases each. (Merge commits are excluded,
-so the walked counts are below each repository's raw total.)
-
-**django was added to test the rule above, and broke it.** The prediction was
-that a large framework would behave like mypy. It is the biggest repository of
-the four — 2,925 modules against mypy's 441 — and yields the *lowest* usable
-share of any corpus mined, click included. Size is not the predictor, and
-neither is application-versus-library. What predicts a usable case is whether
-the repository *contains* the callers, and django's callers are the projects
-that install it. It is shaped like click, several hundred times over.
-
-Adding it was still worth the clone, for a reason that had nothing to do with
-django: half of what it mined was fabricated by a bug in the miner, and finding
-that [moved every number on this page](#a-getter-and-a-setter-are-not-a-change).
-
-The last column explains most of the gap, and it is a property of file-level
-evaluation rather than of either tool. A private helper's callers live in its
-own file; the defining file is excluded from ground truth because every tool
-gets it right. So a signature change to a `_name` usually has an *empty*
-cross-file blast radius, and cannot be scored at all:
-
-| | private forcing cases | of those, empty ground truth |
-| --- | ---: | ---: |
-| scrapy | 96 of 156 (62%) | 85 (89%) |
-| django | 23 of 47 (49%) | 23 (**100%**) |
-| sphinx | 84 of 219 (38%) | 71 (85%) |
-| mypy | 35 of 165 (21%) | 22 (63%) |
-
-That is the mechanism behind the usable-case share, not a separate fact about
-it: scrapy spends 62% of its forcing cases on private helpers and almost none of
-those can be measured, while mypy spends 21% and keeps a third of even those.
-django is the limiting case — every one of its private forcing changes has an
-empty cross-file ground truth, and a further third of its remaining empties are
-absorbed by its test suite, the highest of the four. No amount of resolution
-accuracy moves this, which is worth knowing before reading a low usable share as
-a verdict on the tool.
-
-Exercised against the Python 3.14 standard library — 719 modules, 19,892
-definitions, 4,293 module-level import bindings, zero parse failures — because
-fixtures do not contain the code that breaks a parser.
+No runtime dependencies: parsing is stdlib `ast`. The MCP server is the one part
+that needs a package, so it is the one part behind an extra. Python 3.10+.
 
 ## Using it
 
@@ -280,6 +220,110 @@ That second row is the honest caveat. A class deriving from `abc.ABC` or a C
 extension type has a real parent this tool cannot see, so every linearisation
 it computes is a projection of the true MRO onto indexed classes. Deepest chain
 found: 11.
+
+## Scope, stated up front
+
+- **Stage 1 answers one question**: direct callers and overrides. Not transitive
+  importers, not test coverage, not public-API exposure.
+- **Attribute calls on values of *undeclared* type are not resolvable** —
+  `stream.close()`, where `stream` came out of a dict. Where the receiver's type
+  is declared in an annotation the call now resolves; where it is not, the
+  access is counted and never guessed at. This is still the largest source of
+  recall misses, and on unannotated code it is nearly all of them.
+- **"What calls this" and "what must change if I make this edit" are different
+  questions**, and `--argument NAME` is needed to ask the second. Without it
+  every caller is reported, which is correct but not always useful.
+- **Python first.** C++ needs `compile_commands.json` and libclang; text-level
+  parsing is not sufficient there, and demonstrating that gap is its own result.
+- **The first index of a large repository is still slow**, and so is the
+  rebuild after an edit: 29s cold and 16s after a change on the standard
+  library. Repeat queries between edits are 0.5s
+  ([why](#what-a-cache-can-and-cannot-buy)). Cutting the after-an-edit case needs
+  import-graph dependency tracking, so that only modules that could have
+  changed are re-resolved.
+
+## How it was measured
+
+Everything above describes what the tool does. Everything below is the evidence
+for the numbers at the top -- how the corpus was built, what every false positive
+and every recall miss turned out to be, and which ideas were measured and thrown
+away. It is long on purpose: the claims are only worth what the method behind
+them is worth.
+
+## The corpus problem
+
+Mining works. The first corpus does not, and finding out why cost more than
+building the miner.
+
+Mining [click](https://github.com/pallets/click) — 2,137 commits — yields 44
+cases, of which 18 are forcing changes. **Only 3 of those 18 have a non-empty
+source-file ground truth.** Recall is undefined for the rest, so the corpus can
+measure precision and nothing else.
+
+Hand-auditing individual commits, rather than trusting the aggregate, found
+three miner bugs behind part of that: test functions were being mined as
+subjects (their caller is pytest), nested functions too (they cannot be
+imported), and the ground-truth filter searched diffs for `__init__` when a
+caller writes `Widget(...)`. Fixing those took usable cases from 1 to 6.
+
+What remains is not a bug. click is a small library: its functions are called by
+*users*, so a signature change touches its own tests and nothing else internal.
+A recall number needs corpora where the callers live in the repository.
+
+Four corpora — sphinx and scrapy to the root commit, mypy and django to a
+6,000-commit window:
+
+| Corpus | Commits walked | Cases | Forcing | Usable for recall | On a private `_name` |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| [mypy](https://github.com/python/mypy) | 6,000 | 300 | 165 | **49 (30%)** | 35 |
+| [sphinx](https://github.com/sphinx-doc/sphinx) | 16,578 | 383 | 219 | 38 (17%) | 84 |
+| [scrapy](https://github.com/scrapy/scrapy) | 9,222 | 303 | 156 | 23 (15%) | 96 |
+| [django](https://github.com/django/django) | 6,000 | 106 | 47 | 3 (6%) | 23 |
+
+mypy is a type checker — an application whose modules call each other
+constantly — and it yields the highest usable rate of the four. sphinx and
+scrapy are mined to the root commit, which is why their case counts are large
+relative to the window: the first pass took only the most recent 6,000 commits
+and left them resting on eight scored cases each. (Merge commits are excluded,
+so the walked counts are below each repository's raw total.)
+
+**django was added to test the rule above, and broke it.** The prediction was
+that a large framework would behave like mypy. It is the biggest repository of
+the four — 2,925 modules against mypy's 441 — and yields the *lowest* usable
+share of any corpus mined, click included. Size is not the predictor, and
+neither is application-versus-library. What predicts a usable case is whether
+the repository *contains* the callers, and django's callers are the projects
+that install it. It is shaped like click, several hundred times over.
+
+Adding it was still worth the clone, for a reason that had nothing to do with
+django: half of what it mined was fabricated by a bug in the miner, and finding
+that [moved every number on this page](#a-getter-and-a-setter-are-not-a-change).
+
+The last column explains most of the gap, and it is a property of file-level
+evaluation rather than of either tool. A private helper's callers live in its
+own file; the defining file is excluded from ground truth because every tool
+gets it right. So a signature change to a `_name` usually has an *empty*
+cross-file blast radius, and cannot be scored at all:
+
+| | private forcing cases | of those, empty ground truth |
+| --- | ---: | ---: |
+| scrapy | 96 of 156 (62%) | 85 (89%) |
+| django | 23 of 47 (49%) | 23 (**100%**) |
+| sphinx | 84 of 219 (38%) | 71 (85%) |
+| mypy | 35 of 165 (21%) | 22 (63%) |
+
+That is the mechanism behind the usable-case share, not a separate fact about
+it: scrapy spends 62% of its forcing cases on private helpers and almost none of
+those can be measured, while mypy spends 21% and keeps a third of even those.
+django is the limiting case — every one of its private forcing changes has an
+empty cross-file ground truth, and a further third of its remaining empties are
+absorbed by its test suite, the highest of the four. No amount of resolution
+accuracy moves this, which is worth knowing before reading a low usable share as
+a verdict on the tool.
+
+Exercised against the Python 3.14 standard library — 719 modules, 19,892
+definitions, 4,293 module-level import bindings, zero parse failures — because
+fixtures do not contain the code that breaks a parser.
 
 ## How it is measured
 
@@ -1107,35 +1151,24 @@ The MCP server returns it under its own key with its own caveat, so an agent
 can tell *"I could not see this"* from *"nothing depends on this"* — which are
 the same empty list otherwise.
 
-## Scope, stated up front
-
-- **Stage 1 answers one question**: direct callers and overrides. Not transitive
-  importers, not test coverage, not public-API exposure.
-- **Attribute calls on values of *undeclared* type are not resolvable** —
-  `stream.close()`, where `stream` came out of a dict. Where the receiver's type
-  is declared in an annotation the call now resolves; where it is not, the
-  access is counted and never guessed at. This is still the largest source of
-  recall misses, and on unannotated code it is nearly all of them.
-- **"What calls this" and "what must change if I make this edit" are different
-  questions**, and `--argument NAME` is needed to ask the second. Without it
-  every caller is reported, which is correct but not always useful.
-- **Python first.** C++ needs `compile_commands.json` and libclang; text-level
-  parsing is not sufficient there, and demonstrating that gap is its own result.
-- **The first index of a large repository is still slow**, and so is the
-  rebuild after an edit: 29s cold and 16s after a change on the standard
-  library. Repeat queries between edits are 0.5s
-  ([why](#what-a-cache-can-and-cannot-buy)). Cutting the after-an-edit case needs
-  import-graph dependency tracking, so that only modules that could have
-  changed are re-resolved.
-
 ## Development
 
 ```bash
-python -m venv venv && venv\Scripts\activate
 pip install -e ".[dev]"
 
 ruff check .
 pytest --cov
 ```
 
-Requires Python 3.10+.
+Both commands run on every push — see the badge at the top. CI enforces 100%
+coverage rather than reporting it, because that is an invariant of this project
+and not an aspiration. The corpora are not needed: every test builds the
+repository it needs in a temporary directory.
+
+To reproduce the scored numbers you do need the corpora, which are cloned rather
+than committed:
+
+```bash
+git clone https://github.com/python/mypy .corpora/mypy
+python -m evaluation.run evaluation/cases/mypy.json --corpora .corpora
+```
