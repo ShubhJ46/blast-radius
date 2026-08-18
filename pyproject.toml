@@ -50,4 +50,15 @@ target-version = "py310"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+select = ["E", "F", "I", "B", "UP", "C901"]
+
+[tool.ruff.lint.mccabe]
+# Cyclomatic complexity, as a pointer to where to hand-probe rather than a
+# quality score. Every defect found in this project so far has been in code at
+# 100% coverage with clean lint -- a wrong assumption about which key is unique,
+# not a tangled branch -- so this is not expected to catch bugs. It is set at 15
+# because the codebase clusters at 13-14 and the two functions that did host
+# recent bugs were the two most complex, which makes it a fair place to look
+# first. An AST visitor is branchy by nature; a number here is a question, not a
+# verdict.
+max-complexity = 15

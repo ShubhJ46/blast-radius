@@ -144,6 +144,46 @@ def _agreed(events: list[ast.expr | None]) -> ast.expr | None:
     return first if all(ast.dump(other) == dumped for other in rest) else None
 
 
+def _bound_without_descending(node: ast.AST) -> tuple[str, ...] | None:
+    """Names a node binds when the walk must not go inside it.
+
+    A nested `def` or `class` binds its own name here and nothing else; its body
+    is a different scope, collected when that scope is entered. `nonlocal` and an
+    import bind names outright. `None` means the walk carries on into the node's
+    children.
+    """
+    if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
+        return (node.name,)
+    if isinstance(node, ast.Nonlocal):
+        # The name resolves in an enclosing function, never at module level, so
+        # it can never reach a module-level definition either way.
+        return tuple(node.names)
+    if isinstance(node, ast.Import | ast.ImportFrom):
+        return tuple(
+            name
+            for name in (_import_alias_name(node, alias) for alias in node.names)
+            if name
+        )
+    return None
+
+
+def _opaque_binding(node: ast.AST) -> str | None:
+    """The name a node binds in a form no class can be read out of.
+
+    A lambda's parameter, an `except ... as`, and the `match` captures all take
+    their value from somewhere this pass cannot follow. The name still has to be
+    recorded as bound -- it shadows anything outside -- but with nothing known
+    about what it holds.
+    """
+    if isinstance(node, ast.arg):
+        return node.arg  # reached through a lambda
+    if isinstance(node, ast.ExceptHandler | ast.MatchAs | ast.MatchStar):
+        return node.name
+    if isinstance(node, ast.MatchMapping):
+        return node.rest
+    return None
+
+
 def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _ScopeFrame:
     """Names a scope binds, without descending into nested function or class bodies.
 
@@ -165,30 +205,22 @@ def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _Scop
     while stack:
         node = stack.pop()
 
-        if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
-            frame.bound.add(node.name)
-            events.setdefault(node.name, []).append(None)
-            continue  # its body is a different scope
+        if isinstance(node, ast.Global):
+            frame.declared_global.update(node.names)
+            continue
+
+        stopped = _bound_without_descending(node)
+        if stopped is not None:
+            for name in stopped:
+                frame.bound.add(name)
+                events.setdefault(name, []).append(None)
+            continue
 
         if isinstance(node, ast.Assign):
             for target in node.targets:
                 if isinstance(target, ast.Name):
                     assigned.add(id(target))
                     events.setdefault(target.id, []).append(_constructed_class(node.value))
-        if isinstance(node, ast.Global):
-            frame.declared_global.update(node.names)
-            continue
-        if isinstance(node, ast.Nonlocal):
-            # The name resolves in an enclosing function, never at module level,
-            # so it can never reach a module-level definition either way.
-            frame.bound.update(node.names)
-            continue
-        if isinstance(node, ast.Import | ast.ImportFrom):
-            for alias in node.names:
-                name = _import_alias_name(node, alias)
-                if name:
-                    frame.bound.add(name)
-            continue
 
         if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
             frame.declared[node.target.id] = node.annotation
@@ -200,18 +232,9 @@ def bound_names(body: list[ast.stmt], parameters: tuple[str, ...] = ()) -> _Scop
                 # assignment, a walrus, a `del`: every one of these is a binding
                 # this pass will not read a class out of.
                 events.setdefault(node.id, []).append(None)
-        elif isinstance(node, ast.arg):
-            frame.bound.add(node.arg)  # reached through a lambda
-            events.setdefault(node.arg, []).append(None)
-        elif isinstance(node, ast.ExceptHandler) and node.name:
-            frame.bound.add(node.name)
-            events.setdefault(node.name, []).append(None)
-        elif isinstance(node, ast.MatchAs | ast.MatchStar) and node.name:
-            frame.bound.add(node.name)
-            events.setdefault(node.name, []).append(None)
-        elif isinstance(node, ast.MatchMapping) and node.rest:
-            frame.bound.add(node.rest)
-            events.setdefault(node.rest, []).append(None)
+        elif (opaque := _opaque_binding(node)) is not None:
+            frame.bound.add(opaque)
+            events.setdefault(opaque, []).append(None)
 
         stack.extend(ast.iter_child_nodes(node))
 

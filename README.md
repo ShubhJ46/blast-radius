@@ -592,7 +592,13 @@ directly turned up a bare `name = Widget()` inside a *method* being recorded as 
 class attribute, so a local variable in one method typed a `self.thing` the class
 never assigns anywhere — a caller invented from a coincidence of names. A bare
 name is an attribute only in the class body; inside a method it binds a local.
-Green tests said nothing about it, which is the recurring lesson here.
+
+It cut both ways, which was not obvious until the fix was measured. The same
+conflation also let a local *disagree* with a real attribute of the same name
+and discard its type, so fixing it added 82 resolved references on mypy rather
+than removing any. A bug in a rule about disagreement destroys evidence as
+readily as it invents it. Green tests said nothing about either half, which is
+the recurring lesson here.
 
 ### Every recall miss in the run, audited
 
