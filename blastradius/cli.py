@@ -79,14 +79,21 @@ def _print_impact(impact: Impact, stream, argument: str | None = None) -> None:
             file=stream,
         )
 
+    # With `--argument`, the question asked is "what breaks if I change this
+    # one parameter", so the callers listed are the ones that answer it. Listing
+    # every caller beside a narrowed blast radius reads as a contradiction, and
+    # the MCP server has always narrowed both.
+    callers = impact.callers if argument is None else impact.affected_by(argument)
+    caller_files = sorted({reference.path for reference in callers})
+    heading = "callers" if argument is None else f"callers passing {argument!r}"
     print(
-        f"\ncallers  {_plural(len(impact.callers), 'reference')} "
-        f"in {_plural(len(impact.caller_files), 'file')}",
+        f"\n{heading}  {_plural(len(callers), 'reference')} "
+        f"in {_plural(len(caller_files), 'file')}",
         file=stream,
     )
-    for reference in impact.callers:
+    for reference in callers:
         print(f"  {reference.path}:{reference.line}  ({reference.via})", file=stream)
-    if not impact.callers:
+    if not callers:
         print("  none", file=stream)
 
     print(f"\noverrides  {len(impact.overrides)}", file=stream)
@@ -148,9 +155,18 @@ def _impact_payload(impact: Impact) -> dict:
 
 
 def _impact_payload_for(impact: Impact, argument: str) -> dict:
+    """The same payload, narrowed to one parameter.
+
+    `callers` narrows with `files`. Leaving it whole beside a narrowed radius
+    said two different things in one document -- every caller, and the two files
+    that break -- and an agent reading the JSON had no way to tell which
+    answered the question it asked. `all_caller_files` keeps the wider picture
+    reachable for a caller that wants it.
+    """
     payload = _impact_payload(impact)
     payload["argument"] = argument
     payload["files"] = list(impact.files_affected_by(argument))
+    payload["callers"] = _reference_rows(impact.affected_by(argument))
     payload["all_caller_files"] = list(impact.files)
     return payload
 

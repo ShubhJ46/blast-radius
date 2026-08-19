@@ -193,6 +193,33 @@ class TestImpactArgument:
         assert payload["files"] == ["kw.py"]
         assert sorted(payload["all_caller_files"]) == ["kw.py", "plain.py"]
 
+    def test_json_narrows_the_callers_with_the_files(self, make_repo):
+        # These used to disagree: `files` narrowed and `callers` did not, so one
+        # payload answered two different questions and an agent could not tell
+        # which one it had asked.
+        root = make_repo(self.FILES)
+        _, out, _ = run(
+            ["impact", "Builder.accept", "--root", str(root), "--argument", "can_borrow", "--json"]
+        )
+        payload = json.loads(out)
+        assert {caller["path"] for caller in payload["callers"]} == {"kw.py"}
+
+    def test_human_output_narrows_the_callers_and_says_so(self, make_repo):
+        root = make_repo(self.FILES)
+        _, out, _ = run(
+            ["impact", "Builder.accept", "--root", str(root), "--argument", "can_borrow"]
+        )
+        callers = out.split("callers")[-1].split("overrides")[0]
+        assert "kw.py" in callers
+        assert "plain.py" not in callers
+        assert "callers passing 'can_borrow'" in out
+
+    def test_without_the_flag_the_caller_list_is_not_narrowed(self, make_repo):
+        root = make_repo(self.FILES)
+        _, out, _ = run(["impact", "Builder.accept", "--root", str(root), "--json"])
+        payload = json.loads(out)
+        assert {caller["path"] for caller in payload["callers"]} == {"kw.py", "plain.py"}
+
 
 class TestUnverifiedFiles:
     """A file the parser cannot read is a hole in the answer, so it is named."""

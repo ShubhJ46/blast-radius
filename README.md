@@ -122,7 +122,7 @@ repository, an agent asking about `build_index` gets:
 
 | question | files | call sites |
 | --- | ---: | ---: |
-| what depends on `build_index`? | 6 | 68 |
+| what depends on `build_index`? | 6 | 85 |
 | what breaks if I remove its `previous` parameter? | **2** | **16** |
 
 Four of the six files call `build_index` without ever passing `previous`, so
