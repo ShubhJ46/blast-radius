@@ -1,12 +1,12 @@
 # blast-radius
 
 [![CI](https://github.com/ShubhJ46/blast-radius/actions/workflows/ci.yml/badge.svg)](https://github.com/ShubhJ46/blast-radius/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 
-*Working title.*
-
-Ask what breaks before you change it. Given a Python symbol, report the call
-sites and overrides that a change to it would force — deterministically, from
-the AST, with no model in the path.
+**Deterministic impact analysis for Python — ask what breaks before you change
+it.** Given a symbol, blast-radius reports the call sites and overrides that a
+change to it would force, resolved from the AST with no model in the path.
 
 Built for coding agents. Today an agent greps for a function name, gets a list
 of hits that mixes comments, unrelated same-named methods, and real call sites,
@@ -14,7 +14,39 @@ reads several files to disambiguate, and still misses the subclass that
 overrides it. The question is entirely mechanical, so it should be answered
 mechanically.
 
-## Status
+- **Resolved, not textual** — scope chains, imports, class MRO and declared or
+  bound receiver types, so a same-named method in another class is not a hit.
+- **Answers the edit, not the symbol** — `--argument` reports only the callers a
+  change to *one parameter* forces to move.
+- **States what it cannot see** — unparseable files and unresolved receivers are
+  reported rather than silently dropped.
+- **Measured, not asserted** — 85% precision and 74% recall against 113
+  signature changes mined from four real repositories, audited case by case.
+- **No runtime dependencies**, and an MCP server so an agent can call it.
+
+## Contents
+
+- [Accuracy](#accuracy)
+- [Install](#install)
+- [Usage](#usage)
+- [Use from an AI agent](#use-from-an-ai-agent)
+- [Resolution strategies](#resolution-strategies)
+- [Class hierarchy and overrides](#class-hierarchy-and-overrides)
+- [Architecture](#architecture)
+- [Scope and limitations](#scope-and-limitations)
+- [Evaluation](#evaluation)
+- [The corpus problem](#the-corpus-problem)
+- [How the corpus is scored](#how-the-corpus-is-scored)
+- [Results](#results)
+- [What the evaluation changed](#what-the-evaluation-changed)
+- [What a cache can and cannot buy](#what-a-cache-can-and-cannot-buy)
+- [A qualname is not a unique key](#a-qualname-is-not-a-unique-key)
+- [Two gaps found by running it on real code](#two-gaps-found-by-running-it-on-real-code)
+- [What it will not guess](#what-it-will-not-guess)
+- [Development](#development)
+- [License](#license)
+
+## Accuracy
 
 Stage 1 is complete and measured. Scored against **113 signature-changing
 commits mined from the full history of four real repositories**, with `grep`
@@ -33,20 +65,6 @@ does not vary that way (89% and 81%). The blended number above is the honest
 headline; the split is the useful fact, and [results](#results) has both plus
 why the old code scores as it does.
 
-| Component | State |
-| --- | --- |
-| `model.py` — symbol identity, signatures, imports, references | done |
-| `parse.py` — file → definitions, scope tree, raw imports | done |
-| `imports.py` — module table, import bindings, re-export chains | done |
-| `resolve.py` — scope-aware reference resolution | done |
-| `classes.py` — base graph, MRO, override detection | done |
-| `index.py` — orchestration over a directory | done |
-| `impact.py` + `cli.py` — the query and the tool | done |
-| `evaluation/schema.py` — the mined-case format | done |
-| `evaluation/mine.py` — git history → cases | done |
-| `evaluation/run.py` — scoring against the corpus | done |
-| `mcp_server.py` — the tool an agent actually calls | done |
-
 ## Install
 
 ```bash
@@ -60,7 +78,7 @@ pip install ".[mcp]"            # adds the `blast-mcp` server for agents
 No runtime dependencies: parsing is stdlib `ast`. The MCP server is the one part
 that needs a package, so it is the one part behind an extra. Python 3.10+.
 
-## Using it
+## Usage
 
 ```
 blast impact hybrid_search --root path/to/repo
@@ -92,7 +110,7 @@ first and a trailing segment second (`render` finds `Widget.render`); if it is
 still ambiguous, every candidate is listed and the command fails rather than
 guessing.
 
-## Using it from an agent
+## Use from an AI agent
 
 The CLI answers one question and exits, which throws the index away every time.
 The MCP server keeps it in memory, which is the only way the reuse above is
@@ -137,7 +155,7 @@ always, plus the count of unresolved receivers and unparseable files when there
 are any. An agent that treats a blast radius as complete will rename a symbol
 and break the callers this tool never resolved; saying so costs a line of JSON.
 
-## What resolves today
+## Resolution strategies
 
 Reference coverage, not impact accuracy; the precision/recall table below is the
 number that actually matters. Measured over the Python 3.14 standard library
@@ -207,7 +225,7 @@ The same measurement on a small, mostly-functional codebase found *zero*
 class-hierarchy resolution is worth depends entirely on how object-oriented the
 target codebase is.
 
-## The class hierarchy
+## Class hierarchy and overrides
 
 Also measured over the standard library — 2,861 classes, graph built in 0.33s:
 
@@ -221,7 +239,27 @@ extension type has a real parent this tool cannot see, so every linearisation
 it computes is a projection of the true MRO onto indexed classes. Deepest chain
 found: 11.
 
-## Scope, stated up front
+## Architecture
+
+Each layer answers one question and hands the next a fact rather than a
+guess. They are separate modules because they are separately testable; the
+evaluation below scores the whole stack rather than any one of them.
+
+| Module | Responsibility |
+| --- | --- |
+| `model.py` | symbol identity, signatures, imports, references |
+| `parse.py` | file → definitions, scope tree, raw imports |
+| `imports.py` | module table, import bindings, re-export chains |
+| `resolve.py` | scope-aware reference resolution |
+| `classes.py` | base graph, MRO, override detection |
+| `index.py` | orchestration over a directory |
+| `impact.py` + `cli.py` | the query and the tool |
+| `evaluation/schema.py` | the mined-case format |
+| `evaluation/mine.py` | git history → cases |
+| `evaluation/run.py` | scoring against the corpus |
+| `mcp_server.py` | the tool an agent actually calls |
+
+## Scope and limitations
 
 - **Stage 1 answers one question**: direct callers and overrides. Not transitive
   importers, not test coverage, not public-API exposure.
@@ -242,10 +280,10 @@ found: 11.
   import-graph dependency tracking, so that only modules that could have
   changed are re-resolved.
 
-## How it was measured
+## Evaluation
 
 Everything above describes what the tool does. Everything below is the evidence
-for the numbers at the top -- how the corpus was built, what every false positive
+for the numbers at the top — how the corpus was built, what every false positive
 and every recall miss turned out to be, and which ideas were measured and thrown
 away. It is long on purpose: the claims are only worth what the method behind
 them is worth.
@@ -325,7 +363,7 @@ Exercised against the Python 3.14 standard library — 719 modules, 19,892
 definitions, 4,293 module-level import bindings, zero parse failures — because
 fixtures do not contain the code that breaks a parser.
 
-## How it is measured
+## How the corpus is scored
 
 Ground truth comes from git, so it costs nothing and involves no labelling.
 When a developer changed a function's signature, the other files that same
@@ -1067,7 +1105,7 @@ in every case measured, so `impact Widget.name` reported `(self, value)` and the
 setter's line range as the meaning of the name.
 
 Choosing the real callable is not guessing between two candidates, which is what
-[`find_symbols`](#using-it) refuses to do. A stub and a setter are *parts of one
+[`find_symbols`](#usage) refuses to do. A stub and a setter are *parts of one
 object*, not rivals to it. Where there genuinely are rivals — two plain `def`s in
 different branches — the tie goes to Python.
 
@@ -1172,3 +1210,7 @@ than committed:
 git clone https://github.com/python/mypy .corpora/mypy
 python -m evaluation.run evaluation/cases/mypy.json --corpora .corpora
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
